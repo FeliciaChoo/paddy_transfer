@@ -1,0 +1,10 @@
+,rows
+"NDVI outside [-1,1]",0
+"NDVI < 0 (flooded/bare, legitimate)",1521
+EVI clamped at +-1,4
+SAR VV > 0 dB,74
+SAR VV < -25 dB,0
+Rain > 400 mm / decade,468
+Rain < 0,0
+Tmax < Tmin,0
+Solar <= 0,0

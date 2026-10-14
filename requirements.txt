@@ -1,0 +1,13 @@
+# dashboard
+streamlit>=1.50
+pandas>=2.0
+numpy
+scipy
+plotly
+pydeck
+requests
+# pipeline (eda_clean.py, ndvi_transfer.py, final_model.py, prepare_app_data.py)
+scikit-learn
+matplotlib
+# only for extracting data from Google Earth Engine (pipeline/granary_direct.py, granary_pipeline.py)
+earthengine-api

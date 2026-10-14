@@ -1,0 +1,8 @@
+data/*.csv
+eda/DailyGranary*.csv
+research/outputs/
+__pycache__/
+*.pyc
+.venv/
+gee_cache/
+.streamlit/secrets.toml

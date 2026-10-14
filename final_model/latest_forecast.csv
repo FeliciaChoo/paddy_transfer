@@ -1,0 +1,21 @@
+District,from_date,target_date,horizon_decades,horizon_days,last_ndvi,forecast_ndvi,lower,upper,stage_at_target,model,config
+IADA Barat Laut Selangor,2024-12-16,2025-01-01,1,10,0.447,0.403,0.313,0.493,fallow / turnaround,ridge,LPS
+IADA Kemasin Semerak,2024-12-16,2025-01-01,1,10,0.309,0.315,0.225,0.405,tillering,ridge,LPS
+IADA Kerian,2024-12-16,2025-01-01,1,10,0.396,0.445,0.355,0.535,grain filling,ridge,LPS
+IADA Pekan,2024-12-16,2025-01-01,1,10,0.543,0.427,0.337,0.517,fallow / turnaround,ridge,LPS
+IADA Pulau Pinang,2024-12-16,2025-01-01,1,10,0.622,0.677,0.586,0.767,panicle initiation / booting,ridge,LPS
+IADA Rompin,2024-12-16,2025-01-01,1,10,0.271,0.325,0.235,0.415,max tillering / stem elongation,ridge,LPS
+IADA Seberang Perak,2024-12-16,2025-01-01,1,10,0.629,0.597,0.507,0.687,maturity / harvest,ridge,LPS
+KADA,2024-12-16,2025-01-01,1,10,0.233,0.293,0.203,0.383,tillering,ridge,LPS
+KETARA,2024-12-16,2025-01-01,1,10,0.576,0.464,0.373,0.554,germination / establishment,ridge,LPS
+MADA,2024-12-16,2025-01-01,1,10,0.425,0.567,0.477,0.658,panicle initiation / booting,ridge,LPS
+IADA Barat Laut Selangor,2024-12-16,2025-01-21,3,30,0.447,0.326,0.214,0.437,germination / establishment,hgb,LPS
+IADA Kemasin Semerak,2024-12-16,2025-01-21,3,30,0.309,0.411,0.3,0.523,max tillering / stem elongation,hgb,LPS
+IADA Kerian,2024-12-16,2025-01-21,3,30,0.396,0.484,0.373,0.596,fallow / turnaround,hgb,LPS
+IADA Pekan,2024-12-16,2025-01-21,3,30,0.543,0.315,0.203,0.426,fallow / turnaround,hgb,LPS
+IADA Pulau Pinang,2024-12-16,2025-01-21,3,30,0.622,0.699,0.587,0.81,grain filling,hgb,LPS
+IADA Rompin,2024-12-16,2025-01-21,3,30,0.271,0.513,0.402,0.625,panicle initiation / booting,hgb,LPS
+IADA Seberang Perak,2024-12-16,2025-01-21,3,30,0.629,0.491,0.379,0.602,fallow / turnaround,hgb,LPS
+KADA,2024-12-16,2025-01-21,3,30,0.233,0.387,0.275,0.498,max tillering / stem elongation,hgb,LPS
+KETARA,2024-12-16,2025-01-21,3,30,0.576,0.397,0.286,0.509,tillering,hgb,LPS
+MADA,2024-12-16,2025-01-21,3,30,0.425,0.704,0.593,0.816,heading / flowering,hgb,LPS

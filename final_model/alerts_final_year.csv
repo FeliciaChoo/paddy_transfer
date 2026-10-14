@@ -1,0 +1,527 @@
+horizon,model,config,test_year,District,origin_date,target_date,origin_decade,ndvi_last,forecast,lower,upper,observed,persistence,interval_half_width,inside_interval,target_decade,stage_at_target,status
+1,ridge,RULE,2024,IADA Barat Laut Selangor,2024-01-01,2024-01-11,1,0.5299,0.4234,0.3333,0.5135,0.3972,0.5299,0.0901,True,2,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Barat Laut Selangor,2024-01-01,2024-01-31,1,0.5299,0.3749,0.2634,0.4863,0.4863,0.5299,0.1115,True,4,seedling,within range
+1,ridge,RULE,2024,IADA Barat Laut Selangor,2024-01-21,2024-01-31,3,0.4576,0.4212,0.3311,0.5114,0.4863,0.4576,0.0901,True,4,seedling,within range
+3,hgb,LPS,2024,IADA Barat Laut Selangor,2024-01-21,2024-02-20,3,0.4576,0.4253,0.3139,0.5368,0.4468,0.4576,0.1115,True,6,tillering,within range
+1,ridge,RULE,2024,IADA Barat Laut Selangor,2024-01-31,2024-02-10,4,0.4863,0.4513,0.3611,0.5414,0.4573,0.4863,0.0901,True,5,tillering,within range
+1,ridge,RULE,2024,IADA Barat Laut Selangor,2024-02-10,2024-02-20,5,0.4573,0.4877,0.3976,0.5779,0.4468,0.4573,0.0901,True,6,tillering,within range
+3,hgb,LPS,2024,IADA Barat Laut Selangor,2024-02-10,2024-03-11,5,0.4573,0.54,0.4286,0.6515,0.4616,0.4573,0.1115,True,8,max tillering / stem elongation,within range
+1,ridge,RULE,2024,IADA Barat Laut Selangor,2024-03-01,2024-03-11,7,0.4468,0.4875,0.3974,0.5776,0.4616,0.4468,0.0901,True,8,max tillering / stem elongation,within range
+1,ridge,RULE,2024,IADA Barat Laut Selangor,2024-03-31,2024-04-10,10,0.3384,0.4368,0.3467,0.5269,0.4032,0.3384,0.0901,True,11,heading / flowering,within range
+3,hgb,LPS,2024,IADA Barat Laut Selangor,2024-03-31,2024-04-30,10,0.3384,0.4306,0.3191,0.5421,0.3207,0.3384,0.1115,True,13,grain filling,within range
+3,hgb,LPS,2024,IADA Barat Laut Selangor,2024-04-10,2024-05-10,11,0.4032,0.524,0.4126,0.6355,0.5767,0.4032,0.1115,True,14,maturity / harvest,within range
+3,hgb,LPS,2024,IADA Barat Laut Selangor,2024-05-10,2024-06-09,14,0.5767,0.5042,0.3927,0.6157,0.5411,0.5767,0.1115,True,17,fallow / turnaround,within range
+1,ridge,RULE,2024,IADA Barat Laut Selangor,2024-05-20,2024-05-30,15,0.5767,0.5644,0.4743,0.6545,0.5466,0.5767,0.0901,True,16,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Barat Laut Selangor,2024-05-20,2024-06-19,15,0.5767,0.4872,0.3757,0.5987,0.3966,0.5767,0.1115,True,18,fallow / turnaround,within range
+1,ridge,RULE,2024,IADA Barat Laut Selangor,2024-05-30,2024-06-09,16,0.5466,0.5124,0.4223,0.6025,0.5411,0.5466,0.0901,True,17,fallow / turnaround,within range
+1,ridge,RULE,2024,IADA Barat Laut Selangor,2024-06-09,2024-06-19,17,0.5411,0.4344,0.3442,0.5245,0.3966,0.5411,0.0901,True,18,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Barat Laut Selangor,2024-06-09,2024-07-09,17,0.5411,0.3871,0.2756,0.4986,0.4186,0.5411,0.1115,True,20,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Barat Laut Selangor,2024-06-19,2024-07-19,18,0.3966,0.3224,0.2109,0.4338,0.3516,0.3966,0.1115,True,21,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Barat Laut Selangor,2024-06-29,2024-07-29,19,0.3966,0.329,0.2175,0.4405,0.3472,0.3966,0.1115,True,22,germination / establishment,within range
+1,ridge,RULE,2024,IADA Barat Laut Selangor,2024-07-09,2024-07-19,20,0.4186,0.3386,0.2485,0.4287,0.3516,0.4186,0.0901,True,21,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Barat Laut Selangor,2024-07-09,2024-08-08,20,0.4186,0.3332,0.2217,0.4446,0.3718,0.4186,0.1115,True,23,seedling,within range
+1,ridge,RULE,2024,IADA Barat Laut Selangor,2024-07-19,2024-07-29,21,0.3516,0.3412,0.251,0.4313,0.3472,0.3516,0.0901,True,22,germination / establishment,within range
+1,ridge,RULE,2024,IADA Barat Laut Selangor,2024-07-29,2024-08-08,22,0.3472,0.3593,0.2692,0.4494,0.3718,0.3472,0.0901,True,23,seedling,within range
+3,hgb,LPS,2024,IADA Barat Laut Selangor,2024-08-18,2024-09-17,24,0.3718,0.4993,0.3878,0.6107,0.4285,0.3718,0.1115,True,27,max tillering / stem elongation,within range
+1,ridge,RULE,2024,IADA Barat Laut Selangor,2024-09-07,2024-09-17,26,0.1927,0.3777,0.2876,0.4678,0.4285,0.1927,0.0901,True,27,max tillering / stem elongation,within range
+3,hgb,LPS,2024,IADA Barat Laut Selangor,2024-09-07,2024-10-07,26,0.1927,0.4274,0.3159,0.5389,0.3579,0.1927,0.1115,True,29,panicle initiation / booting,within range
+1,ridge,RULE,2024,IADA Barat Laut Selangor,2024-09-17,2024-09-27,27,0.4285,0.4638,0.3737,0.5539,0.4213,0.4285,0.0901,True,28,panicle initiation / booting,within range
+3,hgb,LPS,2024,IADA Barat Laut Selangor,2024-09-17,2024-10-17,27,0.4285,0.5343,0.4228,0.6457,0.5066,0.4285,0.1115,True,30,heading / flowering,within range
+3,hgb,LPS,2024,IADA Barat Laut Selangor,2024-09-27,2024-10-27,28,0.4213,0.4803,0.3688,0.5917,0.4553,0.4213,0.1115,True,31,grain filling,within range
+1,ridge,RULE,2024,IADA Barat Laut Selangor,2024-10-07,2024-10-17,29,0.3579,0.5052,0.4151,0.5954,0.5066,0.3579,0.0901,True,30,heading / flowering,within range
+1,ridge,RULE,2024,IADA Barat Laut Selangor,2024-10-17,2024-10-27,30,0.5066,0.5143,0.4241,0.6044,0.4553,0.5066,0.0901,True,31,grain filling,within range
+3,hgb,LPS,2024,IADA Barat Laut Selangor,2024-11-06,2024-12-06,32,0.4553,0.5397,0.4282,0.6512,0.4928,0.4553,0.1115,True,35,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Barat Laut Selangor,2024-11-16,2024-12-16,33,0.4553,0.4379,0.3264,0.5494,0.4471,0.4553,0.1115,True,36,fallow / turnaround,within range
+1,ridge,RULE,2024,IADA Barat Laut Selangor,2024-11-26,2024-12-06,34,0.4553,0.4678,0.3776,0.5579,0.4928,0.4553,0.0901,True,35,fallow / turnaround,within range
+1,ridge,RULE,2024,IADA Barat Laut Selangor,2024-12-06,2024-12-16,35,0.4928,0.4357,0.3456,0.5258,0.4471,0.4928,0.0901,True,36,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Kemasin Semerak,2024-01-01,2024-01-31,1,0.3697,0.481,0.3695,0.5924,0.467,0.3697,0.1115,True,4,panicle initiation / booting,within range
+1,ridge,RULE,2024,IADA Kemasin Semerak,2024-01-11,2024-01-21,2,0.3697,0.4464,0.3563,0.5365,0.4148,0.3697,0.0901,True,3,max tillering / stem elongation,within range
+3,hgb,LPS,2024,IADA Kemasin Semerak,2024-01-11,2024-02-10,2,0.3697,0.4749,0.3634,0.5864,0.4625,0.3697,0.1115,True,5,panicle initiation / booting,within range
+1,ridge,RULE,2024,IADA Kemasin Semerak,2024-01-21,2024-01-31,3,0.4148,0.481,0.3909,0.5712,0.467,0.4148,0.0901,True,4,panicle initiation / booting,within range
+3,hgb,LPS,2024,IADA Kemasin Semerak,2024-01-21,2024-02-20,3,0.4148,0.5437,0.4323,0.6552,0.5275,0.4148,0.1115,True,6,heading / flowering,within range
+1,ridge,RULE,2024,IADA Kemasin Semerak,2024-01-31,2024-02-10,4,0.467,0.5443,0.4542,0.6344,0.4625,0.467,0.0901,True,5,panicle initiation / booting,within range
+3,hgb,LPS,2024,IADA Kemasin Semerak,2024-01-31,2024-03-01,4,0.467,0.6114,0.4999,0.7229,0.5452,0.467,0.1115,True,7,grain filling,within range
+1,ridge,RULE,2024,IADA Kemasin Semerak,2024-02-10,2024-02-20,5,0.4625,0.5321,0.442,0.6222,0.5275,0.4625,0.0901,True,6,heading / flowering,within range
+3,hgb,LPS,2024,IADA Kemasin Semerak,2024-02-10,2024-03-11,5,0.4625,0.5433,0.4318,0.6548,0.6053,0.4625,0.1115,True,8,grain filling,within range
+1,ridge,RULE,2024,IADA Kemasin Semerak,2024-02-20,2024-03-01,6,0.5275,0.5636,0.4735,0.6537,0.5452,0.5275,0.0901,True,7,grain filling,within range
+3,hgb,LPS,2024,IADA Kemasin Semerak,2024-02-20,2024-03-21,6,0.5275,0.577,0.4655,0.6885,0.5993,0.5275,0.1115,True,9,maturity / harvest,within range
+1,ridge,RULE,2024,IADA Kemasin Semerak,2024-03-01,2024-03-11,7,0.5452,0.5508,0.4607,0.641,0.6053,0.5452,0.0901,True,8,grain filling,within range
+3,hgb,LPS,2024,IADA Kemasin Semerak,2024-03-01,2024-03-31,7,0.5452,0.5631,0.4516,0.6745,0.5628,0.5452,0.1115,True,10,fallow / turnaround,within range
+1,ridge,RULE,2024,IADA Kemasin Semerak,2024-03-11,2024-03-21,8,0.6053,0.5704,0.4803,0.6605,0.5993,0.6053,0.0901,True,9,maturity / harvest,within range
+3,hgb,LPS,2024,IADA Kemasin Semerak,2024-03-11,2024-04-10,8,0.6053,0.5222,0.4108,0.6337,0.5669,0.6053,0.1115,True,11,fallow / turnaround,within range
+1,ridge,RULE,2024,IADA Kemasin Semerak,2024-03-21,2024-03-31,9,0.5993,0.5248,0.4347,0.615,0.5628,0.5993,0.0901,True,10,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Kemasin Semerak,2024-03-21,2024-04-20,9,0.5993,0.4625,0.351,0.574,0.4065,0.5993,0.1115,True,12,fallow / turnaround,within range
+1,ridge,RULE,2024,IADA Kemasin Semerak,2024-03-31,2024-04-10,10,0.5628,0.4794,0.3892,0.5695,0.5669,0.5628,0.0901,True,11,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Kemasin Semerak,2024-03-31,2024-04-30,10,0.5628,0.4248,0.3134,0.5363,0.3855,0.5628,0.1115,True,13,fallow / turnaround,within range
+1,ridge,RULE,2024,IADA Kemasin Semerak,2024-04-10,2024-04-20,11,0.5669,0.4435,0.3534,0.5336,0.4065,0.5669,0.0901,True,12,fallow / turnaround,within range
+1,ridge,RULE,2024,IADA Kemasin Semerak,2024-04-20,2024-04-30,12,0.4065,0.3419,0.2518,0.432,0.3855,0.4065,0.0901,True,13,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Kemasin Semerak,2024-04-20,2024-05-20,12,0.4065,0.3684,0.2569,0.4798,0.3527,0.4065,0.1115,True,15,fallow / turnaround,within range
+1,ridge,RULE,2024,IADA Kemasin Semerak,2024-05-10,2024-05-20,14,0.3855,0.3071,0.2169,0.3972,0.3527,0.3855,0.0901,True,15,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Kemasin Semerak,2024-05-10,2024-06-09,14,0.3855,0.3663,0.2548,0.4777,0.3738,0.3855,0.1115,True,17,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Kemasin Semerak,2024-05-20,2024-06-19,15,0.3527,0.3672,0.2557,0.4786,0.3644,0.3527,0.1115,True,18,germination / establishment,within range
+1,ridge,RULE,2024,IADA Kemasin Semerak,2024-05-30,2024-06-09,16,0.3527,0.3539,0.2638,0.444,0.3738,0.3527,0.0901,True,17,fallow / turnaround,within range
+1,ridge,RULE,2024,IADA Kemasin Semerak,2024-06-09,2024-06-19,17,0.3738,0.3322,0.2421,0.4223,0.3644,0.3738,0.0901,True,18,germination / establishment,within range
+3,hgb,LPS,2024,IADA Kemasin Semerak,2024-06-09,2024-07-09,17,0.3738,0.3572,0.2457,0.4687,0.4036,0.3738,0.1115,True,20,tillering,within range
+1,ridge,RULE,2024,IADA Kemasin Semerak,2024-06-19,2024-06-29,18,0.3644,0.3984,0.3083,0.4885,0.4497,0.3644,0.0901,True,19,seedling,within range
+1,ridge,RULE,2024,IADA Kemasin Semerak,2024-06-29,2024-07-09,19,0.4497,0.444,0.3539,0.5342,0.4036,0.4497,0.0901,True,20,tillering,within range
+3,hgb,LPS,2024,IADA Kemasin Semerak,2024-06-29,2024-07-29,19,0.4497,0.4905,0.379,0.602,0.5256,0.4497,0.1115,True,22,max tillering / stem elongation,within range
+3,hgb,LPS,2024,IADA Kemasin Semerak,2024-07-09,2024-08-08,20,0.4036,0.4919,0.3804,0.6034,0.5305,0.4036,0.1115,True,23,max tillering / stem elongation,within range
+1,ridge,RULE,2024,IADA Kemasin Semerak,2024-07-19,2024-07-29,21,0.4036,0.4718,0.3817,0.562,0.5256,0.4036,0.0901,True,22,max tillering / stem elongation,within range
+3,hgb,LPS,2024,IADA Kemasin Semerak,2024-07-19,2024-08-18,21,0.4036,0.5522,0.4407,0.6637,0.5604,0.4036,0.1115,True,24,panicle initiation / booting,within range
+1,ridge,RULE,2024,IADA Kemasin Semerak,2024-07-29,2024-08-08,22,0.5256,0.5281,0.438,0.6182,0.5305,0.5256,0.0901,True,23,max tillering / stem elongation,within range
+1,ridge,RULE,2024,IADA Kemasin Semerak,2024-08-08,2024-08-18,23,0.5305,0.5819,0.4918,0.672,0.5604,0.5305,0.0901,True,24,panicle initiation / booting,within range
+3,hgb,LPS,2024,IADA Kemasin Semerak,2024-08-08,2024-09-07,23,0.5305,0.6095,0.498,0.721,0.6209,0.5305,0.1115,True,26,heading / flowering,within range
+3,hgb,LPS,2024,IADA Kemasin Semerak,2024-08-18,2024-09-17,24,0.5604,0.63,0.5185,0.7414,0.689,0.5604,0.1115,True,27,grain filling,within range
+1,ridge,RULE,2024,IADA Kemasin Semerak,2024-08-28,2024-09-07,25,0.5604,0.5958,0.5057,0.6859,0.6209,0.5604,0.0901,True,26,heading / flowering,within range
+1,ridge,RULE,2024,IADA Kemasin Semerak,2024-09-07,2024-09-17,26,0.6209,0.6057,0.5156,0.6958,0.689,0.6209,0.0901,True,27,grain filling,within range
+1,ridge,RULE,2024,IADA Kemasin Semerak,2024-09-17,2024-09-27,27,0.689,0.6373,0.5472,0.7274,0.6824,0.689,0.0901,True,28,grain filling,within range
+3,hgb,LPS,2024,IADA Kemasin Semerak,2024-09-17,2024-10-17,27,0.689,0.5602,0.4487,0.6716,0.6517,0.689,0.1115,True,30,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Kemasin Semerak,2024-09-27,2024-10-27,28,0.6824,0.5083,0.3968,0.6198,0.5901,0.6824,0.1115,True,31,fallow / turnaround,within range
+1,ridge,RULE,2024,IADA Kemasin Semerak,2024-10-07,2024-10-17,29,0.6824,0.5976,0.5075,0.6878,0.6517,0.6824,0.0901,True,30,fallow / turnaround,within range
+1,ridge,RULE,2024,IADA Kemasin Semerak,2024-10-17,2024-10-27,30,0.6517,0.5324,0.4423,0.6226,0.5901,0.6517,0.0901,True,31,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Kemasin Semerak,2024-11-06,2024-12-06,32,0.5901,0.3664,0.2549,0.4779,0.3091,0.5901,0.1115,True,35,seedling,within range
+1,ridge,RULE,2024,IADA Kerian,2024-01-01,2024-01-11,1,0.6629,0.6361,0.5459,0.7262,0.6929,0.6629,0.0901,True,2,maturity / harvest,within range
+3,hgb,LPS,2024,IADA Kerian,2024-01-01,2024-01-31,1,0.6629,0.5171,0.4057,0.6286,0.5938,0.6629,0.1115,True,4,fallow / turnaround,within range
+1,ridge,RULE,2024,IADA Kerian,2024-01-11,2024-01-21,2,0.6929,0.589,0.4989,0.6791,0.6454,0.6929,0.0901,True,3,fallow / turnaround,within range
+1,ridge,RULE,2024,IADA Kerian,2024-01-21,2024-01-31,3,0.6454,0.5175,0.4273,0.6076,0.5938,0.6454,0.0901,True,4,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Kerian,2024-01-21,2024-02-20,3,0.6454,0.3452,0.2337,0.4567,0.4557,0.6454,0.1115,True,6,fallow / turnaround,within range
+1,ridge,RULE,2024,IADA Kerian,2024-01-31,2024-02-10,4,0.5938,0.4812,0.3911,0.5713,0.5656,0.5938,0.0901,True,5,fallow / turnaround,within range
+1,ridge,RULE,2024,IADA Kerian,2024-02-10,2024-02-20,5,0.5656,0.4346,0.3445,0.5247,0.4557,0.5656,0.0901,True,6,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Kerian,2024-02-10,2024-03-11,5,0.5656,0.3547,0.2432,0.4662,0.3627,0.5656,0.1115,True,8,germination / establishment,within range
+3,hgb,LPS,2024,IADA Kerian,2024-02-20,2024-03-21,6,0.4557,0.3403,0.2288,0.4517,0.329,0.4557,0.1115,True,9,seedling,within range
+1,ridge,RULE,2024,IADA Kerian,2024-03-01,2024-03-11,7,0.4557,0.37,0.2799,0.4602,0.3627,0.4557,0.0901,True,8,germination / establishment,within range
+3,hgb,LPS,2024,IADA Kerian,2024-03-01,2024-03-31,7,0.4557,0.3532,0.2418,0.4647,0.3376,0.4557,0.1115,True,10,tillering,within range
+1,ridge,RULE,2024,IADA Kerian,2024-03-11,2024-03-21,8,0.3627,0.3428,0.2527,0.4329,0.329,0.3627,0.0901,True,9,seedling,within range
+3,hgb,LPS,2024,IADA Kerian,2024-03-11,2024-04-10,8,0.3627,0.3513,0.2398,0.4628,0.3489,0.3627,0.1115,True,11,tillering,within range
+1,ridge,RULE,2024,IADA Kerian,2024-03-21,2024-03-31,9,0.329,0.3564,0.2663,0.4465,0.3376,0.329,0.0901,True,10,tillering,within range
+1,ridge,RULE,2024,IADA Kerian,2024-03-31,2024-04-10,10,0.3376,0.375,0.2849,0.4652,0.3489,0.3376,0.0901,True,11,tillering,within range
+3,hgb,LPS,2024,IADA Kerian,2024-03-31,2024-04-30,10,0.3376,0.3902,0.2787,0.5017,0.343,0.3376,0.1115,True,13,max tillering / stem elongation,within range
+3,hgb,LPS,2024,IADA Kerian,2024-04-30,2024-05-30,13,0.343,0.4835,0.372,0.5949,0.4453,0.343,0.1115,True,16,heading / flowering,within range
+3,hgb,LPS,2024,IADA Kerian,2024-05-10,2024-06-09,14,0.3493,0.4925,0.381,0.604,0.489,0.3493,0.1115,True,17,grain filling,within range
+1,ridge,RULE,2024,IADA Kerian,2024-05-20,2024-05-30,15,0.3493,0.4665,0.3764,0.5567,0.4453,0.3493,0.0901,True,16,heading / flowering,within range
+3,hgb,LPS,2024,IADA Kerian,2024-05-20,2024-06-19,15,0.3493,0.4907,0.3792,0.6022,0.5626,0.3493,0.1115,True,18,grain filling,within range
+1,ridge,RULE,2024,IADA Kerian,2024-05-30,2024-06-09,16,0.4453,0.5047,0.4146,0.5948,0.489,0.4453,0.0901,True,17,grain filling,within range
+3,hgb,LPS,2024,IADA Kerian,2024-05-30,2024-06-29,16,0.4453,0.5712,0.4597,0.6826,0.6378,0.4453,0.1115,True,19,maturity / harvest,within range
+1,ridge,RULE,2024,IADA Kerian,2024-06-09,2024-06-19,17,0.489,0.5305,0.4403,0.6206,0.5626,0.489,0.0901,True,18,grain filling,within range
+1,ridge,RULE,2024,IADA Kerian,2024-06-19,2024-06-29,18,0.5626,0.5658,0.4756,0.6559,0.6378,0.5626,0.0901,True,19,maturity / harvest,within range
+3,hgb,LPS,2024,IADA Kerian,2024-06-19,2024-07-19,18,0.5626,0.5849,0.4734,0.6963,0.4777,0.5626,0.1115,True,21,fallow / turnaround,within range
+1,ridge,RULE,2024,IADA Kerian,2024-06-29,2024-07-09,19,0.6378,0.5843,0.4942,0.6745,0.6664,0.6378,0.0901,True,20,fallow / turnaround,within range
+1,ridge,RULE,2024,IADA Kerian,2024-07-09,2024-07-19,20,0.6664,0.5661,0.476,0.6562,0.4777,0.6664,0.0901,True,21,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Kerian,2024-08-08,2024-09-07,23,0.6443,0.4502,0.3388,0.5617,0.5158,0.6443,0.1115,True,26,fallow / turnaround,within range
+1,ridge,RULE,2024,IADA Kerian,2024-08-18,2024-08-28,24,0.6443,0.5615,0.4714,0.6517,0.5979,0.6443,0.0901,True,25,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Kerian,2024-08-18,2024-09-17,24,0.6443,0.4731,0.3617,0.5846,0.4913,0.6443,0.1115,True,27,germination / establishment,within range
+1,ridge,RULE,2024,IADA Kerian,2024-08-28,2024-09-07,25,0.5979,0.4571,0.367,0.5473,0.5158,0.5979,0.0901,True,26,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Kerian,2024-08-28,2024-09-27,25,0.5979,0.4061,0.2947,0.5176,0.3822,0.5979,0.1115,True,28,seedling,within range
+1,ridge,RULE,2024,IADA Kerian,2024-09-07,2024-09-17,26,0.5158,0.4162,0.3261,0.5063,0.4913,0.5158,0.0901,True,27,germination / establishment,within range
+1,ridge,RULE,2024,IADA Kerian,2024-09-17,2024-09-27,27,0.4913,0.4361,0.346,0.5262,0.3822,0.4913,0.0901,True,28,seedling,within range
+3,hgb,LPS,2024,IADA Kerian,2024-09-17,2024-10-17,27,0.4913,0.435,0.3235,0.5465,0.3779,0.4913,0.1115,True,30,tillering,within range
+3,hgb,LPS,2024,IADA Kerian,2024-09-27,2024-10-27,28,0.3822,0.3643,0.2528,0.4758,0.4149,0.3822,0.1115,True,31,max tillering / stem elongation,within range
+1,ridge,RULE,2024,IADA Kerian,2024-10-07,2024-10-17,29,0.2331,0.3156,0.2255,0.4058,0.3779,0.2331,0.0901,True,30,tillering,within range
+3,hgb,LPS,2024,IADA Kerian,2024-10-07,2024-11-06,29,0.2331,0.3955,0.2841,0.507,0.3903,0.2331,0.1115,True,32,max tillering / stem elongation,within range
+1,ridge,RULE,2024,IADA Kerian,2024-10-17,2024-10-27,30,0.3779,0.3791,0.289,0.4692,0.4149,0.3779,0.0901,True,31,max tillering / stem elongation,within range
+3,hgb,LPS,2024,IADA Kerian,2024-10-17,2024-11-16,30,0.3779,0.45,0.3385,0.5615,0.4385,0.3779,0.1115,True,33,panicle initiation / booting,within range
+1,ridge,RULE,2024,IADA Kerian,2024-11-06,2024-11-16,32,0.3903,0.5159,0.4258,0.606,0.4385,0.3903,0.0901,True,33,panicle initiation / booting,within range
+1,ridge,RULE,2024,IADA Pekan,2024-03-01,2024-03-11,7,0.2709,0.3471,0.2569,0.4372,0.3346,0.2709,0.0901,True,8,tillering,within range
+1,ridge,RULE,2024,IADA Pekan,2024-03-11,2024-03-21,8,0.3346,0.3998,0.3096,0.4899,0.3317,0.3346,0.0901,True,9,tillering,within range
+3,hgb,LPS,2024,IADA Pekan,2024-03-11,2024-04-10,8,0.3346,0.5703,0.4588,0.6818,0.5206,0.3346,0.1115,True,11,max tillering / stem elongation,within range
+1,ridge,RULE,2024,IADA Pekan,2024-03-21,2024-03-31,9,0.3317,0.4268,0.3367,0.517,0.4322,0.3317,0.0901,True,10,max tillering / stem elongation,within range
+3,hgb,LPS,2024,IADA Pekan,2024-03-21,2024-04-20,9,0.3317,0.5289,0.4174,0.6404,0.5388,0.3317,0.1115,True,12,panicle initiation / booting,within range
+1,ridge,RULE,2024,IADA Pekan,2024-03-31,2024-04-10,10,0.4322,0.4975,0.4073,0.5876,0.5206,0.4322,0.0901,True,11,max tillering / stem elongation,within range
+3,hgb,LPS,2024,IADA Pekan,2024-03-31,2024-04-30,10,0.4322,0.5512,0.4397,0.6626,0.6211,0.4322,0.1115,True,13,panicle initiation / booting,within range
+1,ridge,RULE,2024,IADA Pekan,2024-04-10,2024-04-20,11,0.5206,0.5534,0.4633,0.6436,0.5388,0.5206,0.0901,True,12,panicle initiation / booting,within range
+3,hgb,LPS,2024,IADA Pekan,2024-04-10,2024-05-10,11,0.5206,0.6198,0.5084,0.7313,0.5424,0.5206,0.1115,True,14,heading / flowering,within range
+1,ridge,RULE,2024,IADA Pekan,2024-04-20,2024-04-30,12,0.5388,0.6181,0.5279,0.7082,0.6211,0.5388,0.0901,True,13,panicle initiation / booting,within range
+1,ridge,RULE,2024,IADA Pekan,2024-04-30,2024-05-10,13,0.6211,0.6241,0.534,0.7142,0.5424,0.6211,0.0901,True,14,heading / flowering,within range
+3,hgb,LPS,2024,IADA Pekan,2024-04-30,2024-05-30,13,0.6211,0.5775,0.466,0.689,0.6805,0.6211,0.1115,True,16,grain filling,within range
+3,hgb,LPS,2024,IADA Pekan,2024-05-10,2024-06-09,14,0.5424,0.4699,0.3584,0.5814,0.5809,0.5424,0.1115,True,17,maturity / harvest,within range
+1,ridge,RULE,2024,IADA Pekan,2024-05-30,2024-06-09,16,0.6805,0.5646,0.4745,0.6547,0.5809,0.6805,0.0901,True,17,maturity / harvest,within range
+1,ridge,RULE,2024,IADA Pekan,2024-06-09,2024-06-19,17,0.5809,0.5581,0.468,0.6482,0.594,0.5809,0.0901,True,18,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Pekan,2024-06-19,2024-07-19,18,0.594,0.4369,0.3255,0.5484,0.3642,0.594,0.1115,True,21,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Pekan,2024-06-29,2024-07-29,19,0.594,0.4041,0.2926,0.5155,0.3633,0.594,0.1115,True,22,fallow / turnaround,within range
+1,ridge,RULE,2024,IADA Pekan,2024-07-19,2024-07-29,21,0.3642,0.3283,0.2382,0.4185,0.3633,0.3642,0.0901,True,22,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Pekan,2024-07-19,2024-08-18,21,0.3642,0.3045,0.193,0.416,0.2398,0.3642,0.1115,True,24,seedling,within range
+1,ridge,RULE,2024,IADA Pekan,2024-07-29,2024-08-08,22,0.3633,0.2758,0.1857,0.3659,0.2859,0.3633,0.0901,True,23,germination / establishment,within range
+3,hgb,LPS,2024,IADA Pekan,2024-07-29,2024-08-28,22,0.3633,0.3002,0.1887,0.4117,0.4055,0.3633,0.1115,True,25,tillering,within range
+1,ridge,RULE,2024,IADA Pekan,2024-08-08,2024-08-18,23,0.2859,0.2805,0.1904,0.3706,0.2398,0.2859,0.0901,True,24,seedling,within range
+3,hgb,LPS,2024,IADA Pekan,2024-08-08,2024-09-07,23,0.2859,0.36,0.2485,0.4715,0.312,0.2859,0.1115,True,26,tillering,within range
+1,ridge,RULE,2024,IADA Pekan,2024-08-28,2024-09-07,25,0.4055,0.3942,0.3041,0.4844,0.312,0.4055,0.0901,True,26,tillering,within range
+3,hgb,LPS,2024,IADA Pekan,2024-08-28,2024-09-27,25,0.4055,0.5026,0.3911,0.614,0.3926,0.4055,0.1115,True,28,max tillering / stem elongation,within range
+3,hgb,LPS,2024,IADA Pekan,2024-09-07,2024-10-07,26,0.312,0.5688,0.4573,0.6803,0.527,0.312,0.1115,True,29,panicle initiation / booting,within range
+1,ridge,RULE,2024,IADA Pekan,2024-09-17,2024-09-27,27,0.312,0.4515,0.3613,0.5416,0.3926,0.312,0.0901,True,28,max tillering / stem elongation,within range
+3,hgb,LPS,2024,IADA Pekan,2024-09-17,2024-10-17,27,0.312,0.6242,0.5128,0.7357,0.5804,0.312,0.1115,True,30,panicle initiation / booting,within range
+1,ridge,RULE,2024,IADA Pekan,2024-09-27,2024-10-07,28,0.3926,0.4671,0.377,0.5573,0.527,0.3926,0.0901,True,29,panicle initiation / booting,within range
+1,ridge,RULE,2024,IADA Pekan,2024-10-07,2024-10-17,29,0.527,0.5704,0.4802,0.6605,0.5804,0.527,0.0901,True,30,panicle initiation / booting,within range
+1,ridge,RULE,2024,IADA Pekan,2024-10-17,2024-10-27,30,0.5804,0.6477,0.5576,0.7379,0.6767,0.5804,0.0901,True,31,heading / flowering,within range
+3,hgb,LPS,2024,IADA Pekan,2024-11-06,2024-12-06,32,0.6767,0.5334,0.4219,0.6449,0.5428,0.6767,0.1115,True,35,fallow / turnaround,within range
+1,ridge,RULE,2024,IADA Pekan,2024-11-26,2024-12-06,34,0.6767,0.6266,0.5365,0.7167,0.5428,0.6767,0.0901,True,35,fallow / turnaround,within range
+1,ridge,RULE,2024,IADA Pulau Pinang,2024-01-01,2024-01-11,1,0.7379,0.7001,0.6099,0.7902,0.6902,0.7379,0.0901,True,2,heading / flowering,within range
+3,hgb,LPS,2024,IADA Pulau Pinang,2024-01-01,2024-01-31,1,0.7379,0.5893,0.4778,0.7007,0.5321,0.7379,0.1115,True,4,grain filling,within range
+1,ridge,RULE,2024,IADA Pulau Pinang,2024-01-11,2024-01-21,2,0.6902,0.6768,0.5867,0.767,0.6124,0.6902,0.0901,True,3,grain filling,within range
+3,hgb,LPS,2024,IADA Pulau Pinang,2024-01-11,2024-02-10,2,0.6902,0.5172,0.4058,0.6287,0.4464,0.6902,0.1115,True,5,maturity / harvest,within range
+1,ridge,RULE,2024,IADA Pulau Pinang,2024-01-21,2024-01-31,3,0.6124,0.5704,0.4803,0.6606,0.5321,0.6124,0.0901,True,4,grain filling,within range
+3,hgb,LPS,2024,IADA Pulau Pinang,2024-01-21,2024-02-20,3,0.6124,0.3739,0.2625,0.4854,0.3339,0.6124,0.1115,True,6,fallow / turnaround,within range
+1,ridge,RULE,2024,IADA Pulau Pinang,2024-01-31,2024-02-10,4,0.5321,0.4887,0.3985,0.5788,0.4464,0.5321,0.0901,True,5,maturity / harvest,within range
+3,hgb,LPS,2024,IADA Pulau Pinang,2024-01-31,2024-03-01,4,0.5321,0.3467,0.2352,0.4582,0.2572,0.5321,0.1115,True,7,fallow / turnaround,within range
+1,ridge,RULE,2024,IADA Pulau Pinang,2024-02-10,2024-02-20,5,0.4464,0.4127,0.3226,0.5029,0.3339,0.4464,0.0901,True,6,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Pulau Pinang,2024-02-10,2024-03-11,5,0.4464,0.3569,0.2454,0.4684,0.2982,0.4464,0.1115,True,8,fallow / turnaround,within range
+1,ridge,RULE,2024,IADA Pulau Pinang,2024-02-20,2024-03-01,6,0.3339,0.3233,0.2332,0.4134,0.2572,0.3339,0.0901,True,7,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Pulau Pinang,2024-02-20,2024-03-21,6,0.3339,0.2353,0.1238,0.3467,0.2416,0.3339,0.1115,True,9,fallow / turnaround,within range
+1,ridge,RULE,2024,IADA Pulau Pinang,2024-03-01,2024-03-11,7,0.2572,0.2857,0.1956,0.3758,0.2982,0.2572,0.0901,True,8,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Pulau Pinang,2024-03-01,2024-03-31,7,0.2572,0.2047,0.0933,0.3162,0.2407,0.2572,0.1115,True,10,fallow / turnaround,within range
+1,ridge,RULE,2024,IADA Pulau Pinang,2024-03-11,2024-03-21,8,0.2982,0.2543,0.1642,0.3445,0.2416,0.2982,0.0901,True,9,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Pulau Pinang,2024-03-11,2024-04-10,8,0.2982,0.2282,0.1167,0.3397,0.2764,0.2982,0.1115,True,11,germination / establishment,within range
+1,ridge,RULE,2024,IADA Pulau Pinang,2024-03-21,2024-03-31,9,0.2416,0.2535,0.1634,0.3437,0.2407,0.2416,0.0901,True,10,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Pulau Pinang,2024-03-21,2024-04-20,9,0.2416,0.2002,0.0887,0.3117,0.1924,0.2416,0.1115,True,12,seedling,within range
+1,ridge,RULE,2024,IADA Pulau Pinang,2024-03-31,2024-04-10,10,0.2407,0.2977,0.2076,0.3879,0.2764,0.2407,0.0901,True,11,germination / establishment,within range
+3,hgb,LPS,2024,IADA Pulau Pinang,2024-03-31,2024-04-30,10,0.2407,0.2758,0.1643,0.3873,0.1846,0.2407,0.1115,True,13,tillering,within range
+3,hgb,LPS,2024,IADA Pulau Pinang,2024-04-30,2024-05-30,13,0.1846,0.4084,0.297,0.5199,0.3293,0.1846,0.1115,True,16,max tillering / stem elongation,within range
+3,hgb,LPS,2024,IADA Pulau Pinang,2024-05-10,2024-06-09,14,0.1051,0.3715,0.26,0.4829,0.4108,0.1051,0.1115,True,17,panicle initiation / booting,within range
+1,ridge,RULE,2024,IADA Pulau Pinang,2024-05-20,2024-05-30,15,0.1085,0.2847,0.1946,0.3748,0.3293,0.1085,0.0901,True,16,max tillering / stem elongation,within range
+3,hgb,LPS,2024,IADA Pulau Pinang,2024-05-20,2024-06-19,15,0.1085,0.4713,0.3598,0.5828,0.4816,0.1085,0.1115,True,18,panicle initiation / booting,within range
+1,ridge,RULE,2024,IADA Pulau Pinang,2024-05-30,2024-06-09,16,0.3293,0.4252,0.3351,0.5153,0.4108,0.3293,0.0901,True,17,panicle initiation / booting,within range
+3,hgb,LPS,2024,IADA Pulau Pinang,2024-05-30,2024-06-29,16,0.3293,0.6104,0.4989,0.7219,0.6596,0.3293,0.1115,True,19,heading / flowering,within range
+1,ridge,RULE,2024,IADA Pulau Pinang,2024-06-09,2024-06-19,17,0.4108,0.533,0.4429,0.6231,0.4816,0.4108,0.0901,True,18,panicle initiation / booting,within range
+3,hgb,LPS,2024,IADA Pulau Pinang,2024-06-09,2024-07-09,17,0.4108,0.7062,0.5947,0.8177,0.7081,0.4108,0.1115,True,20,grain filling,within range
+1,ridge,RULE,2024,IADA Pulau Pinang,2024-06-19,2024-06-29,18,0.4816,0.6255,0.5354,0.7156,0.6596,0.4816,0.0901,True,19,heading / flowering,within range
+3,hgb,LPS,2024,IADA Pulau Pinang,2024-06-19,2024-07-19,18,0.4816,0.7071,0.5957,0.8186,0.6186,0.4816,0.1115,True,21,grain filling,within range
+1,ridge,RULE,2024,IADA Pulau Pinang,2024-06-29,2024-07-09,19,0.6596,0.6669,0.5767,0.757,0.7081,0.6596,0.0901,True,20,grain filling,within range
+3,hgb,LPS,2024,IADA Pulau Pinang,2024-06-29,2024-07-29,19,0.6596,0.6187,0.5072,0.7302,0.6898,0.6596,0.1115,True,22,maturity / harvest,within range
+1,ridge,RULE,2024,IADA Pulau Pinang,2024-07-09,2024-07-19,20,0.7081,0.6843,0.5942,0.7744,0.6186,0.7081,0.0901,True,21,grain filling,within range
+3,hgb,LPS,2024,IADA Pulau Pinang,2024-07-09,2024-08-08,20,0.7081,0.617,0.5055,0.7285,0.719,0.7081,0.1115,True,23,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Pulau Pinang,2024-07-29,2024-08-28,22,0.6898,0.4585,0.3471,0.57,0.4175,0.6898,0.1115,True,25,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Pulau Pinang,2024-08-08,2024-09-07,23,0.719,0.4713,0.3598,0.5828,0.4597,0.719,0.1115,True,26,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Pulau Pinang,2024-08-28,2024-09-27,25,0.4175,0.308,0.1965,0.4195,0.3445,0.4175,0.1115,True,28,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Pulau Pinang,2024-09-07,2024-10-07,26,0.4597,0.3177,0.2063,0.4292,0.2705,0.4597,0.1115,True,29,fallow / turnaround,within range
+1,ridge,RULE,2024,IADA Pulau Pinang,2024-09-17,2024-09-27,27,0.4597,0.3652,0.2751,0.4553,0.3445,0.4597,0.0901,True,28,fallow / turnaround,within range
+1,ridge,RULE,2024,IADA Pulau Pinang,2024-09-27,2024-10-07,28,0.3445,0.3405,0.2504,0.4306,0.2705,0.3445,0.0901,True,29,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Pulau Pinang,2024-09-27,2024-10-27,28,0.3445,0.2547,0.1433,0.3662,0.1571,0.3445,0.1115,True,31,seedling,within range
+1,ridge,RULE,2024,IADA Pulau Pinang,2024-10-07,2024-10-17,29,0.2705,0.2822,0.1921,0.3724,0.2243,0.2705,0.0901,True,30,germination / establishment,within range
+1,ridge,RULE,2024,IADA Pulau Pinang,2024-10-17,2024-10-27,30,0.2243,0.241,0.1509,0.3311,0.1571,0.2243,0.0901,True,31,seedling,within range
+3,hgb,LPS,2024,IADA Pulau Pinang,2024-10-17,2024-11-16,30,0.2243,0.3312,0.2197,0.4427,0.2325,0.2243,0.1115,True,33,tillering,within range
+1,ridge,RULE,2024,IADA Pulau Pinang,2024-10-27,2024-11-06,31,0.1571,0.2273,0.1372,0.3174,0.1623,0.1571,0.0901,True,32,tillering,within range
+1,ridge,RULE,2024,IADA Pulau Pinang,2024-11-06,2024-11-16,32,0.1623,0.2604,0.1703,0.3506,0.2325,0.1623,0.0901,True,33,tillering,within range
+3,hgb,LPS,2024,IADA Pulau Pinang,2024-11-06,2024-12-06,32,0.1623,0.4729,0.3614,0.5844,0.4118,0.1623,0.1115,True,35,max tillering / stem elongation,within range
+3,hgb,LPS,2024,IADA Pulau Pinang,2024-11-16,2024-12-16,33,0.2325,0.6349,0.5234,0.7464,0.6222,0.2325,0.1115,True,36,panicle initiation / booting,within range
+1,ridge,RULE,2024,IADA Pulau Pinang,2024-11-26,2024-12-06,34,0.2325,0.4342,0.3441,0.5243,0.4118,0.2325,0.0901,True,35,max tillering / stem elongation,within range
+1,ridge,RULE,2024,IADA Rompin,2024-03-01,2024-03-11,7,0.6423,0.6194,0.5293,0.7096,0.6186,0.6423,0.0901,True,8,maturity / harvest,within range
+3,hgb,LPS,2024,IADA Rompin,2024-03-21,2024-04-20,9,0.6929,0.4922,0.3808,0.6037,0.5248,0.6929,0.1115,True,12,fallow / turnaround,within range
+1,ridge,RULE,2024,IADA Rompin,2024-03-31,2024-04-10,10,0.6895,0.5344,0.4443,0.6245,0.5886,0.6895,0.0901,True,11,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Rompin,2024-03-31,2024-04-30,10,0.6895,0.4936,0.3821,0.6051,0.4415,0.6895,0.1115,True,13,fallow / turnaround,within range
+1,ridge,RULE,2024,IADA Rompin,2024-04-10,2024-04-20,11,0.5886,0.4713,0.3812,0.5615,0.5248,0.5886,0.0901,True,12,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Rompin,2024-04-10,2024-05-10,11,0.5886,0.3983,0.2868,0.5098,0.3895,0.5886,0.1115,True,14,fallow / turnaround,within range
+1,ridge,RULE,2024,IADA Rompin,2024-04-20,2024-04-30,12,0.5248,0.3906,0.3005,0.4808,0.4415,0.5248,0.0901,True,13,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Rompin,2024-04-20,2024-05-20,12,0.5248,0.3158,0.2043,0.4273,0.2465,0.5248,0.1115,True,15,germination / establishment,within range
+1,ridge,RULE,2024,IADA Rompin,2024-04-30,2024-05-10,13,0.4415,0.3277,0.2376,0.4179,0.3895,0.4415,0.0901,True,14,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Rompin,2024-04-30,2024-05-30,13,0.4415,0.3599,0.2485,0.4714,0.2751,0.4415,0.1115,True,16,seedling,within range
+1,ridge,RULE,2024,IADA Rompin,2024-05-10,2024-05-20,14,0.3895,0.314,0.2238,0.4041,0.2465,0.3895,0.0901,True,15,germination / establishment,within range
+3,hgb,LPS,2024,IADA Rompin,2024-05-10,2024-06-09,14,0.3895,0.3529,0.2414,0.4644,0.3397,0.3895,0.1115,True,17,tillering,within range
+1,ridge,RULE,2024,IADA Rompin,2024-05-20,2024-05-30,15,0.2465,0.281,0.1909,0.3712,0.2751,0.2465,0.0901,True,16,seedling,within range
+3,hgb,LPS,2024,IADA Rompin,2024-05-20,2024-06-19,15,0.2465,0.3747,0.2632,0.4862,0.3028,0.2465,0.1115,True,18,tillering,within range
+1,ridge,RULE,2024,IADA Rompin,2024-05-30,2024-06-09,16,0.2751,0.3175,0.2274,0.4077,0.3397,0.2751,0.0901,True,17,tillering,within range
+1,ridge,RULE,2024,IADA Rompin,2024-06-09,2024-06-19,17,0.3397,0.3768,0.2867,0.4669,0.3028,0.3397,0.0901,True,18,tillering,within range
+3,hgb,LPS,2024,IADA Rompin,2024-06-29,2024-07-29,19,0.1425,0.4138,0.3024,0.5253,0.3847,0.1425,0.1115,True,22,panicle initiation / booting,within range
+3,hgb,LPS,2024,IADA Rompin,2024-07-09,2024-08-08,20,0.2324,0.4459,0.3345,0.5574,0.5509,0.2324,0.1115,True,23,heading / flowering,within range
+1,ridge,RULE,2024,IADA Rompin,2024-07-19,2024-07-29,21,0.2558,0.3733,0.2832,0.4634,0.3847,0.2558,0.0901,True,22,panicle initiation / booting,within range
+1,ridge,RULE,2024,IADA Rompin,2024-07-29,2024-08-08,22,0.3847,0.502,0.4119,0.5921,0.5509,0.3847,0.0901,True,23,heading / flowering,within range
+3,hgb,LPS,2024,IADA Rompin,2024-07-29,2024-08-28,22,0.3847,0.6586,0.5472,0.7701,0.7137,0.3847,0.1115,True,25,grain filling,within range
+1,ridge,RULE,2024,IADA Rompin,2024-08-08,2024-08-18,23,0.5509,0.6227,0.5325,0.7128,0.6867,0.5509,0.0901,True,24,grain filling,within range
+3,hgb,LPS,2024,IADA Rompin,2024-08-08,2024-09-07,23,0.5509,0.6844,0.5729,0.7959,0.7182,0.5509,0.1115,True,26,maturity / harvest,within range
+1,ridge,RULE,2024,IADA Rompin,2024-08-18,2024-08-28,24,0.6867,0.6928,0.6027,0.7829,0.7137,0.6867,0.0901,True,25,grain filling,within range
+1,ridge,RULE,2024,IADA Rompin,2024-08-28,2024-09-07,25,0.7137,0.6803,0.5901,0.7704,0.7182,0.7137,0.0901,True,26,maturity / harvest,within range
+3,hgb,LPS,2024,IADA Rompin,2024-08-28,2024-09-27,25,0.7137,0.6059,0.4945,0.7174,0.676,0.7137,0.1115,True,28,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Rompin,2024-09-17,2024-10-17,27,0.7182,0.4794,0.3679,0.5909,0.5824,0.7182,0.1115,True,30,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Rompin,2024-09-27,2024-10-27,28,0.676,0.3886,0.2771,0.5,0.4616,0.676,0.1115,True,31,fallow / turnaround,within range
+1,ridge,RULE,2024,IADA Rompin,2024-10-07,2024-10-17,29,0.676,0.5012,0.411,0.5913,0.5824,0.676,0.0901,True,30,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Rompin,2024-10-07,2024-11-06,29,0.676,0.3643,0.2528,0.4758,0.379,0.676,0.1115,True,32,fallow / turnaround,within range
+1,ridge,RULE,2024,IADA Rompin,2024-10-17,2024-10-27,30,0.5824,0.4704,0.3803,0.5606,0.4616,0.5824,0.0901,True,31,fallow / turnaround,within range
+1,ridge,RULE,2024,IADA Rompin,2024-10-27,2024-11-06,31,0.4616,0.3647,0.2746,0.4548,0.379,0.4616,0.0901,True,32,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Rompin,2024-11-06,2024-12-06,32,0.379,0.3233,0.2118,0.4348,0.2713,0.379,0.1115,True,35,tillering,within range
+1,ridge,RULE,2024,IADA Rompin,2024-11-26,2024-12-06,34,0.379,0.3598,0.2697,0.45,0.2713,0.379,0.0901,True,35,tillering,within range
+3,hgb,LPS,2024,IADA Seberang Perak,2024-01-01,2024-01-31,1,0.6431,0.4193,0.3078,0.5308,0.3461,0.6431,0.1115,True,4,fallow / turnaround,within range
+1,ridge,RULE,2024,IADA Seberang Perak,2024-01-11,2024-01-21,2,0.4354,0.4,0.3099,0.4901,0.3994,0.4354,0.0901,True,3,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Seberang Perak,2024-01-11,2024-02-10,2,0.4354,0.3617,0.2502,0.4732,0.315,0.4354,0.1115,True,5,fallow / turnaround,within range
+1,ridge,RULE,2024,IADA Seberang Perak,2024-01-21,2024-01-31,3,0.3994,0.3203,0.2301,0.4104,0.3461,0.3994,0.0901,True,4,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Seberang Perak,2024-01-21,2024-02-20,3,0.3994,0.3341,0.2226,0.4455,0.3101,0.3994,0.1115,True,6,germination / establishment,within range
+1,ridge,RULE,2024,IADA Seberang Perak,2024-01-31,2024-02-10,4,0.3461,0.2857,0.1956,0.3758,0.315,0.3461,0.0901,True,5,fallow / turnaround,within range
+1,ridge,RULE,2024,IADA Seberang Perak,2024-02-10,2024-02-20,5,0.315,0.2886,0.1985,0.3787,0.3101,0.315,0.0901,True,6,germination / establishment,within range
+3,hgb,LPS,2024,IADA Seberang Perak,2024-02-10,2024-03-11,5,0.315,0.3088,0.1973,0.4202,0.3153,0.315,0.1115,True,8,tillering,within range
+3,hgb,LPS,2024,IADA Seberang Perak,2024-02-20,2024-03-21,6,0.3101,0.3894,0.278,0.5009,0.3349,0.3101,0.1115,True,9,tillering,within range
+1,ridge,RULE,2024,IADA Seberang Perak,2024-03-01,2024-03-11,7,0.3101,0.3678,0.2776,0.4579,0.3153,0.3101,0.0901,True,8,tillering,within range
+1,ridge,RULE,2024,IADA Seberang Perak,2024-03-11,2024-03-21,8,0.3153,0.366,0.2758,0.4561,0.3349,0.3153,0.0901,True,9,tillering,within range
+3,hgb,LPS,2024,IADA Seberang Perak,2024-03-11,2024-04-10,8,0.3153,0.466,0.3545,0.5775,0.4521,0.3153,0.1115,True,11,max tillering / stem elongation,within range
+1,ridge,RULE,2024,IADA Seberang Perak,2024-03-21,2024-03-31,9,0.3349,0.4113,0.3212,0.5014,0.3874,0.3349,0.0901,True,10,max tillering / stem elongation,within range
+3,hgb,LPS,2024,IADA Seberang Perak,2024-03-21,2024-04-20,9,0.3349,0.4848,0.3733,0.5963,0.4339,0.3349,0.1115,True,12,panicle initiation / booting,within range
+1,ridge,RULE,2024,IADA Seberang Perak,2024-03-31,2024-04-10,10,0.3874,0.4622,0.3721,0.5523,0.4521,0.3874,0.0901,True,11,max tillering / stem elongation,within range
+3,hgb,LPS,2024,IADA Seberang Perak,2024-03-31,2024-04-30,10,0.3874,0.5213,0.4098,0.6328,0.5089,0.3874,0.1115,True,13,panicle initiation / booting,within range
+1,ridge,RULE,2024,IADA Seberang Perak,2024-04-10,2024-04-20,11,0.4521,0.5199,0.4298,0.6101,0.4339,0.4521,0.0901,True,12,panicle initiation / booting,within range
+3,hgb,LPS,2024,IADA Seberang Perak,2024-04-10,2024-05-10,11,0.4521,0.5587,0.4472,0.6701,0.602,0.4521,0.1115,True,14,heading / flowering,within range
+1,ridge,RULE,2024,IADA Seberang Perak,2024-04-20,2024-04-30,12,0.4339,0.5266,0.4365,0.6168,0.5089,0.4339,0.0901,True,13,panicle initiation / booting,within range
+1,ridge,RULE,2024,IADA Seberang Perak,2024-04-30,2024-05-10,13,0.5089,0.5568,0.4667,0.6469,0.602,0.5089,0.0901,True,14,heading / flowering,within range
+3,hgb,LPS,2024,IADA Seberang Perak,2024-04-30,2024-05-30,13,0.5089,0.6046,0.4931,0.7161,0.4971,0.5089,0.1115,True,16,grain filling,within range
+3,hgb,LPS,2024,IADA Seberang Perak,2024-05-10,2024-06-09,14,0.602,0.5988,0.4873,0.7103,0.6214,0.602,0.1115,True,17,maturity / harvest,within range
+3,hgb,LPS,2024,IADA Seberang Perak,2024-05-20,2024-06-19,15,0.602,0.5672,0.4557,0.6787,0.5678,0.602,0.1115,True,18,fallow / turnaround,within range
+1,ridge,RULE,2024,IADA Seberang Perak,2024-06-09,2024-06-19,17,0.6214,0.5195,0.4293,0.6096,0.5678,0.6214,0.0901,True,18,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Seberang Perak,2024-06-09,2024-07-09,17,0.6214,0.4698,0.3583,0.5812,0.5343,0.6214,0.1115,True,20,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Seberang Perak,2024-06-19,2024-07-19,18,0.5678,0.4415,0.33,0.5529,0.3544,0.5678,0.1115,True,21,fallow / turnaround,within range
+1,ridge,RULE,2024,IADA Seberang Perak,2024-06-29,2024-07-09,19,0.5678,0.4967,0.4065,0.5868,0.5343,0.5678,0.0901,True,20,fallow / turnaround,within range
+1,ridge,RULE,2024,IADA Seberang Perak,2024-07-09,2024-07-19,20,0.5343,0.4278,0.3377,0.5179,0.3544,0.5343,0.0901,True,21,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Seberang Perak,2024-07-09,2024-08-08,20,0.5343,0.3901,0.2786,0.5016,0.2865,0.5343,0.1115,True,23,fallow / turnaround,within range
+1,ridge,RULE,2024,IADA Seberang Perak,2024-07-19,2024-07-29,21,0.3544,0.3025,0.2124,0.3926,0.3264,0.3544,0.0901,True,22,fallow / turnaround,within range
+1,ridge,RULE,2024,IADA Seberang Perak,2024-07-29,2024-08-08,22,0.3264,0.2665,0.1763,0.3566,0.2865,0.3264,0.0901,True,23,fallow / turnaround,within range
+3,hgb,LPS,2024,IADA Seberang Perak,2024-08-08,2024-09-07,23,0.2865,0.299,0.1875,0.4104,0.2607,0.2865,0.1115,True,26,germination / establishment,within range
+3,hgb,LPS,2024,IADA Seberang Perak,2024-08-18,2024-09-17,24,0.2865,0.3397,0.2282,0.4511,0.3249,0.2865,0.1115,True,27,seedling,within range
+1,ridge,RULE,2024,IADA Seberang Perak,2024-08-28,2024-09-07,25,0.2865,0.3139,0.2238,0.404,0.2607,0.2865,0.0901,True,26,germination / establishment,within range
+3,hgb,LPS,2024,IADA Seberang Perak,2024-08-28,2024-09-27,25,0.2865,0.3675,0.256,0.4789,0.3745,0.2865,0.1115,True,28,tillering,within range
+1,ridge,RULE,2024,IADA Seberang Perak,2024-09-07,2024-09-17,26,0.2607,0.329,0.2389,0.4191,0.3249,0.2607,0.0901,True,27,seedling,within range
+3,hgb,LPS,2024,IADA Seberang Perak,2024-09-07,2024-10-07,26,0.2607,0.4249,0.3134,0.5364,0.4671,0.2607,0.1115,True,29,tillering,within range
+1,ridge,RULE,2024,IADA Seberang Perak,2024-09-17,2024-09-27,27,0.3249,0.3747,0.2846,0.4649,0.3745,0.3249,0.0901,True,28,tillering,within range
+3,hgb,LPS,2024,IADA Seberang Perak,2024-09-17,2024-10-17,27,0.3249,0.4196,0.3081,0.5311,0.4847,0.3249,0.1115,True,30,max tillering / stem elongation,within range
+1,ridge,RULE,2024,IADA Seberang Perak,2024-09-27,2024-10-07,28,0.3745,0.439,0.3489,0.5292,0.4671,0.3745,0.0901,True,29,tillering,within range
+3,hgb,LPS,2024,IADA Seberang Perak,2024-09-27,2024-10-27,28,0.3745,0.4646,0.3531,0.5761,0.5712,0.3745,0.1115,True,31,max tillering / stem elongation,within range
+1,ridge,RULE,2024,IADA Seberang Perak,2024-10-07,2024-10-17,29,0.4671,0.5168,0.4267,0.6069,0.4847,0.4671,0.0901,True,30,max tillering / stem elongation,within range
+3,hgb,LPS,2024,IADA Seberang Perak,2024-10-07,2024-11-06,29,0.4671,0.5682,0.4568,0.6797,0.564,0.4671,0.1115,True,32,panicle initiation / booting,within range
+1,ridge,RULE,2024,IADA Seberang Perak,2024-10-17,2024-10-27,30,0.4847,0.5282,0.438,0.6183,0.5712,0.4847,0.0901,True,31,max tillering / stem elongation,within range
+1,ridge,RULE,2024,IADA Seberang Perak,2024-10-27,2024-11-06,31,0.5712,0.5976,0.5075,0.6877,0.564,0.5712,0.0901,True,32,panicle initiation / booting,within range
+3,hgb,LPS,2024,IADA Seberang Perak,2024-11-06,2024-12-06,32,0.564,0.5988,0.4873,0.7103,0.6678,0.564,0.1115,True,35,grain filling,within range
+3,hgb,LPS,2024,IADA Seberang Perak,2024-11-16,2024-12-16,33,0.564,0.5484,0.4369,0.6598,0.6289,0.564,0.1115,True,36,grain filling,within range
+1,ridge,RULE,2024,IADA Seberang Perak,2024-11-26,2024-12-06,34,0.564,0.5886,0.4985,0.6787,0.6678,0.564,0.0901,True,35,grain filling,within range
+1,ridge,RULE,2024,IADA Seberang Perak,2024-12-06,2024-12-16,35,0.6678,0.6068,0.5167,0.6969,0.6289,0.6678,0.0901,True,36,grain filling,within range
+3,hgb,LPS,2024,KADA,2024-01-01,2024-01-31,1,0.3666,0.412,0.3005,0.5235,0.4401,0.3666,0.1115,True,4,max tillering / stem elongation,within range
+1,ridge,RULE,2024,KADA,2024-01-11,2024-01-21,2,0.3666,0.4371,0.347,0.5272,0.4132,0.3666,0.0901,True,3,max tillering / stem elongation,within range
+3,hgb,LPS,2024,KADA,2024-01-11,2024-02-10,2,0.3666,0.5592,0.4477,0.6707,0.5418,0.3666,0.1115,True,5,panicle initiation / booting,within range
+1,ridge,RULE,2024,KADA,2024-01-21,2024-01-31,3,0.4132,0.4461,0.356,0.5362,0.4401,0.4132,0.0901,True,4,max tillering / stem elongation,within range
+3,hgb,LPS,2024,KADA,2024-01-21,2024-02-20,3,0.4132,0.5975,0.486,0.7089,0.6247,0.4132,0.1115,True,6,panicle initiation / booting,within range
+1,ridge,RULE,2024,KADA,2024-01-31,2024-02-10,4,0.4401,0.5491,0.459,0.6393,0.5418,0.4401,0.0901,True,5,panicle initiation / booting,within range
+3,hgb,LPS,2024,KADA,2024-01-31,2024-03-01,4,0.4401,0.6171,0.5056,0.7286,0.5939,0.4401,0.1115,True,7,heading / flowering,within range
+1,ridge,RULE,2024,KADA,2024-02-10,2024-02-20,5,0.5418,0.5899,0.4998,0.68,0.6247,0.5418,0.0901,True,6,panicle initiation / booting,within range
+3,hgb,LPS,2024,KADA,2024-02-10,2024-03-11,5,0.5418,0.6719,0.5604,0.7834,0.6161,0.5418,0.1115,True,8,grain filling,within range
+1,ridge,RULE,2024,KADA,2024-02-20,2024-03-01,6,0.6247,0.6378,0.5477,0.728,0.5939,0.6247,0.0901,True,7,heading / flowering,within range
+3,hgb,LPS,2024,KADA,2024-02-20,2024-03-21,6,0.6247,0.634,0.5225,0.7455,0.652,0.6247,0.1115,True,9,grain filling,within range
+1,ridge,RULE,2024,KADA,2024-03-01,2024-03-11,7,0.5939,0.6017,0.5116,0.6919,0.6161,0.5939,0.0901,True,8,grain filling,within range
+3,hgb,LPS,2024,KADA,2024-03-01,2024-03-31,7,0.5939,0.5372,0.4257,0.6487,0.5624,0.5939,0.1115,True,10,maturity / harvest,within range
+1,ridge,RULE,2024,KADA,2024-03-11,2024-03-21,8,0.6161,0.5852,0.4951,0.6753,0.652,0.6161,0.0901,True,9,grain filling,within range
+3,hgb,LPS,2024,KADA,2024-03-11,2024-04-10,8,0.6161,0.4803,0.3688,0.5918,0.5003,0.6161,0.1115,True,11,fallow / turnaround,within range
+1,ridge,RULE,2024,KADA,2024-03-21,2024-03-31,9,0.652,0.5551,0.4649,0.6452,0.5624,0.652,0.0901,True,10,maturity / harvest,within range
+1,ridge,RULE,2024,KADA,2024-03-31,2024-04-10,10,0.5624,0.5012,0.4111,0.5913,0.5003,0.5624,0.0901,True,11,fallow / turnaround,within range
+1,ridge,RULE,2024,KADA,2024-04-10,2024-04-20,11,0.5003,0.4257,0.3356,0.5158,0.3626,0.5003,0.0901,True,12,fallow / turnaround,within range
+1,ridge,RULE,2024,KADA,2024-04-20,2024-04-30,12,0.3626,0.3059,0.2158,0.396,0.3514,0.3626,0.0901,True,13,fallow / turnaround,within range
+3,hgb,LPS,2024,KADA,2024-04-20,2024-05-20,12,0.3626,0.3356,0.2241,0.447,0.3475,0.3626,0.1115,True,15,fallow / turnaround,within range
+1,ridge,RULE,2024,KADA,2024-05-10,2024-05-20,14,0.3514,0.2982,0.2081,0.3883,0.3475,0.3514,0.0901,True,15,fallow / turnaround,within range
+3,hgb,LPS,2024,KADA,2024-05-10,2024-06-09,14,0.3514,0.3276,0.2161,0.439,0.3085,0.3514,0.1115,True,17,fallow / turnaround,within range
+3,hgb,LPS,2024,KADA,2024-05-20,2024-06-19,15,0.3475,0.4106,0.2992,0.5221,0.3764,0.3475,0.1115,True,18,germination / establishment,within range
+1,ridge,RULE,2024,KADA,2024-05-30,2024-06-09,16,0.3475,0.3459,0.2558,0.436,0.3085,0.3475,0.0901,True,17,fallow / turnaround,within range
+3,hgb,LPS,2024,KADA,2024-06-09,2024-07-09,17,0.3085,0.325,0.2135,0.4364,0.3637,0.3085,0.1115,True,20,tillering,within range
+1,ridge,RULE,2024,KADA,2024-06-19,2024-06-29,18,0.3764,0.3993,0.3092,0.4894,0.3965,0.3764,0.0901,True,19,seedling,within range
+1,ridge,RULE,2024,KADA,2024-06-29,2024-07-09,19,0.3965,0.4036,0.3135,0.4937,0.3637,0.3965,0.0901,True,20,tillering,within range
+3,hgb,LPS,2024,KADA,2024-06-29,2024-07-29,19,0.3965,0.4476,0.3361,0.5591,0.4227,0.3965,0.1115,True,22,max tillering / stem elongation,within range
+3,hgb,LPS,2024,KADA,2024-07-09,2024-08-08,20,0.3637,0.4773,0.3658,0.5888,0.4297,0.3637,0.1115,True,23,max tillering / stem elongation,within range
+1,ridge,RULE,2024,KADA,2024-07-19,2024-07-29,21,0.3637,0.4462,0.3561,0.5363,0.4227,0.3637,0.0901,True,22,max tillering / stem elongation,within range
+3,hgb,LPS,2024,KADA,2024-07-19,2024-08-18,21,0.3637,0.5038,0.3923,0.6152,0.479,0.3637,0.1115,True,24,panicle initiation / booting,within range
+1,ridge,RULE,2024,KADA,2024-07-29,2024-08-08,22,0.4227,0.4823,0.3922,0.5724,0.4297,0.4227,0.0901,True,23,max tillering / stem elongation,within range
+1,ridge,RULE,2024,KADA,2024-08-08,2024-08-18,23,0.4297,0.5208,0.4307,0.611,0.479,0.4297,0.0901,True,24,panicle initiation / booting,within range
+3,hgb,LPS,2024,KADA,2024-08-08,2024-09-07,23,0.4297,0.5704,0.4589,0.6819,0.4918,0.4297,0.1115,True,26,heading / flowering,within range
+3,hgb,LPS,2024,KADA,2024-08-18,2024-09-17,24,0.479,0.6055,0.494,0.7169,0.6325,0.479,0.1115,True,27,grain filling,within range
+1,ridge,RULE,2024,KADA,2024-08-28,2024-09-07,25,0.479,0.5512,0.4611,0.6413,0.4918,0.479,0.0901,True,26,heading / flowering,within range
+3,hgb,LPS,2024,KADA,2024-08-28,2024-09-27,25,0.479,0.5574,0.4459,0.6689,0.623,0.479,0.1115,True,28,grain filling,within range
+1,ridge,RULE,2024,KADA,2024-09-17,2024-09-27,27,0.6325,0.6049,0.5148,0.6951,0.623,0.6325,0.0901,True,28,grain filling,within range
+3,hgb,LPS,2024,KADA,2024-09-17,2024-10-17,27,0.6325,0.5519,0.4404,0.6633,0.6605,0.6325,0.1115,True,30,fallow / turnaround,within range
+3,hgb,LPS,2024,KADA,2024-09-27,2024-10-27,28,0.623,0.5226,0.4111,0.634,0.6019,0.623,0.1115,True,31,fallow / turnaround,within range
+1,ridge,RULE,2024,KADA,2024-10-07,2024-10-17,29,0.623,0.5844,0.4942,0.6745,0.6605,0.623,0.0901,True,30,fallow / turnaround,within range
+1,ridge,RULE,2024,KADA,2024-10-17,2024-10-27,30,0.6605,0.5451,0.455,0.6352,0.6019,0.6605,0.0901,True,31,fallow / turnaround,within range
+1,ridge,RULE,2024,KETARA,2024-01-11,2024-01-21,2,0.241,0.315,0.2249,0.4051,0.3281,0.241,0.0901,True,3,tillering,within range
+3,hgb,LPS,2024,KETARA,2024-01-21,2024-02-20,3,0.3281,0.5997,0.4882,0.7111,0.5328,0.3281,0.1115,True,6,max tillering / stem elongation,within range
+1,ridge,RULE,2024,KETARA,2024-01-31,2024-02-10,4,0.242,0.3816,0.2915,0.4717,0.3511,0.242,0.0901,True,5,max tillering / stem elongation,within range
+3,hgb,LPS,2024,KETARA,2024-01-31,2024-03-01,4,0.242,0.5871,0.4757,0.6986,0.6112,0.242,0.1115,True,7,panicle initiation / booting,within range
+1,ridge,RULE,2024,KETARA,2024-02-10,2024-02-20,5,0.3511,0.4629,0.3728,0.553,0.5328,0.3511,0.0901,True,6,max tillering / stem elongation,within range
+1,ridge,RULE,2024,KETARA,2024-02-20,2024-03-01,6,0.5328,0.5838,0.4937,0.6739,0.6112,0.5328,0.0901,True,7,panicle initiation / booting,within range
+3,hgb,LPS,2024,KETARA,2024-02-20,2024-03-21,6,0.5328,0.6918,0.5803,0.8033,0.7402,0.5328,0.1115,True,9,heading / flowering,within range
+1,ridge,RULE,2024,KETARA,2024-03-01,2024-03-11,7,0.6112,0.6871,0.597,0.7773,0.7068,0.6112,0.0901,True,8,panicle initiation / booting,within range
+3,hgb,LPS,2024,KETARA,2024-03-01,2024-03-31,7,0.6112,0.707,0.5955,0.8184,0.7466,0.6112,0.1115,True,10,grain filling,within range
+1,ridge,RULE,2024,KETARA,2024-03-11,2024-03-21,8,0.7068,0.7151,0.625,0.8052,0.7402,0.7068,0.0901,True,9,heading / flowering,within range
+3,hgb,LPS,2024,KETARA,2024-03-11,2024-04-10,8,0.7068,0.7052,0.5937,0.8167,0.7159,0.7068,0.1115,True,11,grain filling,within range
+1,ridge,RULE,2024,KETARA,2024-03-21,2024-03-31,9,0.7402,0.6939,0.6038,0.784,0.7466,0.7402,0.0901,True,10,grain filling,within range
+3,hgb,LPS,2024,KETARA,2024-03-21,2024-04-20,9,0.7402,0.5882,0.4767,0.6997,0.6102,0.7402,0.1115,True,12,maturity / harvest,within range
+1,ridge,RULE,2024,KETARA,2024-03-31,2024-04-10,10,0.7466,0.6709,0.5807,0.761,0.7159,0.7466,0.0901,True,11,grain filling,within range
+3,hgb,LPS,2024,KETARA,2024-03-31,2024-04-30,10,0.7466,0.5587,0.4472,0.6701,0.5175,0.7466,0.1115,True,13,fallow / turnaround,within range
+1,ridge,RULE,2024,KETARA,2024-04-10,2024-04-20,11,0.7159,0.6053,0.5152,0.6954,0.6102,0.7159,0.0901,True,12,maturity / harvest,within range
+1,ridge,RULE,2024,KETARA,2024-04-20,2024-04-30,12,0.6102,0.5103,0.4202,0.6004,0.5175,0.6102,0.0901,True,13,fallow / turnaround,within range
+3,hgb,LPS,2024,KETARA,2024-04-20,2024-05-20,12,0.6102,0.3353,0.2238,0.4468,0.3625,0.6102,0.1115,True,15,fallow / turnaround,within range
+1,ridge,RULE,2024,KETARA,2024-05-10,2024-05-20,14,0.5175,0.4043,0.3141,0.4944,0.3625,0.5175,0.0901,True,15,fallow / turnaround,within range
+3,hgb,LPS,2024,KETARA,2024-05-10,2024-06-09,14,0.5175,0.3087,0.1972,0.4201,0.3617,0.5175,0.1115,True,17,fallow / turnaround,within range
+3,hgb,LPS,2024,KETARA,2024-05-20,2024-06-19,15,0.3625,0.2648,0.1533,0.3762,0.376,0.3625,0.1115,True,18,fallow / turnaround,within range
+1,ridge,RULE,2024,KETARA,2024-05-30,2024-06-09,16,0.3625,0.315,0.2249,0.4051,0.3617,0.3625,0.0901,True,17,fallow / turnaround,within range
+3,hgb,LPS,2024,KETARA,2024-05-30,2024-06-29,16,0.3625,0.268,0.1565,0.3795,0.3699,0.3625,0.1115,True,19,fallow / turnaround,within range
+1,ridge,RULE,2024,KETARA,2024-06-09,2024-06-19,17,0.3617,0.2898,0.1997,0.3799,0.376,0.3617,0.0901,True,18,fallow / turnaround,within range
+3,hgb,LPS,2024,KETARA,2024-06-09,2024-07-09,17,0.3617,0.2935,0.182,0.4049,0.3027,0.3617,0.1115,True,20,germination / establishment,within range
+1,ridge,RULE,2024,KETARA,2024-06-19,2024-06-29,18,0.376,0.357,0.2669,0.4471,0.3699,0.376,0.0901,True,19,fallow / turnaround,within range
+1,ridge,RULE,2024,KETARA,2024-06-29,2024-07-09,19,0.3699,0.3346,0.2445,0.4247,0.3027,0.3699,0.0901,True,20,germination / establishment,within range
+1,ridge,RULE,2024,KETARA,2024-07-29,2024-08-08,22,0.2355,0.3114,0.2213,0.4016,0.3091,0.2355,0.0901,True,23,tillering,within range
+1,ridge,RULE,2024,KETARA,2024-08-08,2024-08-18,23,0.3091,0.3923,0.3021,0.4824,0.4246,0.3091,0.0901,True,24,max tillering / stem elongation,within range
+3,hgb,LPS,2024,KETARA,2024-08-08,2024-09-07,23,0.3091,0.5713,0.4598,0.6828,0.6115,0.3091,0.1115,True,26,panicle initiation / booting,within range
+3,hgb,LPS,2024,KETARA,2024-08-18,2024-09-17,24,0.4246,0.5982,0.4867,0.7097,0.687,0.4246,0.1115,True,27,panicle initiation / booting,within range
+1,ridge,RULE,2024,KETARA,2024-08-28,2024-09-07,25,0.4246,0.5679,0.4778,0.6581,0.6115,0.4246,0.0901,True,26,panicle initiation / booting,within range
+1,ridge,RULE,2024,KETARA,2024-09-07,2024-09-17,26,0.6115,0.6357,0.5456,0.7259,0.687,0.6115,0.0901,True,27,panicle initiation / booting,within range
+1,ridge,RULE,2024,KETARA,2024-09-17,2024-09-27,27,0.687,0.698,0.6079,0.7882,0.7132,0.687,0.0901,True,28,heading / flowering,within range
+3,hgb,LPS,2024,KETARA,2024-09-17,2024-10-17,27,0.687,0.6769,0.5655,0.7884,0.7481,0.687,0.1115,True,30,grain filling,within range
+3,hgb,LPS,2024,KETARA,2024-09-27,2024-10-27,28,0.7132,0.628,0.5166,0.7395,0.6568,0.7132,0.1115,True,31,maturity / harvest,within range
+1,ridge,RULE,2024,KETARA,2024-10-07,2024-10-17,29,0.7132,0.6659,0.5758,0.756,0.7481,0.7132,0.0901,True,30,grain filling,within range
+3,hgb,LPS,2024,KETARA,2024-10-07,2024-11-06,29,0.7132,0.5283,0.4169,0.6398,0.5764,0.7132,0.1115,True,32,fallow / turnaround,within range
+1,ridge,RULE,2024,KETARA,2024-10-17,2024-10-27,30,0.7481,0.6031,0.5129,0.6932,0.6568,0.7481,0.0901,True,31,maturity / harvest,within range
+1,ridge,RULE,2024,KETARA,2024-10-27,2024-11-06,31,0.6568,0.5738,0.4837,0.6639,0.5764,0.6568,0.0901,True,32,fallow / turnaround,within range
+1,ridge,RULE,2024,MADA,2024-01-01,2024-01-11,1,0.7383,0.7508,0.6607,0.841,0.7678,0.7383,0.0901,True,2,panicle initiation / booting,within range
+3,hgb,LPS,2024,MADA,2024-01-01,2024-01-31,1,0.7383,0.7189,0.6074,0.8304,0.7352,0.7383,0.1115,True,4,grain filling,within range
+1,ridge,RULE,2024,MADA,2024-01-11,2024-01-21,2,0.7678,0.756,0.6659,0.8462,0.7978,0.7678,0.0901,True,3,heading / flowering,within range
+3,hgb,LPS,2024,MADA,2024-01-11,2024-02-10,2,0.7678,0.6288,0.5173,0.7403,0.6911,0.7678,0.1115,True,5,grain filling,within range
+1,ridge,RULE,2024,MADA,2024-01-21,2024-01-31,3,0.7978,0.7259,0.6358,0.8161,0.7352,0.7978,0.0901,True,4,grain filling,within range
+3,hgb,LPS,2024,MADA,2024-01-21,2024-02-20,3,0.7978,0.5164,0.4049,0.6279,0.5359,0.7978,0.1115,True,6,maturity / harvest,within range
+1,ridge,RULE,2024,MADA,2024-01-31,2024-02-10,4,0.7352,0.6392,0.5491,0.7293,0.6911,0.7352,0.0901,True,5,grain filling,within range
+3,hgb,LPS,2024,MADA,2024-01-31,2024-03-01,4,0.7352,0.3882,0.2767,0.4997,0.3955,0.7352,0.1115,True,7,fallow / turnaround,within range
+1,ridge,RULE,2024,MADA,2024-02-10,2024-02-20,5,0.6911,0.5825,0.4924,0.6727,0.5359,0.6911,0.0901,True,6,maturity / harvest,within range
+3,hgb,LPS,2024,MADA,2024-02-10,2024-03-11,5,0.6911,0.3442,0.2327,0.4557,0.3385,0.6911,0.1115,True,8,fallow / turnaround,within range
+1,ridge,RULE,2024,MADA,2024-02-20,2024-03-01,6,0.5359,0.4583,0.3681,0.5484,0.3955,0.5359,0.0901,True,7,fallow / turnaround,within range
+3,hgb,LPS,2024,MADA,2024-02-20,2024-03-21,6,0.5359,0.2485,0.137,0.36,0.2481,0.5359,0.1115,True,9,fallow / turnaround,within range
+1,ridge,RULE,2024,MADA,2024-03-01,2024-03-11,7,0.3955,0.3422,0.2521,0.4324,0.3385,0.3955,0.0901,True,8,fallow / turnaround,within range
+3,hgb,LPS,2024,MADA,2024-03-01,2024-03-31,7,0.3955,0.2964,0.1849,0.4079,0.2341,0.3955,0.1115,True,10,fallow / turnaround,within range
+1,ridge,RULE,2024,MADA,2024-03-11,2024-03-21,8,0.3385,0.2763,0.1862,0.3665,0.2481,0.3385,0.0901,True,9,fallow / turnaround,within range
+3,hgb,LPS,2024,MADA,2024-03-11,2024-04-10,8,0.3385,0.276,0.1645,0.3874,0.2262,0.3385,0.1115,True,11,fallow / turnaround,within range
+1,ridge,RULE,2024,MADA,2024-03-21,2024-03-31,9,0.2481,0.2294,0.1393,0.3195,0.2341,0.2481,0.0901,True,10,fallow / turnaround,within range
+3,hgb,LPS,2024,MADA,2024-03-21,2024-04-20,9,0.2481,0.2877,0.1762,0.3992,0.2593,0.2481,0.1115,True,12,fallow / turnaround,within range
+1,ridge,RULE,2024,MADA,2024-03-31,2024-04-10,10,0.2341,0.2785,0.1883,0.3686,0.2262,0.2341,0.0901,True,11,fallow / turnaround,within range
+3,hgb,LPS,2024,MADA,2024-03-31,2024-04-30,10,0.2341,0.2553,0.1438,0.3667,0.2381,0.2341,0.1115,True,13,fallow / turnaround,within range
+1,ridge,RULE,2024,MADA,2024-04-10,2024-04-20,11,0.2262,0.2469,0.1568,0.337,0.2593,0.2262,0.0901,True,12,fallow / turnaround,within range
+3,hgb,LPS,2024,MADA,2024-04-10,2024-05-10,11,0.2262,0.1838,0.0723,0.2953,0.1565,0.2262,0.1115,True,14,fallow / turnaround,within range
+1,ridge,RULE,2024,MADA,2024-04-20,2024-04-30,12,0.2593,0.2526,0.1625,0.3428,0.2381,0.2593,0.0901,True,13,fallow / turnaround,within range
+3,hgb,LPS,2024,MADA,2024-04-20,2024-05-20,12,0.2593,0.1603,0.0488,0.2717,0.2219,0.2593,0.1115,True,15,germination / establishment,within range
+3,hgb,LPS,2024,MADA,2024-04-30,2024-05-30,13,0.2381,0.2716,0.1601,0.3831,0.1662,0.2381,0.1115,True,16,seedling,within range
+1,ridge,RULE,2024,MADA,2024-05-10,2024-05-20,14,0.1565,0.2377,0.1476,0.3279,0.2219,0.1565,0.0901,True,15,germination / establishment,within range
+3,hgb,LPS,2024,MADA,2024-05-10,2024-06-09,14,0.1565,0.2799,0.1684,0.3914,0.2009,0.1565,0.1115,True,17,tillering,within range
+1,ridge,RULE,2024,MADA,2024-05-30,2024-06-09,16,0.1662,0.2733,0.1832,0.3634,0.2009,0.1662,0.0901,True,17,tillering,within range
+3,hgb,LPS,2024,MADA,2024-05-30,2024-06-29,16,0.1662,0.5251,0.4137,0.6366,0.4194,0.1662,0.1115,True,19,max tillering / stem elongation,within range
+1,ridge,RULE,2024,MADA,2024-06-09,2024-06-19,17,0.2009,0.3193,0.2292,0.4094,0.2856,0.2009,0.0901,True,18,tillering,within range
+3,hgb,LPS,2024,MADA,2024-06-09,2024-07-09,17,0.2009,0.6632,0.5517,0.7747,0.6237,0.2009,0.1115,True,20,max tillering / stem elongation,within range
+1,ridge,RULE,2024,MADA,2024-06-19,2024-06-29,18,0.2856,0.3795,0.2894,0.4696,0.4194,0.2856,0.0901,True,19,max tillering / stem elongation,within range
+3,hgb,LPS,2024,MADA,2024-06-29,2024-07-29,19,0.4194,0.6406,0.5291,0.752,0.681,0.4194,0.1115,True,22,panicle initiation / booting,within range
+1,ridge,RULE,2024,MADA,2024-07-19,2024-07-29,21,0.6237,0.6858,0.5957,0.7759,0.681,0.6237,0.0901,True,22,panicle initiation / booting,within range
+1,ridge,RULE,2024,MADA,2024-07-29,2024-08-08,22,0.681,0.673,0.5828,0.7631,0.7482,0.681,0.0901,True,23,heading / flowering,within range
+3,hgb,LPS,2024,MADA,2024-07-29,2024-08-28,22,0.681,0.6212,0.5097,0.7326,0.7285,0.681,0.1115,True,25,grain filling,within range
+1,ridge,RULE,2024,MADA,2024-08-18,2024-08-28,24,0.787,0.697,0.6069,0.7871,0.7285,0.787,0.0901,True,25,grain filling,within range
+1,ridge,RULE,2024,MADA,2024-08-28,2024-09-07,25,0.7285,0.6317,0.5415,0.7218,0.7018,0.7285,0.0901,True,26,maturity / harvest,within range
+3,hgb,LPS,2024,MADA,2024-08-28,2024-09-27,25,0.7285,0.4636,0.3521,0.5751,0.4038,0.7285,0.1115,True,28,fallow / turnaround,within range
+3,hgb,LPS,2024,MADA,2024-09-07,2024-10-07,26,0.7018,0.3774,0.2659,0.4888,0.297,0.7018,0.1115,True,29,fallow / turnaround,within range
+1,ridge,RULE,2024,MADA,2024-09-27,2024-10-07,28,0.4038,0.3751,0.285,0.4653,0.297,0.4038,0.0901,True,29,fallow / turnaround,within range
+1,ridge,RULE,2024,MADA,2024-10-07,2024-10-17,29,0.297,0.2464,0.1563,0.3365,0.2289,0.297,0.0901,True,30,fallow / turnaround,within range
+3,hgb,LPS,2024,MADA,2024-10-07,2024-11-06,29,0.297,0.2374,0.126,0.3489,0.1568,0.297,0.1115,True,32,seedling,within range
+1,ridge,RULE,2024,MADA,2024-10-17,2024-10-27,30,0.2289,0.1657,0.0756,0.2559,0.1615,0.2289,0.0901,True,31,germination / establishment,within range
+3,hgb,LPS,2024,MADA,2024-10-17,2024-11-16,30,0.2289,0.2037,0.0922,0.3152,0.1976,0.2289,0.1115,True,33,tillering,within range
+1,ridge,RULE,2024,MADA,2024-10-27,2024-11-06,31,0.1615,0.1659,0.0758,0.2561,0.1568,0.1615,0.0901,True,32,seedling,within range
+1,ridge,RULE,2024,MADA,2024-11-06,2024-11-16,32,0.1568,0.236,0.1459,0.3261,0.1976,0.1568,0.0901,True,33,tillering,within range
+3,hgb,LPS,2024,MADA,2024-11-06,2024-12-06,32,0.1568,0.5,0.3885,0.6114,0.4035,0.1568,0.1115,True,35,max tillering / stem elongation,within range
+1,ridge,RULE,2024,MADA,2024-11-26,2024-12-06,34,0.1976,0.3729,0.2828,0.4631,0.4035,0.1976,0.0901,True,35,max tillering / stem elongation,within range
+1,ridge,RULE,2024,MADA,2024-12-06,2024-12-16,35,0.4035,0.477,0.3869,0.5671,0.4247,0.4035,0.0901,True,36,max tillering / stem elongation,within range
+1,ridge,RULE,2024,IADA Barat Laut Selangor,2024-01-11,2024-01-21,2,0.3972,0.3519,0.2618,0.4421,0.4576,0.3972,0.0901,False,3,germination / establishment,above forecast range
+3,hgb,LPS,2024,IADA Barat Laut Selangor,2024-01-11,2024-02-10,2,0.3972,0.3337,0.2222,0.4452,0.4573,0.3972,0.1115,False,5,tillering,above forecast range
+1,ridge,RULE,2024,IADA Barat Laut Selangor,2024-04-30,2024-05-10,13,0.3207,0.4021,0.3119,0.4922,0.5767,0.3207,0.0901,False,14,maturity / harvest,above forecast range
+3,hgb,LPS,2024,IADA Barat Laut Selangor,2024-04-30,2024-05-30,13,0.3207,0.4019,0.2905,0.5134,0.5466,0.3207,0.1115,False,16,fallow / turnaround,above forecast range
+1,ridge,RULE,2024,IADA Barat Laut Selangor,2024-06-29,2024-07-09,19,0.3966,0.3187,0.2286,0.4089,0.4186,0.3966,0.0901,False,20,fallow / turnaround,above forecast range
+3,hgb,LPS,2024,IADA Barat Laut Selangor,2024-07-29,2024-08-28,22,0.3472,0.358,0.2465,0.4695,0.5795,0.3472,0.1115,False,25,tillering,above forecast range
+1,ridge,RULE,2024,IADA Barat Laut Selangor,2024-08-18,2024-08-28,24,0.3718,0.4489,0.3588,0.5391,0.5795,0.3718,0.0901,False,25,tillering,above forecast range
+3,hgb,LPS,2024,IADA Kemasin Semerak,2024-05-30,2024-06-29,16,0.3527,0.3195,0.208,0.431,0.4497,0.3527,0.1115,False,19,seedling,above forecast range
+3,hgb,LPS,2024,IADA Kemasin Semerak,2024-08-28,2024-09-27,25,0.5604,0.5404,0.4289,0.6519,0.6824,0.5604,0.1115,False,28,grain filling,above forecast range
+3,hgb,LPS,2024,IADA Kerian,2024-01-11,2024-02-10,2,0.6929,0.4409,0.3294,0.5523,0.5656,0.6929,0.1115,False,5,fallow / turnaround,above forecast range
+3,hgb,LPS,2024,IADA Kerian,2024-06-09,2024-07-09,17,0.489,0.538,0.4265,0.6494,0.6664,0.489,0.1115,False,20,fallow / turnaround,above forecast range
+3,hgb,LPS,2024,IADA Kerian,2024-06-29,2024-07-29,19,0.6378,0.5211,0.4096,0.6326,0.634,0.6378,0.1115,False,22,fallow / turnaround,above forecast range
+3,hgb,LPS,2024,IADA Kerian,2024-07-09,2024-08-08,20,0.6664,0.5042,0.3927,0.6157,0.6443,0.6664,0.1115,False,23,fallow / turnaround,above forecast range
+1,ridge,RULE,2024,IADA Kerian,2024-07-19,2024-07-29,21,0.4777,0.4183,0.3282,0.5085,0.634,0.4777,0.0901,False,22,fallow / turnaround,above forecast range
+1,ridge,RULE,2024,IADA Kerian,2024-07-29,2024-08-08,22,0.634,0.4583,0.3682,0.5485,0.6443,0.634,0.0901,False,23,fallow / turnaround,above forecast range
+3,hgb,LPS,2024,IADA Kerian,2024-07-29,2024-08-28,22,0.634,0.4127,0.3013,0.5242,0.5979,0.634,0.1115,False,25,fallow / turnaround,above forecast range
+1,ridge,RULE,2024,IADA Pekan,2024-05-20,2024-05-30,15,0.5424,0.5351,0.445,0.6252,0.6805,0.5424,0.0901,False,16,grain filling,above forecast range
+3,hgb,LPS,2024,IADA Pekan,2024-05-20,2024-06-19,15,0.5424,0.4496,0.3381,0.5611,0.594,0.5424,0.1115,False,18,fallow / turnaround,above forecast range
+1,ridge,RULE,2024,IADA Pekan,2024-08-18,2024-08-28,24,0.2398,0.3099,0.2198,0.4,0.4055,0.2398,0.0901,False,25,tillering,above forecast range
+3,hgb,LPS,2024,IADA Pekan,2024-09-27,2024-10-27,28,0.3926,0.4959,0.3844,0.6073,0.6767,0.3926,0.1115,False,31,heading / flowering,above forecast range
+1,ridge,RULE,2024,IADA Pulau Pinang,2024-07-19,2024-07-29,21,0.6186,0.5915,0.5013,0.6816,0.6898,0.6186,0.0901,False,22,maturity / harvest,above forecast range
+3,hgb,LPS,2024,IADA Pulau Pinang,2024-07-19,2024-08-18,21,0.6186,0.4481,0.3366,0.5595,0.6819,0.6186,0.1115,False,24,fallow / turnaround,above forecast range
+1,ridge,RULE,2024,IADA Pulau Pinang,2024-07-29,2024-08-08,22,0.6898,0.5612,0.471,0.6513,0.719,0.6898,0.0901,False,23,fallow / turnaround,above forecast range
+1,ridge,RULE,2024,IADA Pulau Pinang,2024-08-08,2024-08-18,23,0.719,0.5631,0.473,0.6532,0.6819,0.719,0.0901,False,24,fallow / turnaround,above forecast range
+1,ridge,RULE,2024,IADA Pulau Pinang,2024-08-28,2024-09-07,25,0.4175,0.3627,0.2726,0.4528,0.4597,0.4175,0.0901,False,26,fallow / turnaround,above forecast range
+1,ridge,RULE,2024,IADA Pulau Pinang,2024-12-06,2024-12-16,35,0.4118,0.5109,0.4208,0.601,0.6222,0.4118,0.0901,False,36,panicle initiation / booting,above forecast range
+3,hgb,LPS,2024,IADA Rompin,2024-03-01,2024-03-31,7,0.6423,0.5372,0.4257,0.6486,0.6895,0.6423,0.1115,False,10,fallow / turnaround,above forecast range
+1,ridge,RULE,2024,IADA Rompin,2024-03-11,2024-03-21,8,0.6186,0.5577,0.4676,0.6478,0.6929,0.6186,0.0901,False,9,fallow / turnaround,above forecast range
+3,hgb,LPS,2024,IADA Rompin,2024-03-11,2024-04-10,8,0.6186,0.4427,0.3312,0.5541,0.5886,0.6186,0.1115,False,11,fallow / turnaround,above forecast range
+1,ridge,RULE,2024,IADA Rompin,2024-03-21,2024-03-31,9,0.6929,0.5442,0.4541,0.6344,0.6895,0.6929,0.0901,False,10,fallow / turnaround,above forecast range
+3,hgb,LPS,2024,IADA Rompin,2024-07-19,2024-08-18,21,0.2558,0.4687,0.3573,0.5802,0.6867,0.2558,0.1115,False,24,grain filling,above forecast range
+1,ridge,RULE,2024,IADA Rompin,2024-09-17,2024-09-27,27,0.7182,0.5657,0.4755,0.6558,0.676,0.7182,0.0901,False,28,fallow / turnaround,above forecast range
+1,ridge,RULE,2024,IADA Seberang Perak,2024-05-30,2024-06-09,16,0.4971,0.5083,0.4182,0.5984,0.6214,0.4971,0.0901,False,17,maturity / harvest,above forecast range
+3,hgb,LPS,2024,KADA,2024-05-30,2024-06-29,16,0.3475,0.2704,0.1589,0.3819,0.3965,0.3475,0.1115,False,19,seedling,above forecast range
+1,ridge,RULE,2024,KADA,2024-06-09,2024-06-19,17,0.3085,0.2824,0.1923,0.3725,0.3764,0.3085,0.0901,False,18,germination / establishment,above forecast range
+1,ridge,RULE,2024,KADA,2024-09-07,2024-09-17,26,0.4918,0.5384,0.4483,0.6286,0.6325,0.4918,0.0901,False,27,grain filling,above forecast range
+3,hgb,LPS,2024,KETARA,2024-02-10,2024-03-11,5,0.3511,0.5685,0.4571,0.68,0.7068,0.3511,0.1115,False,8,panicle initiation / booting,above forecast range
+3,hgb,LPS,2024,KETARA,2024-08-28,2024-09-27,25,0.4246,0.5917,0.4802,0.7032,0.7132,0.4246,0.1115,False,28,heading / flowering,above forecast range
+1,ridge,RULE,2024,MADA,2024-06-29,2024-07-09,19,0.4194,0.5326,0.4425,0.6228,0.6237,0.4194,0.0901,False,20,max tillering / stem elongation,above forecast range
+3,hgb,LPS,2024,MADA,2024-07-09,2024-08-08,20,0.6237,0.6099,0.4984,0.7213,0.7482,0.6237,0.1115,False,23,heading / flowering,above forecast range
+3,hgb,LPS,2024,MADA,2024-07-19,2024-08-18,21,0.6237,0.6297,0.5182,0.7412,0.787,0.6237,0.1115,False,24,grain filling,above forecast range
+1,ridge,RULE,2024,MADA,2024-08-08,2024-08-18,23,0.7482,0.6748,0.5847,0.7649,0.787,0.7482,0.0901,False,24,grain filling,above forecast range
+3,hgb,LPS,2024,MADA,2024-08-08,2024-09-07,23,0.7482,0.5586,0.4471,0.6701,0.7018,0.7482,0.1115,False,26,maturity / harvest,above forecast range
+3,hgb,LPS,2024,IADA Barat Laut Selangor,2024-02-20,2024-03-21,6,0.4468,0.55,0.4385,0.6615,0.3998,0.4468,0.1115,False,9,panicle initiation / booting,BELOW forecast range (behind schedule?)
+3,hgb,LPS,2024,IADA Barat Laut Selangor,2024-03-01,2024-03-31,7,0.4468,0.527,0.4155,0.6384,0.3384,0.4468,0.1115,False,10,panicle initiation / booting,BELOW forecast range (behind schedule?)
+1,ridge,RULE,2024,IADA Barat Laut Selangor,2024-03-11,2024-03-21,8,0.4616,0.4921,0.402,0.5822,0.3998,0.4616,0.0901,False,9,panicle initiation / booting,BELOW forecast range (behind schedule?)
+3,hgb,LPS,2024,IADA Barat Laut Selangor,2024-03-11,2024-04-10,8,0.4616,0.5273,0.4158,0.6388,0.4032,0.4616,0.1115,False,11,heading / flowering,BELOW forecast range (behind schedule?)
+1,ridge,RULE,2024,IADA Barat Laut Selangor,2024-03-21,2024-03-31,9,0.3998,0.4782,0.3881,0.5683,0.3384,0.3998,0.0901,False,10,panicle initiation / booting,BELOW forecast range (behind schedule?)
+3,hgb,LPS,2024,IADA Barat Laut Selangor,2024-03-21,2024-04-20,9,0.3998,0.4862,0.3747,0.5977,0.3127,0.3998,0.1115,False,12,grain filling,BELOW forecast range (behind schedule?)
+1,ridge,RULE,2024,IADA Barat Laut Selangor,2024-04-10,2024-04-20,11,0.4032,0.449,0.3589,0.5391,0.3127,0.4032,0.0901,False,12,grain filling,BELOW forecast range (behind schedule?)
+1,ridge,RULE,2024,IADA Barat Laut Selangor,2024-04-20,2024-04-30,12,0.3127,0.4119,0.3218,0.5021,0.3207,0.3127,0.0901,False,13,grain filling,BELOW forecast range (behind schedule?)
+3,hgb,LPS,2024,IADA Barat Laut Selangor,2024-08-08,2024-09-07,23,0.3718,0.3929,0.2814,0.5043,0.1927,0.3718,0.1115,False,26,max tillering / stem elongation,BELOW forecast range (behind schedule?)
+1,ridge,RULE,2024,IADA Barat Laut Selangor,2024-08-28,2024-09-07,25,0.5795,0.5665,0.4764,0.6567,0.1927,0.5795,0.0901,False,26,max tillering / stem elongation,BELOW forecast range (behind schedule?)
+3,hgb,LPS,2024,IADA Barat Laut Selangor,2024-08-28,2024-09-27,25,0.5795,0.6597,0.5483,0.7712,0.4213,0.5795,0.1115,False,28,panicle initiation / booting,BELOW forecast range (behind schedule?)
+1,ridge,RULE,2024,IADA Barat Laut Selangor,2024-09-27,2024-10-07,28,0.4213,0.4571,0.367,0.5472,0.3579,0.4213,0.0901,False,29,panicle initiation / booting,BELOW forecast range (behind schedule?)
+1,ridge,RULE,2024,IADA Kemasin Semerak,2024-11-26,2024-12-06,34,0.5901,0.4548,0.3647,0.545,0.3091,0.5901,0.0901,False,35,seedling,BELOW forecast range (behind schedule?)
+3,hgb,LPS,2024,IADA Kerian,2024-04-10,2024-05-10,11,0.3489,0.4904,0.3789,0.6019,0.3493,0.3489,0.1115,False,14,panicle initiation / booting,BELOW forecast range (behind schedule?)
+1,ridge,RULE,2024,IADA Kerian,2024-04-20,2024-04-30,12,0.3489,0.4529,0.3627,0.543,0.343,0.3489,0.0901,False,13,max tillering / stem elongation,BELOW forecast range (behind schedule?)
+1,ridge,RULE,2024,IADA Kerian,2024-04-30,2024-05-10,13,0.343,0.4568,0.3667,0.5469,0.3493,0.343,0.0901,False,14,panicle initiation / booting,BELOW forecast range (behind schedule?)
+3,hgb,LPS,2024,IADA Kerian,2024-09-07,2024-10-07,26,0.5158,0.3772,0.2657,0.4886,0.2331,0.5158,0.1115,False,29,tillering,BELOW forecast range (behind schedule?)
+1,ridge,RULE,2024,IADA Kerian,2024-09-27,2024-10-07,28,0.3822,0.383,0.2929,0.4732,0.2331,0.3822,0.0901,False,29,tillering,BELOW forecast range (behind schedule?)
+1,ridge,RULE,2024,IADA Kerian,2024-10-27,2024-11-06,31,0.4149,0.4872,0.3971,0.5773,0.3903,0.4149,0.0901,False,32,max tillering / stem elongation,BELOW forecast range (behind schedule?)
+3,hgb,LPS,2024,IADA Kerian,2024-11-06,2024-12-06,32,0.3903,0.5626,0.4511,0.6741,0.4421,0.3903,0.1115,False,35,heading / flowering,BELOW forecast range (behind schedule?)
+3,hgb,LPS,2024,IADA Kerian,2024-11-16,2024-12-16,33,0.4385,0.5357,0.4243,0.6472,0.3956,0.4385,0.1115,False,36,grain filling,BELOW forecast range (behind schedule?)
+1,ridge,RULE,2024,IADA Kerian,2024-11-26,2024-12-06,34,0.4385,0.5442,0.4541,0.6343,0.4421,0.4385,0.0901,False,35,heading / flowering,BELOW forecast range (behind schedule?)
+1,ridge,RULE,2024,IADA Kerian,2024-12-06,2024-12-16,35,0.4421,0.512,0.4219,0.6021,0.3956,0.4421,0.0901,False,36,grain filling,BELOW forecast range (behind schedule?)
+3,hgb,LPS,2024,IADA Pekan,2024-02-20,2024-03-21,6,0.2709,0.4658,0.3543,0.5772,0.3317,0.2709,0.1115,False,9,tillering,BELOW forecast range (behind schedule?)
+3,hgb,LPS,2024,IADA Pekan,2024-03-01,2024-03-31,7,0.2709,0.5456,0.4342,0.6571,0.4322,0.2709,0.1115,False,10,max tillering / stem elongation,BELOW forecast range (behind schedule?)
+1,ridge,RULE,2024,IADA Pekan,2024-07-09,2024-07-19,20,0.594,0.488,0.3978,0.5781,0.3642,0.594,0.0901,False,21,fallow / turnaround,BELOW forecast range (behind schedule?)
+3,hgb,LPS,2024,IADA Pekan,2024-07-09,2024-08-08,20,0.594,0.4213,0.3099,0.5328,0.2859,0.594,0.1115,False,23,germination / establishment,BELOW forecast range (behind schedule?)
+1,ridge,RULE,2024,IADA Pulau Pinang,2024-04-10,2024-04-20,11,0.2764,0.3326,0.2425,0.4228,0.1924,0.2764,0.0901,False,12,seedling,BELOW forecast range (behind schedule?)
+3,hgb,LPS,2024,IADA Pulau Pinang,2024-04-10,2024-05-10,11,0.2764,0.3463,0.2349,0.4578,0.1051,0.2764,0.1115,False,14,tillering,BELOW forecast range (behind schedule?)
+1,ridge,RULE,2024,IADA Pulau Pinang,2024-04-20,2024-04-30,12,0.1924,0.2765,0.1864,0.3667,0.1846,0.1924,0.0901,False,13,tillering,BELOW forecast range (behind schedule?)
+3,hgb,LPS,2024,IADA Pulau Pinang,2024-04-20,2024-05-20,12,0.1924,0.3474,0.2359,0.4588,0.1085,0.1924,0.1115,False,15,max tillering / stem elongation,BELOW forecast range (behind schedule?)
+1,ridge,RULE,2024,IADA Pulau Pinang,2024-04-30,2024-05-10,13,0.1846,0.2921,0.202,0.3822,0.1051,0.1846,0.0901,False,14,tillering,BELOW forecast range (behind schedule?)
+1,ridge,RULE,2024,IADA Pulau Pinang,2024-05-10,2024-05-20,14,0.1051,0.2523,0.1622,0.3424,0.1085,0.1051,0.0901,False,15,max tillering / stem elongation,BELOW forecast range (behind schedule?)
+1,ridge,RULE,2024,IADA Pulau Pinang,2024-08-18,2024-08-28,24,0.6819,0.5633,0.4732,0.6534,0.4175,0.6819,0.0901,False,25,fallow / turnaround,BELOW forecast range (behind schedule?)
+3,hgb,LPS,2024,IADA Pulau Pinang,2024-09-17,2024-10-17,27,0.4597,0.3531,0.2417,0.4646,0.2243,0.4597,0.1115,False,30,germination / establishment,BELOW forecast range (behind schedule?)
+3,hgb,LPS,2024,IADA Pulau Pinang,2024-10-07,2024-11-06,29,0.2705,0.2738,0.1623,0.3853,0.1623,0.2705,0.1115,False,32,tillering,BELOW forecast range (behind schedule?)
+3,hgb,LPS,2024,IADA Rompin,2024-05-30,2024-06-29,16,0.2751,0.3996,0.2881,0.5111,0.1425,0.2751,0.1115,False,19,max tillering / stem elongation,BELOW forecast range (behind schedule?)
+3,hgb,LPS,2024,IADA Rompin,2024-06-09,2024-07-09,17,0.3397,0.4519,0.3404,0.5634,0.2324,0.3397,0.1115,False,20,max tillering / stem elongation,BELOW forecast range (behind schedule?)
+1,ridge,RULE,2024,IADA Rompin,2024-06-19,2024-06-29,18,0.3028,0.4042,0.3141,0.4943,0.1425,0.3028,0.0901,False,19,max tillering / stem elongation,BELOW forecast range (behind schedule?)
+3,hgb,LPS,2024,IADA Rompin,2024-06-19,2024-07-19,18,0.3028,0.5147,0.4033,0.6262,0.2558,0.3028,0.1115,False,21,panicle initiation / booting,BELOW forecast range (behind schedule?)
+1,ridge,RULE,2024,IADA Rompin,2024-06-29,2024-07-09,19,0.1425,0.3229,0.2328,0.4131,0.2324,0.1425,0.0901,False,20,max tillering / stem elongation,BELOW forecast range (behind schedule?)
+1,ridge,RULE,2024,IADA Rompin,2024-07-09,2024-07-19,20,0.2324,0.3463,0.2562,0.4365,0.2558,0.2324,0.0901,False,21,panicle initiation / booting,BELOW forecast range (behind schedule?)
+1,ridge,RULE,2024,IADA Seberang Perak,2024-01-01,2024-01-11,1,0.6431,0.5844,0.4943,0.6745,0.4354,0.6431,0.0901,False,2,fallow / turnaround,BELOW forecast range (behind schedule?)
+3,hgb,LPS,2024,IADA Seberang Perak,2024-03-01,2024-03-31,7,0.3101,0.5119,0.4004,0.6234,0.3874,0.3101,0.1115,False,10,max tillering / stem elongation,BELOW forecast range (behind schedule?)
+1,ridge,RULE,2024,IADA Seberang Perak,2024-05-20,2024-05-30,15,0.602,0.6151,0.5249,0.7052,0.4971,0.602,0.0901,False,16,grain filling,BELOW forecast range (behind schedule?)
+3,hgb,LPS,2024,IADA Seberang Perak,2024-06-29,2024-07-29,19,0.5678,0.4739,0.3624,0.5854,0.3264,0.5678,0.1115,False,22,fallow / turnaround,BELOW forecast range (behind schedule?)
+3,hgb,LPS,2024,KADA,2024-03-21,2024-04-20,9,0.652,0.5089,0.3975,0.6204,0.3626,0.652,0.1115,False,12,fallow / turnaround,BELOW forecast range (behind schedule?)
+3,hgb,LPS,2024,KADA,2024-03-31,2024-04-30,10,0.5624,0.4685,0.357,0.5799,0.3514,0.5624,0.1115,False,13,fallow / turnaround,BELOW forecast range (behind schedule?)
+3,hgb,LPS,2024,KADA,2024-11-16,2024-12-16,33,0.6019,0.3834,0.2719,0.4949,0.2328,0.6019,0.1115,False,36,seedling,BELOW forecast range (behind schedule?)
+1,ridge,RULE,2024,KADA,2024-12-06,2024-12-16,35,0.6019,0.5703,0.4802,0.6605,0.2328,0.6019,0.0901,False,36,seedling,BELOW forecast range (behind schedule?)
+3,hgb,LPS,2024,KETARA,2024-01-01,2024-01-31,1,0.241,0.4196,0.3081,0.5311,0.242,0.241,0.1115,False,4,tillering,BELOW forecast range (behind schedule?)
+3,hgb,LPS,2024,KETARA,2024-01-11,2024-02-10,2,0.241,0.6067,0.4952,0.7182,0.3511,0.241,0.1115,False,5,max tillering / stem elongation,BELOW forecast range (behind schedule?)
+1,ridge,RULE,2024,KETARA,2024-01-21,2024-01-31,3,0.3281,0.3612,0.2711,0.4513,0.242,0.3281,0.0901,False,4,tillering,BELOW forecast range (behind schedule?)
+3,hgb,LPS,2024,KETARA,2024-06-29,2024-07-29,19,0.3699,0.3858,0.2744,0.4973,0.2355,0.3699,0.1115,False,22,tillering,BELOW forecast range (behind schedule?)
+3,hgb,LPS,2024,KETARA,2024-07-09,2024-08-08,20,0.3027,0.4338,0.3224,0.5453,0.3091,0.3027,0.1115,False,23,tillering,BELOW forecast range (behind schedule?)
+1,ridge,RULE,2024,KETARA,2024-07-19,2024-07-29,21,0.3027,0.326,0.2359,0.4161,0.2355,0.3027,0.0901,False,22,tillering,BELOW forecast range (behind schedule?)
+3,hgb,LPS,2024,KETARA,2024-07-19,2024-08-18,21,0.3027,0.5494,0.4379,0.6609,0.4246,0.3027,0.1115,False,24,max tillering / stem elongation,BELOW forecast range (behind schedule?)
+1,ridge,RULE,2024,MADA,2024-04-30,2024-05-10,13,0.2381,0.2825,0.1924,0.3726,0.1565,0.2381,0.0901,False,14,fallow / turnaround,BELOW forecast range (behind schedule?)
+1,ridge,RULE,2024,MADA,2024-05-20,2024-05-30,15,0.2219,0.2605,0.1703,0.3506,0.1662,0.2219,0.0901,False,16,seedling,BELOW forecast range (behind schedule?)
+3,hgb,LPS,2024,MADA,2024-05-20,2024-06-19,15,0.2219,0.5115,0.4,0.623,0.2856,0.2219,0.1115,False,18,tillering,BELOW forecast range (behind schedule?)
+1,ridge,RULE,2024,MADA,2024-09-17,2024-09-27,27,0.7018,0.566,0.4759,0.6562,0.4038,0.7018,0.0901,False,28,fallow / turnaround,BELOW forecast range (behind schedule?)
+3,hgb,LPS,2024,MADA,2024-09-17,2024-10-17,27,0.7018,0.3527,0.2412,0.4642,0.2289,0.7018,0.1115,False,30,fallow / turnaround,BELOW forecast range (behind schedule?)
+3,hgb,LPS,2024,MADA,2024-09-27,2024-10-27,28,0.4038,0.3186,0.2071,0.4301,0.1615,0.4038,0.1115,False,31,germination / establishment,BELOW forecast range (behind schedule?)
+3,hgb,LPS,2024,MADA,2024-11-16,2024-12-16,33,0.1976,0.6242,0.5127,0.7357,0.4247,0.1976,0.1115,False,36,max tillering / stem elongation,BELOW forecast range (behind schedule?)

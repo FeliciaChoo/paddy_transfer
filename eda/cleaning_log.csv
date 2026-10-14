@@ -1,0 +1,10 @@
+,rows_flagged,pct
+flag_no_optical,93059,49.2
+flag_interpolated,57831,30.6
+flag_ndvi_spike,3367,1.8
+flag_ndvi_negative,1521,0.8
+flag_evi_clamped,4,0.0
+flag_sar_positive,74,0.0
+flag_rain_extreme,468,0.2
+flag_stage_mismatch,58664,31.0
+flag_label_shared,0,0.0
