@@ -1,108 +1,101 @@
-"""Component 1 · Overview: the whole picture on one page -- headline numbers, a status map, a granary scoreboard, data notes."""
-import numpy as np
-import pandas as pd
+"""Component 1 · Overview: what the dashboard is, the questions it answers, how it works, and what to keep in mind.
+
+The wording lives here; the names and credits live in about_config.py. Numbers on the page come from the loaded data, so they stay true
+when the data is refreshed.
+"""
 import streamlit as st
 
-from . import tab_reliability
-from .mapkit import polygon_map, show_legend, view_for
-from .tab_map import STATUS_COLOURS
-from .ui import apply_map_click, info_panel, selected_granary
-
-STATUS_SPEC = dict(col="Recent_status", fmt="{}", kind="cat", colours=STATUS_COLOURS,
-                   meaning="Behind = recent NDVI fell below the forecast range in at least 2 of the last 4 decades (a candidate "
-                           "for a field check, not a confirmed problem). Ahead = above the range. On track = within it.")
+from . import store, tab_reliability
+from .about_config import APP_NAME, CLOSING, RESEARCH, TAGLINE
 
 
-def scoreboard(D):
-    """one row per granary: latest yield, how it moved, current crop condition, next-year outlook"""
-    last = D.yh[D.yh.Year == D.LAST_YEAR].set_index("District")
-    o1 = D.outlook[D.outlook.Horizon_years == D.outlook.Horizon_years.min()].set_index("District")
-    t = pd.DataFrame(index=D.ALL)
-    t[f"Yield {D.LAST_YEAR} (kg/ha)"] = last.Yield
-    t["Change vs previous year (%)"] = last.Change_pct
-    t["vs own average (SD)"] = last.Yield_z
-    t["Next-year outlook (kg/ha)"] = o1.Central
-    c = D.cond.set_index("District")
-    t["Crop status"] = c.Recent_status
-    t["NDVI trend (30 days)"] = c.Trend
-    t["Stage in 30 days"] = c.Stage_30d
-    return t.rename_axis("Granary").reset_index()
+def _card(col, icon, title, body, where):
+    with col.container(border=True):
+        st.markdown(f"#### {icon} {title}")
+        st.write(body)
+        st.caption(where)
 
 
 def render(D):
-    st.subheader("Overview")
-    info_panel(
-        "A one-page summary of every granary: the latest reported yield and how it moved, the current crop condition from "
-        "satellite, and the outlook for next year. The other three tabs go deeper: Dynamic maps, Yield (past and outlook) "
-        "and Advisory and intervention.",
-        "Check how your granary is doing against the others, then open the Advisory tab for what to do about it.",
-        "Spot which granaries are behind, falling or unusual and decide where to look first.",
-        "yield is an annual granary-level figure (no planted area, so averages are not area-weighted); crop status comes from "
-        "satellite NDVI and is a prompt for a field check, not a diagnosis.")
-    sel = selected_granary()
-    tbl = scoreboard(D)
-    cond = D.cond.set_index("District")
-    n_behind = int((cond.Recent_status == "behind").sum())
-    n_fall = int((cond.Trend == "falling").sum())
-    last = D.yh[D.yh.Year == D.LAST_YEAR]
-    prev = D.yh[D.yh.Year == D.LAST_YEAR - 1].set_index("District").Yield
+    n_g = len(D.ALL)
+    y0, y1 = int(D.yh.Year.min()), int(D.yh.Year.max())
+    st.title(f"About {APP_NAME}")
+    st.subheader(TAGLINE)
+    st.markdown(
+        f"{APP_NAME} helps KPKM and the granary authorities understand paddy yield, follow crop condition, look ahead, and record what to do. "
+        f"It brings the reported yield, satellite vegetation data, weather and soil information of {n_g} granaries together in one interactive "
+        "dashboard.")
 
-    k = st.columns(5)
-    k[0].metric("Granaries", len(D.ALL))
-    k[1].metric(f"Average yield {D.LAST_YEAR}", f"{last.Yield.mean():,.0f} kg/ha",
-                f"{(last.Yield.mean() / prev.reindex(last.District).mean() - 1) * 100:+.1f}% vs {D.LAST_YEAR - 1}",
-                delta_color="off", help="Simple average over granaries; not area-weighted.")
-    k[2].metric("Highest yield", last.loc[last.Yield.idxmax(), "District"], f"{last.Yield.max():,.0f} kg/ha", delta_color="off")
-    k[3].metric("Behind (crop status)", f"{n_behind} / {len(cond)}", help="Candidates for a field check.")
-    k[4].metric("NDVI falling next 30 days", f"{n_fall} / {len(cond)}",
-                help="Falling is normal after heading; read it with the stage.")
+    st.markdown("### Four questions it helps answer")
+    c = st.columns(4)
+    _card(c[0], "🕘", "What happened?", f"Explore the yield each granary reported, year by year ({y0} to {y1}).", "Tab 3 · Yield")
+    _card(c[1], "🔮", "What might happen next?", "See an outlook for the next 1 to 4 years, with a range around it.", "Tab 3 · Outlook")
+    _card(c[2], "🛰️", "What is happening?", "Examine crop condition, the vegetation forecast, resilience, weather and soil.", "Tab 2 · Dynamic maps")
+    _card(c[3], "💡", "What should we consider doing?", "Review draft interventions: who should act, by when and why.", "Tab 4 · Advisory")
 
-    # ---- staleness warning: computed from the data, so it disappears once the extraction is refreshed
-    try:
-        age = (pd.Timestamp.today().normalize() - pd.Timestamp(D.AS_OF)).days
-    except (ValueError, TypeError):
-        age = 0
-    if age > 45:
-        st.warning(f"The satellite data ends {D.AS_OF}, {age} days ago. Crop status, the 30-day NDVI forecast and the "
-                   "advice are about that date, not about today. Re-run the extraction with a later --end-year to refresh.")
+    st.markdown("### What you can do")
+    a, b = st.columns(2)
+    with a:
+        st.markdown("**📊 Explore reported yield**  \nCompare granaries and years on maps, rankings and trend charts.")
+        st.markdown("**🌱 Understand crop condition**  \nSee whether each crop is behind, on track or ahead, its estimated stage, the 10 and 30 day "
+                    "vegetation forecast, and how resilient the granary is.")
+        st.markdown("**📈 See the yield outlook**  \nA range for the next 1 to 4 years, with the typical error measured in back-tests.")
+    with b:
+        st.markdown("**💡 Get advice and a report**  \nDraft interventions with owners and timing, an optional AI-written note, and an editable "
+                    "Word report.")
+        st.markdown("**✅ Record decisions and follow up**  \nAccept, modify, reject or defer each intervention, then track status and "
+                    "overdue items.")
+        st.markdown("**🧪 Check the models**  \nSee the results without and with transfer learning, and the measured errors.")
 
-    mcol, lcol = st.columns([3, 1])
-    m = (D.fp.merge(D.districts[["District", "Latitude", "Longitude"]], on="District")
-         .merge(D.cond[["District", "Recent_status"]], on="District", how="left"))
-    with mcol:
-        st.markdown("**Recent crop status by granary** (click one to select it)")
-        lo, hi, clicked, present = polygon_map(m, STATUS_SPEC, view_for(D), selected=sel, key="map_overview", height=440)
-    with lcol:
-        show_legend(STATUS_SPEC, lo, hi, present)
-    apply_map_click(clicked, "overview")
+    st.markdown("### How it works")
+    st.info("**Yield, satellite, weather and soil data  →  Granary records  →  Analytics  →  Prediction  →  Advisory rules  →  "
+            "AI wording (optional)  →  KPKM decision and follow-up**")
+    st.caption("The granary records hold one entry per granary and 10-day period (satellite) or per granary and year (yield). The dashboard "
+               "supports decisions; it is not a real-time crop simulator.")
 
-    st.markdown("**Granary scoreboard**")
-    st.dataframe(
-        tbl, hide_index=True, width="stretch",
-        column_config={
-            f"Yield {D.LAST_YEAR} (kg/ha)": st.column_config.NumberColumn(format="%d"),
-            "Change vs previous year (%)": st.column_config.NumberColumn(format="%+.1f"),
-            "vs own average (SD)": st.column_config.NumberColumn(format="%+.2f",
-                                                                  help="0 = a typical year for this granary"),
-            "Next-year outlook (kg/ha)": st.column_config.NumberColumn(format="%d")})
+    st.markdown("### Who can benefit?")
+    st.write("KPKM programme managers and granary authorities, who decide where to look first and what to do. Researchers and students can "
+             "use it to see how the forecasts and the yield outlook are built and tested.")
 
-    st.markdown("**Points to know before using the numbers**")
-    shared = D.yh.dropna(subset=["Shares_series_with"])
-    shared = shared[shared.Shares_series_with.astype(str).str.len() > 0].District.unique()
-    jumps = D.yh[D.yh.Flag_large_jump]
+    with st.expander("🔬 Data, technology and research"):
+        st.markdown(
+            "**Data**\n"
+            f"- Reported yield per granary and year, {y0} to {y1} (file supplied for the project).\n"
+            "- Optical satellite: Sentinel-2 surface reflectance (NDVI, EVI, LSWI, MNDWI), cropland pixels only (ESA WorldCover 2021).\n"
+            "- Radar satellite: Sentinel-1 (VV backscatter), which works through cloud.\n"
+            "- Weather: ERA5-Land (temperature, rainfall, solar radiation).\n"
+            "- Soil: OpenLandMap topsoil pH.\n"
+            "- Boundaries: Malaysian district and state boundaries; each granary is drawn as the districts it covers.\n\n"
+            "**Methods**\n"
+            "- Vegetation forecast (10 and 30 days): ridge regression and gradient boosting, checked year by year on years the model had not seen.\n"
+            "- Crop status and resilience: measured against the range that forecast expects.\n"
+            "- Yield outlook: transfer learning, which learns how much one year's yield carries into the next from the other granaries.\n"
+            "- Advice: editable rules, each tied to a published source, and an optional AI model that only rewrites the result in plain language.\n"
+            "- Decisions are stored in a database; the Word report is generated from the same records.")
+
+    st.markdown("### ⚠️ Important notes")
     notes = []
-    if len(shared):
-        notes.append("Granaries reporting an identical yield series (not independent): " + ", ".join(shared))
-    if len(jumps):
-        worst = jumps.groupby("District").Year.apply(lambda s: ", ".join(map(str, s)))
-        notes.append("Large year-to-year yield jumps (check how yield was counted): "
-                     + "; ".join(f"{d} ({y})" for d, y in worst.items()))
-    if D.WEAK:
-        notes.append("Weak planting signal in the satellite series: " + ", ".join(D.WEAK))
-    notes.append("On the maps each granary is the administrative district(s) it covers; the satellite values come only from "
-                 "sampled paddy pixels inside them, not from the whole district.")
+    if D.AS_OF:
+        notes.append(f"The satellite data ends **{D.AS_OF}**. Crop status, forecasts and advice describe that date, not today, until the data is refreshed.")
+    notes += [
+        f"Reported yield has only {y1 - y0 + 1} yearly values per granary, and its definition may differ from official statistics: check it with the data owner.",
+        "The yield outlook was about as accurate as 'same as last year' in back-tests (about 8% error at 1 year, 11% at 2, 14% at 3). Treat it as a planning range.",
+        "Crop status and resilience are signals that something differs from expected. They cannot say why, so each intervention is something to check, ask or prepare.",
+        "Interventions are drafts from rules that an agronomist has not yet reviewed. The estimated growth stage comes from the planting calendar, not field observation.",
+        "On the maps each granary is the district(s) it covers; the satellite values come only from sampled paddy pixels inside them.",
+    ]
     for n in notes:
         st.markdown(f"- {n}")
 
+    st.markdown("### Research and development")
+    for line in RESEARCH:
+        st.markdown(line)
+
     with st.expander("How reliable is this? (model track record and known limits)"):
         tab_reliability.render(D)
+
+    st.markdown(f"##### {CLOSING}")
+    n_s = len(D.series) if D.series is not None else 0
+    st.caption(f"Loaded {len(D.yh)} granary-year yield records ({y0} to {y1}) from yield_history.csv"
+               + (f" and {n_s:,} ten-day satellite records from ndvi_district_decade.csv" if n_s else "")
+               + f". Decisions you record are saved to: {store.describe(D.DATA_DIR)}.")

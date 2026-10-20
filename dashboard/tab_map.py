@@ -3,6 +3,7 @@ import pandas as pd
 import streamlit as st
 
 from .charts import ndvi_figure, yield_figure
+from .sidepanel import side_panel
 from .mapkit import polygon_map, show_legend, view_for
 from .ui import apply_map_click, info_panel, selected_granary
 
@@ -131,6 +132,16 @@ def render(D):
         f"{len(D.SAT)} of {len(D.ALL)} granaries. Each coloured area is the administrative district(s) the granary covers (not the exact paddy fields).")
     sel = selected_granary()
     past, now = layer_specs(D.FINAL_TEST_YEAR)
+    if D.resil_fc is not None:
+        now["Crop resilience index (0 to 100, relative)"] = dict(
+            col="Resilience_index", fmt="{:.0f}", year=False, kind="cont", low="less resilient than the other granaries",
+            high="more resilient than the other granaries",
+            meaning="Measured through the NDVI forecast: how rarely and how deeply greenness falls below the forecast range "
+                    "(resistance), how fast it comes back (recovery) and how steady the yearly peak is. It is relative to these "
+                    "granaries and has not been shown to predict yield.")
+        now["Typical recovery after a shortfall (days)"] = dict(
+            col="Typical_recovery_days", fmt="{:.0f}", year=False, kind="cont", low="recovers fast", high="recovers slowly",
+            meaning="Average length of a run of decades below the forecast range in the held-out forecasts (10 days per decade).")
 
     a, b = st.columns([1, 2])
     group = a.radio("Show", ["Yield (past)", "Crop condition and season"], key="map_group")
@@ -148,17 +159,23 @@ def render(D):
     m = (D.fp.merge(D.districts[["District", "Latitude", "Longitude"]], on="District")
          .merge(D.cond, on="District", how="left")
          .merge(D.phen[["District", "trough_A"]], on="District", how="left")
+         .merge(D.resil_fc[["District", "Resilience_index", "Typical_recovery_days"]] if D.resil_fc is not None
+                else pd.DataFrame(columns=["District"]), on="District", how="left")
          .merge(D.yh[D.yh.Year == yr][["District", "Yield", "Yield_z", "Change_pct"]], on="District", how="left"))
     view = view_for(D, sel if zoom_to == "Selected granary" else None)
-    mcol, lcol = st.columns([3, 1])
+    mcol, lcol = st.columns([3, 2])
     with mcol:
         lo, hi, clicked, present = polygon_map(m, spec, view, selected=sel, show_dots=show_dots, show_names=show_names,
-                                               key="map_main")
+                                               key="map_main", height=560)
     with lcol:
-        show_legend(spec, lo, hi, present)
+        v = m.loc[m.District == sel, spec["col"]]
+        shown = "no value" if v.empty or pd.isna(v.iloc[0]) else spec["fmt"].format(v.iloc[0])
+        side_panel(D, sel, spec, lo, hi, present, 560, "map", chart="yield" if group.startswith("Yield") else "ndvi",
+                   layer_line=f"**{layer}{' (' + str(yr) + ')' if spec['year'] else ''}:** {shown}")
     apply_map_click(clicked, "map")
 
-    profile_card(D, sel)
+    with st.expander(f"More detail for {sel}: yield and NDVI charts, flags", expanded=False):
+        profile_card(D, sel)
 
     col = spec["col"]
     st.markdown(f"**Values behind the map: {layer}{' (' + str(yr) + ')' if spec['year'] else ''}**")

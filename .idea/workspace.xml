@@ -5,7 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf06fda0-f34b-45f1-8347-f3fdc7b48134" name="Changes" comment="update latest training">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.streamlit/secrets.toml.example" beforeDir="false" afterPath="$PROJECT_DIR$/.streamlit/secrets.toml.example" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/bridge.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/bridge.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/data.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/mapkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/mapkit.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/tab_advisory.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/tab_advisory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/tab_map.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/tab_map.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/tab_overview.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/tab_overview.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/tab_reliability.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/tab_reliability.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/tab_yield.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/tab_yield.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +57,7 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/FeliciaChoo/paddy-transfer.git&quot;,
+    &quot;url&quot;: &quot;https://github.com/FeliciaChoo/paddy_transfer.git&quot;,
     &quot;accountId&quot;: &quot;857515c1-da8a-473b-a314-7ecd4ae725b0&quot;
   }
 }</component>
@@ -60,43 +73,43 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Flask server.Flask (app_engine_kedah.py).executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.app.executor": "Run",
-    "Python.eda_clean.executor": "Run",
-    "Python.extraction.executor": "Run",
-    "Python.final_model.executor": "Run",
-    "Python.granary_direct.executor": "Run",
-    "Python.ndvi_transfer (1).executor": "Run",
-    "Python.ndvi_transfer.executor": "Run",
-    "Python.ndvi_transfer_feature.executor": "Run",
-    "Python.ndvi_transfer_sweep.executor": "Run",
-    "Python.paddy_transfer.executor": "Run",
-    "Python.prepare_app_data.executor": "Run",
-    "Python.run_extraction.executor": "Run",
-    "Python.run_performance_summary.executor": "Run",
-    "Python.transfer_pipeline.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "database.data.extractors.current.export.id": "Comma-separated (CSV)_id",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/paddy_transfer/data",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Flask server.Flask (app_engine_kedah.py).executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.app.executor&quot;: &quot;Run&quot;,
+    &quot;Python.eda_clean.executor&quot;: &quot;Run&quot;,
+    &quot;Python.extraction.executor&quot;: &quot;Run&quot;,
+    &quot;Python.final_model.executor&quot;: &quot;Run&quot;,
+    &quot;Python.granary_direct.executor&quot;: &quot;Run&quot;,
+    &quot;Python.ndvi_transfer (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.ndvi_transfer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.ndvi_transfer_feature.executor&quot;: &quot;Run&quot;,
+    &quot;Python.ndvi_transfer_sweep.executor&quot;: &quot;Run&quot;,
+    &quot;Python.paddy_transfer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.prepare_app_data.executor&quot;: &quot;Run&quot;,
+    &quot;Python.run_extraction.executor&quot;: &quot;Run&quot;,
+    &quot;Python.run_performance_summary.executor&quot;: &quot;Run&quot;,
+    &quot;Python.transfer_pipeline.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;database.data.extractors.current.export.id&quot;: &quot;Comma-separated (CSV)_id&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/paddy_transfer/data&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\paddy_transfer\data" />
@@ -313,6 +326,10 @@
       <workItem from="1791788637251" duration="2199000" />
       <workItem from="1791850296966" duration="15585000" />
       <workItem from="1791936032556" duration="10030000" />
+      <workItem from="1792031210662" duration="8960000" />
+      <workItem from="1792236958671" duration="889000" />
+      <workItem from="1792461846697" duration="1250000" />
+      <workItem from="1792482788520" duration="1009000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />

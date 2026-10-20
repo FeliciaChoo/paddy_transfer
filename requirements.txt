@@ -6,6 +6,10 @@ scipy
 plotly
 pydeck
 requests
+python-docx          # the Word report (Advisory tab)
+sqlalchemy>=2.0      # the decision database (SQLite by default; any database via DATABASE_URL)
+# only if you point DATABASE_URL at PostgreSQL / MySQL, install the matching driver:
+#   psycopg2-binary   (PostgreSQL)      pymysql   (MySQL / MariaDB)
 # pipeline (eda_clean.py, ndvi_transfer.py, final_model.py, prepare_app_data.py)
 scikit-learn
 matplotlib

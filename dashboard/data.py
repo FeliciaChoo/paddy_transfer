@@ -26,7 +26,12 @@ REQUIRED = {
 OPTIONAL = {"series": "ndvi_district_decade.csv",
             "tl_summary": "transfer_summary.csv",       # pipeline/transfer_benchmark.py --out data (transfer vs normal training)
             "tl_verdict": "transfer_verdict.csv",
-            "tl_paired": "transfer_paired.csv"}
+            "tl_paired": "transfer_paired.csv",
+            "resil_fc": "resilience_forecast.csv",      # pipeline/resilience_from_forecast.py: resilience measured through the NDVI forecast
+            "ctx": "context_signals.csv",               # same script: recent weather / water / soil against each granary's own normal
+            "yield_dyn": "yield_dynamics_summary.csv",
+            "yield_iw": "yield_instance_weighting_summary.csv",   # pipeline/yield_instance_weighting.py
+            "yield_tab": "yield_transfer_summary.csv"}      # pipeline/yield_transfer_benchmark.py: TrAdaBoost on yield inputs  # pipeline/yield_dynamics_transfer.py: transfer vs normal training for yield
 
 
 @st.cache_data

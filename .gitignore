@@ -1,4 +1,5 @@
 data/*.csv
+data/*.db
 eda/DailyGranary*.csv
 research/outputs/
 __pycache__/

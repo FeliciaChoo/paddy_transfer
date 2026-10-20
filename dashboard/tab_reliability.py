@@ -51,7 +51,7 @@ def render(D):
         st.plotly_chart(fig, width="stretch")
         st.caption("Red dots fall outside the forecast range: a possible behind- or ahead-of-schedule signal, not a confirmed problem.")
 
-    st.markdown("**Yield baselines, back-tested 1 to 4 years ahead (mean absolute % error)**")
+    st.markdown("**Yield methods, back-tested 1 to 4 years ahead (mean absolute % error; lower is better)**")
     bt = D.backtest.pivot(index="Method", columns="Horizon_years", values="MAPE_pct").round(1)
     bt.columns = [f"{c} year ahead" for c in bt.columns]
     st.dataframe(bt.reset_index(),
@@ -59,7 +59,8 @@ def render(D):
     weak = f"**{', '.join(D.WEAK)}** " + ("has" if len(D.WEAK) == 1 else "have") + " mixed planting dates, so stage estimates and forecasts are less reliable." if D.WEAK else ""
     st.markdown(f"""
 **What this tool cannot do yet**
-- **Yield outlooks are baselines only.** No satellite or weather model beat 'same as last year' with the yield data available.
+- **The yield outlook is transfer-learned from yield history only.** Carry-over rates are learned on the other granaries. It beats training on one granary alone, but it only matches 'same as last year': no satellite, weather or resilience input improved it with the yield data available.
+- **Resilience is a relative index.** It is measured through the NDVI forecast (how often and how deeply greenness falls below the expected range, and how fast it recovers). Across the 10 granaries it showed no relationship with how stable the reported yield is.
 - **Forecasts start from the end of the data ({D.AS_OF}).** Live use needs a regular update of satellite imagery.
 - **Stage is estimated** from planting calendars inferred from NDVI, not from official dates.
 - **Alerts are not validated** against field reports. A below-range decade is a prompt to check, not a diagnosis.

@@ -125,13 +125,13 @@ def legend_figure(lo, hi, fmt):
     return fig
 
 
-def show_legend(spec, lo, hi, present):
+def show_legend(spec, lo, hi, present, key=None):
     st.markdown("**How to read the colours**")
     if spec["kind"] == "cont":
         if lo is None:
             st.caption("No granary has a value for this layer.")
         else:
-            st.plotly_chart(legend_figure(lo, hi, spec["fmt"]), width="stretch")
+            st.plotly_chart(legend_figure(lo, hi, spec["fmt"]), width="stretch", key=key)
             st.markdown(swatch(RAMP[-1], f"**Yellow:** {spec['high']}") + "<br>" +
                         swatch(RAMP[0], f"**Purple:** {spec['low']}"), unsafe_allow_html=True)
     else:
