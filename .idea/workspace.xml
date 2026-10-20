@@ -4,22 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf06fda0-f34b-45f1-8347-f3fdc7b48134" name="Changes" comment="update latest training">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.streamlit/secrets.toml.example" beforeDir="false" afterPath="$PROJECT_DIR$/.streamlit/secrets.toml.example" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/bridge.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/bridge.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/data.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/mapkit.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/mapkit.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/tab_advisory.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/tab_advisory.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/tab_map.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/tab_map.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/tab_overview.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/tab_overview.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/tab_reliability.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/tab_reliability.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/tab_yield.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/tab_yield.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-    </list>
+    <list default="true" id="cf06fda0-f34b-45f1-8347-f3fdc7b48134" name="Changes" comment="update latest training" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -329,7 +314,7 @@
       <workItem from="1792031210662" duration="8960000" />
       <workItem from="1792236958671" duration="889000" />
       <workItem from="1792461846697" duration="1250000" />
-      <workItem from="1792482788520" duration="1009000" />
+      <workItem from="1792482788520" duration="1735000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -395,7 +380,15 @@
       <option name="project" value="LOCAL" />
       <updated>1791906985270</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="update latest training">
+      <option name="closed" value="true" />
+      <created>1792483867685</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1792483867685</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
