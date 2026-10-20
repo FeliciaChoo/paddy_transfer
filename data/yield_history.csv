@@ -1,0 +1,71 @@
+District,Year,Yield,Change_pct,Flag_large_jump,Shares_series_with,Yield_z
+IADA Barat Laut Selangor,2018,4731.0,,False,,1.262
+IADA Barat Laut Selangor,2019,4756.0,0.528,False,,1.387
+IADA Barat Laut Selangor,2020,4431.0,-6.833,False,,-0.226
+IADA Barat Laut Selangor,2021,4337.0,-2.121,False,,-0.693
+IADA Barat Laut Selangor,2022,4319.0,-0.415,False,,-0.782
+IADA Barat Laut Selangor,2023,4577.0,5.974,False,,0.498
+IADA Barat Laut Selangor,2024,4185.0,-8.565,False,,-1.447
+IADA Kemasin Semerak,2018,4079.0,,False,,2.046
+IADA Kemasin Semerak,2019,3733.0,-8.482,False,,-0.36
+IADA Kemasin Semerak,2020,3666.0,-1.795,False,,-0.825
+IADA Kemasin Semerak,2021,3656.0,-0.273,False,,-0.895
+IADA Kemasin Semerak,2022,3673.0,0.465,False,,-0.777
+IADA Kemasin Semerak,2023,3790.0,3.185,False,,0.037
+IADA Kemasin Semerak,2024,3896.0,2.797,False,,0.774
+IADA Kerian,2018,3957.0,,False,,1.689
+IADA Kerian,2019,3584.0,-9.426,False,,0.16
+IADA Kerian,2020,3223.0,-10.073,False,,-1.32
+IADA Kerian,2021,3830.0,18.833,False,,1.169
+IADA Kerian,2022,3372.0,-11.958,False,,-0.709
+IADA Kerian,2023,3400.0,0.83,False,,-0.595
+IADA Kerian,2024,3449.0,1.441,False,,-0.394
+IADA Pekan,2018,2673.0,,False,,-1.027
+IADA Pekan,2019,2637.0,-1.347,False,,-1.202
+IADA Pekan,2020,2707.0,2.655,False,,-0.862
+IADA Pekan,2021,3218.0,18.877,False,,1.615
+IADA Pekan,2022,3090.0,-3.978,False,,0.995
+IADA Pekan,2023,2965.0,-4.045,False,,0.389
+IADA Pekan,2024,2904.0,-2.057,False,,0.093
+IADA Pulau Pinang,2018,5228.0,,False,,0.443
+IADA Pulau Pinang,2019,5012.0,-4.132,False,,-0.433
+IADA Pulau Pinang,2020,5022.0,0.2,False,,-0.392
+IADA Pulau Pinang,2021,5655.0,12.605,False,,2.175
+IADA Pulau Pinang,2022,5052.0,-10.663,False,,-0.271
+IADA Pulau Pinang,2023,5054.0,0.04,False,,-0.262
+IADA Pulau Pinang,2024,4808.0,-4.867,False,,-1.26
+IADA Rompin,2018,2910.0,,False,,-1.086
+IADA Rompin,2019,2373.0,-18.454,False,,-1.754
+IADA Rompin,2020,4156.0,75.137,True,,0.464
+IADA Rompin,2021,4610.0,10.924,False,,1.029
+IADA Rompin,2022,4431.0,-3.883,False,,0.807
+IADA Rompin,2023,4466.0,0.79,False,,0.85
+IADA Rompin,2024,3533.0,-20.891,True,,-0.311
+IADA Seberang Perak,2018,3417.0,,False,,0.018
+IADA Seberang Perak,2019,2923.0,-14.457,False,,-0.767
+IADA Seberang Perak,2020,2774.0,-5.098,False,,-1.004
+IADA Seberang Perak,2021,2613.0,-5.804,False,,-1.26
+IADA Seberang Perak,2022,3918.0,49.943,True,,0.814
+IADA Seberang Perak,2023,4479.0,14.319,False,,1.706
+IADA Seberang Perak,2024,3716.0,-17.035,False,,0.493
+KADA,2018,4695.0,,False,,0.995
+KADA,2019,4032.0,-14.121,False,,-0.701
+KADA,2020,4621.0,14.608,False,,0.806
+KADA,2021,4874.0,5.475,False,,1.453
+KADA,2022,4096.0,-15.962,False,,-0.537
+KADA,2023,4095.0,-0.024,False,,-0.54
+KADA,2024,3729.0,-8.938,False,,-1.476
+KETARA,2018,5349.0,,False,,0.943
+KETARA,2019,5162.0,-3.496,False,,0.631
+KETARA,2020,5407.0,4.746,False,,1.039
+KETARA,2021,5218.0,-3.495,False,,0.724
+KETARA,2022,4410.0,-15.485,False,,-0.624
+KETARA,2023,3884.0,-11.927,False,,-1.502
+KETARA,2024,4059.0,4.506,False,,-1.21
+MADA,2018,5111.0,,False,,1.43
+MADA,2019,4933.0,-3.483,False,,1.046
+MADA,2020,4833.0,-2.027,False,,0.83
+MADA,2021,4192.0,-13.263,False,,-0.552
+MADA,2022,4240.0,1.145,False,,-0.448
+MADA,2023,3878.0,-8.538,False,,-1.229
+MADA,2024,3949.0,1.831,False,,-1.076

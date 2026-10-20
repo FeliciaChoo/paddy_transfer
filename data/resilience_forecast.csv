@@ -1,0 +1,11 @@
+District,n_decades,Shock_share,Shock_depth,Recovery_decades,Longest_run,Peak_NDVI_CV,Resilience_index,Resilience_class,Typical_recovery_days
+IADA Barat Laut Selangor,111,0.1622,0.0825,1.125,2,0.0494,35.0,lower,11.0
+IADA Kemasin Semerak,100,0.07,0.0604,1.1667,2,0.0435,60.0,higher,12.0
+IADA Kerian,123,0.0894,0.0273,1.375,2,0.0656,50.0,middle,14.0
+IADA Pekan,89,0.1124,0.0306,1.0,1,0.067,57.5,higher,10.0
+IADA Pulau Pinang,132,0.1212,0.0509,1.2308,4,0.0349,55.0,middle,12.0
+IADA Rompin,101,0.0792,0.051,1.3333,3,0.0426,55.0,middle,13.0
+IADA Seberang Perak,110,0.0909,0.0678,1.1111,2,0.0618,45.0,lower,11.0
+KADA,97,0.0515,0.1052,1.0,1,0.0616,60.0,higher,10.0
+KETARA,97,0.0722,0.0345,1.0,1,0.0384,82.5,higher,10.0
+MADA,124,0.1452,0.0411,1.3846,3,0.0104,50.0,middle,14.0

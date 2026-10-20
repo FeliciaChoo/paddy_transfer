@@ -1,0 +1,11 @@
+District,As_of,Last_NDVI,Forecast_10d,Forecast_30d,Lower_30d,Upper_30d,Expected_change_30d,Trend,Stage_10d,Stage_30d,Recent_status,Recent_below,Recent_above,Recent_checked,Below_share_10d,Below_share_30d,NDVI_amplitude,Signal
+IADA Barat Laut Selangor,2024-12-16,0.447,0.403,0.325,0.215,0.435,-0.122,falling,fallow / turnaround,germination / establishment,on track,0,0,4,0.214,0.231,0.21,clear
+IADA Kemasin Semerak,2024-12-16,0.309,0.315,0.394,0.284,0.504,0.085,rising,tillering,max tillering / stem elongation,on track,1,0,4,0.04,0.0,0.2,clear
+IADA Kerian,2024-12-16,0.396,0.445,0.486,0.376,0.596,0.09,rising,grain filling,fallow / turnaround,behind,3,0,4,0.2,0.143,0.3,clear
+IADA Pekan,2024-12-16,0.543,0.427,0.319,0.209,0.429,-0.224,falling,fallow / turnaround,fallow / turnaround,on track,0,0,4,0.048,0.15,0.21,clear
+IADA Pulau Pinang,2024-12-16,0.622,0.677,0.727,0.617,0.837,0.105,rising,panicle initiation / booting,grain filling,on track,0,1,4,0.152,0.129,0.52,clear
+IADA Rompin,2024-12-16,0.271,0.325,0.52,0.409,0.63,0.249,rising,max tillering / stem elongation,panicle initiation / booting,on track,0,0,4,0.125,0.136,0.33,clear
+IADA Seberang Perak,2024-12-16,0.629,0.597,0.496,0.386,0.606,-0.133,falling,maturity / harvest,fallow / turnaround,on track,0,0,4,0.071,0.115,0.36,clear
+KADA,2024-12-16,0.233,0.293,0.341,0.231,0.451,0.108,rising,tillering,max tillering / stem elongation,on track,1,0,4,0.04,0.125,0.31,clear
+KETARA,2024-12-16,0.576,0.464,0.375,0.265,0.485,-0.201,falling,germination / establishment,tillering,on track,0,0,4,0.08,0.208,0.45,clear
+MADA,2024-12-16,0.425,0.567,0.682,0.572,0.792,0.257,rising,panicle initiation / booting,heading / flowering,on track,0,0,4,0.094,0.167,0.55,clear

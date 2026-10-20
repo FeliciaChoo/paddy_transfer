@@ -1,0 +1,5 @@
+Indicator,Pooled_rho,p_value,n_granary_years,Median_rho_within_granary,Granaries_positive
+Peak NDVI,-0.004,0.977,70,0.107,6/10
+Peak EVI,-0.017,0.89,70,-0.268,3/10
+Annual rainfall,-0.086,0.479,70,-0.179,4/10
+Mean temperature,-0.282,0.018,70,-0.339,2/10

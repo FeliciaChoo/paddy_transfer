@@ -1,0 +1,4 @@
+horizon,cases,last_year,ar1_transfer,src_ar1,src_ar1_nat,src_ar1_recent,src_ar1_recency,src_drift,src_drift_recent
+1,40,8.14,8.45,8.14,8.14,8.14,8.14,8.35,8.74
+2,30,11.09,10.66,10.87,11.09,10.76,10.87,11.74,12.96
+3,20,15.88,14.28,15.88,15.88,15.88,15.88,16.54,17.72

@@ -1,0 +1,21 @@
+District,horizon,k_years,MAE_normal_best,best_normal_model,MAE_tradaboost,MAE_persistence,gain_pct,verdict
+IADA Barat Laut Selangor,1,1,0.0742,pooled_ridge,0.096,0.0812,-29.3421,transfer worse
+IADA Barat Laut Selangor,3,1,0.0916,pooled_ridge,0.1026,0.1006,-11.9977,transfer worse
+IADA Kemasin Semerak,1,1,0.0479,pooled_hgb,0.0583,0.0563,-21.7667,transfer worse
+IADA Kemasin Semerak,3,1,0.0577,pooled_ada,0.0796,0.0868,-38.04,transfer worse
+IADA Kerian,1,1,0.0616,pooled_ridge,0.0783,0.0683,-26.9749,transfer worse
+IADA Kerian,3,1,0.0726,pooled_hgb,0.1277,0.1179,-75.9217,transfer worse
+IADA Pekan,1,1,0.0563,pooled_ridge,0.0769,0.0745,-36.4981,transfer worse
+IADA Pekan,3,1,0.0667,pooled_ridge,0.099,0.143,-48.5286,transfer worse
+IADA Pulau Pinang,1,1,0.0647,pooled_ridge,0.0686,0.086,-6.074,transfer worse
+IADA Pulau Pinang,3,1,0.0773,pooled_ridge,0.0957,0.1749,-23.867,transfer worse
+IADA Rompin,1,1,0.0487,pooled_hgb,0.0749,0.0741,-53.7084,transfer worse
+IADA Rompin,3,1,0.0789,pooled_ridge,0.107,0.1542,-35.56,transfer worse
+IADA Seberang Perak,1,1,0.0535,pooled_ridge,0.0761,0.0717,-42.3282,transfer worse
+IADA Seberang Perak,3,1,0.0593,pooled_ridge,0.0748,0.1187,-26.1433,transfer worse
+KADA,1,1,0.0574,pooled_ridge,0.0826,0.0666,-43.841,transfer worse
+KADA,3,1,0.0628,pooled_hgb,0.1205,0.1094,-92.0068,transfer worse
+KETARA,1,1,0.0493,pooled_ridge,0.0628,0.0858,-27.4764,transfer worse
+KETARA,3,1,0.0632,pooled_ridge,0.0966,0.1599,-52.914,transfer worse
+MADA,1,1,0.0567,pooled_hgb,0.0655,0.086,-15.5967,transfer worse
+MADA,3,1,0.0787,pooled_hgb,0.1094,0.1928,-39.136,transfer worse

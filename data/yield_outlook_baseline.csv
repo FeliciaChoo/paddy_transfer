@@ -1,0 +1,41 @@
+District,Last_year,Last_yield,Forecast_year,Horizon_years,Central,Band_pct,Low,High,Method
+IADA Barat Laut Selangor,2024,4185.0,2025,1,4185.0,13.9,3602.3,4767.7,same as last year
+IADA Barat Laut Selangor,2024,4185.0,2026,2,4185.0,15.0,3557.5,4812.5,same as last year
+IADA Barat Laut Selangor,2024,4185.0,2027,3,4360.3,29.8,3059.1,5661.6,average of the last 3 years
+IADA Barat Laut Selangor,2024,4185.0,2028,4,4360.3,29.8,3059.1,5661.6,average of the last 3 years
+IADA Kemasin Semerak,2024,3896.0,2025,1,3896.0,13.9,3353.5,4438.5,same as last year
+IADA Kemasin Semerak,2024,3896.0,2026,2,3896.0,15.0,3311.9,4480.1,same as last year
+IADA Kemasin Semerak,2024,3896.0,2027,3,3786.3,29.8,2656.4,4916.3,average of the last 3 years
+IADA Kemasin Semerak,2024,3896.0,2028,4,3786.3,29.8,2656.4,4916.3,average of the last 3 years
+IADA Kerian,2024,3449.0,2025,1,3449.0,13.9,2968.8,3929.2,same as last year
+IADA Kerian,2024,3449.0,2026,2,3449.0,15.0,2931.9,3966.1,same as last year
+IADA Kerian,2024,3449.0,2027,3,3407.0,29.8,2390.3,4423.7,average of the last 3 years
+IADA Kerian,2024,3449.0,2028,4,3407.0,29.8,2390.3,4423.7,average of the last 3 years
+IADA Pekan,2024,2904.0,2025,1,2904.0,13.9,2499.6,3308.4,same as last year
+IADA Pekan,2024,2904.0,2026,2,2904.0,15.0,2468.6,3339.4,same as last year
+IADA Pekan,2024,2904.0,2027,3,2986.3,29.8,2095.1,3877.5,average of the last 3 years
+IADA Pekan,2024,2904.0,2028,4,2986.3,29.8,2095.1,3877.5,average of the last 3 years
+IADA Pulau Pinang,2024,4808.0,2025,1,4808.0,13.9,4138.5,5477.5,same as last year
+IADA Pulau Pinang,2024,4808.0,2026,2,4808.0,15.0,4087.1,5528.9,same as last year
+IADA Pulau Pinang,2024,4808.0,2027,3,4971.3,29.8,3487.8,6454.9,average of the last 3 years
+IADA Pulau Pinang,2024,4808.0,2028,4,4971.3,29.8,3487.8,6454.9,average of the last 3 years
+IADA Rompin,2024,3533.0,2025,1,3533.0,13.9,3041.1,4024.9,same as last year
+IADA Rompin,2024,3533.0,2026,2,3533.0,15.0,3003.3,4062.7,same as last year
+IADA Rompin,2024,3533.0,2027,3,4143.3,29.8,2906.8,5379.8,average of the last 3 years
+IADA Rompin,2024,3533.0,2028,4,4143.3,29.8,2906.8,5379.8,average of the last 3 years
+IADA Seberang Perak,2024,3716.0,2025,1,3716.0,13.9,3198.6,4233.4,same as last year
+IADA Seberang Perak,2024,3716.0,2026,2,3716.0,15.0,3158.8,4273.2,same as last year
+IADA Seberang Perak,2024,3716.0,2027,3,4037.7,29.8,2832.7,5242.6,average of the last 3 years
+IADA Seberang Perak,2024,3716.0,2028,4,4037.7,29.8,2832.7,5242.6,average of the last 3 years
+KADA,2024,3729.0,2025,1,3729.0,13.9,3209.8,4248.2,same as last year
+KADA,2024,3729.0,2026,2,3729.0,15.0,3169.9,4288.1,same as last year
+KADA,2024,3729.0,2027,3,3973.3,29.8,2787.6,5159.1,average of the last 3 years
+KADA,2024,3729.0,2028,4,3973.3,29.8,2787.6,5159.1,average of the last 3 years
+KETARA,2024,4059.0,2025,1,4059.0,13.9,3493.8,4624.2,same as last year
+KETARA,2024,4059.0,2026,2,4059.0,15.0,3450.4,4667.6,same as last year
+KETARA,2024,4059.0,2027,3,4117.7,29.8,2888.8,5346.5,average of the last 3 years
+KETARA,2024,4059.0,2028,4,4117.7,29.8,2888.8,5346.5,average of the last 3 years
+MADA,2024,3949.0,2025,1,3949.0,13.9,3399.1,4498.9,same as last year
+MADA,2024,3949.0,2026,2,3949.0,15.0,3356.9,4541.1,same as last year
+MADA,2024,3949.0,2027,3,4022.3,29.8,2822.0,5222.7,average of the last 3 years
+MADA,2024,3949.0,2028,4,4022.3,29.8,2822.0,5222.7,average of the last 3 years

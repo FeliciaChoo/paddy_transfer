@@ -1,0 +1,23 @@
+Horizon_years,Method,n,MAPE_pct,P80_abs_error_pct
+1,last year,40,8.14,13.92
+1,transfer-learned carry-over (rate learned on the other granaries),40,8.45,15.41
+1,normal training (smoothing learned on the granary alone),40,10.22,16.86
+1,3-year average,40,10.43,16.82
+1,average of all past years,40,11.43,18.6
+1,trend (last 5 years),40,11.6,18.09
+2,transfer-learned carry-over (rate learned on the other granaries),30,10.66,17.88
+2,last year,30,11.09,14.99
+2,normal training (smoothing learned on the granary alone),30,11.89,21.16
+2,average of all past years,30,12.7,21.58
+2,3-year average,30,12.91,21.68
+2,trend (last 5 years),30,16.92,23.08
+3,average of all past years,20,13.89,28.21
+3,3-year average,20,13.93,28.21
+3,normal training (smoothing learned on the granary alone),20,14.21,25.88
+3,transfer-learned carry-over (rate learned on the other granaries),20,14.28,26.29
+3,last year,20,15.88,29.84
+3,trend (last 5 years),20,25.96,38.04
+4,3-year average,10,13.53,20.57
+4,average of all past years,10,13.53,20.57
+4,last year,10,15.21,24.21
+4,trend (last 5 years),10,28.98,51.64

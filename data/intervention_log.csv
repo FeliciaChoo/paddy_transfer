@@ -1,0 +1,2 @@
+time,granary,rule_id,action,decision,note,decided_by,data_as_of,status,confidence
+2026-10-14 22:14,IADA Kemasin Semerak,R12,Do not allocate extra resources on this alert alone; combine it with field reports first.,Modify,,,2024-12-16,on track,low
