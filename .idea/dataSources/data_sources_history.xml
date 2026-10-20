@@ -1,0 +1,14 @@
+<DataSourcesHistory>
+  <DataSourceFromHistory isRemovedFromProject="true">
+    <data-source source="LOCAL" name="HSQLDB (Local)" uuid="e006c797-f6ad-4c5f-aa8b-fd52cdb9d4cc">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="HSQLDB" />
+      <driver-ref>hsqldb.local</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.hsqldb.jdbc.JDBCDriver</jdbc-driver>
+      <jdbc-url>jdbc:hsqldb:file:;ifexists=true</jdbc-url>
+      <secret-storage>master_key</secret-storage>
+      <schema-mapping />
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+  </DataSourceFromHistory>
+</DataSourcesHistory>
