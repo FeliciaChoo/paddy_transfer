@@ -1,0 +1,10 @@
+,mean_MAE,change_vs_pooled_%,granaries_better_than_pooled
+pooled_ridge,0.0747,0.0,0
+std_pool,0.0845,13.7,0
+std_pool_stable,0.0834,12.0,0
+residual,0.08,8.7,4
+residual_strong,0.0733,-1.1,8
+residual_bias,0.074,-0.1,6
+coral,0.0821,10.7,3
+coral_eps10,0.0744,0.3,7
+coral_eps100,0.0734,-1.0,7

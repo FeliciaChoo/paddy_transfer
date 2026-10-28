@@ -1,0 +1,13 @@
+horizon,k_years,method,spearman_distance_vs_gain,p_value,granaries_improved,n
+1,1,std_pool,0.103,0.777,3,10
+1,1,coral,0.648,0.043,6,10
+1,1,residual,0.515,0.128,3,10
+1,1,granary_intercept,0.394,0.26,7,10
+1,1,nearest3,0.576,0.082,5,10
+1,1,dist_weight,0.042,0.907,10,10
+3,1,std_pool,0.261,0.467,0,10
+3,1,coral,0.806,0.005,3,10
+3,1,residual,0.697,0.025,4,10
+3,1,granary_intercept,0.236,0.511,8,10
+3,1,nearest3,0.345,0.328,7,10
+3,1,dist_weight,0.345,0.328,9,10

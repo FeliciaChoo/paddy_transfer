@@ -1,0 +1,5 @@
+# Everything needed to RUN THE PIPELINE on your own computer (extraction, EDA, models, transfer-learning tests).
+# The dashboard itself only needs requirements.txt.
+-r requirements.txt
+matplotlib
+earthengine-api      # only for pipeline/granary_direct.py and pipeline/granary_pipeline.py (Google Earth Engine)
