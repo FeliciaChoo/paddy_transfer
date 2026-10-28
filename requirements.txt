@@ -1,17 +1,12 @@
-# dashboard
+# Dashboard: this is what Streamlit Community Cloud installs. Tested in a clean environment with only these packages.
 streamlit>=1.50
 pandas>=2.0
 numpy
-scipy
 plotly
 pydeck
 requests
 python-docx          # the Word report (Advisory tab)
+scikit-learn        # the transfer-learning workflow (tabs 6 and 7)
+scipy                # statistical tests and weights in the transfer-learning workflow
 sqlalchemy>=2.0      # the decision database (SQLite by default; any database via DATABASE_URL)
-# only if you point DATABASE_URL at PostgreSQL / MySQL, install the matching driver:
-#   psycopg2-binary   (PostgreSQL)      pymysql   (MySQL / MariaDB)
-# pipeline (eda_clean.py, ndvi_transfer.py, final_model.py, prepare_app_data.py)
-scikit-learn
-matplotlib
-# only for extracting data from Google Earth Engine (pipeline/granary_direct.py, granary_pipeline.py)
-earthengine-api
+# if you point DATABASE_URL at PostgreSQL or MySQL, add the driver here: psycopg2-binary (PostgreSQL) or pymysql (MySQL)

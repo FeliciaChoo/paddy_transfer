@@ -26,12 +26,62 @@ def render(D):
         f"It brings the reported yield, satellite vegetation data, weather and soil information of {n_g} granaries together in one interactive "
         "dashboard.")
 
-    st.markdown("### Four questions it helps answer")
+    st.markdown("""
+    <style>
+    /* Make all four columns equal in width */
+    div[data-testid="stHorizontalBlock"] {
+        align-items: stretch;
+    }
+
+    /* Give every card the same height and layout */
+    .info-card {
+        height: 230px;
+        box-sizing: border-box;
+        padding: 20px;
+        border: 1px solid #e5e7eb;
+        border-radius: 14px;
+        background-color: white;
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Icon */
+    .info-card-icon {
+        font-size: 26px;
+        margin-bottom: 10px;
+    }
+
+    /* Card title */
+    .info-card h4 {
+        font-size: 17px;
+        line-height: 1.4;
+        margin: 0 0 10px 0;
+        min-height: 48px;
+    }
+
+    /* Description */
+    .info-card p {
+        font-size: 14px;
+        line-height: 1.5;
+        margin: 0 0 12px 0;
+        flex-grow: 1;
+    }
+
+    /* Tab label stays at the bottom */
+    .info-card-tab {
+        font-size: 12px;
+        font-weight: 600;
+        color: #64748b;
+        margin-top: auto;
+    }
+    </style>
+    """, unsafe_allow_html=True)
     c = st.columns(4)
     _card(c[0], "🕘", "What happened?", f"Explore the yield each granary reported, year by year ({y0} to {y1}).", "Tab 3 · Yield")
-    _card(c[1], "🔮", "What might happen next?", "See an outlook for the next 1 to 4 years, with a range around it.", "Tab 3 · Outlook")
+    _card(c[1], "🔮", "What happen next?", "See an outlook for the next 1 to 4 years, with a range around it.", "Tab 3 · Outlook")
     _card(c[2], "🛰️", "What is happening?", "Examine crop condition, the vegetation forecast, resilience, weather and soil.", "Tab 2 · Dynamic maps")
-    _card(c[3], "💡", "What should we consider doing?", "Review draft interventions: who should act, by when and why.", "Tab 4 · Advisory")
+    _card(c[3], "💡", "What should do?", "Review draft interventions: who should act, by when and why.", "Tab 4 · Advisory")
 
     st.markdown("### What you can do")
     a, b = st.columns(2)
@@ -45,6 +95,8 @@ def render(D):
                     "Word report.")
         st.markdown("**✅ Record decisions and follow up**  \nAccept, modify, reject or defer each intervention, then track status and "
                     "overdue items.")
+        st.markdown("**🔬 Assess, then transfer**  \nTabs 6 and 7: compare a source and a target granary, harmonise the data, see which transfer method suits "
+                    "the evidence, run it, and compare it with baselines.")
         st.markdown("**🧪 Check the models**  \nSee the results without and with transfer learning, and the measured errors.")
 
     st.markdown("### How it works")

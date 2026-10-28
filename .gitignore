@@ -1,9 +1,18 @@
-data/*.csv
-data/*.db
-eda/DailyGranary*.csv
-research/outputs/
+.venv/
 __pycache__/
 *.pyc
-.venv/
-gee_cache/
+# secrets: never commit. On Streamlit Community Cloud paste them in App settings > Secrets
 .streamlit/secrets.toml
+# created while the app runs (local decision database and logs)
+data/*.db
+data/*.tmp
+data/decision_tracker.csv
+data/intervention_log.csv
+data/intervention_rules_old.csv
+# large pipeline files that the dashboard does not need. NOTE: data/*.csv is NOT ignored: the dashboard reads it.
+DailyGranary*.csv
+malaysia_granary_annual*.csv
+eda/
+final_model/
+gee_cache/
+research/outputs/

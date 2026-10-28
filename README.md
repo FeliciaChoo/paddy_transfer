@@ -1,7 +1,7 @@
-#  granary dashboard (for KPKM / granary administrators)
+# ACTS granary dashboard (for KPKM / granary administrators)
 
 Streamlit dashboard for paddy granaries. The unit everywhere is the **granary**, drawn on the maps as the administrative
-district(s) it covers. Six components:
+district(s) it covers. Eight tabs:
 
 | # | Component | File |
 |---|-----------|------|
@@ -15,7 +15,7 @@ district(s) it covers. Six components:
 ## Run it (PowerShell, one command per line, in this order)
 
 ```powershell
-pip install -r requirements.txt
+pip install -r requirements-pipeline.txt      # the dashboard alone needs only requirements.txt
 
 # 1. satellite extraction (Earth Engine) -> DailyGranary.csv  (District + Granary columns). Slow, resumable, cached in gee_cache/
 python pipeline/granary_direct.py --yield-csv malaysia_granary_annual_ml_ready.csv --out DailyGranary.csv --end-year 2026
@@ -146,3 +146,18 @@ Outlook version adds the outlook to the chart); it stays closed until pressed.
 `dashboard/tab_overview.py`: what the dashboard is, four questions it answers, what you can do, how it works, who it is for, data and methods,
 important notes (the satellite end date is computed from the data), research credits, and the reliability notes. Change the app name,
 tagline and the Research and development lines in `dashboard/about_config.py` (the credit lines are placeholders to fill in).
+
+## Transfer-learning assessment (scripts and results)
+`pipeline/pre_transfer_assessment.py` (is it safe to transfer, and from which granaries: covariates only), `pipeline/transfer_methods.py` (feature-based,
+parameter-based and source-selection methods on the NDVI task), `pipeline/yield_dynamics_methods.py` (nearest-source and shrinkage for the yield
+outlook), `pipeline/transfer_error_diagnosis.py` (why some methods did worse). Run them in that order after step 6 with `--out data`. The written
+assessment is `docs/transfer_learning_assessment.md`; the expectations written BEFORE the methods were run are `data/pre_transfer_expectations.md`.
+
+## Publishing
+See `DEPLOY.md` (Streamlit Community Cloud from a private GitHub repository, shared with your supervisor by email).
+
+## Transfer-learning workflow (tabs 6 and 7)
+Tab **6 · Pre-Transfer Assessment** (select domains, assess data, harmonise, evaluate suitability) must be completed before tab **7 · Transfer Learning**
+(select strategy, run, compare). The order is enforced in the backend (`acts_transfer/workflow.py`), not only on the page. The method, formulas, scenarios,
+validation and results are in `docs/transfer_workflow_guide.md`; two complete example runs are in `docs/example_run_BLS_to_MADA.md` and
+`docs/example_run_BLS_to_KETARA.md`. Tests: `python -m pytest tests -q`.

@@ -6,9 +6,9 @@ CLOSING = "Granary Monitor: from agricultural data to informed decisions."
 
 # Shown under "Research and development". Replace the bracketed parts with your own details; delete a line to remove it.
 RESEARCH = [
-    "Project: Instance-Weighting via TrAdaBoost.R2 method forCross-farm Paddy Yield Intervention Decision Support",
-    "Developer: Choo En Yi, Bachelor of Computer Science, Department of Computer Science ",
-    "Universiti Putra Malaysia",
-    "Supervisor: PROFESOR Ts. DR. NURFADHLINA MOHD SHAREF",
-    "Contact: nurfadhlina@upm.edu.my",
+    "Project: [project title]",
+    "Developer: [your name], [programme], [faculty]",
+    "[University]",
+    "Supervisor: [supervisor name and title]",
+    "Contact: [email address]",
 ]
