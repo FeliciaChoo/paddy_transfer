@@ -3,3 +3,4 @@
 -r requirements.txt
 matplotlib
 earthengine-api      # only for pipeline/granary_direct.py and pipeline/granary_pipeline.py (Google Earth Engine)
+shapely              # only for pipeline/paddy_mask.py (paddy polygons)

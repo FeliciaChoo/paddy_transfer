@@ -3,10 +3,11 @@
 The wording lives here; the names and credits live in about_config.py. Numbers on the page come from the loaded data, so they stay true
 when the data is refreshed.
 """
+import pandas as pd
 import streamlit as st
 
 from . import store, tab_reliability
-from .about_config import APP_NAME, CLOSING, RESEARCH, TAGLINE
+from .about_config import APP_NAME, CLOSING, PACE_ROWS, RESEARCH, RESEARCH_PROBLEM, SCOPE_ROWS, TAGLINE
 
 
 def _card(col, icon, title, body, where):
@@ -78,10 +79,16 @@ def render(D):
     </style>
     """, unsafe_allow_html=True)
     c = st.columns(4)
-    _card(c[0], "🕘", "What happened?", f"Explore the yield each granary reported, year by year ({y0} to {y1}).", "Tab 3 · Yield")
-    _card(c[1], "🔮", "What happen next?", "See an outlook for the next 1 to 4 years, with a range around it.", "Tab 3 · Outlook")
+    _card(c[0], "🕘", "What happened?", f"Explore the yield each granary reported, year by year ({y0} to {y1}).", "Tab 6 · Yield Prediction")
+    _card(c[1], "🔮", "What happen next?", "See an outlook for the next 1 to 4 years, with a range around it.", "Tab 7 · Future Yield Outlook")
     _card(c[2], "🛰️", "What is happening?", "Examine crop condition, the vegetation forecast, resilience, weather and soil.", "Tab 2 · Dynamic maps")
-    _card(c[3], "💡", "What should do?", "Review draft interventions: who should act, by when and why.", "Tab 4 · Advisory")
+    _card(c[3], "💡", "What should do?", "Review draft interventions: who should act, by when and why.", "Tab 8 · Intervention Advisory")
+
+    st.markdown("### Research problem and scope")
+    st.write(RESEARCH_PROBLEM)
+    st.dataframe(pd.DataFrame(SCOPE_ROWS, columns=["Item", "Scope"]), hide_index=True, width="stretch")
+    with st.expander("How the project is organised (PACE: Plan, Analyze, Construct, Execute)"):
+        st.dataframe(pd.DataFrame(PACE_ROWS, columns=["Stage", "Dashboard tab(s)", "What happens"]), hide_index=True, width="stretch")
 
     st.markdown("### What you can do")
     a, b = st.columns(2)
@@ -95,7 +102,7 @@ def render(D):
                     "Word report.")
         st.markdown("**✅ Record decisions and follow up**  \nAccept, modify, reject or defer each intervention, then track status and "
                     "overdue items.")
-        st.markdown("**🔬 Assess, then transfer**  \nTabs 6 and 7: compare a source and a target granary, harmonise the data, see which transfer method suits "
+        st.markdown("**🔬 Assess, then transfer**  \nTabs 3 to 5: compare a source and a target granary, harmonise the data, see which transfer method suits "
                     "the evidence, run it, and compare it with baselines.")
         st.markdown("**🧪 Check the models**  \nSee the results without and with transfer learning, and the measured errors.")
 
@@ -151,3 +158,69 @@ def render(D):
     st.caption(f"Loaded {len(D.yh)} granary-year yield records ({y0} to {y1}) from yield_history.csv"
                + (f" and {n_s:,} ten-day satellite records from ndvi_district_decade.csv" if n_s else "")
                + f". Decisions you record are saved to: {store.describe(D.DATA_DIR)}.")
+
+
+# ------------------------------------------------------------------------------------------------ PACE V9 overview hub
+def render_overview_hub(D):
+    """Executive overview and governance status: the entry page. KPIs, one summary card per workspace with a jump button, and the national snapshot with each granary's registry state."""
+    import html
+
+    from acts_transfer import governance as gov
+
+    from .tab_map import _map_table
+    st.markdown("## Executive Overview & Governance Status")
+    st.caption("Unified cross-role summary across KPKM Programme operations and Model Validator governance.")
+    ds, dy = D.DATA_DIR / "transfer_stage_dataset.csv", D.DATA_DIR / "transfer_yield_dataset.csv"
+    if not (ds.exists() or dy.exists()):
+        st.warning("The granary-year table is missing, so the overview has no yield figures.")
+        return
+    df = _map_table(str(ds), str(dy), (ds if ds.exists() else dy).stat().st_mtime)
+    latest_year = int(df.Year.max())
+    latest = df[df.Year == latest_year]
+    reg = gov.load()
+    n_app, n_loc, n_pend = gov.counts(D.ALL, reg)
+    total = len(D.ALL)
+    if reg.get("error"):
+        st.warning(reg["error"])
+
+    k1, k2, k3, k4, k5 = st.columns(5)
+    k1.metric("Latest Reference Year", f"{latest_year}")
+    k2.metric("Mean Granary Yield", f"{latest.Yield_kg_ha.mean():,.0f} kg/ha", help="Simple average over granaries. Planted area is not available, so it is not area-weighted.")
+    k3.metric("Monitored Granaries", f"{total} Schemes")
+    k4.metric("Mean Optical Coverage", f"{latest.Optical_Valid_Fraction.mean() * 100:.1f}%", help="Share of ten-day optical observations that were really observed, averaged over granaries.")
+    k5.metric("Verified Transfer Models", f"{n_app} / {total}", help="Granaries whose Detrended Residual Transfer forecast a Model Validator has signed off.")
+
+    st.markdown("### Workspace Summaries")
+    left, right = st.columns(2)
+    top = latest.loc[latest.Yield_kg_ha.idxmax()]
+    with left:
+        st.markdown(
+            f"""<div class="pace-card"><h4 style="color:#0B2117;margin-top:0;">🌾 KPKM Programme Manager Summary</h4>
+            <p style="color:#43544B;">Monitor spatial field conditions, heading-stage (70 days after sowing) nowcasts and 2025–2028 climate scenario pathways across the Peninsular Malaysia granaries.</p>
+            <ul><li><b>Active Focus Granary:</b> {html.escape(str(st.session_state.get('granary', '')))}</li>
+            <li><b>Highest {latest_year} Yield:</b> {html.escape(str(top.District))} ({top.Yield_kg_ha:,.0f} kg/ha)</li></ul></div>""", unsafe_allow_html=True)
+        if st.button("Enter KPKM Programme Manager Workspace →", key="jump_kpkm"):
+            st.session_state["nav_mode"] = "KPKM Programme Manager"
+            st.session_state["scroll_top"] = True
+            st.rerun()
+    with right:
+        ovf = latest.Optical_Valid_Fraction.mean() * 100
+        st.markdown(
+            f"""<div class="pace-card"><h4 style="color:#0B2117;margin-top:0;">🛡️ Model Validator & Data Steward Summary</h4>
+            <p style="color:#43544B;">Audit multi-sensor cloud coverage, screen East Coast monsoon outliers (KETARA), and approve Detrended Residual Transfer models.</p>
+            <ul><li><b>Mean {latest_year} Optical Coverage:</b> {ovf:.1f}%</li>
+            <li><b>Safeguard Gate Status:</b> {n_app} Approved | {n_loc} Local Baseline ({n_pend} pending review)</li></ul></div>""", unsafe_allow_html=True)
+        if st.button("Enter Model Validator Workflow →", key="jump_validator"):
+            st.session_state["nav_mode"] = "Model Validator & Data Steward"
+            st.session_state["validator_step"] = 1
+            st.session_state["scroll_top"] = True
+            st.rerun()
+
+    st.markdown("### National Granary Governance & Yield Snapshot")
+    snap = latest[["District", "Year", "Yield_kg_ha", "Optical_Valid_Fraction"]].copy()
+    snap["Yield (t/ha)"] = (snap.Yield_kg_ha / 1000).round(2)
+    snap["Optical Coverage (%)"] = (snap.Optical_Valid_Fraction * 100).round(1)
+    snap["Governance Status"] = snap.District.map(lambda d: gov.effective(d, reg)["status"])
+    st.dataframe(snap[["District", "Year", "Yield (t/ha)", "Yield_kg_ha", "Optical Coverage (%)", "Governance Status"]], width="stretch", hide_index=True)
+    with st.expander("About the project, the research problem and how the work is organised (PACE)"):
+        render(D)

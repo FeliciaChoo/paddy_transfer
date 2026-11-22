@@ -1,0 +1,10 @@
+,value
+polygons_in_file,10022.0
+polygons_without_usable_geometry,0.0
+invalid_geometry_repaired,39.0
+zero_area_dropped,1488.0
+below_1_ha_dropped,3794.0
+polygons_kept,4740.0
+ha_in_file,366191.1
+ha_kept,365473.8
+pct_area_kept,99.8

@@ -51,6 +51,31 @@ METHOD_NOTES = {
     "tca": dict(compares="all retained shared features", scaling="pooled mean and SD", metric="MMD in a linear kernel space",
                 why="suits a shift that a shared low-dimensional space can remove", influence="learns 4 components that keep variance and cut the MMD",
                 limits="needs enough rows; ignores labels when choosing the components"),
+    "persistence": dict(compares="none", scaling="none", metric="none", why="the naive forecast every yield model must beat: next year's yield = last year's yield",
+                        influence="none", limits="ignores every input; cannot respond to a poor or good season"),
+    "granary_intercept_ridge": dict(compares="none directly: granary differences are absorbed by per-granary intercepts", scaling="robust (median/IQR) on the training rows",
+                                    metric="none; the intercept shrinkage k = 1 pools each granary's level towards the common level",
+                                    why="suits a yield-LEVEL (label) shift between granaries: the intercepts take the level difference, the shared slope carries the feature response",
+                                    influence="the target intercept comes from its training years only; with few years it is pulled towards the common level",
+                                    limits="assumes one feature-yield slope for all granaries; a poor target intercept (very few years) biases every prediction"),
+    "kmm_ridge": dict(compares="all retained shared features", scaling="robust (median/IQR) on source rows and target training rows",
+                      metric="MMD with an RBF kernel (median-heuristic bandwidth); KMM minimises that discrepancy, then a weighted Ridge is fitted",
+                      why="covariate shift with a linear (Ridge) response: the weights use features only, and Ridge keeps the fit stable at N = 7",
+                      influence="weights in [0, 10]; the effective sample size is reported", limits="assumes a shared feature-yield relationship; unstable weights where the domains barely overlap"),
+    "two_stage_tradaboost_r2": dict(compares="none directly: relevance is judged by prediction error", scaling="robust on source rows and target training rows",
+                                    metric="normalised absolute error of the weak learner (uses labels); the stage-1 step is chosen by leave-one-out error on the target rows",
+                                    why="a moderate shift with few target labels: stage 1 can only shrink source weights (never out-vote the target), stage 2 boosts target rows only",
+                                    influence="source weights are frozen after stage 1; the chosen step and the effective sample size are reported",
+                                    limits="needs at least 3 target rows; with so few the step choice is noisy"),
+    "s_tradaboost_r2": dict(compares="none directly: relevance is judged by prediction error", scaling="robust on source rows and target training rows",
+                            metric="normalised absolute error of the weak learner (uses labels); importance sampling of source rows",
+                            why="a large source and a tiny target: importance sampling and balanced block weights stop the source from swamping the target (arXiv:2204.12044)",
+                            influence="each round samples at most 3 x (target rows) source rows by weight; source and target blocks keep equal mass",
+                            limits="implemented here from the published idea, not the authors' code; stochastic (fixed seed)"),
+    "z_anomaly_transfer": dict(compares="all retained features, as within-granary Z-scores", scaling="within-granary Z-score (the target's from its training rows only)",
+                               metric="none; Ridge on anomalies", why="granaries differ in level and spread but respond alike to an anomaly (a hotter, wetter, greener year than that granary's normal)",
+                               influence="the target's own mean and (shrunk) spread are added back to the predicted anomaly",
+                               limits="needs at least 3 target years for a mean and spread; assumes the anomaly response is shared"),
     "ridge_prior": dict(compares="none (corrects a source model with target labels)", scaling="source mean and SD", metric="none; penalty by leave-one-out",
                         why="suits a useful source model plus a few target labels: a strongly regularised correction keeps the source coefficients",
                         influence="the penalty chosen by leave-one-out sets how far the correction may move from the source model",
@@ -120,7 +145,7 @@ def select(report: AssessmentReport, bundle: HarmonisedBundle, cfg: Config, base
     B_met = (mmd_sig or n_ks > 0 or mmd_fine) and units_ok and not coral_sig and not coral_fine_sig and not label_sig
     S.append(dict(id="B", name="Moderate distribution shift with compatible features", met=B_met,
                   observed="Features differ, units agree, and no covariance or label difference was detected." if B_met else "Not met (covariance or label shift is present, or no shift was found).",
-                  evidence=ev_shift + "; " + ev_cov, methods=["kmm", "tradaboost_r2"],
+                  evidence=ev_shift + "; " + ev_cov, methods=["kmm", "tradaboost_r2", "kmm_ridge", "two_stage_tradaboost_r2", "s_tradaboost_r2"],
                   why="Instance weighting: KMM weights source rows so their feature mean matches the target (no labels needed); TrAdaBoost.R2 lowers the weight of "
                       "source rows that the model fits badly on target rows (needs labelled target rows).",
                   assumptions="The feature-yield relationship is shared (KMM); enough target labels to judge source rows (TrAdaBoost).",
@@ -128,8 +153,8 @@ def select(report: AssessmentReport, bundle: HarmonisedBundle, cfg: Config, base
     C_met = coral_sig or coral_fine_sig or n_ks >= max(2, int(np.ceil(len(tab) / 2))) or n_large >= 2
     S.append(dict(id="C", name="Significant feature-distribution differences", met=bool(C_met),
                   observed="Several features, or the feature covariance, differ clearly." if C_met else "Not met.", evidence=ev_shift + "; " + ev_cov,
-                  methods=["coral", "tca"],
-                  why="Feature-based: CORAL aligns the source's mean and covariance to the target; TCA finds a shared space that cuts the domain gap.",
+                  methods=["coral", "tca", "z_anomaly_transfer"],
+                  why="Feature-based: Z-score anomaly transfer removes each granary's own level and spread; CORAL aligns the source's mean and covariance to the target; TCA finds a shared space that cuts the domain gap.",
                   assumptions="The relationship between the aligned features and yield is shared.",
                   benefits_risks="Can remove a systematic offset; can also remove real signal, and the covariance is noisy with few rows.",
                   alternatives="KMM, TrAdaBoost.R2"))
@@ -145,7 +170,7 @@ def select(report: AssessmentReport, bundle: HarmonisedBundle, cfg: Config, base
     kind = "supervised" if n_t >= 3 else ("semi-supervised (1 to 2 target labels plus target features)" if n_t >= 1 else "unsupervised (no target labels)")
     S.append(dict(id="E", name="Domain shift requiring adaptation", met=bool(E_met),
                   observed=f"A joint feature difference was detected; target labels available per training fold: {n_t} -> {kind}." if E_met else "No joint shift was detected.",
-                  evidence=ev_shift, methods=(["tradaboost_r2", "ridge_prior", "coral"] if n_t >= 3 else ["kmm", "coral", "tca"]),
+                  evidence=ev_shift, methods=(["coral", "tca", "ridge_prior"] if n_t >= 3 else ["kmm", "coral", "tca"]),
                   why=f"Adaptation type follows the labels actually available: {kind}.",
                   assumptions="Adaptation helps only if the shift is in the features and not in the feature-yield relationship.",
                   benefits_risks="May reduce the source-target gap; a feature gap does not by itself mean a worse prediction.", alternatives="source-only and target-only baselines"))
@@ -168,6 +193,14 @@ def select(report: AssessmentReport, bundle: HarmonisedBundle, cfg: Config, base
                   why="Do not force transfer: collect more target data, improve harmonisation, try a different source, or keep a target-only baseline.",
                   assumptions="-", benefits_risks="Avoids a model that is worse than not transferring.", alternatives="a different source domain"))
 
+    G_met = bool(label_sig or label_large)
+    S.append(dict(id="G", name="Yield-level (label) difference between granaries", met=G_met,
+                  observed=("The yield distributions of source and target differ in level." if G_met else "No yield-level difference was detected."),
+                  evidence=(f"label KS p = {lab['KS_p']:.3f}, SMD {lab['SMD']:+.2f}" if lab else "n/a"), methods=["granary_intercept_ridge", "z_anomaly_transfer"],
+                  why="A granary-intercept Ridge gives every granary its own yield level and shares one slope; Z-score anomaly transfer removes level and spread and adds the target's back.",
+                  assumptions="The response of yield to a feature is shared across granaries once level (and spread) are removed.",
+                  benefits_risks="Resolves label shift that would otherwise bias every transferred prediction; the target level rests on a handful of years.",
+                  alternatives="target-only and persistence baselines"))
     for s in S:
         s["executable"] = exe(s["methods"]) if s["methods"] else []
         s["not_executable"] = {k: eligibility(k, n_s, n_t, p, base, cfg)[1] for k in s["methods"] if k not in s["executable"]}
@@ -179,7 +212,7 @@ def select(report: AssessmentReport, bundle: HarmonisedBundle, cfg: Config, base
         reasons += F_conds or ["data not ready"]
     else:
         enough = n_t >= cfg.min_obs_per_feature * p
-        shift_scn = [s["id"] for s in S if s["met"] and s["id"] in "BCE"]
+        shift_scn = [s["id"] for s in S if s["met"] and s["id"] in "BCEG"]
         if shift_scn and report.readiness == "ready" and enough:
             suit = "recommended"
             reasons.append(f"a shift is present (scenario {', '.join(shift_scn)}) and there are enough labelled target rows ({n_t} for {p} features)")
@@ -202,4 +235,9 @@ def select(report: AssessmentReport, bundle: HarmonisedBundle, cfg: Config, base
                          reason=why, recommended_by=", ".join(by) if by else ("-" if k in REGISTRY else "not offered"),
                          features_compared=note.get("compares", "-"), scaling=note.get("scaling", "-"), metric=note.get("metric", "-"),
                          why_suitable=note.get("why", "-"), distance_influence=note.get("influence", "-"), limitations=note.get("limits", "-")))
-    return dict(suitability=suit, reasons=reasons, scenarios=S, methods=pd.DataFrame(rows), facts=facts, bundle_token=bundle.token, base=base)
+    baselines = ("source_only", "target_only", "target_mean", "season_trend", "persistence", "pooled")
+    # data-driven defaults: only methods that a MET scenario recommends (B, C, D or E) and that can run; none when transfer is not recommended.
+    defaults = [] if F_met else list(dict.fromkeys(m for s in S if s["met"] and s["id"] in "BCDEG" for m in s["executable"] if m not in baselines))
+    reference = ["tradaboost_r2"] if eligibility("tradaboost_r2", n_s, n_t, p, base, cfg)[0] else []
+    return dict(suitability=suit, reasons=reasons, scenarios=S, methods=pd.DataFrame(rows), facts=facts, bundle_token=bundle.token, base=base,
+                defaults=defaults, reference=reference)

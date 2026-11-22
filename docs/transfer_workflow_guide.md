@@ -2,24 +2,29 @@
 
 Everything below describes code that exists and was tested. Where something is only proposed, it says so.
 
-## 1. Where Pre-Transfer Assessment is
-Main navigation, tab **6 · Pre-Transfer Assessment** (steps 1 to 4). It comes before tab **7 · Transfer Learning** (steps 5 to 7). Both tabs show the same progress bar
-(seven steps, each marked complete, current, locked or blocked), and tab 7 explains why it is locked and sends the user back to tab 6. The Overview page lists both tabs.
+## 1. Navigation: the required order
+**Overview → Dynamic maps → Data Assessment → Transfer Strategy → Train and Evaluate Model → Yield Prediction → Future Yield Outlook → Intervention Advisory.**
+The first two tabs are unchanged. Tabs 3 to 8 share a status strip (six stages, each complete, ready, locked, blocked or partial, with the reason) and show a notice when a change
+upstream cleared downstream results. Older features were kept and moved: the reported-yield and baseline-outlook views (all granaries) sit inside tabs 6 and 7; the
+decision tracker is the second sub-tab of tab 8; the earlier model checks (transfer learning on the yield-outlook method, stored TrAdaBoost results) sit inside tab 5.
 
-## 2. The user journey
-1. **Select domains** (source, target, base model, how many target seasons a model may train on, thresholds). Clicking *Confirm domains* loads the real data.
-2. **Assess data**: quality, feature compatibility (available versus only proposed), distribution differences at the yearly and the ten-day level, domain classifier, risks, next steps, downloadable report.
-3. **Harmonise data**: unit conversion, renaming, de-duplication, invalid values set to missing, features retained or removed, validation checks. Nothing that is fitted is fitted here.
-4. **Evaluate suitability**: recommended, conditionally recommended or not recommended, with scenarios A to F and their evidence.
-5. **Select strategy** (tab 7): eligible methods, how each uses features and distance; a NOT RECOMMENDED verdict needs a written override reason.
-6. **Run**: all methods plus baselines, with both validation strategies.
-7. **Compare**: metrics, validation sensitivity, improvement against a chosen baseline, predicted versus actual, error distribution, seasonal errors, diagnostics, downloads.
+## 2. What each tab needs, produces, and does when something upstream changes
+| Tab | Needs | Produces | If an upstream step changes |
+|---|---|---|---|
+| 3 Data Assessment | the selected source and target data | assessment, harmonised data, suitability verdict | everything below is cleared |
+| 4 Transfer Strategy | a suitability verdict | the scenario A to F reading, a recommended method list, a confirmed plan | evaluation, predictions, outlook are cleared |
+| 5 Train and Evaluate Model | a confirmed plan | metrics for every method and baseline under two validations, the verdict on whether transfer helps, the model of record | predictions and outlook are cleared |
+| 6 Yield Prediction | an evaluated model | validated (held-out) predictions and predictions for chosen inputs, each naming its model | recalculated from the new model on the next view |
+| 7 Future Yield Outlook | an evaluated model | the outlook for 1 to 4 years under a stated input assumption, with ranges, against the baseline outlook | recalculated the same way |
+| 8 Intervention Advisory | crop condition (always); the validated prediction when the model was built for that granary | advice, report, decision tracker | the prediction line is dropped or refreshed |
+Tab 8 is not locked as a whole, on purpose: the advisory covers all ten granaries and works from crop condition alone, while the validated yield prediction is used only for
+the granary the model was built for. The status line at the top of tab 8 says which inputs the advice rests on.
 
-## 3. Files
-Created: `acts_transfer/` (`config.py`, `assessment.py`, `harmonise.py`, `selection.py`, `methods.py`, `_tradaboost.py`, `evaluation.py`, `diagnostics.py`, `workflow.py`, `errors.py`, `report.py`, `_util.py`),
-`dashboard/tab_transfer.py`, `pipeline/build_transfer_dataset.py`, `pipeline/validate_transfer_assessment.py`, `pipeline/transfer_error_diagnosis.py`, `tests/test_transfer_gating.py`, `tests/test_ui_gating.py`, `data/transfer_yield_dataset.csv`, `data/transfer_decade_features.csv`.
-Modified: `app.py` (three tabs), `dashboard/tab_overview.py` (one line), `requirements.txt` (scikit-learn, scipy), `README.md`.
-Nothing existing was replaced; the other tabs are unchanged.
+## 3. Files in this change
+Modified: `app.py` (tab order), `dashboard/tab_transfer.py` (split into the assessment, strategy, training, prediction and outlook tabs and a status strip), `dashboard/tab_yield.py`
+(two wrappers), `dashboard/tab_advisory.py` and `dashboard/bridge.py` (the validated prediction as evidence), `dashboard/tab_overview.py` (three tab labels and one line),
+`acts_transfer/workflow.py`, `selection.py`, `config.py`, `report.py`.
+New: `acts_transfer/modelchoice.py`, `acts_transfer/predict.py`, `tests/test_pipeline_order.py`; rewritten: `tests/test_ui_gating.py`.
 
 ## 4. Assessment metrics and formulas
 - **Standardised mean difference** (one feature): d = (mean_t - mean_s) / s_p with s_p = sqrt(((n_s-1) s_s^2 + (n_t-1) s_t^2) / (n_s+n_t-2)). Size labels use configurable cut-offs (default 0.2 / 0.5 / 0.8).
@@ -61,7 +66,7 @@ Step 7 has a diagnostics table per method and baseline. Each row has a measured 
 pip install -r requirements.txt                       # dashboard and the workflow
 python pipeline/build_transfer_dataset.py --clean eda/DailyGranary_clean.csv --out data   # only if you rebuild the datasets
 streamlit run app.py                                  # open tab 6, then tab 7
-python -m pytest tests -q                             # 30 tests
+python -m pytest tests -q                             # 49 tests
 python pipeline/validate_transfer_assessment.py --out data   # does the assessment predict transfer harm? (all targets)
 ```
 
@@ -104,3 +109,34 @@ seasons, so it flatters every model. Under forward validation the pure season-tr
 Spearman correlations of the median change in error against target-only with: climate AUC -0.10 (p = 0.80), vegetation/radar AUC -0.25 (p = 0.52), ten-day MMD^2 -0.25 (p = 0.52), calendar offset +0.09 (p = 0.81), label SMD +0.07 (p = 0.86), over 9 targets. None is significant.
 
 What the assessment does catch: **KETARA**, the only target above the far-domain level (climate AUC 0.96), where every transfer method was worse than target-only. What it misses: **KADA** (rated conditionally recommended, climate AUC 0.69), where every method was also worse. Of the 7 NOT RECOMMENDED targets, 3 improved on target-only; of the 2 conditionally recommended, 1 improved. So the verdict is a caution that calls for a baseline comparison, not a prediction. With 7 yearly yields per target, every row is noisy.
+
+## 12. The model of record, predictions and the outlook
+After evaluation `acts_transfer/modelchoice.py` decides which model feeds tabs 6 to 8. The best baseline is chosen by forward-validation error. A transfer method replaces it only
+if all five hold: (1) lower forward MAE than that baseline; (2) a bootstrap interval over held-out seasons that excludes zero; (3) also better under leave-one-season-out;
+(4) at least `adopt_min_seasons` (5) paired held-out seasons; (5) the run was not an override of a NOT RECOMMENDED verdict. Otherwise transfer learning is not used for any prediction,
+and the interface says why. Predictions and the outlook come from `acts_transfer/predict.py`: every row names its model and role; ranges are the 80th percentile of the
+model's held-out errors (for the season-trend model, measured at the same number of seasons ahead where it could be tested, on only 2 to 4 tests, so indicative); inputs are an
+explicit assumption (typical season, last observed season, custom values, or an uploaded table) because this project has no weather forecast; non-numeric or missing inputs are rejected, never filled in.
+A prediction of higher yield is not a realised improvement: transfer learning changes the prediction, not the field.
+
+
+## PACE methodology additions (MADA → IADA Barat Laut Selangor)
+
+**Safeguard (E2).** Delta_NT = RMSE_transfer − min(RMSE_target-only Ridge, RMSE_persistence), on the primary validation. Delta_NT < 0 deploys the best transfer method; Delta_NT ≥ 0 blocks transfer and the model of record becomes
+the best *local* baseline (target-only, persistence, season trend or target mean). Override runs are never deployed. `Config.nt_gate`: `delta_nt` (default) or `delta_nt+stats` (also needs the bootstrap interval to
+exclude zero, no worse under LOYO, and enough held-out years). Criteria 1 to 4 are always computed and displayed as the strength of the evidence.
+
+**Look-ahead guard.** Pooled source rows from the held-out year (and later years in forward validation) are excluded from training in every fold (`Config.source_time_safe`).
+
+**Methods.**
+- *Granary-Intercept Ridge*: y = a_g + Zb. One slope vector; per-granary intercepts a_g = m + n_g/(n_g + 1)(mean residual_g − m), fitted by back-fitting. The target's intercept uses its training years only.
+- *KMM + Weighted Ridge*: kernel-mean-matching weights on features only (RBF, median-heuristic bandwidth), weighted Ridge.
+- *Two-Stage TrAdaBoost.R2* (Pardoe & Stone 2010): stage 1 shrinks source weights only, the step is chosen by leave-one-out error on the target rows (step 0 = no re-weighting is allowed to win); stage 2 freezes them and boosts the target rows.
+- *S-TrAdaBoost.R2* (arXiv:2204.12044): each round importance-samples at most 3 × n_target source rows by weight, fits, decays badly fitted source rows, applies the AdaBoost.R2 update to the target rows and renormalises each block. Written from the published idea; not the authors' code.
+- *Z-Score Anomaly Transfer*: within-granary Z-scores of features and yield (target statistics from its training rows; target spread shrunk toward the source spread), Ridge on anomalies, target level and spread added back.
+
+**In-fold harmonisation (`methods.Prep`).** Median imputation → RobustScaler (or StandardScaler) → VIF/correlation selection (VIF > 10 or |r| > 0.95 dropped first, then the least label-related, until p ≤ 6). Fitted on the rows a method is given, nothing else.
+
+**Metrics.** MAE and RMSE (also in kg/ha), rRMSE %, MAPE %, R² (reported at ≥ 10 held-out points; an indicative value otherwise), win rate against persistence, bootstrap 95% intervals for RMSE and MAE resampling the held-out seasons.
+
+**Stage features (`pipeline/build_stage_features.py`).** See the module docstring. Cycle 2 is detected in 32 of 70 granary-years, so C2_* features are opt-in.

@@ -158,16 +158,29 @@ def test_not_ready_data_blocks_harmonisation_and_everything_after():
         wf.run(methods=["source_only"])
 
 
-def test_not_recommended_needs_an_explicit_override():
-    wf = TransferWorkflow(cfg(min_obs_block=2))
-    wf.select_domains(make_domain("S", 12, 1), make_domain("T", 2, 2), "ridge")   # one target training row per fold
+def _not_recommended_workflow():
+    wf = TransferWorkflow(cfg())
+    wf.select_domains(make_domain("S", 12, 1), make_domain("T", 8, 2, shift=3.0, label_shift=2.0), "ridge")   # features AND yield differ strongly
     complete_through_suitability(wf)
     assert wf.suit["suitability"] == "not_recommended"
-    wf.select_strategy(["source_only"])
+    return wf
+
+
+def test_not_recommended_needs_an_override_only_to_run_a_transfer_method():
+    wf = _not_recommended_workflow()
+    wf.select_strategy(["kmm"])
     with pytest.raises(WorkflowError, match="override"):
-        wf.run()
+        wf.run()                                                      # a transfer method needs a stated reason
     r = wf.run(override_reason="research comparison, accepting the risk")
     assert wf.override and any("override" in n.lower() for n in r.notes)
+    assert wf.choice["transfer_supported"] is False                    # an override run can never become the model used for predictions
+
+
+def test_baselines_only_run_needs_no_override_even_when_not_recommended():
+    wf = _not_recommended_workflow()
+    wf.select_strategy(["target_only"])
+    wf.run()                                                           # direct model training involves no transfer, so nothing to override
+    assert wf.choice is not None and wf.choice["selected"] in ("source_only", "target_only", "target_mean", "season_trend", "pooled")
 
 
 def test_ineligible_method_is_rejected():

@@ -361,6 +361,8 @@ def evidence(D, case):
         ev.append(("E10", f"Weather and soil over the last 3 decades before {case.get('as_of', 'the data end')}: daily maximum temperature "
                           f"{x['max_temp']:.1f} C, rainfall {x['rain_z']:+.1f} SD, sunshine {x['solar_z']:+.1f} SD and night temperature "
                           f"{x['min_z']:+.1f} SD from this granary's normal for the time of year; topsoil pH about {x['ph']:.1f} (map estimate)."))
+    if case.get("pred_line"):
+        ev.append(("E11", case["pred_line"]))
     return ev
 
 
@@ -401,6 +403,8 @@ def summary_text(D, case):
             t += (f" The outlook for {case['outlook_year']} is {case['outlook']:,.0f} kg/ha (range {case['outlook_low']:,.0f} to "
                   f"{case['outlook_high']:,.0f}); it is as accurate as 'same as last year', no better.")
         out.append(t)
+    if case.get("pred_line"):
+        out.append(case["pred_line"])
     out.append(f"Confidence in this advice is {case['confidence']}: " + "; ".join(case["conf_reasons"]) + ".")
     return out
 

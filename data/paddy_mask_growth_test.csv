@@ -1,0 +1,5 @@
+pixel_set,n,baseline_MAPE_last_year,model_MAPE,diff_model_minus_baseline,ci_low,ci_high
+all_pixels,60,8.42,12.48,4.06,2.15,6.24
+on_paddy,60,8.42,12.82,4.4,2.43,6.69
+inside_granary_scheme,60,8.42,12.78,4.36,2.35,6.68
+own_scheme_only,54,8.19,11.83,3.65,1.87,5.66

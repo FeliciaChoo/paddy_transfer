@@ -5,13 +5,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf06fda0-f34b-45f1-8347-f3fdc7b48134" name="Changes" comment="update latest training">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/paddy_transfer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/paddy_transfer.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DEPLOY.md" beforeDir="false" afterPath="$PROJECT_DIR$/DEPLOY.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/acts_transfer/assessment.py" beforeDir="false" afterPath="$PROJECT_DIR$/acts_transfer/assessment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/acts_transfer/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/acts_transfer/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/acts_transfer/evaluation.py" beforeDir="false" afterPath="$PROJECT_DIR$/acts_transfer/evaluation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/acts_transfer/harmonise.py" beforeDir="false" afterPath="$PROJECT_DIR$/acts_transfer/harmonise.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/acts_transfer/methods.py" beforeDir="false" afterPath="$PROJECT_DIR$/acts_transfer/methods.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/acts_transfer/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/acts_transfer/report.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/acts_transfer/selection.py" beforeDir="false" afterPath="$PROJECT_DIR$/acts_transfer/selection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/acts_transfer/workflow.py" beforeDir="false" afterPath="$PROJECT_DIR$/acts_transfer/workflow.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard/about_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/about_config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/bridge.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/bridge.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/tab_advisory.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/tab_advisory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/tab_map.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/tab_map.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard/tab_overview.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/tab_overview.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/tab_transfer.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/tab_transfer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/tab_yield.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/tab_yield.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/transfer_decade_features.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/transfer_decade_features.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/transfer_yield_dataset.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/transfer_yield_dataset.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/example_run_BLS_to_KETARA.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/example_run_BLS_to_KETARA.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/example_run_BLS_to_MADA.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/example_run_BLS_to_MADA.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/transfer_workflow_guide.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/transfer_workflow_guide.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eda.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/geo/README.txt" beforeDir="false" afterPath="$PROJECT_DIR$/geo/README.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pipeline/build_transfer_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/pipeline/build_transfer_dataset.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pipeline/eda_clean.py" beforeDir="false" afterPath="$PROJECT_DIR$/pipeline/eda_clean.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements-pipeline.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements-pipeline.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_transfer_gating.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_transfer_gating.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_ui_gating.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_ui_gating.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +76,11 @@
         </map>
       </branch-storage>
     </excluded-from-favorite>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -335,7 +365,21 @@
       <workItem from="1792461846697" duration="1250000" />
       <workItem from="1792482788520" duration="10616000" />
       <workItem from="1792628253263" duration="7368000" />
-      <workItem from="1793159172024" duration="1444000" />
+      <workItem from="1793159172024" duration="2237000" />
+      <workItem from="1793969727774" duration="608000" />
+      <workItem from="1794225598639" duration="2057000" />
+      <workItem from="1794457233353" duration="1323000" />
+      <workItem from="1794575400927" duration="614000" />
+      <workItem from="1794711788503" duration="13000" />
+      <workItem from="1794957919553" duration="4545000" />
+      <workItem from="1795061749874" duration="650000" />
+      <workItem from="1795143061841" duration="4627000" />
+      <workItem from="1795221823216" duration="2414000" />
+      <workItem from="1795239621721" duration="61000" />
+      <workItem from="1795239712049" duration="984000" />
+      <workItem from="1795244261252" duration="667000" />
+      <workItem from="1795257311539" duration="3115000" />
+      <workItem from="1795316493703" duration="23000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -441,7 +485,39 @@
       <option name="project" value="LOCAL" />
       <updated>1792489107224</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="update latest training">
+      <option name="closed" value="true" />
+      <created>1793160754762</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1793160754762</updated>
+    </task>
+    <task id="LOCAL-00015" summary="update latest training">
+      <option name="closed" value="true" />
+      <created>1793160816237</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1793160816237</updated>
+    </task>
+    <task id="LOCAL-00016" summary="update latest training">
+      <option name="closed" value="true" />
+      <created>1794226186909</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1794226186909</updated>
+    </task>
+    <task id="LOCAL-00017" summary="update latest training">
+      <option name="closed" value="true" />
+      <created>1794226293036</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1794226293036</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

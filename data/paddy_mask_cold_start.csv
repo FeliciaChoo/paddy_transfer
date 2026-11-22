@@ -1,0 +1,5 @@
+pixel_set,n,granaries,baseline_MAPE_mean_of_others,model_MAPE,diff_model_minus_baseline,ci_low,ci_high
+all_pixels,70,10,18.81,20.37,1.57,-0.17,3.22
+on_paddy,70,10,18.81,19.83,1.03,-0.68,2.62
+inside_granary_scheme,70,10,18.81,19.82,1.01,-0.69,2.61
+own_scheme_only,63,9,20.03,20.91,0.87,-1.1,2.8

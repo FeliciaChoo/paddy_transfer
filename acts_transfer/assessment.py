@@ -52,7 +52,9 @@ def token_of(source: Domain, target: Domain, cfg: Config):
     for d in (source, target):
         h.update(d.name.encode())
         h.update(pd.util.hash_pandas_object(d.df[[d.group, d.target] + list(d.features)], index=False).values.tobytes())
-        h.update(json.dumps([d.features, d.target, d.group, d.units], sort_keys=True, default=str).encode())
+        h.update(json.dumps([d.features, d.target, d.group, d.units, d.unit], sort_keys=True, default=str).encode())
+        if d.unit and d.unit in d.df:
+            h.update(pd.util.hash_pandas_object(d.df[d.unit].astype(str), index=False).values.tobytes())
     h.update(json.dumps(cfg.to_dict(), sort_keys=True, default=str).encode())
     return h.hexdigest()[:16]
 
@@ -92,11 +94,11 @@ def quality(d: Domain, cfg: Config):
     if ry and ((y < ry[0]) | (y > ry[1])).any():
         issues.append(("warn", f"'{d.target}': values outside the plausible range {ry}"))
     dup = int(df.duplicated().sum())
-    dup_g = int(df.duplicated(subset=[d.group]).sum())
+    dup_g = int(df.duplicated(subset=[d.group] + ([d.unit] if d.unit else [])).sum())
     if dup:
         issues.append(("warn", f"{dup} duplicated row(s)"))
     if dup_g:
-        issues.append(("warn", f"{dup_g} repeated value(s) of '{d.group}' (expected one row per {d.group})"))
+        issues.append(("warn", f"{dup_g} repeated value(s) of '{d.group}' (expected one row per {d.group}" + (f" and {d.unit}" if d.unit else "") + ")"))
     gaps = []
     if groups and all(isinstance(g, (int, np.integer)) for g in groups):
         gaps = sorted(set(range(min(groups), max(groups) + 1)) - set(groups))

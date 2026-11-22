@@ -6,6 +6,7 @@ build_transfer_dataset.py -- the two tables the Pre-Transfer Assessment and Tran
 Writes
   transfer_yield_dataset.csv     one row per granary and YEAR (the model's unit: yield is reported once a year, so there is no season split)
                                  raw pipeline names and units; harmonisation (acts_transfer.harmonise) renames and converts them.
+  (the growth-stage table, one row per granary-year with C1_*/C2_* features, is built by build_stage_features.py)
   transfer_decade_features.csv   one row per granary and TEN-DAY period: finer observations of the same drivers, used to compare the
                                  distributions of source and target with far more observations than seven yearly rows.
 Nothing is invented: every value is an aggregate of the extracted satellite and weather series, or the reported yield.
@@ -15,7 +16,7 @@ solar radiation in MJ/m2; yield in kg/ha.
 import argparse, os
 import numpy as np, pandas as pd
 
-COLS = ["District", "Year", "Decade_N", "NDVI_clean", "EVI_clean", "SAR_clean", "Mean_Temp_C", "Daily_Rain_mm", "Solar_Radiation_MJ",
+COLS = ["District", "Year", "Decade_N", "NDVI_clean", "EVI_clean", "LSWI_clean", "MNDWI_clean", "SAR_clean", "Mean_Temp_C", "Mean_Max_Temp_C", "Daily_Rain_mm", "Solar_Radiation_MJ",
         "Optical_Observed", "Target_Yield"]
 
 
@@ -25,9 +26,9 @@ def main():
     ap.add_argument("--out", default="data")
     a = ap.parse_args()
     c = pd.read_csv(a.clean, usecols=COLS)
-    drv = ["NDVI_clean", "EVI_clean", "SAR_clean", "Mean_Temp_C", "Daily_Rain_mm", "Solar_Radiation_MJ"]
+    drv = ["NDVI_clean", "EVI_clean", "LSWI_clean", "MNDWI_clean", "SAR_clean", "Mean_Temp_C", "Mean_Max_Temp_C", "Daily_Rain_mm", "Solar_Radiation_MJ"]
     dec = c.groupby(["District", "Year", "Decade_N"])[drv + ["Optical_Observed"]].mean().reset_index()
-    fine = dec.rename(columns={"NDVI_clean": "NDVI", "EVI_clean": "EVI", "SAR_clean": "SAR_VV_dB", "Daily_Rain_mm": "Rain_decade_mm",
+    fine = dec.rename(columns={"NDVI_clean": "NDVI", "EVI_clean": "EVI", "LSWI_clean": "LSWI", "MNDWI_clean": "MNDWI", "Mean_Max_Temp_C": "Tmax_C", "SAR_clean": "SAR_VV_dB", "Daily_Rain_mm": "Rain_decade_mm",
                                "Solar_Radiation_MJ": "Solar_Radiation_MJ"}).drop(columns="Optical_Observed")
     rows = []
     for (g, y), d in dec.groupby(["District", "Year"]):

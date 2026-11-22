@@ -194,6 +194,22 @@ def _outlook_section(D, sel, vmin, vmax):
         st.dataframe(obs.join(fc).round(0).reset_index(), hide_index=True, width="stretch")
 
 
+def _range(D):
+    return min(D.yh.Yield.min(), D.outlook.Low.min()), max(D.yh.Yield.max(), D.outlook.High.max())
+
+
+def render_yield(D):
+    """the reported-yield view (all granaries), embedded in tab 6"""
+    vmin, vmax = _range(D)
+    _yield_section(D, selected_granary(), vmin, vmax)
+
+
+def render_outlook(D):
+    """the baseline outlook view (all granaries, carry-over method), embedded in tab 7"""
+    vmin, vmax = _range(D)
+    _outlook_section(D, selected_granary(), vmin, vmax)
+
+
 def render(D):
     st.subheader("Yield and outlook")
     info_panel(
@@ -212,3 +228,11 @@ def render(D):
         _yield_section(D, sel, vmin, vmax)
     with t_out:
         _outlook_section(D, sel, vmin, vmax)
+
+
+def render_yield_view(mode="historical", D=None):
+    """PACE V9 pages: 'historical' = Historical Replay & Yield Fit, 'outlook' = In-Season Nowcast & 2025-2028 Outlook. Both read the governance registry (dashboard/tab_governance.py)."""
+    from . import tab_governance
+    from .data import load
+    D = D or load()
+    (tab_governance.render_replay if mode == "historical" else tab_governance.render_outlook)(D)

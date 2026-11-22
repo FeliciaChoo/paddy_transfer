@@ -4,6 +4,9 @@ pandas>=2.0
 numpy
 plotly
 pydeck
+folium                # the Leaflet map (PACE V9); the pydeck map is the fallback if these two are missing
+streamlit-folium
+branca
 requests
 python-docx          # the Word report (Advisory tab)
 scikit-learn        # the transfer-learning workflow (tabs 6 and 7)

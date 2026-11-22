@@ -1,0 +1,17 @@
+pixel_set,feature,n_granary_years,pooled_rho,pooled_p,within_granary_rho,within_granary_p
+all_pixels,peak_ndvi,70,0.35,0.003,-0.031,0.8
+all_pixels,mean_ndvi,70,-0.005,0.969,0.043,0.723
+all_pixels,peak_evi,70,0.317,0.007,0.022,0.859
+all_pixels,sar,70,-0.004,0.974,0.031,0.801
+on_paddy,peak_ndvi,70,0.35,0.003,-0.042,0.732
+on_paddy,mean_ndvi,70,0.041,0.736,0.042,0.727
+on_paddy,peak_evi,70,0.342,0.004,0.049,0.684
+on_paddy,sar,70,-0.08,0.511,0.049,0.689
+inside_granary_scheme,peak_ndvi,70,0.358,0.002,-0.03,0.806
+inside_granary_scheme,mean_ndvi,70,0.012,0.921,0.036,0.767
+inside_granary_scheme,peak_evi,70,0.34,0.004,0.057,0.641
+inside_granary_scheme,sar,70,-0.061,0.617,-0.03,0.802
+own_scheme_only,peak_ndvi,63,0.378,0.002,-0.049,0.705
+own_scheme_only,mean_ndvi,63,0.005,0.969,0.064,0.617
+own_scheme_only,peak_evi,63,0.378,0.002,0.055,0.669
+own_scheme_only,sar,63,-0.102,0.427,-0.044,0.734

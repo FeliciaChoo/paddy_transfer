@@ -26,6 +26,14 @@ def workflow_markdown(wf):
                   f"- Why: {sc['why']}", f"- Assumptions: {sc['assumptions']}", f"- Benefits and risks: {sc['benefits_risks']}", f"- Alternatives: {sc['alternatives']}", ""]
         L += ["### Method table", md_table(s["methods"][["method", "family", "eligible", "reason", "recommended_by", "features_compared", "scaling", "metric",
                                                          "distance_influence", "limitations"]]), ""]
+    if getattr(wf, "choice", None):
+        c = wf.choice
+        L += ["## Selected model", f"**{LABELS.get(c['selected'], c['selected'])}** (best baseline: {LABELS.get(c['reference'], c['reference'])}; primary validation: {c['primary']}). "
+              f"Transfer learning supported by the evaluation: **{'YES' if c['transfer_supported'] else 'NO'}**.", "", c["statement"], "",
+              md_table(c["table"]), ""]
+    for nm, art in (("Yield prediction", getattr(wf, "prediction", None)), ("Future yield outlook", getattr(wf, "outlook", None))):
+        if art:
+            L += [f"## {nm}", f"Input assumption: {art['scenario']}. Each row says which model made it.", md_table(art["table"][["model", "role", "season", "predicted", "band", "band_source"]]), ""]
     if getattr(wf, "override", None):
         L += [f"**Override of a NOT RECOMMENDED verdict. Reason recorded:** {wf.override}", ""]
     if getattr(wf, "results", None):

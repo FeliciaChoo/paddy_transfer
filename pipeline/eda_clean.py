@@ -8,6 +8,9 @@ Problems are handled by
     * flag_* columns   (True = this row has that issue)
     * *_clean columns  (the original value with flagged values set to NaN; originals untouched)
 
+Optional:  --paddy-tags data/paddy_pixel_tags.csv   (made by pipeline/paddy_mask.py) adds Paddy_Class plus
+           flag_not_paddy and flag_outside_own_scheme. They are flags only: no value is changed and no row is removed.
+
 Outputs in --out:
     DailyGranary_clean.csv      same rows + flags + clean columns
     eda_missingness.csv, eda_range_checks.csv, eda_phenology.csv, cleaning_log.csv
@@ -61,6 +64,22 @@ def add_flags(d):
     return d
 
 
+def add_paddy_flags(d, tags_path):
+    """Merge the pixel tags from pipeline/paddy_mask.py as flags. Rows and values are untouched; pixels missing from the
+    tag file get False flags and class 'unknown' (they are counted and reported, never dropped)."""
+    tags = pd.read_csv(tags_path)
+    assert tags["Pixel_ID"].is_unique, "paddy tag file has duplicate Pixel_ID rows"
+    t = tags.set_index("Pixel_ID")
+    d["Paddy_Class"] = d["Pixel_ID"].map(t["Paddy_Class"]).fillna("unknown")
+    d["flag_not_paddy"] = d["Paddy_Class"].eq("not_paddy")
+    own = d["Pixel_ID"].map(t["In_Own_Scheme"].astype("boolean"))
+    d["flag_outside_own_scheme"] = own.eq(False).fillna(False).astype(bool)   # unknown scheme mapping is NOT flagged
+    n_unknown = int(d.loc[d["Paddy_Class"].eq("unknown"), "Pixel_ID"].nunique())
+    if n_unknown:
+        print(f"   NOTE: {n_unknown} pixels are not in the paddy tag file (flags left False). Re-run paddy_mask.py on this data.")
+    return d
+
+
 # ----------------------------------------------------------------------
 # phenology: when does each district actually plant / peak?
 # ----------------------------------------------------------------------
@@ -94,6 +113,7 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawTextHelpFormatter)
     ap.add_argument("--data", default="DailyGranary.csv")
     ap.add_argument("--out", default="eda")
+    ap.add_argument("--paddy-tags", default=None, help="data/paddy_pixel_tags.csv from paddy_mask.py (optional; adds paddy flags)")
     a = ap.parse_args()
     os.makedirs(a.out, exist_ok=True)
 
@@ -140,6 +160,8 @@ def main():
     # ---------- flags ----------
     print("\n4) FLAGS ADDED (rows kept)")
     d = add_flags(raw.drop(columns="_nd_nan"))
+    if a.paddy_tags:
+        d = add_paddy_flags(d, a.paddy_tags)
     flag_cols = [c for c in d.columns if c.startswith("flag_")]
     log = pd.DataFrame({"rows_flagged": d[flag_cols].sum(), "pct": (d[flag_cols].mean() * 100).round(1)})
     log.to_csv(os.path.join(a.out, "cleaning_log.csv"))

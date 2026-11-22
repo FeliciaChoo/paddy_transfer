@@ -20,8 +20,7 @@ Recommended: **Streamlit Community Cloud**, from a **private** GitHub repository
    Read the `git status` list. It should show `app.py`, `dashboard/`, `acts_transfer/`, `pipeline/`, `tests/`, `docs/`, `geo/`, `external/`, `data/*.csv`, `requirements.txt`, `README.md`.
    It must NOT show `.venv`, `secrets.toml`, `DailyGranary*.csv`, `eda/`, `final_model/` or `gee_cache/`. Then:
    ```powershell
-   git commit -m "
- Granary Monitor"
+   git commit -m "ACTS Granary Monitor"
    git branch -M main
    git remote add origin https://github.com/YOUR-USER/YOUR-REPO.git
    git push -u origin main

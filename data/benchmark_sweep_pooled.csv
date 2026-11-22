@@ -1,0 +1,43 @@
+strategy,method,comparison,n_pairs,n_granaries,mean_diff_kg_ha,relative_pct,ci95_low,ci95_high,cluster_ci95_low,cluster_ci95_high,wilcoxon_p_two_sided,wilcoxon_p_less,pct_pairs_transfer_better,passed
+forward,detrended_residual_transfer,Delta_NT,45,9,-123.1179,-21.8349,-274.1769,12.8972,-290.2123,32.3169,0.2252,0.1126,57.7778,False
+forward,detrended_residual_transfer,Delta_DS,45,9,-629.8944,-58.8338,-907.7616,-364.0002,-1016.8965,-246.3486,0.0001,0.0001,68.8889,False
+forward,detrended_residual_transfer,vs persistence,45,9,95.2065,27.5535,29.478,162.8429,45.5272,165.0233,0.0031,0.9985,31.1111,False
+forward,granary_intercept_ridge,Delta_NT,45,9,-108.6378,-19.2669,-286.0666,42.0057,-261.4123,47.6937,0.3761,0.188,51.1111,False
+forward,granary_intercept_ridge,Delta_DS,45,9,-615.4143,-57.4813,-883.8417,-362.317,-959.9592,-270.2053,0.0,0.0,77.7778,False
+forward,granary_intercept_ridge,vs persistence,45,9,109.6866,31.7441,3.3644,212.5837,45.245,179.1899,0.0162,0.9922,31.1111,False
+forward,kmm_ridge,Delta_NT,45,9,-23.5036,-4.1684,-201.534,132.1851,-214.7895,153.1077,0.7458,0.3729,53.3333,False
+forward,kmm_ridge,Delta_DS,45,9,-530.2801,-49.5295,-801.7883,-260.2547,-874.7478,-207.8235,0.0004,0.0002,66.6667,False
+forward,kmm_ridge,vs persistence,45,9,194.8208,56.3826,75.0837,318.1956,103.2918,275.5998,0.0047,0.9977,33.3333,False
+forward,s_tradaboost_r2,Delta_NT,45,9,-110.3976,-19.579,-287.2775,30.1948,-278.7049,68.9587,0.4464,0.2232,55.5556,False
+forward,s_tradaboost_r2,Delta_DS,45,9,-617.1741,-57.6457,-865.6138,-378.1949,-960.8389,-288.1047,0.0,0.0,75.5556,False
+forward,s_tradaboost_r2,vs persistence,45,9,107.9268,31.2348,-2.2293,213.4662,18.4829,207.4299,0.0267,0.987,33.3333,False
+forward,tradaboost_r2,Delta_NT,45,9,-141.9825,-25.1805,-310.296,-11.3306,-275.6837,-26.3702,0.2385,0.1192,57.7778,False
+forward,tradaboost_r2,Delta_DS,45,9,-648.759,-60.5958,-914.7142,-399.2794,-1021.5664,-274.8651,0.0,0.0,77.7778,False
+forward,tradaboost_r2,vs persistence,45,9,76.3419,22.0939,-1.8696,158.5228,29.152,125.9213,0.032,0.9845,31.1111,False
+forward,two_stage_tradaboost_r2,Delta_NT,45,9,-107.5408,-19.0723,-281.1654,29.0782,-277.4348,73.5797,0.37,0.185,55.5556,False
+forward,two_stage_tradaboost_r2,Delta_DS,45,9,-614.3173,-57.3788,-859.9247,-378.5808,-955.6763,-286.0705,0.0,0.0,77.7778,False
+forward,two_stage_tradaboost_r2,vs persistence,45,9,110.7836,32.0616,3.0389,215.6499,19.5094,212.6709,0.0203,0.9902,31.1111,False
+forward,z_anomaly_transfer,Delta_NT,45,9,71.1707,12.6221,-154.1254,377.6784,-135.523,351.0227,0.9199,0.5445,46.6667,False
+forward,z_anomaly_transfer,Delta_DS,45,9,-435.6058,-40.6867,-798.5047,7.6837,-928.3016,66.2228,0.0021,0.001,68.8889,False
+forward,z_anomaly_transfer,vs persistence,45,9,289.4951,83.7821,87.601,611.0093,147.8001,515.8749,0.001,0.9995,24.4444,False
+loso,detrended_residual_transfer,Delta_NT,63,9,-273.6921,-44.3365,-454.9935,-111.0204,-450.1951,-95.3993,0.0007,0.0004,68.254,True
+loso,detrended_residual_transfer,Delta_DS,63,9,-553.2988,-61.6893,-729.355,-383.8569,-795.9316,-311.8836,0.0,0.0,80.9524,False
+loso,detrended_residual_transfer,vs persistence,54,9,-0.1523,-0.0446,-109.8743,100.7316,-50.1293,61.1434,0.4775,0.7613,35.1852,False
+loso,granary_intercept_ridge,Delta_NT,63,9,-159.7886,-25.8848,-327.9581,-21.5667,-308.4025,-7.9284,0.099,0.0495,61.9048,True
+loso,granary_intercept_ridge,Delta_DS,63,9,-439.3952,-48.9897,-585.1645,-301.1422,-648.9298,-251.1707,0.0,0.0,77.7778,False
+loso,granary_intercept_ridge,vs persistence,54,9,42.8444,12.5562,-93.2013,175.7064,-19.1112,102.3511,0.4722,0.7639,46.2963,False
+loso,kmm_ridge,Delta_NT,63,9,-23.2227,-3.7619,-156.7256,98.2773,-165.6829,126.7252,0.9236,0.5382,49.2063,False
+loso,kmm_ridge,Delta_DS,63,9,-302.8294,-33.7635,-465.3297,-154.9143,-489.0896,-126.9044,0.0003,0.0001,63.4921,False
+loso,kmm_ridge,vs persistence,54,9,162.6225,47.6588,31.8764,289.4176,53.1379,251.2838,0.026,0.987,40.7407,False
+loso,s_tradaboost_r2,Delta_NT,63,9,-147.3078,-23.863,-312.7696,-1.5178,-290.6989,11.3325,0.3276,0.1638,49.2063,False
+loso,s_tradaboost_r2,Delta_DS,63,9,-426.9145,-47.5982,-568.8021,-289.5386,-643.8705,-227.1673,0.0,0.0,79.3651,False
+loso,s_tradaboost_r2,vs persistence,54,9,91.4494,26.8005,-54.9062,225.1313,18.107,165.3831,0.1806,0.9097,35.1852,False
+loso,tradaboost_r2,Delta_NT,63,9,-91.7074,-14.8561,-241.375,61.3657,-173.6466,-18.2069,0.4979,0.249,47.619,False
+loso,tradaboost_r2,Delta_DS,63,9,-371.314,-41.3991,-567.897,-180.1852,-684.7871,-63.4928,0.0003,0.0001,69.8413,False
+loso,tradaboost_r2,vs persistence,54,9,95.307,27.9311,-39.2396,223.1352,-20.5345,209.9653,0.0992,0.9504,42.5926,False
+loso,two_stage_tradaboost_r2,Delta_NT,63,9,-141.4051,-22.9068,-302.7581,7.7854,-285.794,16.8941,0.3483,0.1741,52.381,False
+loso,two_stage_tradaboost_r2,Delta_DS,63,9,-421.0117,-46.9401,-560.7599,-284.0824,-635.1635,-225.7418,0.0,0.0,82.5397,False
+loso,two_stage_tradaboost_r2,vs persistence,54,9,97.1057,28.4582,-48.3873,232.5088,26.9898,168.5804,0.1122,0.9439,35.1852,False
+loso,z_anomaly_transfer,Delta_NT,63,9,-67.5954,-10.9501,-202.1519,45.2399,-188.6076,42.612,0.6221,0.311,52.381,False
+loso,z_anomaly_transfer,Delta_DS,63,9,-347.202,-38.7108,-538.9936,-147.9291,-615.506,-81.4682,0.0001,0.0001,66.6667,False
+loso,z_anomaly_transfer,vs persistence,54,9,136.0452,39.87,-21.4462,314.4854,3.5764,287.2964,0.1264,0.9368,40.7407,False

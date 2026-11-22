@@ -1,0 +1,377 @@
+{
+  "version": 1,
+  "granaries": {
+    "IADA Barat Laut Selangor": {
+      "status": "APPROVED",
+      "decided": "APPROVE",
+      "validator": "Felicia",
+      "note": "",
+      "timestamp": "2026-11-21T08:54:13",
+      "evidence": {
+        "gate_passed": true,
+        "model_key": "detrended_residual_transfer",
+        "model_label": "Detrended Residual Transfer (Hybrid Trend + S-TrAdaBoost.R2)",
+        "delta_nt": -0.017949263507855584,
+        "delta_nt_kg_ha": -17.949263507855584,
+        "baseline": "season_trend",
+        "domain_ok": true,
+        "seasons_compared": 4,
+        "source": "MADA",
+        "validation": "forward validation",
+        "statistically_supported": false,
+        "token": "7ef51ee105f6ad8d",
+        "rmse_common_kg_ha": {
+          "detrended_residual_transfer": 217.52290340126925,
+          "season_trend": 235.47216690912484,
+          "target_only": 1290.7376981125374,
+          "persistence": 239.47233660696574
+        }
+      },
+      "published": {
+        "target": "IADA Barat Laut Selangor",
+        "transfer_model": "detrended_residual_transfer",
+        "transfer_label": "Detrended Residual Transfer (Hybrid Trend + S-TrAdaBoost.R2)",
+        "baseline_model": "season_trend",
+        "baseline_label": "Season trend (no features)",
+        "unit": "kg/ha",
+        "features": [
+          "C1_EVI_rep",
+          "C1_EVI_veg",
+          "C1_LSWI_rep",
+          "C1_MNDWI_veg",
+          "C1_Rain_mm_rep",
+          "C1_SAR_VV_dB_rep",
+          "C1_SAR_VV_dB_veg",
+          "C1_Tmax_C_rep",
+          "Optical_Valid_Fraction"
+        ],
+        "backtest": {
+          "loso": [
+            {
+              "season": 2018,
+              "actual": 4731.0,
+              "transfer": 4679.471806348342,
+              "baseline": 4677.666666666624,
+              "persistence": null,
+              "season_trend": 4677.666666666624
+            },
+            {
+              "season": 2019,
+              "actual": 4756.0,
+              "transfer": 4533.179916356149,
+              "baseline": 4575.599999999923,
+              "persistence": 4731.0,
+              "season_trend": 4575.599999999923
+            },
+            {
+              "season": 2020,
+              "actual": 4431.0,
+              "transfer": 4577.184337974241,
+              "baseline": 4578.130434782537,
+              "persistence": 4756.0,
+              "season_trend": 4578.130434782537
+            },
+            {
+              "season": 2021,
+              "actual": 4337.0,
+              "transfer": 4520.432812916463,
+              "baseline": 4499.833333333356,
+              "persistence": 4431.0,
+              "season_trend": 4499.833333333356
+            },
+            {
+              "season": 2022,
+              "actual": 4319.0,
+              "transfer": 4379.79753354211,
+              "baseline": 4419.173913043465,
+              "persistence": 4337.0,
+              "season_trend": 4419.173913043465
+            },
+            {
+              "season": 2023,
+              "actual": 4577.0,
+              "transfer": 4250.874056523877,
+              "baseline": 4225.599999999958,
+              "persistence": 4319.0,
+              "season_trend": 4225.599999999958
+            },
+            {
+              "season": 2024,
+              "actual": 4185.000000000001,
+              "transfer": 4179.362708415978,
+              "baseline": 4307.666666666691,
+              "persistence": 4577.0,
+              "season_trend": 4307.666666666691
+            }
+          ],
+          "forward": [
+            {
+              "season": 2020,
+              "actual": 4431.0,
+              "transfer": 4735.343063776598,
+              "baseline": null,
+              "persistence": 4756.0,
+              "season_trend": null
+            },
+            {
+              "season": 2021,
+              "actual": 4337.0,
+              "transfer": 4455.156760448345,
+              "baseline": 4339.333333333287,
+              "persistence": 4431.0,
+              "season_trend": 4339.333333333287
+            },
+            {
+              "season": 2022,
+              "actual": 4319.0,
+              "transfer": 4147.898097634476,
+              "baseline": 4187.000000000012,
+              "persistence": 4337.0,
+              "season_trend": 4187.000000000012
+            },
+            {
+              "season": 2023,
+              "actual": 4577.0,
+              "transfer": 4194.905517015334,
+              "baseline": 4141.90000000005,
+              "persistence": 4319.0,
+              "season_trend": 4141.90000000005
+            },
+            {
+              "season": 2024,
+              "actual": 4185.000000000001,
+              "transfer": 4179.362708415978,
+              "baseline": 4307.666666666691,
+              "persistence": 4577.0,
+              "season_trend": 4307.666666666691
+            }
+          ]
+        },
+        "nowcast": {
+          "season": 2024,
+          "actual": 4185.000000000001,
+          "transfer": {
+            "season": 2024,
+            "predicted": 4192.910218345702,
+            "low": 3873.0168707274906,
+            "high": 4512.803565963913,
+            "band_source": "forward validation"
+          },
+          "baseline": {
+            "season": 2024,
+            "predicted": 4250.71428571431,
+            "low": 3997.474285714336,
+            "high": 4503.954285714282,
+            "band_source": "forward validation"
+          },
+          "stage": "heading (about 70 days after sowing): vegetative and reproductive stage features only"
+        },
+        "outlook": {
+          "Normal": {
+            "detrended_residual_transfer": [
+              {
+                "season": 2025,
+                "predicted": 4176.095308150037,
+                "low": 3856.201960531826,
+                "high": 4495.9886557682485,
+                "band_source": "forward validation"
+              },
+              {
+                "season": 2026,
+                "predicted": 4103.405652977623,
+                "low": 3651.0081422630174,
+                "high": 4555.803163692228,
+                "band_source": "forward validation; widened by sqrt(2) for 2 seasons ahead"
+              },
+              {
+                "season": 2027,
+                "predicted": 4030.715997805209,
+                "low": 3476.6444667271744,
+                "high": 4584.787528883244,
+                "band_source": "forward validation; widened by sqrt(3) for 3 seasons ahead"
+              },
+              {
+                "season": 2028,
+                "predicted": 3958.0263426327947,
+                "low": 3318.239647396372,
+                "high": 4597.813037869218,
+                "band_source": "forward validation; widened by sqrt(4) for 4 seasons ahead"
+              }
+            ],
+            "season_trend": [
+              {
+                "season": 2025,
+                "predicted": 4175.428571428569,
+                "low": 3922.1885714285954,
+                "high": 4428.668571428542,
+                "band_source": "measured 1 season(s) ahead on 4 tests"
+              },
+              {
+                "season": 2026,
+                "predicted": 4100.142857142856,
+                "low": 3708.7628571428518,
+                "high": 4491.522857142861,
+                "band_source": "measured 2 season(s) ahead on 3 tests"
+              },
+              {
+                "season": 2027,
+                "predicted": 4024.857142857144,
+                "low": 3534.8438095237657,
+                "high": 4514.870476190522,
+                "band_source": "measured 3 season(s) ahead on 2 tests"
+              },
+              {
+                "season": 2028,
+                "predicted": 3949.571428571431,
+                "low": 3383.7527687583683,
+                "high": 4515.390088384494,
+                "band_source": "measured 3 season(s) ahead on 2 tests; widened by sqrt(4/3) for 4 ahead (not measured)"
+              }
+            ]
+          },
+          "El Ni\u00f1o drought": {
+            "detrended_residual_transfer": [
+              {
+                "season": 2025,
+                "predicted": 4227.65422144339,
+                "low": 3907.760873825179,
+                "high": 4547.547569061601,
+                "band_source": "forward validation"
+              },
+              {
+                "season": 2026,
+                "predicted": 4154.964566270975,
+                "low": 3702.56705555637,
+                "high": 4607.362076985581,
+                "band_source": "forward validation; widened by sqrt(2) for 2 seasons ahead"
+              },
+              {
+                "season": 2027,
+                "predicted": 4082.274911098562,
+                "low": 3528.2033800205277,
+                "high": 4636.346442176597,
+                "band_source": "forward validation; widened by sqrt(3) for 3 seasons ahead"
+              },
+              {
+                "season": 2028,
+                "predicted": 4009.5852559261484,
+                "low": 3369.7985606897255,
+                "high": 4649.37195116257,
+                "band_source": "forward validation; widened by sqrt(4) for 4 seasons ahead"
+              }
+            ],
+            "season_trend": [
+              {
+                "season": 2025,
+                "predicted": 4175.428571428569,
+                "low": 3922.1885714285954,
+                "high": 4428.668571428542,
+                "band_source": "measured 1 season(s) ahead on 4 tests"
+              },
+              {
+                "season": 2026,
+                "predicted": 4100.142857142856,
+                "low": 3708.7628571428518,
+                "high": 4491.522857142861,
+                "band_source": "measured 2 season(s) ahead on 3 tests"
+              },
+              {
+                "season": 2027,
+                "predicted": 4024.857142857144,
+                "low": 3534.8438095237657,
+                "high": 4514.870476190522,
+                "band_source": "measured 3 season(s) ahead on 2 tests"
+              },
+              {
+                "season": 2028,
+                "predicted": 3949.571428571431,
+                "low": 3383.7527687583683,
+                "high": 4515.390088384494,
+                "band_source": "measured 3 season(s) ahead on 2 tests; widened by sqrt(4/3) for 4 ahead (not measured)"
+              }
+            ]
+          },
+          "Wet monsoon": {
+            "detrended_residual_transfer": [
+              {
+                "season": 2025,
+                "predicted": 4113.651422420712,
+                "low": 3793.7580748025016,
+                "high": 4433.544770038924,
+                "band_source": "forward validation"
+              },
+              {
+                "season": 2026,
+                "predicted": 4040.961767248298,
+                "low": 3588.564256533693,
+                "high": 4493.359277962903,
+                "band_source": "forward validation; widened by sqrt(2) for 2 seasons ahead"
+              },
+              {
+                "season": 2027,
+                "predicted": 3968.2721120758847,
+                "low": 3414.2005809978505,
+                "high": 4522.3436431539185,
+                "band_source": "forward validation; widened by sqrt(3) for 3 seasons ahead"
+              },
+              {
+                "season": 2028,
+                "predicted": 3895.582456903471,
+                "low": 3255.7957616670487,
+                "high": 4535.369152139894,
+                "band_source": "forward validation; widened by sqrt(4) for 4 seasons ahead"
+              }
+            ],
+            "season_trend": [
+              {
+                "season": 2025,
+                "predicted": 4175.428571428569,
+                "low": 3922.1885714285954,
+                "high": 4428.668571428542,
+                "band_source": "measured 1 season(s) ahead on 4 tests"
+              },
+              {
+                "season": 2026,
+                "predicted": 4100.142857142856,
+                "low": 3708.7628571428518,
+                "high": 4491.522857142861,
+                "band_source": "measured 2 season(s) ahead on 3 tests"
+              },
+              {
+                "season": 2027,
+                "predicted": 4024.857142857144,
+                "low": 3534.8438095237657,
+                "high": 4514.870476190522,
+                "band_source": "measured 3 season(s) ahead on 2 tests"
+              },
+              {
+                "season": 2028,
+                "predicted": 3949.571428571431,
+                "low": 3383.7527687583683,
+                "high": 4515.390088384494,
+                "band_source": "measured 3 season(s) ahead on 2 tests; widened by sqrt(4/3) for 4 ahead (not measured)"
+              }
+            ]
+          }
+        },
+        "scenario_shifts": {
+          "Normal": {},
+          "El Ni\u00f1o drought": {
+            "C1_EVI_rep": -0.07026666666666667,
+            "C1_EVI_veg": -0.05048571428571427,
+            "C1_LSWI_rep": -0.05940999999999996,
+            "C1_MNDWI_veg": -0.059053333333333326,
+            "C1_Rain_mm_rep": -66.0356857142857,
+            "C1_Tmax_C_rep": 1.10072380952381
+          },
+          "Wet monsoon": {
+            "C1_LSWI_rep": 0.05651999999999998,
+            "C1_MNDWI_veg": 0.05300000000000003,
+            "C1_Rain_mm_rep": 112.83529999999999,
+            "C1_Tmax_C_rep": -0.9792595238095245
+          }
+        }
+      }
+    }
+  }
+}

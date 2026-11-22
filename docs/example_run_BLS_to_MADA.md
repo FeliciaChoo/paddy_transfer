@@ -13,7 +13,7 @@
 
 ## Pre-transfer assessment: IADA Barat Laut Selangor to MADA
 
-Computed 2026-10-26 02:13:20; fingerprint `c945db21c1e25e0b`.
+Computed 2026-11-09 22:11:42; fingerprint `e745c475ed74da44`.
 
 **Data readiness: CONDITIONAL**
 
@@ -61,7 +61,7 @@ Computed 2026-10-26 02:13:20; fingerprint `c945db21c1e25e0b`.
 | NDVI_mean | 7 | 7 | 0.444 | 0.445 | 0.012 | 0.043 | 0.038 | 0.429 | 0.575 | 0.025 | 0.797 | 0.767 | negligible | False |
 | SAR_VV_dB_mean | 7 | 7 | -9.634 | -10.377 | 0.164 | 0.227 | -3.755 | 1.000 | 0.001 | 0.744 | 3.755 | 0.002 | large | True |
 | Solar_Radiation_MJ_mean | 7 | 7 | 18.510 | 18.245 | 0.637 | 0.592 | -0.430 | 0.429 | 0.575 | 0.275 | 0.447 | 0.767 | small | False |
-MMD^2 = 0.3196 (permutation p = 0.002; the smallest possible p is 1/(permutations+1)); CORAL = 0.0555 (p = 0.968; NOT interpretable: fewer rows than features)
+MMD^2 = 0.3196 (permutation p = 0.003; the smallest possible p is 1/(permutations+1)); CORAL = 0.0555 (p = 0.970; NOT interpretable: fewer rows than features)
 
 ## Domain differences: Ten-day level (finer observations)
 | feature | n_source | n_target | mean_source | mean_target | sd_source | sd_target | SMD | KS | KS_p | Wasserstein | Wasserstein_per_SD | KS_p_adj | SMD_size | KS_significant |
@@ -72,7 +72,7 @@ MMD^2 = 0.3196 (permutation p = 0.002; the smallest possible p is 1/(permutation
 | Mean_Temp_C | 252 | 252 | 26.857 | 26.852 | 0.689 | 1.028 | -0.005 | 0.123 | 0.044 | 0.279 | 0.319 | 0.066 | negligible | False |
 | Rain_decade_mm | 252 | 252 | 69.666 | 68.910 | 45.780 | 47.428 | -0.016 | 0.099 | 0.168 | 5.968 | 0.128 | 0.201 | negligible | False |
 | Solar_Radiation_MJ | 252 | 252 | 18.510 | 18.245 | 2.366 | 2.657 | -0.105 | 0.091 | 0.245 | 0.386 | 0.154 | 0.245 | negligible | False |
-MMD^2 = 0.0801 (permutation p = 0.002; the smallest possible p is 1/(permutations+1)); CORAL = 0.1128 (p = 0.002)
+MMD^2 = 0.0801 (permutation p = 0.003; the smallest possible p is 1/(permutations+1)); CORAL = 0.1128 (p = 0.003)
 
 ## Domain classifier and crop calendar (ten-day level)
 - Climate AUC 0.47
@@ -88,10 +88,10 @@ MMD^2 = 0.0801 (permutation p = 0.002; the smallest possible p is 1/(permutation
 - Too few labelled target rows for a flexible model (7 rows, 8 features): estimates will be unstable and the evaluation noisy.
 - 3 of 8 features differ in distribution at the modelling level (adjusted KS p < 0.05): ['NDVI_amplitude', 'NDVI_max', 'SAR_VV_dB_mean'].
 - 3 feature(s) have a large standardised mean difference (|SMD| >= 0.8) at the modelling level.
-- The joint feature distributions differ at the modelling level (MMD permutation p = 0.002).
+- The joint feature distributions differ at the modelling level (MMD permutation p = 0.003).
 - 3 of 6 features differ in distribution at the ten-day level (adjusted KS p < 0.05): ['NDVI', 'EVI', 'SAR_VV_dB'].
-- The joint feature distributions differ at the ten-day level (MMD permutation p = 0.002).
-- The feature covariance differs at the ten-day level (CORAL permutation p = 0.002).
+- The joint feature distributions differ at the ten-day level (MMD permutation p = 0.003).
+- The feature covariance differs at the ten-day level (CORAL permutation p = 0.003).
 
 ## Recommended next steps
 - Harmonise names and units (Step 3); invalid values will be set to missing, never kept.
@@ -109,7 +109,7 @@ MMD^2 = 0.0801 (permutation p = 0.002; the smallest possible p is 1/(permutation
 - **Calendar offset**: Shift in days that best aligns the two mean seasonal NDVI curves (circular). Informational: models that use annual aggregates or phase features are much less sensitive to it than models that use calendar dates.
 
 ## Data harmonisation
-Fingerprint `8b35fbf60d81baa8`; originals are unchanged.
+Fingerprint `8e28055a8c837f3b`; originals are unchanged.
 
 ### Transformations applied
 | step | domain | detail | rows_affected |
@@ -155,7 +155,7 @@ Fingerprint `8b35fbf60d81baa8`; originals are unchanged.
 ### Scenarios A to F
 **A. Similar source and target distributions**: not met
 - Observed: A difference was detected, so this scenario does not apply.
-- Evidence: modelling-level MMD p = 0.002; ten-day-level MMD p = 0.002; 3/8 features differ (adjusted KS); 3 with |SMD| >= 0.8
+- Evidence: modelling-level MMD p = 0.003; ten-day-level MMD p = 0.003; 3/8 features differ (adjusted KS); 3 with |SMD| >= 0.8
 - Recommended: Source-only model, Pooled (naive), Target-only model; runnable here: source_only, pooled, target_only
 - Why: If the domains look alike, transfer may be unnecessary: compare source-only and pooled models with a target-only model before adding complexity.
 - Assumptions: Absence of a detected difference is not proof of similarity when there are few rows.
@@ -164,7 +164,7 @@ Fingerprint `8b35fbf60d81baa8`; originals are unchanged.
 
 **B. Moderate distribution shift with compatible features**: not met
 - Observed: Not met (covariance or label shift is present, or no shift was found).
-- Evidence: modelling-level MMD p = 0.002; ten-day-level MMD p = 0.002; 3/8 features differ (adjusted KS); 3 with |SMD| >= 0.8; modelling-level covariance not interpretable (fewer rows than features); ten-day-level CORAL p = 0.002
+- Evidence: modelling-level MMD p = 0.003; ten-day-level MMD p = 0.003; 3/8 features differ (adjusted KS); 3 with |SMD| >= 0.8; modelling-level covariance not interpretable (fewer rows than features); ten-day-level CORAL p = 0.003
 - Recommended: Kernel Mean Matching + weighted model, TrAdaBoost.R2; runnable here: kmm, tradaboost_r2
 - Why: Instance weighting: KMM weights source rows so their feature mean matches the target (no labels needed); TrAdaBoost.R2 lowers the weight of source rows that the model fits badly on target rows (needs labelled target rows).
 - Assumptions: The feature-yield relationship is shared (KMM); enough target labels to judge source rows (TrAdaBoost).
@@ -173,7 +173,7 @@ Fingerprint `8b35fbf60d81baa8`; originals are unchanged.
 
 **C. Significant feature-distribution differences**: CONDITIONS MET
 - Observed: Several features, or the feature covariance, differ clearly.
-- Evidence: modelling-level MMD p = 0.002; ten-day-level MMD p = 0.002; 3/8 features differ (adjusted KS); 3 with |SMD| >= 0.8; modelling-level covariance not interpretable (fewer rows than features); ten-day-level CORAL p = 0.002
+- Evidence: modelling-level MMD p = 0.003; ten-day-level MMD p = 0.003; 3/8 features differ (adjusted KS); 3 with |SMD| >= 0.8; modelling-level covariance not interpretable (fewer rows than features); ten-day-level CORAL p = 0.003
 - Recommended: CORAL feature alignment, Transfer Component Analysis; runnable here: coral, tca
 - Why: Feature-based: CORAL aligns the source's mean and covariance to the target; TCA finds a shared space that cuts the domain gap.
 - Assumptions: The relationship between the aligned features and yield is shared.
@@ -191,8 +191,8 @@ Fingerprint `8b35fbf60d81baa8`; originals are unchanged.
 
 **E. Domain shift requiring adaptation**: CONDITIONS MET
 - Observed: A joint feature difference was detected; target labels available per training fold: 6 -> supervised.
-- Evidence: modelling-level MMD p = 0.002; ten-day-level MMD p = 0.002; 3/8 features differ (adjusted KS); 3 with |SMD| >= 0.8
-- Recommended: TrAdaBoost.R2, Parameter transfer (source Ridge + regularised target correction), CORAL feature alignment; runnable here: tradaboost_r2, ridge_prior, coral
+- Evidence: modelling-level MMD p = 0.003; ten-day-level MMD p = 0.003; 3/8 features differ (adjusted KS); 3 with |SMD| >= 0.8
+- Recommended: CORAL feature alignment, Transfer Component Analysis, Parameter transfer (source Ridge + regularised target correction); runnable here: coral, tca, ridge_prior
 - Why: Adaptation type follows the labels actually available: supervised.
 - Assumptions: Adaptation helps only if the shift is in the features and not in the feature-yield relationship.
 - Benefits and risks: May reduce the source-target gap; a feature gap does not by itself mean a worse prediction.
@@ -200,7 +200,7 @@ Fingerprint `8b35fbf60d81baa8`; originals are unchanged.
 
 **F. Severe mismatch or negative-transfer risk**: not met
 - Observed: None of the severe-mismatch conditions holds.
-- Evidence: modelling-level MMD p = 0.002; ten-day-level MMD p = 0.002; 3/8 features differ (adjusted KS); 3 with |SMD| >= 0.8; label KS p = 0.575
+- Evidence: modelling-level MMD p = 0.003; ten-day-level MMD p = 0.003; 3/8 features differ (adjusted KS); 3 with |SMD| >= 0.8; label KS p = 0.575
 - Recommended: none; runnable here: none
 - Why: Do not force transfer: collect more target data, improve harmonisation, try a different source, or keep a target-only baseline.
 - Assumptions: -
@@ -214,14 +214,66 @@ Fingerprint `8b35fbf60d81baa8`; originals are unchanged.
 | Target-only model | baseline | True | 6 labelled target rows (a weak baseline when this is small) | - | none | target training-row mean and SD | none | none | unstable when the target has few labelled rows |
 | Target mean (no features) | baseline | True | uses no features: the check on whether the features help at all | - | none | none | none | none | ignores every input, so it cannot respond to a poor or good season |
 | Pooled (naive) | baseline | True | needs at least 1 labelled target row | - | none | pooled mean and SD of source and target training rows | none | none | treats every source row as equally relevant |
-| TrAdaBoost.R2 | instance-based | True | 6 labelled target rows | E | none directly: relevance is judged by prediction error, not feature distance | pooled mean and SD of source and target training rows | normalised absolute error of the weak learner on each row (uses labels) | each of 30 rounds multiplies a source row's weight by beta^loss; the final weights are reported | needs enough labelled target rows to judge the source rows; with few the weights are unstable |
+| TrAdaBoost.R2 | instance-based | True | 6 labelled target rows | - | none directly: relevance is judged by prediction error, not feature distance | pooled mean and SD of source and target training rows | normalised absolute error of the weak learner on each row (uses labels) | each of 30 rounds multiplies a source row's weight by beta^loss; the final weights are reported | needs enough labelled target rows to judge the source rows; with few the weights are unstable |
 | Kernel Mean Matching + weighted model | instance-based | True | uses features only for the weights | - | all retained shared features | pooled mean and SD of source rows and target training rows | MMD with an RBF kernel (median-heuristic bandwidth); KMM minimises that discrepancy | weights in [0, 10] make the weighted source feature mean match the target's; the effective sample size is reported | assumes the feature-yield relationship is shared; weights are unstable where the domains barely overlap |
 | CORAL feature alignment | feature-based | True | covariance from 6 target rows for 8 features: regularised, interpret with care | C, E | all retained shared features | pooled mean and SD, then covariance alignment | covariance difference (CORAL distance) and mean | no weights: the source features are re-coloured to the target covariance and mean | second-order only; the target covariance is noisy with few rows (a regulariser is added) |
-| Transfer Component Analysis | feature-based | True | linear kernel, 4 components | C | all retained shared features | pooled mean and SD | MMD in a linear kernel space | learns 4 components that keep variance and cut the MMD | needs enough rows; ignores labels when choosing the components |
+| Transfer Component Analysis | feature-based | True | linear kernel, 4 components | C, E | all retained shared features | pooled mean and SD | MMD in a linear kernel space | learns 4 components that keep variance and cut the MMD | needs enough rows; ignores labels when choosing the components |
 | Parameter transfer (source Ridge + regularised target correction) | parameter-based | True | penalty tuned by leave-one-out | E | none (corrects a source model with target labels) | source mean and SD | none; penalty by leave-one-out | the penalty chosen by leave-one-out sets how far the correction may move from the source model | Ridge only; assumes the source coefficients are a sensible starting point |
 | fine_tune_nn | not implemented | False | Fine-tuning a neural network: no neural model exists in this system. | not offered | - | - | - | - | - |
 | adversarial_da | not implemented | False | Adversarial domain adaptation (DANN): not implemented; it needs a neural feature extractor and far more rows. | not offered | - | - | - | - | - |
 | tree_fine_tune | not implemented | False | Fine-tuning Random Forest or XGBoost: trees have no weights to initialise from, so this is not the same operation. | not offered | - | - | - | - | - |
+
+## Selected model
+**Season trend (no features)** (best baseline: Season trend (no features); primary validation: forward). Transfer learning supported by the evaluation: **NO**.
+
+Transfer learning is NOT supported by the evaluation: the best transfer method (TrAdaBoost.R2) did not have a lower error than Season trend (no features). The selected model is the baseline Season trend (no features), and transfer learning is not used for any prediction.
+
+| method | MAE | best baseline (season_trend) MAE | 1 lower MAE than best baseline | 2 interval excludes zero | 3 also better leave-one-out | 4 at least 5 held-out seasons | 5 not an override run | supported | verdict |
+|---|---|---|---|---|---|---|---|---|---|
+| tradaboost_r2 | 0.271 | 0.255 | False | False | True | False | True | False | not testable (only 4 held-out seasons) |
+| coral | 0.286 | 0.255 | False | False | False | False | True | False | not testable (only 4 held-out seasons) |
+| tca | 0.307 | 0.255 | False | False | False | False | True | False | not testable (only 4 held-out seasons) |
+| ridge_prior | 0.308 | 0.255 | False | False | False | False | True | False | not testable (only 4 held-out seasons) |
+
+## Yield prediction
+Input assumption: typical season (mean of the observed seasons). Each row says which model made it.
+| model | role | season | predicted | band | band_source |
+|---|---|---|---|---|---|
+| Season trend (no features) | SELECTED model (baseline) | 2025 | 3.564 | 0.379 | measured 1 season(s) ahead on 4 tests |
+| Target-only model | baseline | 2025 | 4.448 | 0.425 | forward validation |
+| CORAL feature alignment | transfer learning (not selected) | 2025 | 4.462 | 0.437 | forward validation |
+| Transfer Component Analysis | transfer learning (not selected) | 2025 | 4.462 | 0.402 | forward validation |
+| Parameter transfer (source Ridge + regularised target correction) | transfer learning (not selected) | 2025 | 4.448 | 0.406 | forward validation |
+| TrAdaBoost.R2 | transfer learning (not selected) | 2025 | 4.437 | 0.473 | forward validation |
+
+## Future yield outlook
+Input assumption: typical season (mean of the observed seasons). Each row says which model made it.
+| model | role | season | predicted | band | band_source |
+|---|---|---|---|---|---|
+| Season trend (no features) | SELECTED model (baseline) | 2025 | 3.564 | 0.379 | measured 1 season(s) ahead on 4 tests |
+| Season trend (no features) | SELECTED model (baseline) | 2026 | 3.343 | 0.293 | measured 2 season(s) ahead on 3 tests |
+| Season trend (no features) | SELECTED model (baseline) | 2027 | 3.122 | 0.513 | measured 3 season(s) ahead on 2 tests |
+| Season trend (no features) | SELECTED model (baseline) | 2028 | 2.901 | 0.513 | measured 3 season(s) ahead on 2 tests; used for 4 ahead (not measured) |
+| Target-only model | baseline | 2025 | 4.448 | 0.425 | forward validation |
+| Target-only model | baseline | 2026 | 4.448 | 0.425 | forward validation |
+| Target-only model | baseline | 2027 | 4.448 | 0.425 | forward validation |
+| Target-only model | baseline | 2028 | 4.448 | 0.425 | forward validation |
+| CORAL feature alignment | transfer learning (not selected) | 2025 | 4.462 | 0.437 | forward validation |
+| CORAL feature alignment | transfer learning (not selected) | 2026 | 4.462 | 0.437 | forward validation |
+| CORAL feature alignment | transfer learning (not selected) | 2027 | 4.462 | 0.437 | forward validation |
+| CORAL feature alignment | transfer learning (not selected) | 2028 | 4.462 | 0.437 | forward validation |
+| Transfer Component Analysis | transfer learning (not selected) | 2025 | 4.462 | 0.402 | forward validation |
+| Transfer Component Analysis | transfer learning (not selected) | 2026 | 4.462 | 0.402 | forward validation |
+| Transfer Component Analysis | transfer learning (not selected) | 2027 | 4.462 | 0.402 | forward validation |
+| Transfer Component Analysis | transfer learning (not selected) | 2028 | 4.462 | 0.402 | forward validation |
+| Parameter transfer (source Ridge + regularised target correction) | transfer learning (not selected) | 2025 | 4.448 | 0.406 | forward validation |
+| Parameter transfer (source Ridge + regularised target correction) | transfer learning (not selected) | 2026 | 4.448 | 0.406 | forward validation |
+| Parameter transfer (source Ridge + regularised target correction) | transfer learning (not selected) | 2027 | 4.448 | 0.406 | forward validation |
+| Parameter transfer (source Ridge + regularised target correction) | transfer learning (not selected) | 2028 | 4.448 | 0.406 | forward validation |
+| TrAdaBoost.R2 | transfer learning (not selected) | 2025 | 4.437 | 0.473 | forward validation |
+| TrAdaBoost.R2 | transfer learning (not selected) | 2026 | 4.437 | 0.473 | forward validation |
+| TrAdaBoost.R2 | transfer learning (not selected) | 2027 | 4.437 | 0.473 | forward validation |
+| TrAdaBoost.R2 | transfer learning (not selected) | 2028 | 4.437 | 0.473 | forward validation |
 
 ## Transfer performance comparison (yield in the harmonised unit, held-out seasons only)
 ### Validation: loso (7 held-out seasons)
@@ -372,7 +424,7 @@ coral was worse than target_only on average (+0.045, 2 of 7 seasons better). Ver
 
 | Hypothesis | Measured | Status | Limitation | Recommended action |
 |---|---|---|---|---|
-| Large source-target distribution difference | modelling-level MMD p = 0.002; 3/8 features differ (adjusted KS); ten-day-level MMD p = 0.002 | Possible explanation | A distribution gap is not a prediction error; it can coexist with a good transfer. With 7 yearly rows the tests have little power. | Align or weight the features (KMM, CORAL) and compare with the target-only baseline. |
+| Large source-target distribution difference | modelling-level MMD p = 0.003; 3/8 features differ (adjusted KS); ten-day-level MMD p = 0.003 | Possible explanation | A distribution gap is not a prediction error; it can coexist with a good transfer. With 7 yearly rows the tests have little power. | Align or weight the features (KMM, CORAL) and compare with the target-only baseline. |
 | Irrelevant or incorrectly weighted source rows | this method does not weight source rows | Not applicable | - | - |
 | Too few target observations | 6.0 labelled target rows per training fold for 8 features (configured: 3 per feature) | Verified finding | That the condition holds does not prove it caused the larger error. | Collect more labelled target seasons or reduce the number of features. |
 | Different feature-yield relationship | cosine of standardised Ridge coefficients (source vs target) = +0.67; same sign for 75% of features | Not supported | The target coefficients come from only 7 rows and are unstable. This diagnostic uses target labels, so it explains the result but is not used to choose a method. | - |
@@ -388,7 +440,7 @@ coral was worse than season_trend on average (+0.072, 2 of 7 seasons better). Ve
 
 | Hypothesis | Measured | Status | Limitation | Recommended action |
 |---|---|---|---|---|
-| Large source-target distribution difference | modelling-level MMD p = 0.002; 3/8 features differ (adjusted KS); ten-day-level MMD p = 0.002 | Possible explanation | A distribution gap is not a prediction error; it can coexist with a good transfer. With 7 yearly rows the tests have little power. | Align or weight the features (KMM, CORAL) and compare with the target-only baseline. |
+| Large source-target distribution difference | modelling-level MMD p = 0.003; 3/8 features differ (adjusted KS); ten-day-level MMD p = 0.003 | Possible explanation | A distribution gap is not a prediction error; it can coexist with a good transfer. With 7 yearly rows the tests have little power. | Align or weight the features (KMM, CORAL) and compare with the target-only baseline. |
 | Irrelevant or incorrectly weighted source rows | this method does not weight source rows | Not applicable | - | - |
 | Too few target observations | 6.0 labelled target rows per training fold for 8 features (configured: 3 per feature) | Verified finding | That the condition holds does not prove it caused the larger error. | Collect more labelled target seasons or reduce the number of features. |
 | Different feature-yield relationship | cosine of standardised Ridge coefficients (source vs target) = +0.67; same sign for 75% of features | Not supported | The target coefficients come from only 7 rows and are unstable. This diagnostic uses target labels, so it explains the result but is not used to choose a method. | - |
@@ -404,7 +456,7 @@ tca was worse than target_only on average (+0.125, 2 of 7 seasons better). Verif
 
 | Hypothesis | Measured | Status | Limitation | Recommended action |
 |---|---|---|---|---|
-| Large source-target distribution difference | modelling-level MMD p = 0.002; 3/8 features differ (adjusted KS); ten-day-level MMD p = 0.002 | Possible explanation | A distribution gap is not a prediction error; it can coexist with a good transfer. With 7 yearly rows the tests have little power. | Align or weight the features (KMM, CORAL) and compare with the target-only baseline. |
+| Large source-target distribution difference | modelling-level MMD p = 0.003; 3/8 features differ (adjusted KS); ten-day-level MMD p = 0.003 | Possible explanation | A distribution gap is not a prediction error; it can coexist with a good transfer. With 7 yearly rows the tests have little power. | Align or weight the features (KMM, CORAL) and compare with the target-only baseline. |
 | Irrelevant or incorrectly weighted source rows | this method does not weight source rows | Not applicable | - | - |
 | Too few target observations | 6.0 labelled target rows per training fold for 8 features (configured: 3 per feature) | Verified finding | That the condition holds does not prove it caused the larger error. | Collect more labelled target seasons or reduce the number of features. |
 | Different feature-yield relationship | cosine of standardised Ridge coefficients (source vs target) = +0.67; same sign for 75% of features | Not supported | The target coefficients come from only 7 rows and are unstable. This diagnostic uses target labels, so it explains the result but is not used to choose a method. | - |
@@ -420,7 +472,7 @@ tca was worse than season_trend on average (+0.152, 2 of 7 seasons better). Veri
 
 | Hypothesis | Measured | Status | Limitation | Recommended action |
 |---|---|---|---|---|
-| Large source-target distribution difference | modelling-level MMD p = 0.002; 3/8 features differ (adjusted KS); ten-day-level MMD p = 0.002 | Possible explanation | A distribution gap is not a prediction error; it can coexist with a good transfer. With 7 yearly rows the tests have little power. | Align or weight the features (KMM, CORAL) and compare with the target-only baseline. |
+| Large source-target distribution difference | modelling-level MMD p = 0.003; 3/8 features differ (adjusted KS); ten-day-level MMD p = 0.003 | Possible explanation | A distribution gap is not a prediction error; it can coexist with a good transfer. With 7 yearly rows the tests have little power. | Align or weight the features (KMM, CORAL) and compare with the target-only baseline. |
 | Irrelevant or incorrectly weighted source rows | this method does not weight source rows | Not applicable | - | - |
 | Too few target observations | 6.0 labelled target rows per training fold for 8 features (configured: 3 per feature) | Verified finding | That the condition holds does not prove it caused the larger error. | Collect more labelled target seasons or reduce the number of features. |
 | Different feature-yield relationship | cosine of standardised Ridge coefficients (source vs target) = +0.67; same sign for 75% of features | Not supported | The target coefficients come from only 7 rows and are unstable. This diagnostic uses target labels, so it explains the result but is not used to choose a method. | - |
@@ -431,44 +483,12 @@ tca was worse than season_trend on average (+0.152, 2 of 7 seasons better). Veri
 | The features may only proxy a time trend | Spearman(season, target yield) = -0.93; MAE of this method 0.304 vs the pure season-trend baseline 0.151 | Possible explanation | A strong trend lets leave-one-season-out interpolate between neighbouring seasons; forward validation does not. | Judge the method by forward validation and against the season-trend baseline. |
 | Inappropriate model assumption | no specific assumption was violated that the data can check | Not applicable | - | - |
 
-### TrAdaBoost.R2 versus Target-only model
-tradaboost_r2 was better than target_only on average (-0.050, 5 of 7 seasons better). Verified findings: Too few target observations, Unstable evaluation from a very small target sample. Possible explanations (not proven): Large source-target distribution difference, Overfitting, The features may only proxy a time trend.
-
-| Hypothesis | Measured | Status | Limitation | Recommended action |
-|---|---|---|---|---|
-| Large source-target distribution difference | modelling-level MMD p = 0.002; 3/8 features differ (adjusted KS); ten-day-level MMD p = 0.002 | Possible explanation | A distribution gap is not a prediction error; it can coexist with a good transfer. With 7 yearly rows the tests have little power. | Align or weight the features (KMM, CORAL) and compare with the target-only baseline. |
-| Irrelevant or incorrectly weighted source rows | effective sample size = 1.00 of the source rows; source weight share 0.00 | Not supported | The weights show where the method put its trust, not whether that trust was right. | The weights are spread, so concentration is not the problem. |
-| Too few target observations | 6.0 labelled target rows per training fold for 8 features (configured: 3 per feature) | Verified finding | That the condition holds does not prove it caused the larger error. | Collect more labelled target seasons or reduce the number of features. |
-| Different feature-yield relationship | cosine of standardised Ridge coefficients (source vs target) = +0.67; same sign for 75% of features | Not supported | The target coefficients come from only 7 rows and are unstable. This diagnostic uses target labels, so it explains the result but is not used to choose a method. | - |
-| Feature mismatch or inconsistent units | 0 shared feature(s) with differing units; 0 not shared; unit check after harmonisation: passed | Not supported | Declared units can still hide a different definition (for example a different aggregation window). | - |
-| Seasonal variability: one season drives the difference | worst season 2022 accounts for 50% of the extra error; per-season change range -0.197 to +0.135 | Not supported | With few seasons one unusual season dominates any average. | Check season 2022 (weather, planting date, data quality). |
-| Overfitting | mean absolute error on the target training rows = 0.030 vs 0.129 on held-out seasons (ratio 0.24) | Possible explanation | A gap is normal for any model; a large one signals memorising few rows. | Increase regularisation or use fewer features. |
-| Unstable evaluation from a very small target sample | 7 held-out seasons; 95% range of the change [-0.141, +0.052] | Verified finding | With this few held-out points a difference of the size seen can arise by chance. | Treat the comparison as indicative only; add seasons before drawing conclusions. |
-| The features may only proxy a time trend | Spearman(season, target yield) = -0.93; MAE of this method 0.129 vs the pure season-trend baseline 0.151 | Possible explanation | A strong trend lets leave-one-season-out interpolate between neighbouring seasons; forward validation does not. | Judge the method by forward validation and against the season-trend baseline. |
-| Inappropriate model assumption | needs about 3+ target rows to judge source rows; has 6.0 per fold | Not supported | The rule is a minimum for the algorithm to run, not a guarantee of stability. | - |
-
-### TrAdaBoost.R2 versus Season trend (no features)
-tradaboost_r2 was better than season_trend on average (-0.022, 4 of 7 seasons better). Verified findings: Too few target observations, Unstable evaluation from a very small target sample. Possible explanations (not proven): Large source-target distribution difference, Overfitting, The features may only proxy a time trend.
-
-| Hypothesis | Measured | Status | Limitation | Recommended action |
-|---|---|---|---|---|
-| Large source-target distribution difference | modelling-level MMD p = 0.002; 3/8 features differ (adjusted KS); ten-day-level MMD p = 0.002 | Possible explanation | A distribution gap is not a prediction error; it can coexist with a good transfer. With 7 yearly rows the tests have little power. | Align or weight the features (KMM, CORAL) and compare with the target-only baseline. |
-| Irrelevant or incorrectly weighted source rows | effective sample size = 1.00 of the source rows; source weight share 0.00 | Not supported | The weights show where the method put its trust, not whether that trust was right. | The weights are spread, so concentration is not the problem. |
-| Too few target observations | 6.0 labelled target rows per training fold for 8 features (configured: 3 per feature) | Verified finding | That the condition holds does not prove it caused the larger error. | Collect more labelled target seasons or reduce the number of features. |
-| Different feature-yield relationship | cosine of standardised Ridge coefficients (source vs target) = +0.67; same sign for 75% of features | Not supported | The target coefficients come from only 7 rows and are unstable. This diagnostic uses target labels, so it explains the result but is not used to choose a method. | - |
-| Feature mismatch or inconsistent units | 0 shared feature(s) with differing units; 0 not shared; unit check after harmonisation: passed | Not supported | Declared units can still hide a different definition (for example a different aggregation window). | - |
-| Seasonal variability: one season drives the difference | worst season 2019 accounts for 57% of the extra error; per-season change range -0.295 to +0.315 | Not supported | With few seasons one unusual season dominates any average. | Check season 2019 (weather, planting date, data quality). |
-| Overfitting | mean absolute error on the target training rows = 0.030 vs 0.129 on held-out seasons (ratio 0.24) | Possible explanation | A gap is normal for any model; a large one signals memorising few rows. | Increase regularisation or use fewer features. |
-| Unstable evaluation from a very small target sample | 7 held-out seasons; 95% range of the change [-0.175, +0.139] | Verified finding | With this few held-out points a difference of the size seen can arise by chance. | Treat the comparison as indicative only; add seasons before drawing conclusions. |
-| The features may only proxy a time trend | Spearman(season, target yield) = -0.93; MAE of this method 0.129 vs the pure season-trend baseline 0.151 | Possible explanation | A strong trend lets leave-one-season-out interpolate between neighbouring seasons; forward validation does not. | Judge the method by forward validation and against the season-trend baseline. |
-| Inappropriate model assumption | needs about 3+ target rows to judge source rows; has 6.0 per fold | Not supported | The rule is a minimum for the algorithm to run, not a guarantee of stability. | - |
-
 ### Parameter transfer (source Ridge + regularised target correction) versus Target-only model
 ridge_prior was worse than target_only on average (+0.110, 1 of 7 seasons better). Verified findings: Too few target observations, Unstable evaluation from a very small target sample. Possible explanations (not proven): Large source-target distribution difference, Overfitting, The features may only proxy a time trend.
 
 | Hypothesis | Measured | Status | Limitation | Recommended action |
 |---|---|---|---|---|
-| Large source-target distribution difference | modelling-level MMD p = 0.002; 3/8 features differ (adjusted KS); ten-day-level MMD p = 0.002 | Possible explanation | A distribution gap is not a prediction error; it can coexist with a good transfer. With 7 yearly rows the tests have little power. | Align or weight the features (KMM, CORAL) and compare with the target-only baseline. |
+| Large source-target distribution difference | modelling-level MMD p = 0.003; 3/8 features differ (adjusted KS); ten-day-level MMD p = 0.003 | Possible explanation | A distribution gap is not a prediction error; it can coexist with a good transfer. With 7 yearly rows the tests have little power. | Align or weight the features (KMM, CORAL) and compare with the target-only baseline. |
 | Irrelevant or incorrectly weighted source rows | this method does not weight source rows | Not applicable | - | - |
 | Too few target observations | 6.0 labelled target rows per training fold for 8 features (configured: 3 per feature) | Verified finding | That the condition holds does not prove it caused the larger error. | Collect more labelled target seasons or reduce the number of features. |
 | Different feature-yield relationship | cosine of standardised Ridge coefficients (source vs target) = +0.67; same sign for 75% of features | Not supported | The target coefficients come from only 7 rows and are unstable. This diagnostic uses target labels, so it explains the result but is not used to choose a method. | - |
@@ -484,7 +504,7 @@ ridge_prior was worse than season_trend on average (+0.137, 2 of 7 seasons bette
 
 | Hypothesis | Measured | Status | Limitation | Recommended action |
 |---|---|---|---|---|
-| Large source-target distribution difference | modelling-level MMD p = 0.002; 3/8 features differ (adjusted KS); ten-day-level MMD p = 0.002 | Possible explanation | A distribution gap is not a prediction error; it can coexist with a good transfer. With 7 yearly rows the tests have little power. | Align or weight the features (KMM, CORAL) and compare with the target-only baseline. |
+| Large source-target distribution difference | modelling-level MMD p = 0.003; 3/8 features differ (adjusted KS); ten-day-level MMD p = 0.003 | Possible explanation | A distribution gap is not a prediction error; it can coexist with a good transfer. With 7 yearly rows the tests have little power. | Align or weight the features (KMM, CORAL) and compare with the target-only baseline. |
 | Irrelevant or incorrectly weighted source rows | this method does not weight source rows | Not applicable | - | - |
 | Too few target observations | 6.0 labelled target rows per training fold for 8 features (configured: 3 per feature) | Verified finding | That the condition holds does not prove it caused the larger error. | Collect more labelled target seasons or reduce the number of features. |
 | Different feature-yield relationship | cosine of standardised Ridge coefficients (source vs target) = +0.67; same sign for 75% of features | Not supported | The target coefficients come from only 7 rows and are unstable. This diagnostic uses target labels, so it explains the result but is not used to choose a method. | - |
@@ -494,6 +514,38 @@ ridge_prior was worse than season_trend on average (+0.137, 2 of 7 seasons bette
 | Unstable evaluation from a very small target sample | 7 held-out seasons; 95% range of the change [-0.018, +0.289] | Verified finding | With this few held-out points a difference of the size seen can arise by chance. | Treat the comparison as indicative only; add seasons before drawing conclusions. |
 | The features may only proxy a time trend | Spearman(season, target yield) = -0.93; MAE of this method 0.289 vs the pure season-trend baseline 0.151 | Possible explanation | A strong trend lets leave-one-season-out interpolate between neighbouring seasons; forward validation does not. | Judge the method by forward validation and against the season-trend baseline. |
 | Inappropriate model assumption | no specific assumption was violated that the data can check | Not applicable | - | - |
+
+### TrAdaBoost.R2 versus Target-only model
+tradaboost_r2 was better than target_only on average (-0.050, 5 of 7 seasons better). Verified findings: Too few target observations, Unstable evaluation from a very small target sample. Possible explanations (not proven): Large source-target distribution difference, Overfitting, The features may only proxy a time trend.
+
+| Hypothesis | Measured | Status | Limitation | Recommended action |
+|---|---|---|---|---|
+| Large source-target distribution difference | modelling-level MMD p = 0.003; 3/8 features differ (adjusted KS); ten-day-level MMD p = 0.003 | Possible explanation | A distribution gap is not a prediction error; it can coexist with a good transfer. With 7 yearly rows the tests have little power. | Align or weight the features (KMM, CORAL) and compare with the target-only baseline. |
+| Irrelevant or incorrectly weighted source rows | effective sample size = 1.00 of the source rows; source weight share 0.00 | Not supported | The weights show where the method put its trust, not whether that trust was right. | The weights are spread, so concentration is not the problem. |
+| Too few target observations | 6.0 labelled target rows per training fold for 8 features (configured: 3 per feature) | Verified finding | That the condition holds does not prove it caused the larger error. | Collect more labelled target seasons or reduce the number of features. |
+| Different feature-yield relationship | cosine of standardised Ridge coefficients (source vs target) = +0.67; same sign for 75% of features | Not supported | The target coefficients come from only 7 rows and are unstable. This diagnostic uses target labels, so it explains the result but is not used to choose a method. | - |
+| Feature mismatch or inconsistent units | 0 shared feature(s) with differing units; 0 not shared; unit check after harmonisation: passed | Not supported | Declared units can still hide a different definition (for example a different aggregation window). | - |
+| Seasonal variability: one season drives the difference | worst season 2022 accounts for 50% of the extra error; per-season change range -0.197 to +0.135 | Not supported | With few seasons one unusual season dominates any average. | Check season 2022 (weather, planting date, data quality). |
+| Overfitting | mean absolute error on the target training rows = 0.030 vs 0.129 on held-out seasons (ratio 0.24) | Possible explanation | A gap is normal for any model; a large one signals memorising few rows. | Increase regularisation or use fewer features. |
+| Unstable evaluation from a very small target sample | 7 held-out seasons; 95% range of the change [-0.141, +0.052] | Verified finding | With this few held-out points a difference of the size seen can arise by chance. | Treat the comparison as indicative only; add seasons before drawing conclusions. |
+| The features may only proxy a time trend | Spearman(season, target yield) = -0.93; MAE of this method 0.129 vs the pure season-trend baseline 0.151 | Possible explanation | A strong trend lets leave-one-season-out interpolate between neighbouring seasons; forward validation does not. | Judge the method by forward validation and against the season-trend baseline. |
+| Inappropriate model assumption | needs about 3+ target rows to judge source rows; has 6.0 per fold | Not supported | The rule is a minimum for the algorithm to run, not a guarantee of stability. | - |
+
+### TrAdaBoost.R2 versus Season trend (no features)
+tradaboost_r2 was better than season_trend on average (-0.022, 4 of 7 seasons better). Verified findings: Too few target observations, Unstable evaluation from a very small target sample. Possible explanations (not proven): Large source-target distribution difference, Overfitting, The features may only proxy a time trend.
+
+| Hypothesis | Measured | Status | Limitation | Recommended action |
+|---|---|---|---|---|
+| Large source-target distribution difference | modelling-level MMD p = 0.003; 3/8 features differ (adjusted KS); ten-day-level MMD p = 0.003 | Possible explanation | A distribution gap is not a prediction error; it can coexist with a good transfer. With 7 yearly rows the tests have little power. | Align or weight the features (KMM, CORAL) and compare with the target-only baseline. |
+| Irrelevant or incorrectly weighted source rows | effective sample size = 1.00 of the source rows; source weight share 0.00 | Not supported | The weights show where the method put its trust, not whether that trust was right. | The weights are spread, so concentration is not the problem. |
+| Too few target observations | 6.0 labelled target rows per training fold for 8 features (configured: 3 per feature) | Verified finding | That the condition holds does not prove it caused the larger error. | Collect more labelled target seasons or reduce the number of features. |
+| Different feature-yield relationship | cosine of standardised Ridge coefficients (source vs target) = +0.67; same sign for 75% of features | Not supported | The target coefficients come from only 7 rows and are unstable. This diagnostic uses target labels, so it explains the result but is not used to choose a method. | - |
+| Feature mismatch or inconsistent units | 0 shared feature(s) with differing units; 0 not shared; unit check after harmonisation: passed | Not supported | Declared units can still hide a different definition (for example a different aggregation window). | - |
+| Seasonal variability: one season drives the difference | worst season 2019 accounts for 57% of the extra error; per-season change range -0.295 to +0.315 | Not supported | With few seasons one unusual season dominates any average. | Check season 2019 (weather, planting date, data quality). |
+| Overfitting | mean absolute error on the target training rows = 0.030 vs 0.129 on held-out seasons (ratio 0.24) | Possible explanation | A gap is normal for any model; a large one signals memorising few rows. | Increase regularisation or use fewer features. |
+| Unstable evaluation from a very small target sample | 7 held-out seasons; 95% range of the change [-0.175, +0.139] | Verified finding | With this few held-out points a difference of the size seen can arise by chance. | Treat the comparison as indicative only; add seasons before drawing conclusions. |
+| The features may only proxy a time trend | Spearman(season, target yield) = -0.93; MAE of this method 0.129 vs the pure season-trend baseline 0.151 | Possible explanation | A strong trend lets leave-one-season-out interpolate between neighbouring seasons; forward validation does not. | Judge the method by forward validation and against the season-trend baseline. |
+| Inappropriate model assumption | needs about 3+ target rows to judge source rows; has 6.0 per fold | Not supported | The rule is a minimum for the algorithm to run, not a guarantee of stability. | - |
 
 ## Settings
 ```
@@ -508,7 +560,7 @@ ridge_prior was worse than season_trend on average (+0.137, 2 of 7 seasons bette
  "smd_small": 0.2,
  "smd_medium": 0.5,
  "smd_large": 0.8,
- "mmd_permutations": 500,
+ "mmd_permutations": 300,
  "random_state": 0,
  "cv_strategy": "loso",
  "max_target_train_groups": null,
@@ -517,6 +569,7 @@ ridge_prior was worse than season_trend on average (+0.137, 2 of 7 seasons bette
  "min_target_tradaboost": 3,
  "far_auc": 0.85,
  "auc_min_rows": 30,
+ "adopt_min_seasons": 5,
  "trend_flag_rho": 0.7,
  "kmm_max_source": 600,
  "tca_max_rows": 800,
@@ -580,9 +633,9 @@ ridge_prior was worse than season_trend on average (+0.137, 2 of 7 seasons bette
 Base model: ridge
 
 ## Event log
-- 02:13:17: selected source 'IADA Barat Laut Selangor' and target 'MADA', base model ridge
-- 02:13:20: assessment: readiness conditional
-- 02:13:20: harmonisation: validated
-- 02:13:20: suitability: conditionally_recommended
-- 02:13:20: strategy selected: ['coral', 'tca', 'tradaboost_r2', 'ridge_prior']
-- 02:13:24: ran ['source_only', 'target_only', 'target_mean', 'pooled', 'coral', 'tca', 'tradaboost_r2', 'ridge_prior']
+- 22:11:40: selected source 'IADA Barat Laut Selangor' and target 'MADA', base model ridge
+- 22:11:42: assessment: readiness conditional
+- 22:11:42: harmonisation: validated
+- 22:11:42: suitability: conditionally_recommended
+- 22:11:42: strategy selected: ['coral', 'tca', 'ridge_prior', 'tradaboost_r2']
+- 22:11:44: ran ['source_only', 'target_only', 'target_mean', 'pooled', 'coral', 'tca', 'ridge_prior', 'tradaboost_r2']

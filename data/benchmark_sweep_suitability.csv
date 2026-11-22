@@ -1,0 +1,36 @@
+method,descriptor,n_granaries,spearman_rho,p_value
+detrended_residual_transfer,domain AUC,9,-0.05,0.8984
+detrended_residual_transfer,MMD2,9,-0.0167,0.9661
+detrended_residual_transfer,CORAL distance,9,0.3333,0.3807
+detrended_residual_transfer,calendar offset (|days|),9,-0.4874,0.1832
+detrended_residual_transfer,historical yield CV (%),9,-0.1333,0.7324
+granary_intercept_ridge,domain AUC,9,-0.0333,0.9322
+granary_intercept_ridge,MMD2,9,0.35,0.3558
+granary_intercept_ridge,CORAL distance,9,0.25,0.5165
+granary_intercept_ridge,calendar offset (|days|),9,-0.4958,0.1747
+granary_intercept_ridge,historical yield CV (%),9,-0.4,0.2861
+kmm_ridge,domain AUC,9,0.15,0.7001
+kmm_ridge,MMD2,9,0.0667,0.8647
+kmm_ridge,CORAL distance,9,-0.0667,0.8647
+kmm_ridge,calendar offset (|days|),9,-0.5126,0.1582
+kmm_ridge,historical yield CV (%),9,-0.35,0.3558
+s_tradaboost_r2,domain AUC,9,-0.0667,0.8647
+s_tradaboost_r2,MMD2,9,0.1833,0.6368
+s_tradaboost_r2,CORAL distance,9,0.2833,0.46
+s_tradaboost_r2,calendar offset (|days|),9,-0.3866,0.3041
+s_tradaboost_r2,historical yield CV (%),9,-0.2,0.6059
+tradaboost_r2,domain AUC,9,0.7833,0.0125
+tradaboost_r2,MMD2,9,0.2333,0.5457
+tradaboost_r2,CORAL distance,9,-0.2333,0.5457
+tradaboost_r2,calendar offset (|days|),9,0.479,0.192
+tradaboost_r2,historical yield CV (%),9,0.2833,0.46
+two_stage_tradaboost_r2,domain AUC,9,-0.0167,0.9661
+two_stage_tradaboost_r2,MMD2,9,0.15,0.7001
+two_stage_tradaboost_r2,CORAL distance,9,0.2667,0.4879
+two_stage_tradaboost_r2,calendar offset (|days|),9,-0.4202,0.2602
+two_stage_tradaboost_r2,historical yield CV (%),9,-0.2667,0.4879
+z_anomaly_transfer,domain AUC,9,0.1333,0.7324
+z_anomaly_transfer,MMD2,9,-0.2167,0.5755
+z_anomaly_transfer,CORAL distance,9,-0.1167,0.765
+z_anomaly_transfer,calendar offset (|days|),9,-0.1681,0.6656
+z_anomaly_transfer,historical yield CV (%),9,-0.7,0.0358

@@ -1,0 +1,752 @@
+Pixel_ID,Granary,Longitude,Latitude,Paddy_Class,Paddy_Scheme,Poly_ha,Dist_to_paddy_m,In_Paddy,In_Granary_Scheme,In_Own_Scheme
+101.16942_3.50451,IADA Barat Laut Selangor,101.16942,3.50451,scheme,IADP Barat Laut Selangor,8737.79,0.0,True,True,True
+101.17167_3.47532,IADA Barat Laut Selangor,101.17167,3.47532,scheme,IADP Barat Laut Selangor,67.13,0.0,True,True,True
+101.17167_3.49778,IADA Barat Laut Selangor,101.17167,3.49778,scheme,IADP Barat Laut Selangor,8737.79,0.0,True,True,True
+101.17617_3.47532,IADA Barat Laut Selangor,101.17617,3.47532,not_paddy,,0.0,196.2,False,False,False
+101.17617_3.48879,IADA Barat Laut Selangor,101.17617,3.48879,scheme,IADP Barat Laut Selangor,8737.79,0.0,True,True,True
+101.17617_3.49329,IADA Barat Laut Selangor,101.17617,3.49329,scheme,IADP Barat Laut Selangor,8737.79,0.0,True,True,True
+101.17617_3.50901,IADA Barat Laut Selangor,101.17617,3.50901,not_paddy,,0.0,31.0,False,False,False
+101.17842_3.47757,IADA Barat Laut Selangor,101.17842,3.47757,not_paddy,,0.0,190.3,False,False,False
+101.17842_3.48879,IADA Barat Laut Selangor,101.17842,3.48879,scheme,IADP Barat Laut Selangor,8737.79,0.0,True,True,True
+101.17842_3.49778,IADA Barat Laut Selangor,101.17842,3.49778,not_paddy,,0.0,66.0,False,False,False
+101.18067_3.48206,IADA Barat Laut Selangor,101.18067,3.48206,scheme,IADP Barat Laut Selangor,67.13,0.0,True,True,True
+101.18067_3.48430,IADA Barat Laut Selangor,101.18067,3.4843,scheme,IADP Barat Laut Selangor,67.13,0.0,True,True,True
+101.18742_3.48655,IADA Barat Laut Selangor,101.18742,3.48655,not_paddy,,0.0,105.5,False,False,False
+101.18967_3.45960,IADA Barat Laut Selangor,101.18967,3.4596,scheme,IADP Barat Laut Selangor,2446.38,0.0,True,True,True
+101.18967_3.48879,IADA Barat Laut Selangor,101.18967,3.48879,not_paddy,,0.0,95.6,False,False,False
+101.19192_3.45511,IADA Barat Laut Selangor,101.19192,3.45511,scheme,IADP Barat Laut Selangor,2446.38,0.0,True,True,True
+101.19192_3.46409,IADA Barat Laut Selangor,101.19192,3.46409,scheme,IADP Barat Laut Selangor,2446.38,0.0,True,True,True
+101.19417_3.46634,IADA Barat Laut Selangor,101.19417,3.46634,not_paddy,,0.0,48.8,False,False,False
+101.19642_3.45062,IADA Barat Laut Selangor,101.19642,3.45062,scheme,IADP Barat Laut Selangor,2446.38,0.0,True,True,True
+101.19642_3.45286,IADA Barat Laut Selangor,101.19642,3.45286,scheme,IADP Barat Laut Selangor,2446.38,0.0,True,True,True
+101.19867_3.45511,IADA Barat Laut Selangor,101.19867,3.45511,scheme,IADP Barat Laut Selangor,2446.38,0.0,True,True,True
+101.20092_3.47083,IADA Barat Laut Selangor,101.20092,3.47083,scheme,IADP Barat Laut Selangor,2446.38,0.0,True,True,True
+101.20317_3.38773,IADA Barat Laut Selangor,101.20317,3.38773,not_paddy,,0.0,4574.1,False,False,False
+101.20317_3.45511,IADA Barat Laut Selangor,101.20317,3.45511,scheme,IADP Barat Laut Selangor,2446.38,0.0,True,True,True
+101.20767_3.45286,IADA Barat Laut Selangor,101.20767,3.45286,scheme,IADP Barat Laut Selangor,2446.38,0.0,True,True,True
+101.20767_3.45735,IADA Barat Laut Selangor,101.20767,3.45735,scheme,IADP Barat Laut Selangor,2446.38,0.0,True,True,True
+101.20992_3.43490,IADA Barat Laut Selangor,101.20992,3.4349,scheme,IADP Barat Laut Selangor,2446.38,0.0,True,True,True
+101.20992_3.47532,IADA Barat Laut Selangor,101.20992,3.47532,scheme,IADP Barat Laut Selangor,2446.38,0.0,True,True,True
+101.21217_3.43939,IADA Barat Laut Selangor,101.21217,3.43939,scheme,IADP Barat Laut Selangor,2446.38,0.0,True,True,True
+101.21217_3.44388,IADA Barat Laut Selangor,101.21217,3.44388,scheme,IADP Barat Laut Selangor,2446.38,0.0,True,True,True
+101.21217_3.45062,IADA Barat Laut Selangor,101.21217,3.45062,scheme,IADP Barat Laut Selangor,2446.38,0.0,True,True,True
+101.21217_3.47981,IADA Barat Laut Selangor,101.21217,3.47981,scheme,IADP Barat Laut Selangor,2446.38,0.0,True,True,True
+101.21442_3.42816,IADA Barat Laut Selangor,101.21442,3.42816,not_paddy,,0.0,93.4,False,False,False
+101.21442_3.44837,IADA Barat Laut Selangor,101.21442,3.44837,scheme,IADP Barat Laut Selangor,2446.38,0.0,True,True,True
+101.21442_3.45286,IADA Barat Laut Selangor,101.21442,3.45286,scheme,IADP Barat Laut Selangor,2446.38,0.0,True,True,True
+101.21442_3.45960,IADA Barat Laut Selangor,101.21442,3.4596,scheme,IADP Barat Laut Selangor,2446.38,0.0,True,True,True
+101.21667_3.43939,IADA Barat Laut Selangor,101.21667,3.43939,scheme,IADP Barat Laut Selangor,2446.38,0.0,True,True,True
+101.21667_3.47307,IADA Barat Laut Selangor,101.21667,3.47307,scheme,IADP Barat Laut Selangor,2446.38,0.0,True,True,True
+101.21892_3.45735,IADA Barat Laut Selangor,101.21892,3.45735,scheme,IADP Barat Laut Selangor,2446.38,0.0,True,True,True
+101.22117_3.47981,IADA Barat Laut Selangor,101.22117,3.47981,scheme,IADP Barat Laut Selangor,2446.38,0.0,True,True,True
+101.22342_3.43040,IADA Barat Laut Selangor,101.22342,3.4304,scheme,IADP Barat Laut Selangor,2446.38,0.0,True,True,True
+101.22342_3.43939,IADA Barat Laut Selangor,101.22342,3.43939,scheme,IADP Barat Laut Selangor,2446.38,0.0,True,True,True
+101.22342_3.45286,IADA Barat Laut Selangor,101.22342,3.45286,scheme,IADP Barat Laut Selangor,2446.38,0.0,True,True,True
+101.22342_3.47757,IADA Barat Laut Selangor,101.22342,3.47757,scheme,IADP Barat Laut Selangor,2446.38,0.0,True,True,True
+101.22567_3.46858,IADA Barat Laut Selangor,101.22567,3.46858,scheme,IADP Barat Laut Selangor,2446.38,0.0,True,True,True
+101.23242_3.43714,IADA Barat Laut Selangor,101.23242,3.43714,scheme,IADP Barat Laut Selangor,2446.38,0.0,True,True,True
+101.23467_3.44612,IADA Barat Laut Selangor,101.23467,3.44612,scheme,IADP Barat Laut Selangor,2446.38,0.0,True,True,True
+101.23467_3.46185,IADA Barat Laut Selangor,101.23467,3.46185,scheme,IADP Barat Laut Selangor,2446.38,0.0,True,True,True
+101.23467_3.46634,IADA Barat Laut Selangor,101.23467,3.46634,scheme,IADP Barat Laut Selangor,2446.38,0.0,True,True,True
+101.23467_3.46858,IADA Barat Laut Selangor,101.23467,3.46858,scheme,IADP Barat Laut Selangor,2446.38,0.0,True,True,True
+101.27291_3.41468,IADA Barat Laut Selangor,101.27291,3.41468,not_paddy,,0.0,4480.2,False,False,False
+101.27966_3.40345,IADA Barat Laut Selangor,101.27966,3.40345,not_paddy,,0.0,5688.3,False,False,False
+101.27966_3.40570,IADA Barat Laut Selangor,101.27966,3.4057,not_paddy,,0.0,5570.1,False,False,False
+101.28641_3.33384,IADA Barat Laut Selangor,101.28641,3.33384,not_paddy,,0.0,11981.0,False,False,False
+101.28866_3.33384,IADA Barat Laut Selangor,101.28866,3.33384,not_paddy,,0.0,12102.4,False,False,False
+101.29541_3.26646,IADA Barat Laut Selangor,101.29541,3.26646,not_paddy,,0.0,19241.6,False,False,False
+101.29541_3.33608,IADA Barat Laut Selangor,101.29541,3.33608,not_paddy,,0.0,12280.3,False,False,False
+101.32015_3.38773,IADA Barat Laut Selangor,101.32015,3.38773,not_paddy,,0.0,10497.6,False,False,False
+101.32240_3.38549,IADA Barat Laut Selangor,101.3224,3.38549,not_paddy,,0.0,10831.8,False,False,False
+101.33365_3.33833,IADA Barat Laut Selangor,101.33365,3.33833,not_paddy,,0.0,14866.3,False,False,False
+101.36515_3.20133,IADA Barat Laut Selangor,101.36515,3.20133,not_paddy,,0.0,26767.5,False,False,False
+100.95619_3.81675,IADA Barat Laut Selangor,100.95619,3.81675,not_paddy,,0.0,10922.5,False,False,False
+100.97194_3.70446,IADA Barat Laut Selangor,100.97194,3.70446,scheme,IADP Barat Laut Selangor,590.37,0.0,True,True,True
+100.97869_3.69773,IADA Barat Laut Selangor,100.97869,3.69773,scheme,IADP Barat Laut Selangor,590.37,0.0,True,True,True
+100.97869_3.70446,IADA Barat Laut Selangor,100.97869,3.70446,not_paddy,,0.0,14.9,False,False,False
+100.98995_3.68874,IADA Barat Laut Selangor,100.98995,3.68874,scheme,IADP Barat Laut Selangor,590.37,0.0,True,True,True
+100.98995_3.69324,IADA Barat Laut Selangor,100.98995,3.69324,not_paddy,,0.0,34.5,False,False,False
+100.99445_3.70671,IADA Barat Laut Selangor,100.99445,3.70671,not_paddy,,0.0,8.5,False,False,False
+100.99670_3.67976,IADA Barat Laut Selangor,100.9967,3.67976,not_paddy,,0.0,10.3,False,False,False
+100.99670_3.69548,IADA Barat Laut Selangor,100.9967,3.69548,not_paddy,,0.0,44.5,False,False,False
+100.99895_3.69548,IADA Barat Laut Selangor,100.99895,3.69548,not_paddy,,0.0,17.8,False,False,False
+100.99895_3.69773,IADA Barat Laut Selangor,100.99895,3.69773,scheme,IADP Barat Laut Selangor,590.37,0.0,True,True,True
+101.00345_3.67527,IADA Barat Laut Selangor,101.00345,3.67527,scheme,IADP Barat Laut Selangor,148.18,0.0,True,True,True
+101.01020_3.72468,IADA Barat Laut Selangor,101.0102,3.72468,scheme,IADP Barat Laut Selangor,633.21,0.0,True,True,True
+101.01245_3.67527,IADA Barat Laut Selangor,101.01245,3.67527,not_paddy,,0.0,14.0,False,False,False
+101.01245_3.69548,IADA Barat Laut Selangor,101.01245,3.69548,scheme,IADP Barat Laut Selangor,332.87,0.0,True,True,True
+101.01245_3.71345,IADA Barat Laut Selangor,101.01245,3.71345,scheme,IADP Barat Laut Selangor,633.21,0.0,True,True,True
+101.01470_3.72468,IADA Barat Laut Selangor,101.0147,3.72468,scheme,IADP Barat Laut Selangor,633.21,0.0,True,True,True
+101.01695_3.72243,IADA Barat Laut Selangor,101.01695,3.72243,scheme,IADP Barat Laut Selangor,633.21,0.0,True,True,True
+101.01920_3.69324,IADA Barat Laut Selangor,101.0192,3.69324,scheme,IADP Barat Laut Selangor,332.87,0.0,True,True,True
+101.01920_3.69997,IADA Barat Laut Selangor,101.0192,3.69997,scheme,IADP Barat Laut Selangor,332.87,0.0,True,True,True
+101.01920_3.72692,IADA Barat Laut Selangor,101.0192,3.72692,scheme,IADP Barat Laut Selangor,633.21,0.0,True,True,True
+101.02145_3.65281,IADA Barat Laut Selangor,101.02145,3.65281,scheme,IADP Barat Laut Selangor,616.43,0.0,True,True,True
+101.02370_3.65506,IADA Barat Laut Selangor,101.0237,3.65506,not_paddy,,0.0,80.2,False,False,False
+101.02370_3.69099,IADA Barat Laut Selangor,101.0237,3.69099,not_paddy,,0.0,66.6,False,False,False
+101.02595_3.66629,IADA Barat Laut Selangor,101.02595,3.66629,scheme,IADP Barat Laut Selangor,145.45,0.0,True,True,True
+101.02595_3.72692,IADA Barat Laut Selangor,101.02595,3.72692,scheme,IADP Barat Laut Selangor,633.21,0.0,True,True,True
+101.02820_3.70222,IADA Barat Laut Selangor,101.0282,3.70222,not_paddy,,0.0,5.8,False,False,False
+101.03045_3.72019,IADA Barat Laut Selangor,101.03045,3.72019,scheme,IADP Barat Laut Selangor,939.82,0.0,True,True,True
+101.03045_3.73815,IADA Barat Laut Selangor,101.03045,3.73815,scheme,IADP Barat Laut Selangor,633.21,0.0,True,True,True
+101.03270_3.64383,IADA Barat Laut Selangor,101.0327,3.64383,not_paddy,,0.0,13.0,False,False,False
+101.03270_3.69773,IADA Barat Laut Selangor,101.0327,3.69773,scheme,IADP Barat Laut Selangor,939.82,0.0,True,True,True
+101.03270_3.69997,IADA Barat Laut Selangor,101.0327,3.69997,scheme,IADP Barat Laut Selangor,939.82,0.0,True,True,True
+101.03270_3.72019,IADA Barat Laut Selangor,101.0327,3.72019,scheme,IADP Barat Laut Selangor,939.82,0.0,True,True,True
+101.03270_3.72468,IADA Barat Laut Selangor,101.0327,3.72468,scheme,IADP Barat Laut Selangor,939.82,0.0,True,True,True
+101.03495_3.64383,IADA Barat Laut Selangor,101.03495,3.64383,scheme,IADP Barat Laut Selangor,616.43,0.0,True,True,True
+101.03495_3.64607,IADA Barat Laut Selangor,101.03495,3.64607,not_paddy,,0.0,65.6,False,False,False
+101.03495_3.69997,IADA Barat Laut Selangor,101.03495,3.69997,scheme,IADP Barat Laut Selangor,939.82,0.0,True,True,True
+101.03495_3.71569,IADA Barat Laut Selangor,101.03495,3.71569,scheme,IADP Barat Laut Selangor,939.82,0.0,True,True,True
+101.03720_3.64607,IADA Barat Laut Selangor,101.0372,3.64607,scheme,IADP Barat Laut Selangor,616.43,0.0,True,True,True
+101.03946_3.71120,IADA Barat Laut Selangor,101.03946,3.7112,scheme,IADP Barat Laut Selangor,939.82,0.0,True,True,True
+101.04171_3.65057,IADA Barat Laut Selangor,101.04171,3.65057,scheme,IADP Barat Laut Selangor,616.43,0.0,True,True,True
+101.04171_3.71120,IADA Barat Laut Selangor,101.04171,3.7112,scheme,IADP Barat Laut Selangor,939.82,0.0,True,True,True
+101.04396_3.67302,IADA Barat Laut Selangor,101.04396,3.67302,scheme,IADP Barat Laut Selangor,616.43,0.0,True,True,True
+101.04846_3.73141,IADA Barat Laut Selangor,101.04846,3.73141,scheme,IADP Barat Laut Selangor,293.05,0.0,True,True,True
+101.05296_3.64383,IADA Barat Laut Selangor,101.05296,3.64383,not_paddy,,0.0,206.2,False,False,False
+101.05521_3.65281,IADA Barat Laut Selangor,101.05521,3.65281,not_paddy,,0.0,147.8,False,False,False
+101.05746_3.64832,IADA Barat Laut Selangor,101.05746,3.64832,not_paddy,,0.0,69.2,False,False,False
+101.05971_3.63260,IADA Barat Laut Selangor,101.05971,3.6326,not_paddy,,0.0,3.2,False,False,False
+101.05971_3.65506,IADA Barat Laut Selangor,101.05971,3.65506,scheme,IADP Barat Laut Selangor,52.12,0.0,True,True,True
+101.06421_3.71120,IADA Barat Laut Selangor,101.06421,3.7112,scheme,IADP Barat Laut Selangor,197.77,0.0,True,True,True
+101.06871_3.71794,IADA Barat Laut Selangor,101.06871,3.71794,scheme,IADP Barat Laut Selangor,197.77,0.0,True,True,True
+101.07096_3.62362,IADA Barat Laut Selangor,101.07096,3.62362,scheme,IADP Barat Laut Selangor,8737.79,0.0,True,True,True
+101.07546_3.59667,IADA Barat Laut Selangor,101.07546,3.59667,scheme,IADP Barat Laut Selangor,8737.79,0.0,True,True,True
+101.07546_3.60340,IADA Barat Laut Selangor,101.07546,3.6034,scheme,IADP Barat Laut Selangor,8737.79,0.0,True,True,True
+101.07546_3.61014,IADA Barat Laut Selangor,101.07546,3.61014,scheme,IADP Barat Laut Selangor,8737.79,0.0,True,True,True
+101.08221_3.63035,IADA Barat Laut Selangor,101.08221,3.63035,scheme,IADP Barat Laut Selangor,8737.79,0.0,True,True,True
+101.08221_3.63709,IADA Barat Laut Selangor,101.08221,3.63709,not_paddy,,0.0,153.3,False,False,False
+101.08446_3.61014,IADA Barat Laut Selangor,101.08446,3.61014,scheme,IADP Barat Laut Selangor,8737.79,0.0,True,True,True
+101.08446_3.63035,IADA Barat Laut Selangor,101.08446,3.63035,scheme,IADP Barat Laut Selangor,8737.79,0.0,True,True,True
+101.08446_3.63934,IADA Barat Laut Selangor,101.08446,3.63934,not_paddy,,0.0,194.7,False,False,False
+101.08671_3.58319,IADA Barat Laut Selangor,101.08671,3.58319,scheme,IADP Barat Laut Selangor,8737.79,0.0,True,True,True
+101.08671_3.58993,IADA Barat Laut Selangor,101.08671,3.58993,not_paddy,,0.0,38.2,False,False,False
+101.08896_3.71345,IADA Barat Laut Selangor,101.08896,3.71345,scheme,IADP Barat Laut Selangor,29.8,0.0,True,True,True
+101.09121_3.56972,IADA Barat Laut Selangor,101.09121,3.56972,scheme,IADP Barat Laut Selangor,8737.79,0.0,True,True,True
+101.09347_3.62137,IADA Barat Laut Selangor,101.09347,3.62137,scheme,IADP Barat Laut Selangor,8737.79,0.0,True,True,True
+101.09572_3.56523,IADA Barat Laut Selangor,101.09572,3.56523,scheme,IADP Barat Laut Selangor,8737.79,0.0,True,True,True
+101.09797_3.56073,IADA Barat Laut Selangor,101.09797,3.56073,not_paddy,,0.0,16.0,False,False,False
+101.10472_3.55400,IADA Barat Laut Selangor,101.10472,3.554,scheme,IADP Barat Laut Selangor,8737.79,0.0,True,True,True
+101.10472_3.57870,IADA Barat Laut Selangor,101.10472,3.5787,scheme,IADP Barat Laut Selangor,8737.79,0.0,True,True,True
+101.10697_3.56073,IADA Barat Laut Selangor,101.10697,3.56073,scheme,IADP Barat Laut Selangor,8737.79,0.0,True,True,True
+101.11597_3.54277,IADA Barat Laut Selangor,101.11597,3.54277,scheme,IADP Barat Laut Selangor,8737.79,0.0,True,True,True
+101.13172_3.54951,IADA Barat Laut Selangor,101.13172,3.54951,scheme,IADP Barat Laut Selangor,8737.79,0.0,True,True,True
+101.13397_3.81451,IADA Barat Laut Selangor,101.13397,3.81451,not_paddy,,0.0,9823.4,False,False,False
+102.29462_5.89184,IADA Kemasin Semerak,102.29462,5.89184,scheme,IADP Kemasin-Semerak,3372.98,0.0,True,True,True
+102.31719_5.85366,IADA Kemasin Semerak,102.31719,5.85366,scheme,IADP Kemasin-Semerak,3372.98,0.0,True,True,True
+102.31945_5.86040,IADA Kemasin Semerak,102.31945,5.8604,scheme,IADP Kemasin-Semerak,3372.98,0.0,True,True,True
+102.32171_5.86938,IADA Kemasin Semerak,102.32171,5.86938,scheme,IADP Kemasin-Semerak,3372.98,0.0,True,True,True
+102.33299_5.84468,IADA Kemasin Semerak,102.33299,5.84468,scheme,IADP Kemasin-Semerak,3372.98,0.0,True,True,True
+102.33525_5.84693,IADA Kemasin Semerak,102.33525,5.84693,scheme,IADP Kemasin-Semerak,3372.98,0.0,True,True,True
+102.33525_5.86714,IADA Kemasin Semerak,102.33525,5.86714,scheme,IADP Kemasin-Semerak,3372.98,0.0,True,True,True
+102.34202_5.89633,IADA Kemasin Semerak,102.34202,5.89633,scheme,IADP Kemasin-Semerak,292.88,0.0,True,True,True
+102.34428_5.89858,IADA Kemasin Semerak,102.34428,5.89858,scheme,IADP Kemasin-Semerak,292.88,0.0,True,True,True
+102.34654_5.89409,IADA Kemasin Semerak,102.34654,5.89409,scheme,IADP Kemasin-Semerak,292.88,0.0,True,True,True
+102.34880_5.84243,IADA Kemasin Semerak,102.3488,5.84243,scheme,IADP Kemasin-Semerak,192.46,0.0,True,True,True
+102.35105_5.86040,IADA Kemasin Semerak,102.35105,5.8604,not_paddy,,0.0,17.0,False,False,False
+102.35331_5.88510,IADA Kemasin Semerak,102.35331,5.8851,scheme,IADP Kemasin-Semerak,1963.58,0.0,True,True,True
+102.35557_5.86938,IADA Kemasin Semerak,102.35557,5.86938,scheme,IADP Kemasin-Semerak,1963.58,0.0,True,True,True
+102.35557_5.87612,IADA Kemasin Semerak,102.35557,5.87612,scheme,IADP Kemasin-Semerak,1963.58,0.0,True,True,True
+102.35557_5.88286,IADA Kemasin Semerak,102.35557,5.88286,scheme,IADP Kemasin-Semerak,1963.58,0.0,True,True,True
+102.35783_5.87387,IADA Kemasin Semerak,102.35783,5.87387,scheme,IADP Kemasin-Semerak,1963.58,0.0,True,True,True
+102.35783_5.88510,IADA Kemasin Semerak,102.35783,5.8851,scheme,IADP Kemasin-Semerak,1963.58,0.0,True,True,True
+102.36008_5.88286,IADA Kemasin Semerak,102.36008,5.88286,scheme,IADP Kemasin-Semerak,1963.58,0.0,True,True,True
+102.36234_5.87163,IADA Kemasin Semerak,102.36234,5.87163,scheme,IADP Kemasin-Semerak,1963.58,0.0,True,True,True
+102.36234_5.88286,IADA Kemasin Semerak,102.36234,5.88286,scheme,IADP Kemasin-Semerak,1963.58,0.0,True,True,True
+102.36234_5.88510,IADA Kemasin Semerak,102.36234,5.8851,scheme,IADP Kemasin-Semerak,1963.58,0.0,True,True,True
+102.36686_5.86040,IADA Kemasin Semerak,102.36686,5.8604,scheme,IADP Kemasin-Semerak,1963.58,0.0,True,True,True
+102.37137_5.78629,IADA Kemasin Semerak,102.37137,5.78629,non_granary,,81.38,0.0,True,False,False
+102.37137_5.88959,IADA Kemasin Semerak,102.37137,5.88959,scheme,IADP Kemasin-Semerak,1963.58,0.0,True,True,True
+102.37589_5.79976,IADA Kemasin Semerak,102.37589,5.79976,non_granary,,382.2,0.0,True,False,False
+102.37589_5.87837,IADA Kemasin Semerak,102.37589,5.87837,scheme,IADP Kemasin-Semerak,1963.58,0.0,True,True,True
+102.37589_5.90082,IADA Kemasin Semerak,102.37589,5.90082,scheme,IADP Kemasin-Semerak,174.39,0.0,True,True,True
+102.37814_5.87163,IADA Kemasin Semerak,102.37814,5.87163,scheme,IADP Kemasin-Semerak,1963.58,0.0,True,True,True
+102.37814_5.88510,IADA Kemasin Semerak,102.37814,5.8851,scheme,IADP Kemasin-Semerak,1963.58,0.0,True,True,True
+102.38492_5.87163,IADA Kemasin Semerak,102.38492,5.87163,scheme,IADP Kemasin-Semerak,1963.58,0.0,True,True,True
+102.38717_5.79976,IADA Kemasin Semerak,102.38717,5.79976,non_granary,,382.2,0.0,True,False,False
+102.38717_5.90082,IADA Kemasin Semerak,102.38717,5.90082,scheme,IADP Kemasin-Semerak,54.27,0.0,True,True,True
+102.40072_5.81998,IADA Kemasin Semerak,102.40072,5.81998,non_granary,,219.16,0.0,True,False,False
+102.41201_5.77057,IADA Kemasin Semerak,102.41201,5.77057,non_granary,,255.81,0.0,True,False,False
+102.41426_5.77057,IADA Kemasin Semerak,102.41426,5.77057,non_granary,,255.81,0.0,True,False,False
+102.41878_5.82447,IADA Kemasin Semerak,102.41878,5.82447,non_granary,,1116.48,0.0,True,False,False
+102.42104_5.81998,IADA Kemasin Semerak,102.42104,5.81998,non_granary,,1116.48,0.0,True,False,False
+102.42329_5.81998,IADA Kemasin Semerak,102.42329,5.81998,non_granary,,1116.48,0.0,True,False,False
+102.42555_5.82671,IADA Kemasin Semerak,102.42555,5.82671,non_granary,,1116.48,0.0,True,False,False
+102.42781_5.79976,IADA Kemasin Semerak,102.42781,5.79976,non_granary,,1116.48,0.0,True,False,False
+102.43007_5.79078,IADA Kemasin Semerak,102.43007,5.79078,non_granary,,1116.48,0.0,True,False,False
+102.43232_5.79078,IADA Kemasin Semerak,102.43232,5.79078,non_granary,,1116.48,0.0,True,False,False
+102.43232_5.81998,IADA Kemasin Semerak,102.43232,5.81998,non_granary,,1116.48,0.0,True,False,False
+102.43684_5.77057,IADA Kemasin Semerak,102.43684,5.77057,non_granary,,1394.13,0.0,True,False,False
+102.44135_5.77955,IADA Kemasin Semerak,102.44135,5.77955,non_granary,,1394.13,0.0,True,False,False
+102.44135_5.78180,IADA Kemasin Semerak,102.44135,5.7818,non_granary,,1394.13,0.0,True,False,False
+102.44361_5.79078,IADA Kemasin Semerak,102.44361,5.79078,non_granary,,1394.13,0.0,True,False,False
+102.44361_5.81324,IADA Kemasin Semerak,102.44361,5.81324,non_granary,,1394.13,0.0,True,False,False
+102.44361_5.81548,IADA Kemasin Semerak,102.44361,5.81548,non_granary,,1394.13,0.0,True,False,False
+102.44361_5.82447,IADA Kemasin Semerak,102.44361,5.82447,non_granary,,199.61,0.0,True,False,False
+102.45038_5.77057,IADA Kemasin Semerak,102.45038,5.77057,non_granary,,1394.13,0.0,True,False,False
+102.45038_5.84019,IADA Kemasin Semerak,102.45038,5.84019,non_granary,,646.98,0.0,True,False,False
+102.45264_5.81099,IADA Kemasin Semerak,102.45264,5.81099,non_granary,,1394.13,0.0,True,False,False
+102.45490_5.83345,IADA Kemasin Semerak,102.4549,5.83345,non_granary,,646.98,0.0,True,False,False
+102.45716_5.82222,IADA Kemasin Semerak,102.45716,5.82222,non_granary,,199.61,0.0,True,False,False
+102.46167_5.84693,IADA Kemasin Semerak,102.46167,5.84693,non_granary,,646.98,0.0,True,False,False
+102.46619_5.85591,IADA Kemasin Semerak,102.46619,5.85591,non_granary,,646.98,0.0,True,False,False
+102.47070_5.86489,IADA Kemasin Semerak,102.4707,5.86489,non_granary,,217.83,0.0,True,False,False
+102.47973_5.77955,IADA Kemasin Semerak,102.47973,5.77955,non_granary,,834.57,0.0,True,False,False
+102.48650_5.77731,IADA Kemasin Semerak,102.4865,5.77731,non_granary,,834.57,0.0,True,False,False
+102.48876_5.77731,IADA Kemasin Semerak,102.48876,5.77731,non_granary,,834.57,0.0,True,False,False
+102.51134_5.81548,IADA Kemasin Semerak,102.51134,5.81548,non_granary,,571.6,0.0,True,False,False
+102.52262_5.81099,IADA Kemasin Semerak,102.52262,5.81099,non_granary,,571.6,0.0,True,False,False
+102.52262_5.81773,IADA Kemasin Semerak,102.52262,5.81773,non_granary,,571.6,0.0,True,False,False
+100.82817_4.08177,IADA Seberang Perak,100.82817,4.08177,scheme,Sungai Manik,189.13,0.0,True,True,True
+100.83268_4.07503,IADA Seberang Perak,100.83268,4.07503,scheme,Sungai Manik,183.56,0.0,True,True,True
+100.84844_4.06605,IADA Seberang Perak,100.84844,4.06605,scheme,Sungai Manik,379.88,0.0,True,True,True
+100.84844_4.07503,IADA Seberang Perak,100.84844,4.07503,scheme,Sungai Manik,379.88,0.0,True,True,True
+100.85069_4.07278,IADA Seberang Perak,100.85069,4.07278,scheme,Sungai Manik,379.88,0.0,True,True,True
+100.86421_4.32656,IADA Seberang Perak,100.86421,4.32656,non_granary,,653.63,0.0,True,False,False
+100.86421_4.34677,IADA Seberang Perak,100.86421,4.34677,non_granary,,653.63,0.0,True,False,False
+100.86646_4.37147,IADA Seberang Perak,100.86646,4.37147,non_granary,,849.4,0.0,True,False,False
+100.86871_4.06380,IADA Seberang Perak,100.86871,4.0638,scheme,Sungai Manik,207.7,0.0,True,True,True
+100.87096_4.41190,IADA Seberang Perak,100.87096,4.4119,non_granary,,646.79,0.0,True,False,False
+100.87321_4.40067,IADA Seberang Perak,100.87321,4.40067,non_granary,,849.4,0.0,True,False,False
+100.87772_4.05033,IADA Seberang Perak,100.87772,4.05033,not_paddy,,0.0,11.8,False,False,False
+100.88447_4.42537,IADA Seberang Perak,100.88447,4.42537,non_granary,,646.79,0.0,True,False,False
+100.88447_4.44558,IADA Seberang Perak,100.88447,4.44558,non_granary,,646.79,0.0,True,False,False
+100.88673_4.37821,IADA Seberang Perak,100.88673,4.37821,non_granary,,849.4,0.0,True,False,False
+100.88898_4.07503,IADA Seberang Perak,100.88898,4.07503,scheme,Sungai Manik,210.98,0.0,True,True,True
+100.88898_4.43435,IADA Seberang Perak,100.88898,4.43435,not_paddy,,0.0,345.3,False,False,False
+100.89573_4.05482,IADA Seberang Perak,100.89573,4.05482,scheme,Sungai Manik,160.33,0.0,True,True,True
+100.89573_4.06829,IADA Seberang Perak,100.89573,4.06829,scheme,Sungai Manik,1795.14,0.0,True,True,True
+100.90024_4.06380,IADA Seberang Perak,100.90024,4.0638,scheme,Sungai Manik,1795.14,0.0,True,True,True
+100.90925_4.05033,IADA Seberang Perak,100.90925,4.05033,scheme,Sungai Manik,135.79,0.0,True,True,True
+100.90925_4.06829,IADA Seberang Perak,100.90925,4.06829,scheme,Sungai Manik,1795.14,0.0,True,True,True
+100.91150_4.46355,IADA Seberang Perak,100.9115,4.46355,not_paddy,,0.0,7.9,False,False,False
+100.91150_4.46804,IADA Seberang Perak,100.9115,4.46804,non_granary,,162.21,0.0,True,False,False
+100.91375_4.09973,IADA Seberang Perak,100.91375,4.09973,scheme,Sungai Manik,1795.14,0.0,True,True,True
+100.91375_4.27266,IADA Seberang Perak,100.91375,4.27266,non_granary,,280.87,0.0,True,False,False
+100.91375_4.27715,IADA Seberang Perak,100.91375,4.27715,non_granary,,280.87,0.0,True,False,False
+100.91825_4.09299,IADA Seberang Perak,100.91825,4.09299,scheme,Sungai Manik,1795.14,0.0,True,True,True
+100.91825_4.09524,IADA Seberang Perak,100.91825,4.09524,scheme,Sungai Manik,1795.14,0.0,True,True,True
+100.92051_4.08626,IADA Seberang Perak,100.92051,4.08626,scheme,Sungai Manik,1795.14,0.0,True,True,True
+100.93627_4.11545,IADA Seberang Perak,100.93627,4.11545,scheme,Sungai Manik,672.27,0.0,True,True,True
+100.94077_4.12219,IADA Seberang Perak,100.94077,4.12219,scheme,Sungai Manik,672.27,0.0,True,True,True
+100.94753_4.08401,IADA Seberang Perak,100.94753,4.08401,scheme,Sungai Manik,1765.63,0.0,True,True,True
+100.94753_4.11321,IADA Seberang Perak,100.94753,4.11321,scheme,Sungai Manik,672.27,0.0,True,True,True
+100.94978_4.06155,IADA Seberang Perak,100.94978,4.06155,scheme,Sungai Manik,1765.63,0.0,True,True,True
+100.95203_4.07054,IADA Seberang Perak,100.95203,4.07054,scheme,Sungai Manik,1765.63,0.0,True,True,True
+100.95429_4.11096,IADA Seberang Perak,100.95429,4.11096,scheme,Sungai Manik,672.27,0.0,True,True,True
+100.95654_4.05706,IADA Seberang Perak,100.95654,4.05706,scheme,Sungai Manik,1765.63,0.0,True,True,True
+100.96555_4.09299,IADA Seberang Perak,100.96555,4.09299,scheme,Sungai Manik,1408.49,0.0,True,True,True
+100.96780_4.06605,IADA Seberang Perak,100.9678,4.06605,not_paddy,,0.0,56.6,False,False,False
+100.96780_4.08177,IADA Seberang Perak,100.9678,4.08177,scheme,Sungai Manik,1765.63,0.0,True,True,True
+100.97230_4.09299,IADA Seberang Perak,100.9723,4.09299,scheme,Sungai Manik,1408.49,0.0,True,True,True
+100.97230_4.11994,IADA Seberang Perak,100.9723,4.11994,scheme,Sungai Manik,1408.49,0.0,True,True,True
+100.97681_4.07054,IADA Seberang Perak,100.97681,4.07054,scheme,Sungai Manik,450.31,0.0,True,True,True
+100.97681_4.08850,IADA Seberang Perak,100.97681,4.0885,scheme,Sungai Manik,1408.49,0.0,True,True,True
+100.97906_4.07054,IADA Seberang Perak,100.97906,4.07054,scheme,Sungai Manik,450.31,0.0,True,True,True
+100.99933_4.07727,IADA Seberang Perak,100.99933,4.07727,scheme,Sungai Manik,450.31,0.0,True,True,True
+101.03085_4.08850,IADA Seberang Perak,101.03085,4.0885,scheme,IADP Seberang Perak,96.9,0.0,True,True,True
+101.03536_4.11321,IADA Seberang Perak,101.03536,4.11321,scheme,IADP Seberang Perak,55.71,0.0,True,True,True
+101.03761_4.10647,IADA Seberang Perak,101.03761,4.10647,scheme,IADP Seberang Perak,108.49,0.0,True,True,True
+101.03986_4.11545,IADA Seberang Perak,101.03986,4.11545,scheme,IADP Seberang Perak,104.43,0.0,True,True,True
+101.04211_4.09075,IADA Seberang Perak,101.04211,4.09075,scheme,IADP Seberang Perak,1105.62,0.0,True,True,True
+101.04211_4.12219,IADA Seberang Perak,101.04211,4.12219,scheme,IADP Seberang Perak,407.32,0.0,True,True,True
+101.04662_4.07952,IADA Seberang Perak,101.04662,4.07952,scheme,IADP Seberang Perak,92.05,0.0,True,True,True
+101.05112_4.09075,IADA Seberang Perak,101.05112,4.09075,scheme,IADP Seberang Perak,1105.62,0.0,True,True,True
+101.05563_4.05033,IADA Seberang Perak,101.05563,4.05033,scheme,IADP Seberang Perak,107.71,0.0,True,True,True
+101.06238_4.03460,IADA Seberang Perak,101.06238,4.0346,scheme,IADP Seberang Perak,101.64,0.0,True,True,True
+101.06463_4.03685,IADA Seberang Perak,101.06463,4.03685,scheme,IADP Seberang Perak,101.64,0.0,True,True,True
+101.06689_4.04359,IADA Seberang Perak,101.06689,4.04359,scheme,IADP Seberang Perak,30.3,0.0,True,True,True
+101.06914_4.07727,IADA Seberang Perak,101.06914,4.07727,scheme,IADP Seberang Perak,78.94,0.0,True,True,True
+101.07139_4.05033,IADA Seberang Perak,101.07139,4.05033,scheme,IADP Seberang Perak,35.4,0.0,True,True,True
+101.08040_4.06829,IADA Seberang Perak,101.0804,4.06829,scheme,IADP Seberang Perak,62.94,0.0,True,True,True
+101.08715_4.05033,IADA Seberang Perak,101.08715,4.05033,scheme,IADP Seberang Perak,277.26,0.0,True,True,True
+100.27565_6.16134,MADA,100.27565,6.16134,scheme,MADA,289.93,0.0,True,True,True
+100.27791_6.14113,MADA,100.27791,6.14113,scheme,MADA,760.16,0.0,True,True,True
+100.28468_6.22198,MADA,100.28468,6.22198,scheme,MADA,468.39,0.0,True,True,True
+100.28694_6.21748,MADA,100.28694,6.21748,scheme,MADA,468.39,0.0,True,True,True
+100.29146_6.09397,MADA,100.29146,6.09397,scheme,MADA,175.19,0.0,True,True,True
+100.29597_6.17706,MADA,100.29597,6.17706,scheme,MADA,389.63,0.0,True,True,True
+100.30049_6.16134,MADA,100.30049,6.16134,scheme,MADA,89.34,0.0,True,True,True
+100.30049_6.22871,MADA,100.30049,6.22871,scheme,MADA,1125.87,0.0,True,True,True
+100.30275_6.14113,MADA,100.30275,6.14113,scheme,MADA,760.16,0.0,True,True,True
+100.30953_6.13214,MADA,100.30953,6.13214,scheme,MADA,944.93,0.0,True,True,True
+100.30953_6.13439,MADA,100.30953,6.13439,scheme,MADA,944.93,0.0,True,True,True
+100.31178_6.16583,MADA,100.31178,6.16583,scheme,MADA,1125.87,0.0,True,True,True
+100.31856_6.16808,MADA,100.31856,6.16808,scheme,MADA,1125.87,0.0,True,True,True
+100.32082_6.09172,MADA,100.32082,6.09172,scheme,MADA,82.17,0.0,True,True,True
+100.32308_6.20401,MADA,100.32308,6.20401,scheme,MADA,866.12,0.0,True,True,True
+100.32534_6.10070,MADA,100.32534,6.1007,not_paddy,,0.0,6.5,False,False,False
+100.32534_6.10519,MADA,100.32534,6.10519,scheme,MADA,416.74,0.0,True,True,True
+100.32759_6.19727,MADA,100.32759,6.19727,scheme,MADA,866.12,0.0,True,True,True
+100.32759_6.23096,MADA,100.32759,6.23096,scheme,MADA,144.64,0.0,True,True,True
+100.32985_6.08049,MADA,100.32985,6.08049,scheme,MADA,479.94,0.0,True,True,True
+100.32985_6.08498,MADA,100.32985,6.08498,scheme,MADA,479.94,0.0,True,True,True
+100.32985_6.17257,MADA,100.32985,6.17257,scheme,MADA,866.12,0.0,True,True,True
+100.33437_6.15236,MADA,100.33437,6.15236,scheme,MADA,435.31,0.0,True,True,True
+100.33437_6.21075,MADA,100.33437,6.21075,scheme,MADA,640.17,0.0,True,True,True
+100.34115_6.17931,MADA,100.34115,6.17931,scheme,MADA,176.04,0.0,True,True,True
+100.34115_6.18829,MADA,100.34115,6.18829,scheme,MADA,640.17,0.0,True,True,True
+100.34340_6.06028,MADA,100.3434,6.06028,scheme,MADA,770.84,0.0,True,True,True
+100.35018_6.04007,MADA,100.35018,6.04007,scheme,MADA,770.84,0.0,True,True,True
+100.35018_6.04456,MADA,100.35018,6.04456,scheme,MADA,770.84,0.0,True,True,True
+100.35244_6.04680,MADA,100.35244,6.0468,scheme,MADA,770.84,0.0,True,True,True
+100.36147_6.01761,MADA,100.36147,6.01761,scheme,MADA,169.22,0.0,True,True,True
+100.36373_5.99515,MADA,100.36373,5.99515,scheme,MADA,169.85,0.0,True,True,True
+100.36599_6.19952,MADA,100.36599,6.19952,not_paddy,,0.0,10.5,False,False,False
+100.37051_6.03782,MADA,100.37051,6.03782,scheme,MADA,500.25,0.0,True,True,True
+100.37502_6.21075,MADA,100.37502,6.21075,scheme,MADA,366.89,0.0,True,True,True
+100.37728_6.02435,MADA,100.37728,6.02435,scheme,MADA,184.17,0.0,True,True,True
+100.37954_6.19952,MADA,100.37954,6.19952,non_granary,,373.72,0.0,True,False,False
+100.39084_6.16583,MADA,100.39084,6.16583,scheme,MADA,465.49,0.0,True,True,True
+100.39987_6.12541,MADA,100.39987,6.12541,scheme,MADA,29.42,0.0,True,True,True
+100.40213_6.07375,MADA,100.40213,6.07375,scheme,MADA,1322.41,0.0,True,True,True
+100.40439_6.07151,MADA,100.40439,6.07151,scheme,MADA,1322.41,0.0,True,True,True
+100.40890_5.99515,MADA,100.4089,5.99515,scheme,MADA,1638.74,0.0,True,True,True
+100.41794_6.15909,MADA,100.41794,6.15909,non_granary,,250.65,0.0,True,False,False
+100.42020_5.99740,MADA,100.4202,5.9974,scheme,MADA,1638.74,0.0,True,True,True
+100.42246_6.09846,MADA,100.42246,6.09846,scheme,MADA,933.75,0.0,True,True,True
+100.42697_5.99291,MADA,100.42697,5.99291,scheme,MADA,1638.74,0.0,True,True,True
+100.42697_6.01312,MADA,100.42697,6.01312,scheme,MADA,470.41,0.0,True,True,True
+100.42697_6.10070,MADA,100.42697,6.1007,scheme,MADA,933.75,0.0,True,True,True
+100.42697_6.17257,MADA,100.42697,6.17257,not_paddy,,0.0,6.3,False,False,False
+100.43149_6.03108,MADA,100.43149,6.03108,scheme,MADA,626.38,0.0,True,True,True
+100.43375_5.99291,MADA,100.43375,5.99291,scheme,MADA,470.41,0.0,True,True,True
+100.43601_6.02435,MADA,100.43601,6.02435,scheme,MADA,1021.56,0.0,True,True,True
+100.44052_6.04680,MADA,100.44052,6.0468,scheme,MADA,423.51,0.0,True,True,True
+100.44278_6.05354,MADA,100.44278,6.05354,scheme,MADA,735.44,0.0,True,True,True
+100.44730_6.06477,MADA,100.4473,6.06477,scheme,MADA,735.44,0.0,True,True,True
+100.44730_6.09846,MADA,100.4473,6.09846,non_granary,,870.13,0.0,True,False,False
+100.45408_6.10744,MADA,100.45408,6.10744,non_granary,,302.33,0.0,True,False,False
+100.45859_6.00189,MADA,100.45859,6.00189,scheme,MADA,1443.98,0.0,True,True,True
+100.46989_5.98392,MADA,100.46989,5.98392,scheme,MADA,198.92,0.0,True,True,True
+100.46989_6.02884,MADA,100.46989,6.02884,scheme,MADA,1021.56,0.0,True,True,True
+100.46989_6.16583,MADA,100.46989,6.16583,non_granary,,236.49,0.0,True,False,False
+100.47892_6.12765,MADA,100.47892,6.12765,non_granary,,58.41,0.0,True,False,False
+100.48118_6.06253,MADA,100.48118,6.06253,non_granary,,1236.12,0.0,True,False,False
+100.49021_5.99291,MADA,100.49021,5.99291,non_granary,,583.61,0.0,True,False,False
+100.49699_6.04456,MADA,100.49699,6.04456,non_granary,,1181.51,0.0,True,False,False
+100.49925_5.98392,MADA,100.49925,5.98392,non_granary,,278.78,0.0,True,False,False
+100.50828_6.03333,MADA,100.50828,6.03333,non_granary,,1236.12,0.0,True,False,False
+100.51506_5.99291,MADA,100.51506,5.99291,non_granary,,988.45,0.0,True,False,False
+100.52409_6.05803,MADA,100.52409,6.05803,non_granary,,1181.51,0.0,True,False,False
+100.53539_6.08274,MADA,100.53539,6.08274,non_granary,,1358.05,0.0,True,False,False
+100.54442_6.13439,MADA,100.54442,6.13439,non_granary,,1358.05,0.0,True,False,False
+100.54442_6.14113,MADA,100.54442,6.14113,non_granary,,1358.05,0.0,True,False,False
+100.55571_6.09397,MADA,100.55571,6.09397,non_granary,,3687.27,0.0,True,False,False
+100.59411_6.09397,MADA,100.59411,6.09397,non_granary,,3687.27,0.0,True,False,False
+100.59411_6.12316,MADA,100.59411,6.12316,non_granary,,3687.27,0.0,True,False,False
+100.38334_5.09235,IADA Kerian,100.38334,5.09235,not_paddy,,0.0,23.9,False,False,False
+100.38559_5.04744,IADA Kerian,100.38559,5.04744,scheme,IADP Kerian-Sg. Manik,63.76,0.0,True,True,True
+100.38559_5.10134,IADA Kerian,100.38559,5.10134,scheme,IADP Kerian-Sg. Manik,625.02,0.0,True,True,True
+100.39235_5.03621,IADA Kerian,100.39235,5.03621,scheme,IADP Kerian-Sg. Manik,51.43,0.0,True,True,True
+100.39686_5.11032,IADA Kerian,100.39686,5.11032,scheme,IADP Kerian-Sg. Manik,625.02,0.0,True,True,True
+100.40137_5.10134,IADA Kerian,100.40137,5.10134,scheme,IADP Kerian-Sg. Manik,625.02,0.0,True,True,True
+100.40813_5.11481,IADA Kerian,100.40813,5.11481,scheme,IADP Kerian-Sg. Manik,1602.76,0.0,True,True,True
+100.41264_5.07663,IADA Kerian,100.41264,5.07663,scheme,IADP Kerian-Sg. Manik,5388.25,0.0,True,True,True
+100.41264_5.09685,IADA Kerian,100.41264,5.09685,scheme,IADP Kerian-Sg. Manik,434.01,0.0,True,True,True
+100.41715_5.09909,IADA Kerian,100.41715,5.09909,scheme,IADP Kerian-Sg. Manik,1602.76,0.0,True,True,True
+100.41715_5.11706,IADA Kerian,100.41715,5.11706,scheme,IADP Kerian-Sg. Manik,1602.76,0.0,True,True,True
+100.41941_5.07663,IADA Kerian,100.41941,5.07663,scheme,IADP Kerian-Sg. Manik,5388.25,0.0,True,True,True
+100.41941_5.08337,IADA Kerian,100.41941,5.08337,not_paddy,,0.0,31.8,False,False,False
+100.41941_5.09909,IADA Kerian,100.41941,5.09909,scheme,IADP Kerian-Sg. Manik,1602.76,0.0,True,True,True
+100.42166_5.09685,IADA Kerian,100.42166,5.09685,scheme,IADP Kerian-Sg. Manik,1602.76,0.0,True,True,True
+100.42391_5.01151,IADA Kerian,100.42391,5.01151,scheme,IADP Kerian-Sg. Manik,5388.25,0.0,True,True,True
+100.42391_5.02049,IADA Kerian,100.42391,5.02049,scheme,IADP Kerian-Sg. Manik,5388.25,0.0,True,True,True
+100.42391_5.07439,IADA Kerian,100.42391,5.07439,scheme,IADP Kerian-Sg. Manik,5388.25,0.0,True,True,True
+100.42617_5.11930,IADA Kerian,100.42617,5.1193,scheme,IADP Kerian-Sg. Manik,347.54,0.0,True,True,True
+100.44420_5.06765,IADA Kerian,100.4442,5.06765,scheme,IADP Kerian-Sg. Manik,5388.25,0.0,True,True,True
+100.44420_5.09909,IADA Kerian,100.4442,5.09909,scheme,IADP Kerian-Sg. Manik,1602.76,0.0,True,True,True
+100.45097_5.00477,IADA Kerian,100.45097,5.00477,scheme,IADP Kerian-Sg. Manik,162.53,0.0,True,True,True
+100.45322_5.06541,IADA Kerian,100.45322,5.06541,scheme,IADP Kerian-Sg. Manik,5388.25,0.0,True,True,True
+100.45547_5.09909,IADA Kerian,100.45547,5.09909,scheme,IADP Kerian-Sg. Manik,1602.76,0.0,True,True,True
+100.45547_5.10134,IADA Kerian,100.45547,5.10134,scheme,IADP Kerian-Sg. Manik,1602.76,0.0,True,True,True
+100.45998_5.07214,IADA Kerian,100.45998,5.07214,scheme,IADP Kerian-Sg. Manik,5388.25,0.0,True,True,True
+100.46675_5.02498,IADA Kerian,100.46675,5.02498,scheme,IADP Kerian-Sg. Manik,5388.25,0.0,True,True,True
+100.47126_5.11032,IADA Kerian,100.47126,5.11032,scheme,IADP Kerian-Sg. Manik,249.63,0.0,True,True,True
+100.47351_5.04969,IADA Kerian,100.47351,5.04969,scheme,IADP Kerian-Sg. Manik,5388.25,0.0,True,True,True
+100.47576_5.06765,IADA Kerian,100.47576,5.06765,scheme,IADP Kerian-Sg. Manik,1126.58,0.0,True,True,True
+100.47802_5.07888,IADA Kerian,100.47802,5.07888,scheme,IADP Kerian-Sg. Manik,1126.58,0.0,True,True,True
+100.48027_5.05642,IADA Kerian,100.48027,5.05642,scheme,IADP Kerian-Sg. Manik,5388.25,0.0,True,True,True
+100.49380_5.02274,IADA Kerian,100.4938,5.02274,scheme,IADP Kerian-Sg. Manik,29.42,0.0,True,True,True
+100.49831_5.03846,IADA Kerian,100.49831,5.03846,scheme,IADP Kerian-Sg. Manik,114.0,0.0,True,True,True
+100.50282_5.03846,IADA Kerian,100.50282,5.03846,scheme,IADP Kerian-Sg. Manik,53.24,0.0,True,True,True
+100.50507_5.04295,IADA Kerian,100.50507,5.04295,scheme,IADP Kerian-Sg. Manik,110.44,0.0,True,True,True
+100.51183_5.02049,IADA Kerian,100.51183,5.02049,scheme,IADP Kerian-Sg. Manik,220.69,0.0,True,True,True
+100.51183_5.04295,IADA Kerian,100.51183,5.04295,scheme,IADP Kerian-Sg. Manik,159.07,0.0,True,True,True
+100.52987_5.10808,IADA Kerian,100.52987,5.10808,non_granary,,336.46,0.0,True,False,False
+100.53212_5.02498,IADA Kerian,100.53212,5.02498,scheme,IADP Kerian-Sg. Manik,231.25,0.0,True,True,True
+100.53212_5.09685,IADA Kerian,100.53212,5.09685,non_granary,,288.93,0.0,True,False,False
+100.54339_5.01600,IADA Kerian,100.54339,5.016,scheme,IADP Kerian-Sg. Manik,783.21,0.0,True,True,True
+100.55016_4.98680,IADA Kerian,100.55016,4.9868,scheme,IADP Kerian-Sg. Manik,153.98,0.0,True,True,True
+100.55241_4.98905,IADA Kerian,100.55241,4.98905,scheme,IADP Kerian-Sg. Manik,153.98,0.0,True,True,True
+100.55692_4.99129,IADA Kerian,100.55692,4.99129,scheme,IADP Kerian-Sg. Manik,153.98,0.0,True,True,True
+100.56819_4.98007,IADA Kerian,100.56819,4.98007,scheme,IADP Kerian-Sg. Manik,168.96,0.0,True,True,True
+100.57721_4.99803,IADA Kerian,100.57721,4.99803,scheme,IADP Kerian-Sg. Manik,345.77,0.0,True,True,True
+100.58172_5.02498,IADA Kerian,100.58172,5.02498,scheme,IADP Kerian-Sg. Manik,783.21,0.0,True,True,True
+100.59299_4.99354,IADA Kerian,100.59299,4.99354,not_paddy,,0.0,30.1,False,False,False
+100.59524_5.03621,IADA Kerian,100.59524,5.03621,scheme,IADP Kerian-Sg. Manik,67.31,0.0,True,True,True
+100.59975_4.99803,IADA Kerian,100.59975,4.99803,scheme,IADP Kerian-Sg. Manik,187.97,0.0,True,True,True
+100.59975_5.03396,IADA Kerian,100.59975,5.03396,scheme,IADP Kerian-Sg. Manik,80.65,0.0,True,True,True
+100.61102_4.91269,IADA Kerian,100.61102,4.91269,scheme,IADP Kerian-Sg. Manik,40.98,0.0,True,True,True
+100.61328_4.91045,IADA Kerian,100.61328,4.91045,not_paddy,,0.0,27.2,False,False,False
+100.61328_4.97333,IADA Kerian,100.61328,4.97333,scheme,IADP Kerian-Sg. Manik,1227.06,0.0,True,True,True
+100.61779_4.93290,IADA Kerian,100.61779,4.9329,scheme,IADP Kerian-Sg. Manik,220.49,0.0,True,True,True
+100.62230_5.00028,IADA Kerian,100.6223,5.00028,scheme,IADP Kerian-Sg. Manik,471.19,0.0,True,True,True
+100.62455_4.98456,IADA Kerian,100.62455,4.98456,scheme,IADP Kerian-Sg. Manik,1227.06,0.0,True,True,True
+100.62455_4.99579,IADA Kerian,100.62455,4.99579,scheme,IADP Kerian-Sg. Manik,471.19,0.0,True,True,True
+100.62906_4.98231,IADA Kerian,100.62906,4.98231,scheme,IADP Kerian-Sg. Manik,1227.06,0.0,True,True,True
+100.63357_4.92392,IADA Kerian,100.63357,4.92392,scheme,IADP Kerian-Sg. Manik,546.05,0.0,True,True,True
+100.63357_4.93740,IADA Kerian,100.63357,4.9374,scheme,IADP Kerian-Sg. Manik,659.5,0.0,True,True,True
+100.63357_4.95536,IADA Kerian,100.63357,4.95536,scheme,IADP Kerian-Sg. Manik,1227.06,0.0,True,True,True
+100.63582_4.91494,IADA Kerian,100.63582,4.91494,scheme,IADP Kerian-Sg. Manik,546.05,0.0,True,True,True
+100.63582_4.92392,IADA Kerian,100.63582,4.92392,scheme,IADP Kerian-Sg. Manik,546.05,0.0,True,True,True
+100.63582_4.95985,IADA Kerian,100.63582,4.95985,scheme,IADP Kerian-Sg. Manik,1227.06,0.0,True,True,True
+100.63582_5.07439,IADA Kerian,100.63582,5.07439,not_paddy,,0.0,4341.4,False,False,False
+100.63808_4.94863,IADA Kerian,100.63808,4.94863,scheme,IADP Kerian-Sg. Manik,113.4,0.0,True,True,True
+100.63808_4.95536,IADA Kerian,100.63808,4.95536,scheme,IADP Kerian-Sg. Manik,1227.06,0.0,True,True,True
+100.63808_4.98680,IADA Kerian,100.63808,4.9868,scheme,IADP Kerian-Sg. Manik,1227.06,0.0,True,True,True
+100.64033_4.93964,IADA Kerian,100.64033,4.93964,scheme,IADP Kerian-Sg. Manik,113.4,0.0,True,True,True
+100.64033_5.00477,IADA Kerian,100.64033,5.00477,scheme,IADP Kerian-Sg. Manik,471.19,0.0,True,True,True
+100.64258_4.93290,IADA Kerian,100.64258,4.9329,not_paddy,,0.0,42.9,False,False,False
+100.64935_4.92841,IADA Kerian,100.64935,4.92841,scheme,IADP Kerian-Sg. Manik,316.19,0.0,True,True,True
+100.64935_4.95536,IADA Kerian,100.64935,4.95536,not_paddy,,0.0,2.4,False,False,False
+100.65611_4.93066,IADA Kerian,100.65611,4.93066,not_paddy,,0.0,6.7,False,False,False
+100.37883_5.51457,IADA Pulau Pinang,100.37883,5.51457,scheme,IADP Pulau Pinang,352.93,0.0,True,True,True
+100.38334_5.52356,IADA Pulau Pinang,100.38334,5.52356,scheme,IADP Pulau Pinang,352.93,0.0,True,True,True
+100.38334_5.52580,IADA Pulau Pinang,100.38334,5.5258,scheme,IADP Pulau Pinang,352.93,0.0,True,True,True
+100.38334_5.53928,IADA Pulau Pinang,100.38334,5.53928,not_paddy,,0.0,2.0,False,False,False
+100.38560_5.52131,IADA Pulau Pinang,100.3856,5.52131,scheme,IADP Pulau Pinang,352.93,0.0,True,True,True
+100.39011_5.48987,IADA Pulau Pinang,100.39011,5.48987,scheme,IADP Pulau Pinang,338.14,0.0,True,True,True
+100.39236_5.55051,IADA Pulau Pinang,100.39236,5.55051,scheme,IADP Pulau Pinang,2081.75,0.0,True,True,True
+100.39462_5.49661,IADA Pulau Pinang,100.39462,5.49661,scheme,IADP Pulau Pinang,57.0,0.0,True,True,True
+100.39462_5.53928,IADA Pulau Pinang,100.39462,5.53928,scheme,IADP Pulau Pinang,116.14,0.0,True,True,True
+100.39688_5.46966,IADA Pulau Pinang,100.39688,5.46966,scheme,IADP Pulau Pinang,338.14,0.0,True,True,True
+100.40139_5.55051,IADA Pulau Pinang,100.40139,5.55051,scheme,IADP Pulau Pinang,2081.75,0.0,True,True,True
+100.40365_5.48089,IADA Pulau Pinang,100.40365,5.48089,scheme,IADP Pulau Pinang,1184.38,0.0,True,True,True
+100.40590_5.46966,IADA Pulau Pinang,100.4059,5.46966,scheme,IADP Pulau Pinang,1184.38,0.0,True,True,True
+100.40590_5.48763,IADA Pulau Pinang,100.4059,5.48763,scheme,IADP Pulau Pinang,1184.38,0.0,True,True,True
+100.40590_5.50784,IADA Pulau Pinang,100.4059,5.50784,scheme,IADP Pulau Pinang,1184.38,0.0,True,True,True
+100.41041_5.48763,IADA Pulau Pinang,100.41041,5.48763,scheme,IADP Pulau Pinang,1184.38,0.0,True,True,True
+100.41041_5.51457,IADA Pulau Pinang,100.41041,5.51457,not_paddy,,0.0,11.2,False,False,False
+100.41041_5.53029,IADA Pulau Pinang,100.41041,5.53029,scheme,IADP Pulau Pinang,2081.75,0.0,True,True,True
+100.41041_5.54377,IADA Pulau Pinang,100.41041,5.54377,scheme,IADP Pulau Pinang,2081.75,0.0,True,True,True
+100.41267_5.42474,IADA Pulau Pinang,100.41267,5.42474,non_granary,,21.05,0.0,True,False,False
+100.41267_5.50110,IADA Pulau Pinang,100.41267,5.5011,scheme,IADP Pulau Pinang,1184.38,0.0,True,True,True
+100.41493_5.45843,IADA Pulau Pinang,100.41493,5.45843,scheme,IADP Pulau Pinang,1184.38,0.0,True,True,True
+100.41493_5.46292,IADA Pulau Pinang,100.41493,5.46292,scheme,IADP Pulau Pinang,1184.38,0.0,True,True,True
+100.41493_5.46966,IADA Pulau Pinang,100.41493,5.46966,scheme,IADP Pulau Pinang,1184.38,0.0,True,True,True
+100.41493_5.49661,IADA Pulau Pinang,100.41493,5.49661,scheme,IADP Pulau Pinang,1184.38,0.0,True,True,True
+100.41493_5.53254,IADA Pulau Pinang,100.41493,5.53254,scheme,IADP Pulau Pinang,2081.75,0.0,True,True,True
+100.41493_5.54602,IADA Pulau Pinang,100.41493,5.54602,scheme,IADP Pulau Pinang,2081.75,0.0,True,True,True
+100.41718_5.40902,IADA Pulau Pinang,100.41718,5.40902,scheme,IADP Pulau Pinang,1363.12,0.0,True,True,True
+100.41718_5.45843,IADA Pulau Pinang,100.41718,5.45843,scheme,IADP Pulau Pinang,1184.38,0.0,True,True,True
+100.41944_5.42250,IADA Pulau Pinang,100.41944,5.4225,scheme,IADP Pulau Pinang,1363.12,0.0,True,True,True
+100.41944_5.48538,IADA Pulau Pinang,100.41944,5.48538,scheme,IADP Pulau Pinang,1184.38,0.0,True,True,True
+100.41944_5.52580,IADA Pulau Pinang,100.41944,5.5258,scheme,IADP Pulau Pinang,2081.75,0.0,True,True,True
+100.41944_5.54602,IADA Pulau Pinang,100.41944,5.54602,scheme,IADP Pulau Pinang,2081.75,0.0,True,True,True
+100.42169_5.41576,IADA Pulau Pinang,100.42169,5.41576,not_paddy,,0.0,2.1,False,False,False
+100.42169_5.45169,IADA Pulau Pinang,100.42169,5.45169,scheme,IADP Pulau Pinang,396.03,0.0,True,True,True
+100.42169_5.45394,IADA Pulau Pinang,100.42169,5.45394,scheme,IADP Pulau Pinang,396.03,0.0,True,True,True
+100.42169_5.50110,IADA Pulau Pinang,100.42169,5.5011,scheme,IADP Pulau Pinang,1184.38,0.0,True,True,True
+100.42395_5.47190,IADA Pulau Pinang,100.42395,5.4719,scheme,IADP Pulau Pinang,396.03,0.0,True,True,True
+100.42395_5.52131,IADA Pulau Pinang,100.42395,5.52131,scheme,IADP Pulau Pinang,2081.75,0.0,True,True,True
+100.42621_5.41351,IADA Pulau Pinang,100.42621,5.41351,scheme,IADP Pulau Pinang,1363.12,0.0,True,True,True
+100.42621_5.47415,IADA Pulau Pinang,100.42621,5.47415,scheme,IADP Pulau Pinang,396.03,0.0,True,True,True
+100.42621_5.53254,IADA Pulau Pinang,100.42621,5.53254,scheme,IADP Pulau Pinang,2081.75,0.0,True,True,True
+100.42621_5.53703,IADA Pulau Pinang,100.42621,5.53703,scheme,IADP Pulau Pinang,2081.75,0.0,True,True,True
+100.42621_5.54826,IADA Pulau Pinang,100.42621,5.54826,scheme,IADP Pulau Pinang,2081.75,0.0,True,True,True
+100.42846_5.44945,IADA Pulau Pinang,100.42846,5.44945,scheme,IADP Pulau Pinang,396.03,0.0,True,True,True
+100.43297_5.42250,IADA Pulau Pinang,100.43297,5.4225,scheme,IADP Pulau Pinang,1363.12,0.0,True,True,True
+100.43297_5.53703,IADA Pulau Pinang,100.43297,5.53703,not_paddy,,0.0,47.2,False,False,False
+100.43297_5.54152,IADA Pulau Pinang,100.43297,5.54152,not_paddy,,0.0,15.9,False,False,False
+100.43749_5.46068,IADA Pulau Pinang,100.43749,5.46068,not_paddy,,0.0,15.1,False,False,False
+100.43974_5.46517,IADA Pulau Pinang,100.43974,5.46517,scheme,IADP Pulau Pinang,772.92,0.0,True,True,True
+100.44425_5.41127,IADA Pulau Pinang,100.44425,5.41127,scheme,IADP Pulau Pinang,1363.12,0.0,True,True,True
+100.44651_5.43597,IADA Pulau Pinang,100.44651,5.43597,scheme,IADP Pulau Pinang,1363.12,0.0,True,True,True
+100.44651_5.47190,IADA Pulau Pinang,100.44651,5.4719,scheme,IADP Pulau Pinang,772.92,0.0,True,True,True
+100.44877_5.44496,IADA Pulau Pinang,100.44877,5.44496,not_paddy,,0.0,6.1,False,False,False
+100.45328_5.46292,IADA Pulau Pinang,100.45328,5.46292,scheme,IADP Pulau Pinang,772.92,0.0,True,True,True
+100.45328_5.54377,IADA Pulau Pinang,100.45328,5.54377,scheme,IADP Pulau Pinang,1184.08,0.0,True,True,True
+100.46682_5.46068,IADA Pulau Pinang,100.46682,5.46068,scheme,IADP Pulau Pinang,304.51,0.0,True,True,True
+100.46907_5.44945,IADA Pulau Pinang,100.46907,5.44945,scheme,IADP Pulau Pinang,148.65,0.0,True,True,True
+100.47133_5.45394,IADA Pulau Pinang,100.47133,5.45394,scheme,IADP Pulau Pinang,148.65,0.0,True,True,True
+100.47584_5.44271,IADA Pulau Pinang,100.47584,5.44271,not_paddy,,0.0,16.6,False,False,False
+100.47810_5.46292,IADA Pulau Pinang,100.4781,5.46292,scheme,IADP Pulau Pinang,304.51,0.0,True,True,True
+100.48261_5.46292,IADA Pulau Pinang,100.48261,5.46292,not_paddy,,0.0,38.5,False,False,False
+100.48712_5.49212,IADA Pulau Pinang,100.48712,5.49212,non_granary,,137.26,0.0,True,False,False
+100.48938_5.49436,IADA Pulau Pinang,100.48938,5.49436,non_granary,,137.26,0.0,True,False,False
+100.49163_5.46517,IADA Pulau Pinang,100.49163,5.46517,scheme,IADP Pulau Pinang,52.37,0.0,True,True,True
+100.50066_5.52580,IADA Pulau Pinang,100.50066,5.5258,scheme,IADP Pulau Pinang,1184.08,0.0,True,True,True
+100.50291_5.55051,IADA Pulau Pinang,100.50291,5.55051,scheme,IADP Pulau Pinang,1184.08,0.0,True,True,True
+100.50743_5.53254,IADA Pulau Pinang,100.50743,5.53254,non_granary,,96.66,0.0,True,False,False
+100.50968_5.54152,IADA Pulau Pinang,100.50968,5.54152,not_paddy,,0.0,9.0,False,False,False
+100.51871_5.54377,IADA Pulau Pinang,100.51871,5.54377,non_granary,,148.57,0.0,True,False,False
+102.17553_6.02656,KADA,102.17553,6.02656,non_granary,,895.59,0.0,True,False,False
+102.18005_6.03329,KADA,102.18005,6.03329,non_granary,,237.24,0.0,True,False,False
+102.18230_6.02207,KADA,102.1823,6.02207,non_granary,,895.59,0.0,True,False,False
+102.18456_5.95469,KADA,102.18456,5.95469,non_granary,,1933.24,0.0,True,False,False
+102.18456_6.01757,KADA,102.18456,6.01757,non_granary,,895.59,0.0,True,False,False
+102.18682_5.95469,KADA,102.18682,5.95469,non_granary,,1933.24,0.0,True,False,False
+102.18682_6.07821,KADA,102.18682,6.07821,scheme,KADA,606.85,0.0,True,True,True
+102.18908_5.95245,KADA,102.18908,5.95245,non_granary,,1933.24,0.0,True,False,False
+102.18908_6.02207,KADA,102.18908,6.02207,non_granary,,895.59,0.0,True,False,False
+102.19359_6.01533,KADA,102.19359,6.01533,non_granary,,895.59,0.0,True,False,False
+102.19359_6.06249,KADA,102.19359,6.06249,scheme,KADA,89.91,0.0,True,True,True
+102.20037_6.00185,KADA,102.20037,6.00185,non_granary,,957.06,0.0,True,False,False
+102.20037_6.05126,KADA,102.20037,6.05126,not_paddy,,0.0,841.2,False,False,False
+102.20263_6.02880,KADA,102.20263,6.0288,non_granary,,895.59,0.0,True,False,False
+102.20263_6.08719,KADA,102.20263,6.08719,scheme,KADA,248.77,0.0,True,True,True
+102.20489_6.02880,KADA,102.20489,6.0288,non_granary,,895.59,0.0,True,False,False
+102.20714_6.03329,KADA,102.20714,6.03329,non_granary,,895.59,0.0,True,False,False
+102.21166_6.00410,KADA,102.21166,6.0041,non_granary,,56.33,0.0,True,False,False
+102.21392_6.03105,KADA,102.21392,6.03105,non_granary,,895.59,0.0,True,False,False
+102.21618_5.96143,KADA,102.21618,5.96143,non_granary,,957.06,0.0,True,False,False
+102.21844_5.95469,KADA,102.21844,5.95469,not_paddy,,0.0,24.4,False,False,False
+102.21844_5.98838,KADA,102.21844,5.98838,non_granary,,957.06,0.0,True,False,False
+102.21844_6.02880,KADA,102.21844,6.0288,not_paddy,,0.0,6.5,False,False,False
+102.22069_5.92774,KADA,102.22069,5.92774,non_granary,,1484.39,0.0,True,False,False
+102.22069_5.96817,KADA,102.22069,5.96817,non_granary,,957.06,0.0,True,False,False
+102.22069_6.01084,KADA,102.22069,6.01084,not_paddy,,0.0,57.0,False,False,False
+102.22069_6.04003,KADA,102.22069,6.04003,non_granary,,30.61,0.0,True,False,False
+102.22295_5.92774,KADA,102.22295,5.92774,non_granary,,1484.39,0.0,True,False,False
+102.22295_5.98838,KADA,102.22295,5.98838,not_paddy,,0.0,53.7,False,False,False
+102.22747_5.92999,KADA,102.22747,5.92999,non_granary,,1484.39,0.0,True,False,False
+102.22747_5.93223,KADA,102.22747,5.93223,non_granary,,1484.39,0.0,True,False,False
+102.22973_6.01982,KADA,102.22973,6.01982,non_granary,,158.34,0.0,True,False,False
+102.22973_6.07147,KADA,102.22973,6.07147,non_granary,,94.51,0.0,True,False,False
+102.23424_5.95469,KADA,102.23424,5.95469,non_granary,,1484.39,0.0,True,False,False
+102.23424_5.95918,KADA,102.23424,5.95918,non_granary,,1484.39,0.0,True,False,False
+102.23424_6.06249,KADA,102.23424,6.06249,non_granary,,401.33,0.0,True,False,False
+102.23650_6.06474,KADA,102.2365,6.06474,non_granary,,401.33,0.0,True,False,False
+102.23876_5.97266,KADA,102.23876,5.97266,non_granary,,1484.39,0.0,True,False,False
+102.24328_6.04452,KADA,102.24328,6.04452,not_paddy,,0.0,60.3,False,False,False
+102.24779_6.00185,KADA,102.24779,6.00185,not_paddy,,0.0,89.6,False,False,False
+102.24779_6.00859,KADA,102.24779,6.00859,scheme,IADP Kemasin-Semerak,771.05,0.0,True,True,False
+102.25457_5.98389,KADA,102.25457,5.98389,scheme,IADP Kemasin-Semerak,771.05,0.0,True,True,False
+102.25683_5.93448,KADA,102.25683,5.93448,scheme,IADP Kemasin-Semerak,1100.24,0.0,True,True,False
+102.25683_6.01308,KADA,102.25683,6.01308,scheme,IADP Kemasin-Semerak,771.05,0.0,True,True,False
+102.25908_5.98838,KADA,102.25908,5.98838,not_paddy,,0.0,107.0,False,False,False
+102.25908_6.02431,KADA,102.25908,6.02431,not_paddy,,0.0,38.7,False,False,False
+102.26134_5.97715,KADA,102.26134,5.97715,scheme,IADP Kemasin-Semerak,771.05,0.0,True,True,False
+102.26134_5.99512,KADA,102.26134,5.99512,scheme,IADP Kemasin-Semerak,771.05,0.0,True,True,False
+102.26360_5.99961,KADA,102.2636,5.99961,scheme,IADP Kemasin-Semerak,771.05,0.0,True,True,False
+102.26586_5.95245,KADA,102.26586,5.95245,scheme,IADP Kemasin-Semerak,1100.24,0.0,True,True,False
+102.26812_5.93448,KADA,102.26812,5.93448,scheme,IADP Kemasin-Semerak,1100.24,0.0,True,True,False
+102.27037_6.03779,KADA,102.27037,6.03779,non_granary,,184.15,0.0,True,False,False
+102.27263_5.96817,KADA,102.27263,5.96817,scheme,IADP Kemasin-Semerak,100.92,0.0,True,True,False
+102.28167_5.95245,KADA,102.28167,5.95245,scheme,IADP Kemasin-Semerak,1100.24,0.0,True,True,False
+102.28167_5.98838,KADA,102.28167,5.98838,scheme,IADP Kemasin-Semerak,1100.24,0.0,True,True,False
+102.30651_5.98164,KADA,102.30651,5.98164,scheme,IADP Kemasin-Semerak,1169.11,0.0,True,True,False
+102.30651_5.98613,KADA,102.30651,5.98613,scheme,IADP Kemasin-Semerak,1169.11,0.0,True,True,False
+102.30651_5.99063,KADA,102.30651,5.99063,scheme,IADP Kemasin-Semerak,1169.11,0.0,True,True,False
+102.31102_6.03329,KADA,102.31102,6.03329,non_granary,,39.21,0.0,True,False,False
+102.31102_6.03554,KADA,102.31102,6.03554,non_granary,,39.21,0.0,True,False,False
+102.31554_5.91876,KADA,102.31554,5.91876,scheme,IADP Kemasin-Semerak,3372.98,0.0,True,True,False
+102.31554_5.94571,KADA,102.31554,5.94571,scheme,IADP Kemasin-Semerak,484.95,0.0,True,True,False
+102.31554_6.08944,KADA,102.31554,6.08944,non_granary,,1265.2,0.0,True,False,False
+102.31554_6.10965,KADA,102.31554,6.10965,non_granary,,54.77,0.0,True,False,False
+102.42046_5.78175,KETARA,102.42046,5.78175,non_granary,,1116.48,0.0,True,False,False
+102.43175_5.79074,KETARA,102.43175,5.79074,non_granary,,1116.48,0.0,True,False,False
+102.43851_5.77053,KETARA,102.43851,5.77053,non_granary,,1394.13,0.0,True,False,False
+102.44303_5.76379,KETARA,102.44303,5.76379,non_granary,,1394.13,0.0,True,False,False
+102.44528_5.76828,KETARA,102.44528,5.76828,non_granary,,1394.13,0.0,True,False,False
+102.46108_5.75031,KETARA,102.46108,5.75031,non_granary,,834.57,0.0,True,False,False
+102.47913_5.77053,KETARA,102.47913,5.77053,non_granary,,834.57,0.0,True,False,False
+102.48364_5.71887,KETARA,102.48364,5.71887,non_granary,,38.96,0.0,True,False,False
+102.48364_5.77053,KETARA,102.48364,5.77053,non_granary,,834.57,0.0,True,False,False
+102.48590_5.62680,KETARA,102.4859,5.6268,not_paddy,,0.0,387.2,False,False,False
+102.48590_5.62904,KETARA,102.4859,5.62904,not_paddy,,0.0,215.8,False,False,False
+102.48590_5.77951,KETARA,102.4859,5.77951,non_granary,,834.57,0.0,True,False,False
+102.48816_5.62680,KETARA,102.48816,5.6268,not_paddy,,0.0,307.8,False,False,False
+102.49718_5.69192,KETARA,102.49718,5.69192,scheme,KETARA,1316.23,0.0,True,True,True
+102.49944_5.69866,KETARA,102.49944,5.69866,scheme,KETARA,1316.23,0.0,True,True,True
+102.49944_5.70091,KETARA,102.49944,5.70091,scheme,KETARA,1316.23,0.0,True,True,True
+102.50170_5.68968,KETARA,102.5017,5.68968,scheme,KETARA,1316.23,0.0,True,True,True
+102.50170_5.69192,KETARA,102.5017,5.69192,scheme,KETARA,1316.23,0.0,True,True,True
+102.50621_5.68743,KETARA,102.50621,5.68743,scheme,KETARA,1316.23,0.0,True,True,True
+102.50621_5.70540,KETARA,102.50621,5.7054,scheme,KETARA,1316.23,0.0,True,True,True
+102.50847_5.67171,KETARA,102.50847,5.67171,scheme,KETARA,1316.23,0.0,True,True,True
+102.50847_5.67396,KETARA,102.50847,5.67396,scheme,KETARA,1316.23,0.0,True,True,True
+102.50847_5.69866,KETARA,102.50847,5.69866,scheme,KETARA,1316.23,0.0,True,True,True
+102.51072_5.69641,KETARA,102.51072,5.69641,scheme,KETARA,1316.23,0.0,True,True,True
+102.51298_5.65824,KETARA,102.51298,5.65824,not_paddy,,0.0,3.5,False,False,False
+102.51524_5.61781,KETARA,102.51524,5.61781,non_granary,,111.33,0.0,True,False,False
+102.51524_5.65150,KETARA,102.51524,5.6515,scheme,KETARA,519.26,0.0,True,True,True
+102.51749_5.69192,KETARA,102.51749,5.69192,scheme,KETARA,1316.23,0.0,True,True,True
+102.51749_5.70764,KETARA,102.51749,5.70764,scheme,KETARA,1316.23,0.0,True,True,True
+102.51975_5.68069,KETARA,102.51975,5.68069,scheme,KETARA,1316.23,0.0,True,True,True
+102.51975_5.71214,KETARA,102.51975,5.71214,scheme,KETARA,1316.23,0.0,True,True,True
+102.51975_5.71438,KETARA,102.51975,5.71438,scheme,KETARA,1316.23,0.0,True,True,True
+102.52201_5.71887,KETARA,102.52201,5.71887,scheme,KETARA,1316.23,0.0,True,True,True
+102.52426_5.80197,KETARA,102.52426,5.80197,non_granary,,571.6,0.0,True,False,False
+102.52877_5.75256,KETARA,102.52877,5.75256,scheme,KETARA,898.97,0.0,True,True,True
+102.53780_5.75256,KETARA,102.5378,5.75256,scheme,KETARA,898.97,0.0,True,True,True
+102.54231_5.66722,KETARA,102.54231,5.66722,scheme,KETARA,101.57,0.0,True,True,True
+102.54231_5.75031,KETARA,102.54231,5.75031,scheme,KETARA,898.97,0.0,True,True,True
+102.54457_5.79074,KETARA,102.54457,5.79074,non_granary,,214.97,0.0,True,False,False
+102.54908_5.72336,KETARA,102.54908,5.72336,scheme,KETARA,427.95,0.0,True,True,True
+102.54908_5.74807,KETARA,102.54908,5.74807,scheme,KETARA,898.97,0.0,True,True,True
+102.54908_5.79074,KETARA,102.54908,5.79074,non_granary,,214.97,0.0,True,False,False
+102.55360_5.69641,KETARA,102.5536,5.69641,scheme,KETARA,427.95,0.0,True,True,True
+102.55360_5.69866,KETARA,102.5536,5.69866,scheme,KETARA,427.95,0.0,True,True,True
+102.55360_5.71438,KETARA,102.5536,5.71438,scheme,KETARA,427.95,0.0,True,True,True
+102.55585_5.69641,KETARA,102.55585,5.69641,scheme,KETARA,152.58,0.0,True,True,True
+102.55585_5.71214,KETARA,102.55585,5.71214,scheme,KETARA,427.95,0.0,True,True,True
+102.55811_5.66722,KETARA,102.55811,5.66722,scheme,KETARA,107.46,0.0,True,True,True
+102.55811_5.75705,KETARA,102.55811,5.75705,scheme,KETARA,172.87,0.0,True,True,True
+102.56037_5.73459,KETARA,102.56037,5.73459,scheme,KETARA,898.97,0.0,True,True,True
+102.56488_5.74582,KETARA,102.56488,5.74582,scheme,KETARA,161.19,0.0,True,True,True
+102.56714_5.72786,KETARA,102.56714,5.72786,scheme,KETARA,765.53,0.0,True,True,True
+102.56714_5.75031,KETARA,102.56714,5.75031,scheme,KETARA,161.19,0.0,True,True,True
+102.57390_5.73684,KETARA,102.5739,5.73684,scheme,KETARA,765.53,0.0,True,True,True
+102.57390_5.74133,KETARA,102.5739,5.74133,not_paddy,,0.0,21.2,False,False,False
+102.58067_5.73684,KETARA,102.58067,5.73684,scheme,KETARA,765.53,0.0,True,True,True
+102.58293_5.71214,KETARA,102.58293,5.71214,scheme,KETARA,453.29,0.0,True,True,True
+102.58519_5.72561,KETARA,102.58519,5.72561,scheme,KETARA,765.53,0.0,True,True,True
+102.58744_5.73459,KETARA,102.58744,5.73459,scheme,KETARA,765.53,0.0,True,True,True
+102.59873_5.72561,KETARA,102.59873,5.72561,scheme,KETARA,453.29,0.0,True,True,True
+102.62129_5.68519,KETARA,102.62129,5.68519,non_granary,,709.96,0.0,True,False,False
+102.62355_5.75930,KETARA,102.62355,5.7593,not_paddy,,0.0,2737.2,False,False,False
+102.63032_5.70989,KETARA,102.63032,5.70989,not_paddy,,0.0,21.9,False,False,False
+103.30338_3.54485,IADA Pekan,103.30338,3.54485,unnamed_granary,,82.31,0.0,True,True,True
+103.30338_3.54934,IADA Pekan,103.30338,3.54934,unnamed_granary,,82.31,0.0,True,True,True
+103.30338_3.55159,IADA Pekan,103.30338,3.55159,unnamed_granary,,82.31,0.0,True,True,True
+103.30338_3.55384,IADA Pekan,103.30338,3.55384,unnamed_granary,,82.31,0.0,True,True,True
+103.30563_3.54934,IADA Pekan,103.30563,3.54934,unnamed_granary,,82.31,0.0,True,True,True
+103.30788_3.54261,IADA Pekan,103.30788,3.54261,not_paddy,,0.0,388.3,False,False,False
+103.31013_3.54485,IADA Pekan,103.31013,3.54485,not_paddy,,0.0,344.9,False,False,False
+103.31013_3.55833,IADA Pekan,103.31013,3.55833,not_paddy,,0.0,121.5,False,False,False
+103.31013_3.56057,IADA Pekan,103.31013,3.56057,not_paddy,,0.0,121.3,False,False,False
+103.31463_3.56057,IADA Pekan,103.31463,3.56057,unnamed_granary,,124.29,0.0,True,True,True
+103.31463_3.56506,IADA Pekan,103.31463,3.56506,not_paddy,,0.0,279.0,False,False,False
+103.31688_3.55608,IADA Pekan,103.31688,3.55608,unnamed_granary,,124.29,0.0,True,True,True
+103.31688_3.56506,IADA Pekan,103.31688,3.56506,not_paddy,,0.0,351.0,False,False,False
+103.35063_3.54710,IADA Pekan,103.35063,3.5471,unnamed_granary,,1307.52,0.0,True,True,True
+103.35288_3.57405,IADA Pekan,103.35288,3.57405,unnamed_granary,,1307.52,0.0,True,True,True
+103.35288_3.58079,IADA Pekan,103.35288,3.58079,unnamed_granary,,1307.52,0.0,True,True,True
+103.35513_3.57854,IADA Pekan,103.35513,3.57854,unnamed_granary,,1307.52,0.0,True,True,True
+103.35513_3.58079,IADA Pekan,103.35513,3.58079,unnamed_granary,,1307.52,0.0,True,True,True
+103.35513_3.58303,IADA Pekan,103.35513,3.58303,unnamed_granary,,1307.52,0.0,True,True,True
+103.35513_3.58752,IADA Pekan,103.35513,3.58752,unnamed_granary,,1307.52,0.0,True,True,True
+103.35738_3.53812,IADA Pekan,103.35738,3.53812,unnamed_granary,,1307.52,0.0,True,True,True
+103.35738_3.56956,IADA Pekan,103.35738,3.56956,unnamed_granary,,1307.52,0.0,True,True,True
+103.35738_3.57629,IADA Pekan,103.35738,3.57629,unnamed_granary,,1307.52,0.0,True,True,True
+103.35738_3.58079,IADA Pekan,103.35738,3.58079,unnamed_granary,,1307.52,0.0,True,True,True
+103.35738_3.58752,IADA Pekan,103.35738,3.58752,unnamed_granary,,1307.52,0.0,True,True,True
+103.35963_3.53812,IADA Pekan,103.35963,3.53812,unnamed_granary,,1307.52,0.0,True,True,True
+103.35963_3.54036,IADA Pekan,103.35963,3.54036,unnamed_granary,,1307.52,0.0,True,True,True
+103.35963_3.54261,IADA Pekan,103.35963,3.54261,unnamed_granary,,1307.52,0.0,True,True,True
+103.35963_3.54934,IADA Pekan,103.35963,3.54934,unnamed_granary,,1307.52,0.0,True,True,True
+103.35963_3.56506,IADA Pekan,103.35963,3.56506,unnamed_granary,,1307.52,0.0,True,True,True
+103.35963_3.58079,IADA Pekan,103.35963,3.58079,unnamed_granary,,1307.52,0.0,True,True,True
+103.35963_3.58303,IADA Pekan,103.35963,3.58303,unnamed_granary,,1307.52,0.0,True,True,True
+103.35963_3.58752,IADA Pekan,103.35963,3.58752,unnamed_granary,,1307.52,0.0,True,True,True
+103.36188_3.53812,IADA Pekan,103.36188,3.53812,not_paddy,,0.0,66.2,False,False,False
+103.36188_3.54485,IADA Pekan,103.36188,3.54485,unnamed_granary,,1307.52,0.0,True,True,True
+103.36188_3.55159,IADA Pekan,103.36188,3.55159,unnamed_granary,,1307.52,0.0,True,True,True
+103.36188_3.56282,IADA Pekan,103.36188,3.56282,unnamed_granary,,1307.52,0.0,True,True,True
+103.36188_3.57629,IADA Pekan,103.36188,3.57629,unnamed_granary,,1307.52,0.0,True,True,True
+103.36188_3.58528,IADA Pekan,103.36188,3.58528,unnamed_granary,,1307.52,0.0,True,True,True
+103.36413_3.53812,IADA Pekan,103.36413,3.53812,not_paddy,,0.0,210.5,False,False,False
+103.36413_3.54261,IADA Pekan,103.36413,3.54261,not_paddy,,0.0,6.2,False,False,False
+103.36413_3.54710,IADA Pekan,103.36413,3.5471,unnamed_granary,,1307.52,0.0,True,True,True
+103.36413_3.55608,IADA Pekan,103.36413,3.55608,unnamed_granary,,1307.52,0.0,True,True,True
+103.36413_3.55833,IADA Pekan,103.36413,3.55833,unnamed_granary,,1307.52,0.0,True,True,True
+103.36413_3.56057,IADA Pekan,103.36413,3.56057,unnamed_granary,,1307.52,0.0,True,True,True
+103.36413_3.56282,IADA Pekan,103.36413,3.56282,unnamed_granary,,1307.52,0.0,True,True,True
+103.36413_3.58303,IADA Pekan,103.36413,3.58303,unnamed_granary,,1307.52,0.0,True,True,True
+103.36638_3.55159,IADA Pekan,103.36638,3.55159,unnamed_granary,,1307.52,0.0,True,True,True
+103.36638_3.55608,IADA Pekan,103.36638,3.55608,unnamed_granary,,1307.52,0.0,True,True,True
+103.36638_3.56731,IADA Pekan,103.36638,3.56731,unnamed_granary,,1307.52,0.0,True,True,True
+103.36863_3.56057,IADA Pekan,103.36863,3.56057,unnamed_granary,,1307.52,0.0,True,True,True
+103.36863_3.56282,IADA Pekan,103.36863,3.56282,unnamed_granary,,1307.52,0.0,True,True,True
+103.36863_3.56956,IADA Pekan,103.36863,3.56956,unnamed_granary,,1307.52,0.0,True,True,True
+103.37088_3.55159,IADA Pekan,103.37088,3.55159,unnamed_granary,,1307.52,0.0,True,True,True
+103.37088_3.56956,IADA Pekan,103.37088,3.56956,unnamed_granary,,1307.52,0.0,True,True,True
+103.37088_3.57405,IADA Pekan,103.37088,3.57405,unnamed_granary,,1307.52,0.0,True,True,True
+103.37088_3.57629,IADA Pekan,103.37088,3.57629,unnamed_granary,,1307.52,0.0,True,True,True
+103.37313_3.56057,IADA Pekan,103.37313,3.56057,unnamed_granary,,1307.52,0.0,True,True,True
+103.37313_3.57180,IADA Pekan,103.37313,3.5718,unnamed_granary,,1307.52,0.0,True,True,True
+103.40688_3.50667,IADA Pekan,103.40688,3.50667,not_paddy,,0.0,5247.8,False,False,False
+103.41138_3.50892,IADA Pekan,103.41138,3.50892,not_paddy,,0.0,5466.7,False,False,False
+103.41363_3.57405,IADA Pekan,103.41363,3.57405,unnamed_granary,,125.99,0.0,True,True,True
+103.41813_3.51341,IADA Pekan,103.41813,3.51341,not_paddy,,0.0,5818.9,False,False,False
+103.41813_3.51790,IADA Pekan,103.41813,3.5179,not_paddy,,0.0,5544.4,False,False,False
+103.42263_3.51341,IADA Pekan,103.42263,3.51341,not_paddy,,0.0,6087.7,False,False,False
+103.42263_3.51566,IADA Pekan,103.42263,3.51566,not_paddy,,0.0,5839.4,False,False,False
+103.42938_3.48422,IADA Pekan,103.42938,3.48422,not_paddy,,0.0,8785.0,False,False,False
+103.45733_2.82629,IADA Rompin,103.45733,2.82629,not_paddy,,0.0,7798.4,False,False,False
+103.46408_2.74320,IADA Rompin,103.46408,2.7432,unnamed_granary,,347.13,0.0,True,True,True
+103.46858_2.73871,IADA Rompin,103.46858,2.73871,unnamed_granary,,347.13,0.0,True,True,True
+103.46858_2.74545,IADA Rompin,103.46858,2.74545,unnamed_granary,,347.13,0.0,True,True,True
+103.46858_2.74769,IADA Rompin,103.46858,2.74769,unnamed_granary,,347.13,0.0,True,True,True
+103.47083_2.73646,IADA Rompin,103.47083,2.73646,unnamed_granary,,347.13,0.0,True,True,True
+103.47307_2.74994,IADA Rompin,103.47307,2.74994,unnamed_granary,,347.13,0.0,True,True,True
+103.47532_2.74545,IADA Rompin,103.47532,2.74545,unnamed_granary,,347.13,0.0,True,True,True
+103.47532_2.74994,IADA Rompin,103.47532,2.74994,unnamed_granary,,347.13,0.0,True,True,True
+103.47757_2.72973,IADA Rompin,103.47757,2.72973,unnamed_granary,,780.52,0.0,True,True,True
+103.47757_2.73197,IADA Rompin,103.47757,2.73197,unnamed_granary,,780.52,0.0,True,True,True
+103.47757_2.74545,IADA Rompin,103.47757,2.74545,unnamed_granary,,347.13,0.0,True,True,True
+103.47982_2.74545,IADA Rompin,103.47982,2.74545,unnamed_granary,,347.13,0.0,True,True,True
+103.48207_2.72523,IADA Rompin,103.48207,2.72523,unnamed_granary,,780.52,0.0,True,True,True
+103.48207_2.72973,IADA Rompin,103.48207,2.72973,unnamed_granary,,780.52,0.0,True,True,True
+103.48207_2.73422,IADA Rompin,103.48207,2.73422,unnamed_granary,,780.52,0.0,True,True,True
+103.48432_2.72299,IADA Rompin,103.48432,2.72299,unnamed_granary,,780.52,0.0,True,True,True
+103.48656_2.72299,IADA Rompin,103.48656,2.72299,unnamed_granary,,780.52,0.0,True,True,True
+103.48656_2.72748,IADA Rompin,103.48656,2.72748,unnamed_granary,,780.52,0.0,True,True,True
+103.48656_2.73871,IADA Rompin,103.48656,2.73871,unnamed_granary,,780.52,0.0,True,True,True
+103.48881_2.72973,IADA Rompin,103.48881,2.72973,unnamed_granary,,780.52,0.0,True,True,True
+103.49106_2.73422,IADA Rompin,103.49106,2.73422,unnamed_granary,,780.52,0.0,True,True,True
+103.49106_2.73646,IADA Rompin,103.49106,2.73646,unnamed_granary,,780.52,0.0,True,True,True
+103.49331_2.72299,IADA Rompin,103.49331,2.72299,unnamed_granary,,780.52,0.0,True,True,True
+103.49331_2.73422,IADA Rompin,103.49331,2.73422,unnamed_granary,,780.52,0.0,True,True,True
+103.50005_2.72748,IADA Rompin,103.50005,2.72748,unnamed_granary,,780.52,0.0,True,True,True
+103.50230_2.71850,IADA Rompin,103.5023,2.7185,not_paddy,,0.0,9.6,False,False,False
+103.50230_2.72523,IADA Rompin,103.5023,2.72523,unnamed_granary,,780.52,0.0,True,True,True
+103.50230_2.72748,IADA Rompin,103.5023,2.72748,unnamed_granary,,780.52,0.0,True,True,True
+103.50230_2.72973,IADA Rompin,103.5023,2.72973,unnamed_granary,,780.52,0.0,True,True,True
+103.52928_2.67133,IADA Rompin,103.52928,2.67133,scheme,Rompin,528.59,0.0,True,True,True
+103.53153_2.66460,IADA Rompin,103.53153,2.6646,scheme,Rompin,528.59,0.0,True,True,True
+103.54952_2.65786,IADA Rompin,103.54952,2.65786,unnamed_granary,,1855.99,0.0,True,True,True
+103.55177_2.65561,IADA Rompin,103.55177,2.65561,unnamed_granary,,1855.99,0.0,True,True,True
+103.55177_2.66460,IADA Rompin,103.55177,2.6646,unnamed_granary,,1855.99,0.0,True,True,True
+103.55402_2.65337,IADA Rompin,103.55402,2.65337,unnamed_granary,,1855.99,0.0,True,True,True
+103.55402_2.66235,IADA Rompin,103.55402,2.66235,unnamed_granary,,1855.99,0.0,True,True,True
+103.55626_2.65561,IADA Rompin,103.55626,2.65561,unnamed_granary,,1855.99,0.0,True,True,True
+103.55626_2.66460,IADA Rompin,103.55626,2.6646,unnamed_granary,,1855.99,0.0,True,True,True
+103.55851_2.65561,IADA Rompin,103.55851,2.65561,unnamed_granary,,1855.99,0.0,True,True,True
+103.55851_2.66460,IADA Rompin,103.55851,2.6646,unnamed_granary,,1855.99,0.0,True,True,True
+103.55851_2.66909,IADA Rompin,103.55851,2.66909,unnamed_granary,,1855.99,0.0,True,True,True
+103.55851_2.67133,IADA Rompin,103.55851,2.67133,unnamed_granary,,1855.99,0.0,True,True,True
+103.55851_2.67358,IADA Rompin,103.55851,2.67358,unnamed_granary,,1855.99,0.0,True,True,True
+103.55851_2.72523,IADA Rompin,103.55851,2.72523,not_paddy,,0.0,4634.1,False,False,False
+103.56076_2.66011,IADA Rompin,103.56076,2.66011,unnamed_granary,,1855.99,0.0,True,True,True
+103.56076_2.66460,IADA Rompin,103.56076,2.6646,unnamed_granary,,1855.99,0.0,True,True,True
+103.56076_2.67133,IADA Rompin,103.56076,2.67133,unnamed_granary,,1855.99,0.0,True,True,True
+103.56526_2.65561,IADA Rompin,103.56526,2.65561,unnamed_granary,,1855.99,0.0,True,True,True
+103.56526_2.66011,IADA Rompin,103.56526,2.66011,unnamed_granary,,1855.99,0.0,True,True,True
+103.56526_2.66235,IADA Rompin,103.56526,2.66235,unnamed_granary,,1855.99,0.0,True,True,True
+103.56526_2.66684,IADA Rompin,103.56526,2.66684,unnamed_granary,,1855.99,0.0,True,True,True
+103.56526_2.67583,IADA Rompin,103.56526,2.67583,unnamed_granary,,1855.99,0.0,True,True,True
+103.56751_2.65561,IADA Rompin,103.56751,2.65561,unnamed_granary,,1855.99,0.0,True,True,True
+103.56751_2.67358,IADA Rompin,103.56751,2.67358,unnamed_granary,,1855.99,0.0,True,True,True
+103.56751_2.67807,IADA Rompin,103.56751,2.67807,unnamed_granary,,1855.99,0.0,True,True,True
+103.56976_2.67358,IADA Rompin,103.56976,2.67358,unnamed_granary,,1855.99,0.0,True,True,True
+103.57200_2.67583,IADA Rompin,103.572,2.67583,unnamed_granary,,1855.99,0.0,True,True,True
+103.57200_2.67807,IADA Rompin,103.572,2.67807,unnamed_granary,,1855.99,0.0,True,True,True
+103.57425_2.66460,IADA Rompin,103.57425,2.6646,unnamed_granary,,1855.99,0.0,True,True,True
+103.57425_2.66684,IADA Rompin,103.57425,2.66684,unnamed_granary,,1855.99,0.0,True,True,True
+103.57425_2.66909,IADA Rompin,103.57425,2.66909,unnamed_granary,,1855.99,0.0,True,True,True
+103.57425_2.67358,IADA Rompin,103.57425,2.67358,unnamed_granary,,1855.99,0.0,True,True,True
+103.57425_2.67583,IADA Rompin,103.57425,2.67583,unnamed_granary,,1855.99,0.0,True,True,True
+103.57425_2.67807,IADA Rompin,103.57425,2.67807,unnamed_granary,,1855.99,0.0,True,True,True
+103.57650_2.67133,IADA Rompin,103.5765,2.67133,unnamed_granary,,1855.99,0.0,True,True,True
+103.57650_2.67583,IADA Rompin,103.5765,2.67583,unnamed_granary,,1855.99,0.0,True,True,True
+103.58100_2.67358,IADA Rompin,103.581,2.67358,unnamed_granary,,1855.99,0.0,True,True,True
+103.58325_2.67358,IADA Rompin,103.58325,2.67358,unnamed_granary,,1855.99,0.0,True,True,True
+103.58549_2.66684,IADA Rompin,103.58549,2.66684,unnamed_granary,,1855.99,0.0,True,True,True
+103.58549_2.66909,IADA Rompin,103.58549,2.66909,unnamed_granary,,1855.99,0.0,True,True,True
+103.58549_2.67133,IADA Rompin,103.58549,2.67133,unnamed_granary,,1855.99,0.0,True,True,True
+103.58549_2.70278,IADA Rompin,103.58549,2.70278,not_paddy,,0.0,1993.3,False,False,False
+103.58774_2.66909,IADA Rompin,103.58774,2.66909,unnamed_granary,,1855.99,0.0,True,True,True

@@ -17,7 +17,8 @@ from datetime import datetime
 
 import pandas as pd
 
-from . import assessment, diagnostics, evaluation, harmonise, selection
+from . import assessment, diagnostics, evaluation, harmonise, modelchoice, selection
+from . import predict as predmod
 from .errors import WorkflowError
 from .config import Config, Domain
 from .evaluation import BASELINES
@@ -32,16 +33,25 @@ class TransferWorkflow:
         self.cfg = cfg or Config()
         self.source = self.target = None
         self.base = "ridge"
+        self.notices, self._finals, self.events = [], {}, []
+        self.run_cfg = self.cfg
         self._clear_from("report")
-        self.events = []
 
     # ------------------------------------------------------------------ state
-    ORDER = ["report", "bundle", "suit", "strategy", "result", "results", "override"]
+    ORDER = ["report", "bundle", "suit", "strategy", "result", "results", "choice", "prediction", "outlook", "override"]
+    NAMES = {"report": "data assessment", "bundle": "harmonised data", "suit": "suitability verdict", "strategy": "transfer strategy", "result": "model evaluation",
+             "choice": "selected model", "prediction": "yield prediction", "outlook": "future yield outlook"}
 
     def _clear_from(self, name):
-        """drop this artifact and every later one, so nothing stale can survive a change upstream"""
-        for n in self.ORDER[self.ORDER.index(name):]:
+        """drop this artifact and every later one, so nothing stale can survive a change upstream; remember what was affected"""
+        i = self.ORDER.index(name)
+        cleared = [self.NAMES[n] for n in self.ORDER[i + 1:] if n in self.NAMES and getattr(self, n, None) is not None]
+        for n in self.ORDER[i:]:
             setattr(self, n, None)
+        if name in ("report", "bundle", "suit", "strategy", "result"):
+            self._finals = {}
+        if cleared:
+            self.notices.append(f"The {self.NAMES[name]} changed, so these results were cleared and are recalculated from the new one: " + ", ".join(cleared) + ".")
 
     def _log(self, msg):
         self.events.append((datetime.now().strftime("%H:%M:%S"), msg))
@@ -119,8 +129,9 @@ class TransferWorkflow:
         methods = list(methods if methods is not None else (self.strategy or []))
         if not methods:
             raise WorkflowError("Step 5 (select strategy) is not complete: no method was selected")
-        if self.suit["suitability"] == "not_recommended" and not (override_reason and override_reason.strip()):
-            raise WorkflowError("transfer is NOT RECOMMENDED for these domains: running needs an explicit override reason, which is recorded in the report")
+        has_transfer = any(m not in BASELINES for m in methods)
+        if self.suit["suitability"] == "not_recommended" and has_transfer and not (override_reason and override_reason.strip()):
+            raise WorkflowError("transfer is NOT RECOMMENDED for these domains: running a transfer method needs an explicit override reason, which is recorded in the report")
         elig = self.suit["methods"].set_index("key")
         bad = [m for m in methods if m not in elig.index or not bool(elig.loc[m, "eligible"])]
         if bad:
@@ -129,14 +140,62 @@ class TransferWorkflow:
         self._clear_from("result")
         self.override = override_reason.strip() if override_reason else None
         full = list(dict.fromkeys(full))
-        # both validation strategies are always run: leave-one-season-out and the stricter forward (earlier seasons only) check
-        self.results = {s: evaluation.evaluate(self.bundle, full, self.base, dataclasses.replace(self.cfg, cv_strategy=s)) for s in ("loso", "forward")}
+        # the in-fold harmonisation chosen in Step 3 (scaler, VIF/correlation selection p <= max_features) is what every fold uses
+        self.run_cfg = harmonise.fold_settings(self.bundle, self.cfg)
+        # both validation strategies are always run: leave-one-year-out (LOYO) and the stricter expanding-window (earlier years only) check
+        self.results = {s: evaluation.evaluate(self.bundle, full, self.base, dataclasses.replace(self.run_cfg, cv_strategy=s)) for s in ("loso", "forward")}
         self.result = self.results[self.cfg.cv_strategy]
+        self.choice = modelchoice.choose(self.results, self.run_cfg, bool(self.override), getattr(self, 'sweep_qualification', None), getattr(self, 'domain_relevance', None))
         self.result.notes.append("Baselines (source-only, target-only, target mean, pooled) and a season-trend baseline are always included, so every method is judged against them.")
         if self.override:
             self.result.notes.append(f"Run with an explicit override of a NOT RECOMMENDED verdict. Reason given: {self.override}")
         self._log(f"ran {full}")
         return self.result
+
+    # ------------------------------------------------------------------ downstream: prediction and outlook (need an evaluated model)
+    def require_choice(self):
+        self._require_chain(upto="suitability")
+        if self.result is None or self.choice is None:
+            raise WorkflowError("Train and evaluate the model first: yield prediction and the outlook need an evaluated model")
+
+    def predict_for(self, inputs, scenario="custom"):
+        self.require_choice()
+        tab = predmod.predict_table(self.bundle, self.results, self.choice, inputs, self.base, self.run_cfg, self._finals, self.result.methods)
+        self.prediction = dict(table=tab, inputs=inputs, scenario=scenario, upstream=self.choice["token"])
+        return tab
+
+    def outlook_for(self, inputs, scenario="custom"):
+        self.require_choice()
+        tab = predmod.predict_table(self.bundle, self.results, self.choice, inputs, self.base, self.run_cfg, self._finals, self.result.methods)
+        self.outlook = dict(table=tab, inputs=inputs, scenario=scenario, upstream=self.choice["token"])
+        return tab
+
+    def pop_notices(self):
+        n, self.notices = self.notices, []
+        return n
+
+    def stages(self):
+        """the six tab-level stages (tabs 3 to 8) with what each needs: complete / ready / locked / blocked / partial"""
+        blocked = self.report is not None and self.report.readiness == "not_ready"
+        out = []
+        if self.suit is not None:
+            a = ("complete", "assessment, harmonisation and the suitability verdict are done")
+        elif blocked:
+            a = ("blocked", "data readiness is NOT READY: " + "; ".join(self.report.blockers))
+        else:
+            a = ("ready", "select domains, assess, harmonise, evaluate suitability")
+        out.append(("assessment", "Data Assessment", *a))
+        out.append(("strategy", "Transfer Strategy", *(("complete", "strategy confirmed") if self.strategy is not None else
+                    (("ready", "review the recommendation and confirm") if self.suit is not None else ("locked", "needs the data assessment")))))
+        out.append(("training", "Train and Evaluate", *(("complete", "model trained and evaluated") if self.choice is not None else
+                    (("ready", "train the confirmed strategy and the baselines") if self.strategy is not None else ("locked", "needs a confirmed strategy")))))
+        out.append(("prediction", "Yield Prediction", *(("complete", "predictions generated") if self.prediction is not None else
+                    (("ready", "uses the selected model") if self.choice is not None else ("locked", "needs an evaluated model")))))
+        out.append(("outlook", "Future Yield Outlook", *(("complete", "outlook generated") if self.outlook is not None else
+                    (("ready", "uses the selected model") if self.choice is not None else ("locked", "needs an evaluated model")))))
+        out.append(("advisory", "Intervention Advisory", *(("complete", "can use the validated yield prediction") if self.choice is not None else
+                    ("partial", "available from crop condition alone; no validated yield prediction yet"))))
+        return [dict(key=k, label=l, status=s, detail=d) for k, l, s, d in out]
 
     def diagnose(self, method, baseline):
         self._require_result()

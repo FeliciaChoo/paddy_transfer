@@ -1,0 +1,757 @@
+strategy,granary,group,method,y_true,err_transfer,err_target_only,err_source_only,err_persistence
+loso,IADA Barat Laut Selangor,2018,detrended_residual_transfer,4731.0,51.5275,1036.6079,1616.3905,
+loso,IADA Barat Laut Selangor,2019,detrended_residual_transfer,4756.0,222.8203,406.0733,917.5578,25.0
+loso,IADA Barat Laut Selangor,2020,detrended_residual_transfer,4431.0,146.1836,24.6764,70.678,325.0
+loso,IADA Barat Laut Selangor,2021,detrended_residual_transfer,4337.0,183.4306,378.2997,110.4369,94.0
+loso,IADA Barat Laut Selangor,2022,detrended_residual_transfer,4319.0,60.7963,365.2245,136.778,18.0
+loso,IADA Barat Laut Selangor,2023,detrended_residual_transfer,4577.0,326.1267,6.4944,74.6347,258.0
+loso,IADA Barat Laut Selangor,2024,detrended_residual_transfer,4185.0,5.6405,740.3344,50.7025,392.0
+loso,IADA Barat Laut Selangor,2018,granary_intercept_ridge,4731.0,276.4519,1036.6079,1616.3905,
+loso,IADA Barat Laut Selangor,2019,granary_intercept_ridge,4756.0,706.3297,406.0733,917.5578,25.0
+loso,IADA Barat Laut Selangor,2020,granary_intercept_ridge,4431.0,53.7417,24.6764,70.678,325.0
+loso,IADA Barat Laut Selangor,2021,granary_intercept_ridge,4337.0,315.6277,378.2997,110.4369,94.0
+loso,IADA Barat Laut Selangor,2022,granary_intercept_ridge,4319.0,191.629,365.2245,136.778,18.0
+loso,IADA Barat Laut Selangor,2023,granary_intercept_ridge,4577.0,36.4114,6.4944,74.6347,258.0
+loso,IADA Barat Laut Selangor,2024,granary_intercept_ridge,4185.0,321.8501,740.3344,50.7025,392.0
+loso,IADA Barat Laut Selangor,2018,kmm_ridge,4731.0,132.6167,1036.6079,1616.3905,
+loso,IADA Barat Laut Selangor,2019,kmm_ridge,4756.0,715.0582,406.0733,917.5578,25.0
+loso,IADA Barat Laut Selangor,2020,kmm_ridge,4431.0,91.6732,24.6764,70.678,325.0
+loso,IADA Barat Laut Selangor,2021,kmm_ridge,4337.0,231.7985,378.2997,110.4369,94.0
+loso,IADA Barat Laut Selangor,2022,kmm_ridge,4319.0,82.2493,365.2245,136.778,18.0
+loso,IADA Barat Laut Selangor,2023,kmm_ridge,4577.0,116.7397,6.4944,74.6347,258.0
+loso,IADA Barat Laut Selangor,2024,kmm_ridge,4185.0,82.3343,740.3344,50.7025,392.0
+loso,IADA Barat Laut Selangor,2018,two_stage_tradaboost_r2,4731.0,265.9364,1036.6079,1616.3905,
+loso,IADA Barat Laut Selangor,2019,two_stage_tradaboost_r2,4756.0,522.7738,406.0733,917.5578,25.0
+loso,IADA Barat Laut Selangor,2020,two_stage_tradaboost_r2,4431.0,23.0059,24.6764,70.678,325.0
+loso,IADA Barat Laut Selangor,2021,two_stage_tradaboost_r2,4337.0,224.0222,378.2997,110.4369,94.0
+loso,IADA Barat Laut Selangor,2022,two_stage_tradaboost_r2,4319.0,154.0656,365.2245,136.778,18.0
+loso,IADA Barat Laut Selangor,2023,two_stage_tradaboost_r2,4577.0,26.6346,6.4944,74.6347,258.0
+loso,IADA Barat Laut Selangor,2024,two_stage_tradaboost_r2,4185.0,61.5985,740.3344,50.7025,392.0
+loso,IADA Barat Laut Selangor,2018,s_tradaboost_r2,4731.0,260.8822,1036.6079,1616.3905,
+loso,IADA Barat Laut Selangor,2019,s_tradaboost_r2,4756.0,522.712,406.0733,917.5578,25.0
+loso,IADA Barat Laut Selangor,2020,s_tradaboost_r2,4431.0,32.2446,24.6764,70.678,325.0
+loso,IADA Barat Laut Selangor,2021,s_tradaboost_r2,4337.0,246.7776,378.2997,110.4369,94.0
+loso,IADA Barat Laut Selangor,2022,s_tradaboost_r2,4319.0,161.5746,365.2245,136.778,18.0
+loso,IADA Barat Laut Selangor,2023,s_tradaboost_r2,4577.0,23.9079,6.4944,74.6347,258.0
+loso,IADA Barat Laut Selangor,2024,s_tradaboost_r2,4185.0,60.4463,740.3344,50.7025,392.0
+loso,IADA Barat Laut Selangor,2018,z_anomaly_transfer,4731.0,479.6285,1036.6079,1616.3905,
+loso,IADA Barat Laut Selangor,2019,z_anomaly_transfer,4756.0,601.9971,406.0733,917.5578,25.0
+loso,IADA Barat Laut Selangor,2020,z_anomaly_transfer,4431.0,107.2956,24.6764,70.678,325.0
+loso,IADA Barat Laut Selangor,2021,z_anomaly_transfer,4337.0,242.3321,378.2997,110.4369,94.0
+loso,IADA Barat Laut Selangor,2022,z_anomaly_transfer,4319.0,316.6902,365.2245,136.778,18.0
+loso,IADA Barat Laut Selangor,2023,z_anomaly_transfer,4577.0,152.632,6.4944,74.6347,258.0
+loso,IADA Barat Laut Selangor,2024,z_anomaly_transfer,4185.0,896.686,740.3344,50.7025,392.0
+loso,IADA Barat Laut Selangor,2018,tradaboost_r2,4731.0,572.7826,1036.6079,1616.3905,
+loso,IADA Barat Laut Selangor,2019,tradaboost_r2,4756.0,450.0278,406.0733,917.5578,25.0
+loso,IADA Barat Laut Selangor,2020,tradaboost_r2,4431.0,121.1007,24.6764,70.678,325.0
+loso,IADA Barat Laut Selangor,2021,tradaboost_r2,4337.0,409.0256,378.2997,110.4369,94.0
+loso,IADA Barat Laut Selangor,2022,tradaboost_r2,4319.0,293.1756,365.2245,136.778,18.0
+loso,IADA Barat Laut Selangor,2023,tradaboost_r2,4577.0,98.3708,6.4944,74.6347,258.0
+loso,IADA Barat Laut Selangor,2024,tradaboost_r2,4185.0,157.3108,740.3344,50.7025,392.0
+forward,IADA Barat Laut Selangor,2020,detrended_residual_transfer,4431.0,304.3433,323.2778,2284.4351,325.0
+forward,IADA Barat Laut Selangor,2021,detrended_residual_transfer,4337.0,118.1532,190.9479,234.2137,94.0
+forward,IADA Barat Laut Selangor,2022,detrended_residual_transfer,4319.0,171.1064,252.4629,373.2484,18.0
+forward,IADA Barat Laut Selangor,2023,detrended_residual_transfer,4577.0,382.0943,2452.6968,253.3073,258.0
+forward,IADA Barat Laut Selangor,2024,detrended_residual_transfer,4185.0,5.6405,740.3344,50.7025,392.0
+forward,IADA Barat Laut Selangor,2020,granary_intercept_ridge,4431.0,347.208,323.2778,2284.4351,325.0
+forward,IADA Barat Laut Selangor,2021,granary_intercept_ridge,4337.0,304.4842,190.9479,234.2137,94.0
+forward,IADA Barat Laut Selangor,2022,granary_intercept_ridge,4319.0,97.2998,252.4629,373.2484,18.0
+forward,IADA Barat Laut Selangor,2023,granary_intercept_ridge,4577.0,144.273,2452.6968,253.3073,258.0
+forward,IADA Barat Laut Selangor,2024,granary_intercept_ridge,4185.0,321.8501,740.3344,50.7025,392.0
+forward,IADA Barat Laut Selangor,2020,kmm_ridge,4431.0,371.9009,323.2778,2284.4351,325.0
+forward,IADA Barat Laut Selangor,2021,kmm_ridge,4337.0,303.7691,190.9479,234.2137,94.0
+forward,IADA Barat Laut Selangor,2022,kmm_ridge,4319.0,59.8693,252.4629,373.2484,18.0
+forward,IADA Barat Laut Selangor,2023,kmm_ridge,4577.0,154.0548,2452.6968,253.3073,258.0
+forward,IADA Barat Laut Selangor,2024,kmm_ridge,4185.0,82.3343,740.3344,50.7025,392.0
+forward,IADA Barat Laut Selangor,2020,two_stage_tradaboost_r2,4431.0,411.9906,323.2778,2284.4351,325.0
+forward,IADA Barat Laut Selangor,2021,two_stage_tradaboost_r2,4337.0,372.1911,190.9479,234.2137,94.0
+forward,IADA Barat Laut Selangor,2022,two_stage_tradaboost_r2,4319.0,76.8146,252.4629,373.2484,18.0
+forward,IADA Barat Laut Selangor,2023,two_stage_tradaboost_r2,4577.0,105.7982,2452.6968,253.3073,258.0
+forward,IADA Barat Laut Selangor,2024,two_stage_tradaboost_r2,4185.0,61.5985,740.3344,50.7025,392.0
+forward,IADA Barat Laut Selangor,2020,s_tradaboost_r2,4431.0,412.3869,323.2778,2284.4351,325.0
+forward,IADA Barat Laut Selangor,2021,s_tradaboost_r2,4337.0,356.7953,190.9479,234.2137,94.0
+forward,IADA Barat Laut Selangor,2022,s_tradaboost_r2,4319.0,76.8132,252.4629,373.2484,18.0
+forward,IADA Barat Laut Selangor,2023,s_tradaboost_r2,4577.0,104.8864,2452.6968,253.3073,258.0
+forward,IADA Barat Laut Selangor,2024,s_tradaboost_r2,4185.0,60.4463,740.3344,50.7025,392.0
+forward,IADA Barat Laut Selangor,2020,z_anomaly_transfer,4431.0,350.7099,323.2778,2284.4351,325.0
+forward,IADA Barat Laut Selangor,2021,z_anomaly_transfer,4337.0,286.4236,190.9479,234.2137,94.0
+forward,IADA Barat Laut Selangor,2022,z_anomaly_transfer,4319.0,328.7741,252.4629,373.2484,18.0
+forward,IADA Barat Laut Selangor,2023,z_anomaly_transfer,4577.0,167.5405,2452.6968,253.3073,258.0
+forward,IADA Barat Laut Selangor,2024,z_anomaly_transfer,4185.0,896.686,740.3344,50.7025,392.0
+forward,IADA Barat Laut Selangor,2020,tradaboost_r2,4431.0,502.0,323.2778,2284.4351,325.0
+forward,IADA Barat Laut Selangor,2021,tradaboost_r2,4337.0,168.3465,190.9479,234.2137,94.0
+forward,IADA Barat Laut Selangor,2022,tradaboost_r2,4319.0,344.1777,252.4629,373.2484,18.0
+forward,IADA Barat Laut Selangor,2023,tradaboost_r2,4577.0,154.1554,2452.6968,253.3073,258.0
+forward,IADA Barat Laut Selangor,2024,tradaboost_r2,4185.0,157.3108,740.3344,50.7025,392.0
+loso,IADA Kemasin Semerak,2018,detrended_residual_transfer,4079.0,495.4139,326.082,1006.9367,
+loso,IADA Kemasin Semerak,2019,detrended_residual_transfer,3733.0,151.7548,64.66,275.78,346.0
+loso,IADA Kemasin Semerak,2020,detrended_residual_transfer,3666.0,158.5536,35.9535,924.881,67.0
+loso,IADA Kemasin Semerak,2021,detrended_residual_transfer,3656.0,149.2893,11.7949,887.9947,10.0
+loso,IADA Kemasin Semerak,2022,detrended_residual_transfer,3673.0,86.2957,298.4129,1399.919,17.0
+loso,IADA Kemasin Semerak,2023,detrended_residual_transfer,3790.0,43.5959,224.3213,320.9961,117.0
+loso,IADA Kemasin Semerak,2024,detrended_residual_transfer,3896.0,302.5481,187.2518,1112.4608,106.0
+loso,IADA Kemasin Semerak,2018,granary_intercept_ridge,4079.0,877.228,326.082,1006.9367,
+loso,IADA Kemasin Semerak,2019,granary_intercept_ridge,3733.0,18.3325,64.66,275.78,346.0
+loso,IADA Kemasin Semerak,2020,granary_intercept_ridge,3666.0,15.218,35.9535,924.881,67.0
+loso,IADA Kemasin Semerak,2021,granary_intercept_ridge,3656.0,373.4831,11.7949,887.9947,10.0
+loso,IADA Kemasin Semerak,2022,granary_intercept_ridge,3673.0,274.9279,298.4129,1399.919,17.0
+loso,IADA Kemasin Semerak,2023,granary_intercept_ridge,3790.0,68.4583,224.3213,320.9961,117.0
+loso,IADA Kemasin Semerak,2024,granary_intercept_ridge,3896.0,327.9616,187.2518,1112.4608,106.0
+loso,IADA Kemasin Semerak,2018,kmm_ridge,4079.0,1013.764,326.082,1006.9367,
+loso,IADA Kemasin Semerak,2019,kmm_ridge,3733.0,19.2992,64.66,275.78,346.0
+loso,IADA Kemasin Semerak,2020,kmm_ridge,3666.0,116.1872,35.9535,924.881,67.0
+loso,IADA Kemasin Semerak,2021,kmm_ridge,3656.0,159.032,11.7949,887.9947,10.0
+loso,IADA Kemasin Semerak,2022,kmm_ridge,3673.0,998.3424,298.4129,1399.919,17.0
+loso,IADA Kemasin Semerak,2023,kmm_ridge,3790.0,390.4598,224.3213,320.9961,117.0
+loso,IADA Kemasin Semerak,2024,kmm_ridge,3896.0,403.0355,187.2518,1112.4608,106.0
+loso,IADA Kemasin Semerak,2018,two_stage_tradaboost_r2,4079.0,395.2745,326.082,1006.9367,
+loso,IADA Kemasin Semerak,2019,two_stage_tradaboost_r2,3733.0,43.5061,64.66,275.78,346.0
+loso,IADA Kemasin Semerak,2020,two_stage_tradaboost_r2,3666.0,263.2017,35.9535,924.881,67.0
+loso,IADA Kemasin Semerak,2021,two_stage_tradaboost_r2,3656.0,425.9357,11.7949,887.9947,10.0
+loso,IADA Kemasin Semerak,2022,two_stage_tradaboost_r2,3673.0,454.3866,298.4129,1399.919,17.0
+loso,IADA Kemasin Semerak,2023,two_stage_tradaboost_r2,3790.0,262.9051,224.3213,320.9961,117.0
+loso,IADA Kemasin Semerak,2024,two_stage_tradaboost_r2,3896.0,222.574,187.2518,1112.4608,106.0
+loso,IADA Kemasin Semerak,2018,s_tradaboost_r2,4079.0,397.35,326.082,1006.9367,
+loso,IADA Kemasin Semerak,2019,s_tradaboost_r2,3733.0,42.7,64.66,275.78,346.0
+loso,IADA Kemasin Semerak,2020,s_tradaboost_r2,3666.0,264.3952,35.9535,924.881,67.0
+loso,IADA Kemasin Semerak,2021,s_tradaboost_r2,3656.0,405.6458,11.7949,887.9947,10.0
+loso,IADA Kemasin Semerak,2022,s_tradaboost_r2,3673.0,454.032,298.4129,1399.919,17.0
+loso,IADA Kemasin Semerak,2023,s_tradaboost_r2,3790.0,260.2946,224.3213,320.9961,117.0
+loso,IADA Kemasin Semerak,2024,s_tradaboost_r2,3896.0,230.9912,187.2518,1112.4608,106.0
+loso,IADA Kemasin Semerak,2018,z_anomaly_transfer,4079.0,686.4491,326.082,1006.9367,
+loso,IADA Kemasin Semerak,2019,z_anomaly_transfer,3733.0,217.2405,64.66,275.78,346.0
+loso,IADA Kemasin Semerak,2020,z_anomaly_transfer,3666.0,67.2979,35.9535,924.881,67.0
+loso,IADA Kemasin Semerak,2021,z_anomaly_transfer,3656.0,309.1631,11.7949,887.9947,10.0
+loso,IADA Kemasin Semerak,2022,z_anomaly_transfer,3673.0,185.9463,298.4129,1399.919,17.0
+loso,IADA Kemasin Semerak,2023,z_anomaly_transfer,3790.0,28.3728,224.3213,320.9961,117.0
+loso,IADA Kemasin Semerak,2024,z_anomaly_transfer,3896.0,346.6247,187.2518,1112.4608,106.0
+loso,IADA Kemasin Semerak,2018,tradaboost_r2,4079.0,366.9172,326.082,1006.9367,
+loso,IADA Kemasin Semerak,2019,tradaboost_r2,3733.0,132.8351,64.66,275.78,346.0
+loso,IADA Kemasin Semerak,2020,tradaboost_r2,3666.0,23.6578,35.9535,924.881,67.0
+loso,IADA Kemasin Semerak,2021,tradaboost_r2,3656.0,76.8504,11.7949,887.9947,10.0
+loso,IADA Kemasin Semerak,2022,tradaboost_r2,3673.0,291.6033,298.4129,1399.919,17.0
+loso,IADA Kemasin Semerak,2023,tradaboost_r2,3790.0,23.084,224.3213,320.9961,117.0
+loso,IADA Kemasin Semerak,2024,tradaboost_r2,3896.0,265.6811,187.2518,1112.4608,106.0
+forward,IADA Kemasin Semerak,2020,detrended_residual_transfer,3666.0,143.4698,130.8881,2152.0365,67.0
+forward,IADA Kemasin Semerak,2021,detrended_residual_transfer,3656.0,109.0422,80.9898,1478.5476,10.0
+forward,IADA Kemasin Semerak,2022,detrended_residual_transfer,3673.0,121.0511,85.7947,1418.1017,17.0
+forward,IADA Kemasin Semerak,2023,detrended_residual_transfer,3790.0,327.0215,79.6107,360.6639,117.0
+forward,IADA Kemasin Semerak,2024,detrended_residual_transfer,3896.0,302.5481,187.2518,1112.4608,106.0
+forward,IADA Kemasin Semerak,2020,granary_intercept_ridge,3666.0,288.7139,130.8881,2152.0365,67.0
+forward,IADA Kemasin Semerak,2021,granary_intercept_ridge,3656.0,165.9873,80.9898,1478.5476,10.0
+forward,IADA Kemasin Semerak,2022,granary_intercept_ridge,3673.0,452.7402,85.7947,1418.1017,17.0
+forward,IADA Kemasin Semerak,2023,granary_intercept_ridge,3790.0,250.3014,79.6107,360.6639,117.0
+forward,IADA Kemasin Semerak,2024,granary_intercept_ridge,3896.0,327.9616,187.2518,1112.4608,106.0
+forward,IADA Kemasin Semerak,2020,kmm_ridge,3666.0,323.8176,130.8881,2152.0365,67.0
+forward,IADA Kemasin Semerak,2021,kmm_ridge,3656.0,231.9405,80.9898,1478.5476,10.0
+forward,IADA Kemasin Semerak,2022,kmm_ridge,3673.0,621.8378,85.7947,1418.1017,17.0
+forward,IADA Kemasin Semerak,2023,kmm_ridge,3790.0,555.6343,79.6107,360.6639,117.0
+forward,IADA Kemasin Semerak,2024,kmm_ridge,3896.0,403.0355,187.2518,1112.4608,106.0
+forward,IADA Kemasin Semerak,2020,two_stage_tradaboost_r2,3666.0,413.035,130.8881,2152.0365,67.0
+forward,IADA Kemasin Semerak,2021,two_stage_tradaboost_r2,3656.0,382.0266,80.9898,1478.5476,10.0
+forward,IADA Kemasin Semerak,2022,two_stage_tradaboost_r2,3673.0,454.7946,85.7947,1418.1017,17.0
+forward,IADA Kemasin Semerak,2023,two_stage_tradaboost_r2,3790.0,382.836,79.6107,360.6639,117.0
+forward,IADA Kemasin Semerak,2024,two_stage_tradaboost_r2,3896.0,222.574,187.2518,1112.4608,106.0
+forward,IADA Kemasin Semerak,2020,s_tradaboost_r2,3666.0,413.1732,130.8881,2152.0365,67.0
+forward,IADA Kemasin Semerak,2021,s_tradaboost_r2,3656.0,382.2643,80.9898,1478.5476,10.0
+forward,IADA Kemasin Semerak,2022,s_tradaboost_r2,3673.0,456.1658,85.7947,1418.1017,17.0
+forward,IADA Kemasin Semerak,2023,s_tradaboost_r2,3790.0,383.7463,79.6107,360.6639,117.0
+forward,IADA Kemasin Semerak,2024,s_tradaboost_r2,3896.0,230.9912,187.2518,1112.4608,106.0
+forward,IADA Kemasin Semerak,2020,z_anomaly_transfer,3666.0,196.929,130.8881,2152.0365,67.0
+forward,IADA Kemasin Semerak,2021,z_anomaly_transfer,3656.0,88.6497,80.9898,1478.5476,10.0
+forward,IADA Kemasin Semerak,2022,z_anomaly_transfer,3673.0,517.5973,85.7947,1418.1017,17.0
+forward,IADA Kemasin Semerak,2023,z_anomaly_transfer,3790.0,222.2106,79.6107,360.6639,117.0
+forward,IADA Kemasin Semerak,2024,z_anomaly_transfer,3896.0,346.6247,187.2518,1112.4608,106.0
+forward,IADA Kemasin Semerak,2020,tradaboost_r2,3666.0,190.791,130.8881,2152.0365,67.0
+forward,IADA Kemasin Semerak,2021,tradaboost_r2,3656.0,142.7113,80.9898,1478.5476,10.0
+forward,IADA Kemasin Semerak,2022,tradaboost_r2,3673.0,135.0168,85.7947,1418.1017,17.0
+forward,IADA Kemasin Semerak,2023,tradaboost_r2,3790.0,318.4822,79.6107,360.6639,117.0
+forward,IADA Kemasin Semerak,2024,tradaboost_r2,3896.0,265.6811,187.2518,1112.4608,106.0
+loso,IADA Kerian,2018,detrended_residual_transfer,3957.0,644.0703,1020.1378,1252.8618,
+loso,IADA Kerian,2019,detrended_residual_transfer,3584.0,30.3562,44.1722,252.3912,373.0
+loso,IADA Kerian,2020,detrended_residual_transfer,3223.0,424.0641,23.5431,1211.9344,361.0
+loso,IADA Kerian,2021,detrended_residual_transfer,3830.0,304.4744,346.1652,528.3673,607.0
+loso,IADA Kerian,2022,detrended_residual_transfer,3372.0,162.0089,272.6814,1486.9841,458.0
+loso,IADA Kerian,2023,detrended_residual_transfer,3400.0,45.8768,423.4407,1745.9523,28.0
+loso,IADA Kerian,2024,detrended_residual_transfer,3449.0,233.5738,253.4057,1560.8414,49.0
+loso,IADA Kerian,2018,granary_intercept_ridge,3957.0,960.3277,1020.1378,1252.8618,
+loso,IADA Kerian,2019,granary_intercept_ridge,3584.0,435.1023,44.1722,252.3912,373.0
+loso,IADA Kerian,2020,granary_intercept_ridge,3223.0,78.5492,23.5431,1211.9344,361.0
+loso,IADA Kerian,2021,granary_intercept_ridge,3830.0,82.5208,346.1652,528.3673,607.0
+loso,IADA Kerian,2022,granary_intercept_ridge,3372.0,502.1245,272.6814,1486.9841,458.0
+loso,IADA Kerian,2023,granary_intercept_ridge,3400.0,564.2017,423.4407,1745.9523,28.0
+loso,IADA Kerian,2024,granary_intercept_ridge,3449.0,740.4281,253.4057,1560.8414,49.0
+loso,IADA Kerian,2018,kmm_ridge,3957.0,1301.8803,1020.1378,1252.8618,
+loso,IADA Kerian,2019,kmm_ridge,3584.0,289.8561,44.1722,252.3912,373.0
+loso,IADA Kerian,2020,kmm_ridge,3223.0,112.7719,23.5431,1211.9344,361.0
+loso,IADA Kerian,2021,kmm_ridge,3830.0,294.9481,346.1652,528.3673,607.0
+loso,IADA Kerian,2022,kmm_ridge,3372.0,395.1641,272.6814,1486.9841,458.0
+loso,IADA Kerian,2023,kmm_ridge,3400.0,666.8462,423.4407,1745.9523,28.0
+loso,IADA Kerian,2024,kmm_ridge,3449.0,835.584,253.4057,1560.8414,49.0
+loso,IADA Kerian,2018,two_stage_tradaboost_r2,3957.0,497.9854,1020.1378,1252.8618,
+loso,IADA Kerian,2019,two_stage_tradaboost_r2,3584.0,86.9206,44.1722,252.3912,373.0
+loso,IADA Kerian,2020,two_stage_tradaboost_r2,3223.0,554.5379,23.5431,1211.9344,361.0
+loso,IADA Kerian,2021,two_stage_tradaboost_r2,3830.0,51.5157,346.1652,528.3673,607.0
+loso,IADA Kerian,2022,two_stage_tradaboost_r2,3372.0,604.4325,272.6814,1486.9841,458.0
+loso,IADA Kerian,2023,two_stage_tradaboost_r2,3400.0,634.127,423.4407,1745.9523,28.0
+loso,IADA Kerian,2024,two_stage_tradaboost_r2,3449.0,977.6957,253.4057,1560.8414,49.0
+loso,IADA Kerian,2018,s_tradaboost_r2,3957.0,498.8703,1020.1378,1252.8618,
+loso,IADA Kerian,2019,s_tradaboost_r2,3584.0,87.1314,44.1722,252.3912,373.0
+loso,IADA Kerian,2020,s_tradaboost_r2,3223.0,556.1324,23.5431,1211.9344,361.0
+loso,IADA Kerian,2021,s_tradaboost_r2,3830.0,48.6403,346.1652,528.3673,607.0
+loso,IADA Kerian,2022,s_tradaboost_r2,3372.0,606.5663,272.6814,1486.9841,458.0
+loso,IADA Kerian,2023,s_tradaboost_r2,3400.0,637.8909,423.4407,1745.9523,28.0
+loso,IADA Kerian,2024,s_tradaboost_r2,3449.0,913.4076,253.4057,1560.8414,49.0
+loso,IADA Kerian,2018,z_anomaly_transfer,3957.0,1080.9457,1020.1378,1252.8618,
+loso,IADA Kerian,2019,z_anomaly_transfer,3584.0,415.6152,44.1722,252.3912,373.0
+loso,IADA Kerian,2020,z_anomaly_transfer,3223.0,98.4878,23.5431,1211.9344,361.0
+loso,IADA Kerian,2021,z_anomaly_transfer,3830.0,69.7398,346.1652,528.3673,607.0
+loso,IADA Kerian,2022,z_anomaly_transfer,3372.0,415.1774,272.6814,1486.9841,458.0
+loso,IADA Kerian,2023,z_anomaly_transfer,3400.0,207.862,423.4407,1745.9523,28.0
+loso,IADA Kerian,2024,z_anomaly_transfer,3449.0,111.8493,253.4057,1560.8414,49.0
+loso,IADA Kerian,2018,tradaboost_r2,3957.0,613.7102,1020.1378,1252.8618,
+loso,IADA Kerian,2019,tradaboost_r2,3584.0,74.3614,44.1722,252.3912,373.0
+loso,IADA Kerian,2020,tradaboost_r2,3223.0,116.2769,23.5431,1211.9344,361.0
+loso,IADA Kerian,2021,tradaboost_r2,3830.0,370.2171,346.1652,528.3673,607.0
+loso,IADA Kerian,2022,tradaboost_r2,3372.0,287.3982,272.6814,1486.9841,458.0
+loso,IADA Kerian,2023,tradaboost_r2,3400.0,378.5068,423.4407,1745.9523,28.0
+loso,IADA Kerian,2024,tradaboost_r2,3449.0,139.8331,253.4057,1560.8414,49.0
+forward,IADA Kerian,2020,detrended_residual_transfer,3223.0,495.7633,501.6923,1523.7834,361.0
+forward,IADA Kerian,2021,detrended_residual_transfer,3830.0,724.0251,47.7533,1602.9759,607.0
+forward,IADA Kerian,2022,detrended_residual_transfer,3372.0,217.1948,95.6607,1916.6611,458.0
+forward,IADA Kerian,2023,detrended_residual_transfer,3400.0,26.756,713.02,2267.2219,28.0
+forward,IADA Kerian,2024,detrended_residual_transfer,3449.0,233.5738,253.4057,1560.8414,49.0
+forward,IADA Kerian,2020,granary_intercept_ridge,3223.0,902.2569,501.6923,1523.7834,361.0
+forward,IADA Kerian,2021,granary_intercept_ridge,3830.0,255.6461,47.7533,1602.9759,607.0
+forward,IADA Kerian,2022,granary_intercept_ridge,3372.0,631.0718,95.6607,1916.6611,458.0
+forward,IADA Kerian,2023,granary_intercept_ridge,3400.0,351.3814,713.02,2267.2219,28.0
+forward,IADA Kerian,2024,granary_intercept_ridge,3449.0,740.4281,253.4057,1560.8414,49.0
+forward,IADA Kerian,2020,kmm_ridge,3223.0,1089.7928,501.6923,1523.7834,361.0
+forward,IADA Kerian,2021,kmm_ridge,3830.0,487.4453,47.7533,1602.9759,607.0
+forward,IADA Kerian,2022,kmm_ridge,3372.0,68.8113,95.6607,1916.6611,458.0
+forward,IADA Kerian,2023,kmm_ridge,3400.0,574.5389,713.02,2267.2219,28.0
+forward,IADA Kerian,2024,kmm_ridge,3449.0,835.584,253.4057,1560.8414,49.0
+forward,IADA Kerian,2020,two_stage_tradaboost_r2,3223.0,1101.3497,501.6923,1523.7834,361.0
+forward,IADA Kerian,2021,two_stage_tradaboost_r2,3830.0,291.4039,47.7533,1602.9759,607.0
+forward,IADA Kerian,2022,two_stage_tradaboost_r2,3372.0,662.021,95.6607,1916.6611,458.0
+forward,IADA Kerian,2023,two_stage_tradaboost_r2,3400.0,466.2931,713.02,2267.2219,28.0
+forward,IADA Kerian,2024,two_stage_tradaboost_r2,3449.0,977.6957,253.4057,1560.8414,49.0
+forward,IADA Kerian,2020,s_tradaboost_r2,3223.0,1101.6446,501.6923,1523.7834,361.0
+forward,IADA Kerian,2021,s_tradaboost_r2,3830.0,291.4242,47.7533,1602.9759,607.0
+forward,IADA Kerian,2022,s_tradaboost_r2,3372.0,653.3494,95.6607,1916.6611,458.0
+forward,IADA Kerian,2023,s_tradaboost_r2,3400.0,437.4541,713.02,2267.2219,28.0
+forward,IADA Kerian,2024,s_tradaboost_r2,3449.0,913.4076,253.4057,1560.8414,49.0
+forward,IADA Kerian,2020,z_anomaly_transfer,3223.0,625.7482,501.6923,1523.7834,361.0
+forward,IADA Kerian,2021,z_anomaly_transfer,3830.0,89.3653,47.7533,1602.9759,607.0
+forward,IADA Kerian,2022,z_anomaly_transfer,3372.0,552.5871,95.6607,1916.6611,458.0
+forward,IADA Kerian,2023,z_anomaly_transfer,3400.0,711.3122,713.02,2267.2219,28.0
+forward,IADA Kerian,2024,z_anomaly_transfer,3449.0,111.8493,253.4057,1560.8414,49.0
+forward,IADA Kerian,2020,tradaboost_r2,3223.0,493.9477,501.6923,1523.7834,361.0
+forward,IADA Kerian,2021,tradaboost_r2,3830.0,360.8868,47.7533,1602.9759,607.0
+forward,IADA Kerian,2022,tradaboost_r2,3372.0,346.3667,95.6607,1916.6611,458.0
+forward,IADA Kerian,2023,tradaboost_r2,3400.0,577.601,713.02,2267.2219,28.0
+forward,IADA Kerian,2024,tradaboost_r2,3449.0,139.8331,253.4057,1560.8414,49.0
+loso,IADA Pekan,2018,detrended_residual_transfer,2673.0,8.7049,187.7495,410.0434,
+loso,IADA Pekan,2019,detrended_residual_transfer,2637.0,206.6066,213.2643,1534.7198,36.0
+loso,IADA Pekan,2020,detrended_residual_transfer,2707.0,176.9311,283.8587,1924.1552,70.0
+loso,IADA Pekan,2021,detrended_residual_transfer,3218.0,386.3257,444.1949,989.4685,511.0
+loso,IADA Pekan,2022,detrended_residual_transfer,3090.0,190.5041,298.9104,1446.2196,128.0
+loso,IADA Pekan,2023,detrended_residual_transfer,2965.0,50.7507,351.5154,1109.5452,125.0
+loso,IADA Pekan,2024,detrended_residual_transfer,2904.0,304.6675,229.1062,1886.7439,61.0
+loso,IADA Pekan,2018,granary_intercept_ridge,2673.0,172.277,187.7495,410.0434,
+loso,IADA Pekan,2019,granary_intercept_ridge,2637.0,482.3514,213.2643,1534.7198,36.0
+loso,IADA Pekan,2020,granary_intercept_ridge,2707.0,583.0424,283.8587,1924.1552,70.0
+loso,IADA Pekan,2021,granary_intercept_ridge,3218.0,295.8654,444.1949,989.4685,511.0
+loso,IADA Pekan,2022,granary_intercept_ridge,3090.0,88.1483,298.9104,1446.2196,128.0
+loso,IADA Pekan,2023,granary_intercept_ridge,2965.0,399.7411,351.5154,1109.5452,125.0
+loso,IADA Pekan,2024,granary_intercept_ridge,2904.0,111.9225,229.1062,1886.7439,61.0
+loso,IADA Pekan,2018,kmm_ridge,2673.0,948.1362,187.7495,410.0434,
+loso,IADA Pekan,2019,kmm_ridge,2637.0,1000.5528,213.2643,1534.7198,36.0
+loso,IADA Pekan,2020,kmm_ridge,2707.0,39.78,283.8587,1924.1552,70.0
+loso,IADA Pekan,2021,kmm_ridge,3218.0,304.9049,444.1949,989.4685,511.0
+loso,IADA Pekan,2022,kmm_ridge,3090.0,909.2263,298.9104,1446.2196,128.0
+loso,IADA Pekan,2023,kmm_ridge,2965.0,360.2864,351.5154,1109.5452,125.0
+loso,IADA Pekan,2024,kmm_ridge,2904.0,10.7712,229.1062,1886.7439,61.0
+loso,IADA Pekan,2018,two_stage_tradaboost_r2,2673.0,236.1075,187.7495,410.0434,
+loso,IADA Pekan,2019,two_stage_tradaboost_r2,2637.0,903.3133,213.2643,1534.7198,36.0
+loso,IADA Pekan,2020,two_stage_tradaboost_r2,2707.0,692.7035,283.8587,1924.1552,70.0
+loso,IADA Pekan,2021,two_stage_tradaboost_r2,3218.0,60.2161,444.1949,989.4685,511.0
+loso,IADA Pekan,2022,two_stage_tradaboost_r2,3090.0,264.0207,298.9104,1446.2196,128.0
+loso,IADA Pekan,2023,two_stage_tradaboost_r2,2965.0,158.549,351.5154,1109.5452,125.0
+loso,IADA Pekan,2024,two_stage_tradaboost_r2,2904.0,380.4079,229.1062,1886.7439,61.0
+loso,IADA Pekan,2018,s_tradaboost_r2,2673.0,240.5255,187.7495,410.0434,
+loso,IADA Pekan,2019,s_tradaboost_r2,2637.0,902.1873,213.2643,1534.7198,36.0
+loso,IADA Pekan,2020,s_tradaboost_r2,2707.0,693.8204,283.8587,1924.1552,70.0
+loso,IADA Pekan,2021,s_tradaboost_r2,3218.0,59.9315,444.1949,989.4685,511.0
+loso,IADA Pekan,2022,s_tradaboost_r2,3090.0,264.6589,298.9104,1446.2196,128.0
+loso,IADA Pekan,2023,s_tradaboost_r2,2965.0,159.1531,351.5154,1109.5452,125.0
+loso,IADA Pekan,2024,s_tradaboost_r2,2904.0,369.279,229.1062,1886.7439,61.0
+loso,IADA Pekan,2018,z_anomaly_transfer,2673.0,216.0758,187.7495,410.0434,
+loso,IADA Pekan,2019,z_anomaly_transfer,2637.0,124.7462,213.2643,1534.7198,36.0
+loso,IADA Pekan,2020,z_anomaly_transfer,2707.0,897.4805,283.8587,1924.1552,70.0
+loso,IADA Pekan,2021,z_anomaly_transfer,3218.0,367.9191,444.1949,989.4685,511.0
+loso,IADA Pekan,2022,z_anomaly_transfer,3090.0,168.051,298.9104,1446.2196,128.0
+loso,IADA Pekan,2023,z_anomaly_transfer,2965.0,71.0764,351.5154,1109.5452,125.0
+loso,IADA Pekan,2024,z_anomaly_transfer,2904.0,290.6346,229.1062,1886.7439,61.0
+loso,IADA Pekan,2018,tradaboost_r2,2673.0,29.6142,187.7495,410.0434,
+loso,IADA Pekan,2019,tradaboost_r2,2637.0,493.865,213.2643,1534.7198,36.0
+loso,IADA Pekan,2020,tradaboost_r2,2707.0,446.9787,283.8587,1924.1552,70.0
+loso,IADA Pekan,2021,tradaboost_r2,3218.0,385.4176,444.1949,989.4685,511.0
+loso,IADA Pekan,2022,tradaboost_r2,3090.0,39.9806,298.9104,1446.2196,128.0
+loso,IADA Pekan,2023,tradaboost_r2,2965.0,114.5221,351.5154,1109.5452,125.0
+loso,IADA Pekan,2024,tradaboost_r2,2904.0,208.8646,229.1062,1886.7439,61.0
+forward,IADA Pekan,2020,detrended_residual_transfer,2707.0,143.7411,58.2257,2737.0623,70.0
+forward,IADA Pekan,2021,detrended_residual_transfer,3218.0,536.5878,549.0966,1279.1408,511.0
+forward,IADA Pekan,2022,detrended_residual_transfer,3090.0,37.3661,219.3276,1810.6334,128.0
+forward,IADA Pekan,2023,detrended_residual_transfer,2965.0,353.4067,441.7647,1176.6906,125.0
+forward,IADA Pekan,2024,detrended_residual_transfer,2904.0,304.6675,229.1062,1886.7439,61.0
+forward,IADA Pekan,2020,granary_intercept_ridge,2707.0,328.3327,58.2257,2737.0623,70.0
+forward,IADA Pekan,2021,granary_intercept_ridge,3218.0,729.6657,549.0966,1279.1408,511.0
+forward,IADA Pekan,2022,granary_intercept_ridge,3090.0,246.5783,219.3276,1810.6334,128.0
+forward,IADA Pekan,2023,granary_intercept_ridge,2965.0,278.7451,441.7647,1176.6906,125.0
+forward,IADA Pekan,2024,granary_intercept_ridge,2904.0,111.9225,229.1062,1886.7439,61.0
+forward,IADA Pekan,2020,kmm_ridge,2707.0,23.6495,58.2257,2737.0623,70.0
+forward,IADA Pekan,2021,kmm_ridge,3218.0,593.1467,549.0966,1279.1408,511.0
+forward,IADA Pekan,2022,kmm_ridge,3090.0,707.2113,219.3276,1810.6334,128.0
+forward,IADA Pekan,2023,kmm_ridge,2965.0,516.6409,441.7647,1176.6906,125.0
+forward,IADA Pekan,2024,kmm_ridge,2904.0,10.7712,229.1062,1886.7439,61.0
+forward,IADA Pekan,2020,two_stage_tradaboost_r2,2707.0,9.1937,58.2257,2737.0623,70.0
+forward,IADA Pekan,2021,two_stage_tradaboost_r2,3218.0,591.3261,549.0966,1279.1408,511.0
+forward,IADA Pekan,2022,two_stage_tradaboost_r2,3090.0,122.7737,219.3276,1810.6334,128.0
+forward,IADA Pekan,2023,two_stage_tradaboost_r2,2965.0,216.3501,441.7647,1176.6906,125.0
+forward,IADA Pekan,2024,two_stage_tradaboost_r2,2904.0,380.4079,229.1062,1886.7439,61.0
+forward,IADA Pekan,2020,s_tradaboost_r2,2707.0,19.2783,58.2257,2737.0623,70.0
+forward,IADA Pekan,2021,s_tradaboost_r2,3218.0,596.8166,549.0966,1279.1408,511.0
+forward,IADA Pekan,2022,s_tradaboost_r2,3090.0,122.7651,219.3276,1810.6334,128.0
+forward,IADA Pekan,2023,s_tradaboost_r2,2965.0,196.4015,441.7647,1176.6906,125.0
+forward,IADA Pekan,2024,s_tradaboost_r2,2904.0,369.279,229.1062,1886.7439,61.0
+forward,IADA Pekan,2020,z_anomaly_transfer,2707.0,55.2109,58.2257,2737.0623,70.0
+forward,IADA Pekan,2021,z_anomaly_transfer,3218.0,515.1341,549.0966,1279.1408,511.0
+forward,IADA Pekan,2022,z_anomaly_transfer,3090.0,7.5159,219.3276,1810.6334,128.0
+forward,IADA Pekan,2023,z_anomaly_transfer,2965.0,330.5167,441.7647,1176.6906,125.0
+forward,IADA Pekan,2024,z_anomaly_transfer,2904.0,290.6346,229.1062,1886.7439,61.0
+forward,IADA Pekan,2020,tradaboost_r2,2707.0,46.4882,58.2257,2737.0623,70.0
+forward,IADA Pekan,2021,tradaboost_r2,3218.0,548.7287,549.0966,1279.1408,511.0
+forward,IADA Pekan,2022,tradaboost_r2,3090.0,271.3073,219.3276,1810.6334,128.0
+forward,IADA Pekan,2023,tradaboost_r2,2965.0,30.7588,441.7647,1176.6906,125.0
+forward,IADA Pekan,2024,tradaboost_r2,2904.0,208.8646,229.1062,1886.7439,61.0
+loso,IADA Pulau Pinang,2018,detrended_residual_transfer,5228.0,147.5981,2081.3357,3375.0318,
+loso,IADA Pulau Pinang,2019,detrended_residual_transfer,5012.0,365.5075,161.2642,1149.0983,216.0
+loso,IADA Pulau Pinang,2020,detrended_residual_transfer,5022.0,198.9941,196.4092,754.4371,10.0
+loso,IADA Pulau Pinang,2021,detrended_residual_transfer,5655.0,664.8428,537.4998,1443.533,633.0
+loso,IADA Pulau Pinang,2022,detrended_residual_transfer,5052.0,95.6124,235.7961,301.5305,603.0
+loso,IADA Pulau Pinang,2023,detrended_residual_transfer,5054.0,22.869,97.0021,457.0233,2.0
+loso,IADA Pulau Pinang,2024,detrended_residual_transfer,4808.0,338.1523,951.749,441.5204,246.0
+loso,IADA Pulau Pinang,2018,granary_intercept_ridge,5228.0,1699.8095,2081.3357,3375.0318,
+loso,IADA Pulau Pinang,2019,granary_intercept_ridge,5012.0,172.5039,161.2642,1149.0983,216.0
+loso,IADA Pulau Pinang,2020,granary_intercept_ridge,5022.0,54.9766,196.4092,754.4371,10.0
+loso,IADA Pulau Pinang,2021,granary_intercept_ridge,5655.0,844.3794,537.4998,1443.533,633.0
+loso,IADA Pulau Pinang,2022,granary_intercept_ridge,5052.0,424.7827,235.7961,301.5305,603.0
+loso,IADA Pulau Pinang,2023,granary_intercept_ridge,5054.0,64.0368,97.0021,457.0233,2.0
+loso,IADA Pulau Pinang,2024,granary_intercept_ridge,4808.0,31.3909,951.749,441.5204,246.0
+loso,IADA Pulau Pinang,2018,kmm_ridge,5228.0,1905.8559,2081.3357,3375.0318,
+loso,IADA Pulau Pinang,2019,kmm_ridge,5012.0,822.2438,161.2642,1149.0983,216.0
+loso,IADA Pulau Pinang,2020,kmm_ridge,5022.0,59.7511,196.4092,754.4371,10.0
+loso,IADA Pulau Pinang,2021,kmm_ridge,5655.0,974.5329,537.4998,1443.533,633.0
+loso,IADA Pulau Pinang,2022,kmm_ridge,5052.0,346.281,235.7961,301.5305,603.0
+loso,IADA Pulau Pinang,2023,kmm_ridge,5054.0,351.9722,97.0021,457.0233,2.0
+loso,IADA Pulau Pinang,2024,kmm_ridge,4808.0,641.4755,951.749,441.5204,246.0
+loso,IADA Pulau Pinang,2018,two_stage_tradaboost_r2,5228.0,1022.6938,2081.3357,3375.0318,
+loso,IADA Pulau Pinang,2019,two_stage_tradaboost_r2,5012.0,211.8416,161.2642,1149.0983,216.0
+loso,IADA Pulau Pinang,2020,two_stage_tradaboost_r2,5022.0,181.0398,196.4092,754.4371,10.0
+loso,IADA Pulau Pinang,2021,two_stage_tradaboost_r2,5655.0,869.5898,537.4998,1443.533,633.0
+loso,IADA Pulau Pinang,2022,two_stage_tradaboost_r2,5052.0,131.4762,235.7961,301.5305,603.0
+loso,IADA Pulau Pinang,2023,two_stage_tradaboost_r2,5054.0,1.0164,97.0021,457.0233,2.0
+loso,IADA Pulau Pinang,2024,two_stage_tradaboost_r2,4808.0,269.5063,951.749,441.5204,246.0
+loso,IADA Pulau Pinang,2018,s_tradaboost_r2,5228.0,1023.5068,2081.3357,3375.0318,
+loso,IADA Pulau Pinang,2019,s_tradaboost_r2,5012.0,4.7146,161.2642,1149.0983,216.0
+loso,IADA Pulau Pinang,2020,s_tradaboost_r2,5022.0,32.9338,196.4092,754.4371,10.0
+loso,IADA Pulau Pinang,2021,s_tradaboost_r2,5655.0,872.1748,537.4998,1443.533,633.0
+loso,IADA Pulau Pinang,2022,s_tradaboost_r2,5052.0,364.147,235.7961,301.5305,603.0
+loso,IADA Pulau Pinang,2023,s_tradaboost_r2,5054.0,142.1295,97.0021,457.0233,2.0
+loso,IADA Pulau Pinang,2024,s_tradaboost_r2,4808.0,22.4237,951.749,441.5204,246.0
+loso,IADA Pulau Pinang,2018,z_anomaly_transfer,5228.0,2367.5213,2081.3357,3375.0318,
+loso,IADA Pulau Pinang,2019,z_anomaly_transfer,5012.0,347.8262,161.2642,1149.0983,216.0
+loso,IADA Pulau Pinang,2020,z_anomaly_transfer,5022.0,242.6566,196.4092,754.4371,10.0
+loso,IADA Pulau Pinang,2021,z_anomaly_transfer,5655.0,738.14,537.4998,1443.533,633.0
+loso,IADA Pulau Pinang,2022,z_anomaly_transfer,5052.0,412.2368,235.7961,301.5305,603.0
+loso,IADA Pulau Pinang,2023,z_anomaly_transfer,5054.0,43.1014,97.0021,457.0233,2.0
+loso,IADA Pulau Pinang,2024,z_anomaly_transfer,4808.0,854.9204,951.749,441.5204,246.0
+loso,IADA Pulau Pinang,2018,tradaboost_r2,5228.0,28.325,2081.3357,3375.0318,
+loso,IADA Pulau Pinang,2019,tradaboost_r2,5012.0,141.5145,161.2642,1149.0983,216.0
+loso,IADA Pulau Pinang,2020,tradaboost_r2,5022.0,444.9523,196.4092,754.4371,10.0
+loso,IADA Pulau Pinang,2021,tradaboost_r2,5655.0,648.4325,537.4998,1443.533,633.0
+loso,IADA Pulau Pinang,2022,tradaboost_r2,5052.0,237.9771,235.7961,301.5305,603.0
+loso,IADA Pulau Pinang,2023,tradaboost_r2,5054.0,122.3647,97.0021,457.0233,2.0
+loso,IADA Pulau Pinang,2024,tradaboost_r2,4808.0,286.7023,951.749,441.5204,246.0
+forward,IADA Pulau Pinang,2020,detrended_residual_transfer,5022.0,7.6351,239.8319,157.3319,10.0
+forward,IADA Pulau Pinang,2021,detrended_residual_transfer,5655.0,739.4058,623.1742,933.7273,633.0
+forward,IADA Pulau Pinang,2022,detrended_residual_transfer,5052.0,635.5868,195.7271,74.9816,603.0
+forward,IADA Pulau Pinang,2023,detrended_residual_transfer,5054.0,217.7925,14.9277,138.5823,2.0
+forward,IADA Pulau Pinang,2024,detrended_residual_transfer,4808.0,338.1523,951.749,441.5204,246.0
+forward,IADA Pulau Pinang,2020,granary_intercept_ridge,5022.0,40.877,239.8319,157.3319,10.0
+forward,IADA Pulau Pinang,2021,granary_intercept_ridge,5655.0,713.6049,623.1742,933.7273,633.0
+forward,IADA Pulau Pinang,2022,granary_intercept_ridge,5052.0,627.3619,195.7271,74.9816,603.0
+forward,IADA Pulau Pinang,2023,granary_intercept_ridge,5054.0,295.0814,14.9277,138.5823,2.0
+forward,IADA Pulau Pinang,2024,granary_intercept_ridge,4808.0,31.3909,951.749,441.5204,246.0
+forward,IADA Pulau Pinang,2020,kmm_ridge,5022.0,62.3821,239.8319,157.3319,10.0
+forward,IADA Pulau Pinang,2021,kmm_ridge,5655.0,651.1442,623.1742,933.7273,633.0
+forward,IADA Pulau Pinang,2022,kmm_ridge,5052.0,272.5789,195.7271,74.9816,603.0
+forward,IADA Pulau Pinang,2023,kmm_ridge,5054.0,161.4485,14.9277,138.5823,2.0
+forward,IADA Pulau Pinang,2024,kmm_ridge,4808.0,641.4755,951.749,441.5204,246.0
+forward,IADA Pulau Pinang,2020,two_stage_tradaboost_r2,5022.0,16.9581,239.8319,157.3319,10.0
+forward,IADA Pulau Pinang,2021,two_stage_tradaboost_r2,5655.0,719.2476,623.1742,933.7273,633.0
+forward,IADA Pulau Pinang,2022,two_stage_tradaboost_r2,5052.0,266.3402,195.7271,74.9816,603.0
+forward,IADA Pulau Pinang,2023,two_stage_tradaboost_r2,5054.0,15.204,14.9277,138.5823,2.0
+forward,IADA Pulau Pinang,2024,two_stage_tradaboost_r2,4808.0,269.5063,951.749,441.5204,246.0
+forward,IADA Pulau Pinang,2020,s_tradaboost_r2,5022.0,16.437,239.8319,157.3319,10.0
+forward,IADA Pulau Pinang,2021,s_tradaboost_r2,5655.0,719.6135,623.1742,933.7273,633.0
+forward,IADA Pulau Pinang,2022,s_tradaboost_r2,5052.0,374.1183,195.7271,74.9816,603.0
+forward,IADA Pulau Pinang,2023,s_tradaboost_r2,5054.0,149.2572,14.9277,138.5823,2.0
+forward,IADA Pulau Pinang,2024,s_tradaboost_r2,4808.0,22.4237,951.749,441.5204,246.0
+forward,IADA Pulau Pinang,2020,z_anomaly_transfer,5022.0,494.4182,239.8319,157.3319,10.0
+forward,IADA Pulau Pinang,2021,z_anomaly_transfer,5655.0,664.5201,623.1742,933.7273,633.0
+forward,IADA Pulau Pinang,2022,z_anomaly_transfer,5052.0,406.9485,195.7271,74.9816,603.0
+forward,IADA Pulau Pinang,2023,z_anomaly_transfer,5054.0,212.4353,14.9277,138.5823,2.0
+forward,IADA Pulau Pinang,2024,z_anomaly_transfer,4808.0,854.9204,951.749,441.5204,246.0
+forward,IADA Pulau Pinang,2020,tradaboost_r2,5022.0,51.6513,239.8319,157.3319,10.0
+forward,IADA Pulau Pinang,2021,tradaboost_r2,5655.0,638.9682,623.1742,933.7273,633.0
+forward,IADA Pulau Pinang,2022,tradaboost_r2,5052.0,506.5293,195.7271,74.9816,603.0
+forward,IADA Pulau Pinang,2023,tradaboost_r2,5054.0,297.2021,14.9277,138.5823,2.0
+forward,IADA Pulau Pinang,2024,tradaboost_r2,4808.0,286.7023,951.749,441.5204,246.0
+loso,IADA Rompin,2018,detrended_residual_transfer,2910.0,473.8329,801.7743,67.3599,
+loso,IADA Rompin,2019,detrended_residual_transfer,2373.0,1444.746,1601.0405,2326.5545,537.0
+loso,IADA Rompin,2020,detrended_residual_transfer,4156.0,446.9301,303.4244,478.2009,1783.0
+loso,IADA Rompin,2021,detrended_residual_transfer,4610.0,759.6003,1.5489,249.0294,454.0
+loso,IADA Rompin,2022,detrended_residual_transfer,4431.0,361.1143,697.6639,92.0708,179.0
+loso,IADA Rompin,2023,detrended_residual_transfer,4466.0,213.2407,403.3067,253.5486,35.0
+loso,IADA Rompin,2024,detrended_residual_transfer,3533.0,1795.2164,1014.8261,1398.0476,933.0
+loso,IADA Rompin,2018,granary_intercept_ridge,2910.0,1002.4487,801.7743,67.3599,
+loso,IADA Rompin,2019,granary_intercept_ridge,2373.0,1560.8995,1601.0405,2326.5545,537.0
+loso,IADA Rompin,2020,granary_intercept_ridge,4156.0,231.1001,303.4244,478.2009,1783.0
+loso,IADA Rompin,2021,granary_intercept_ridge,4610.0,242.6648,1.5489,249.0294,454.0
+loso,IADA Rompin,2022,granary_intercept_ridge,4431.0,456.9512,697.6639,92.0708,179.0
+loso,IADA Rompin,2023,granary_intercept_ridge,4466.0,194.6404,403.3067,253.5486,35.0
+loso,IADA Rompin,2024,granary_intercept_ridge,3533.0,486.3318,1014.8261,1398.0476,933.0
+loso,IADA Rompin,2018,kmm_ridge,2910.0,1477.4532,801.7743,67.3599,
+loso,IADA Rompin,2019,kmm_ridge,2373.0,1335.468,1601.0405,2326.5545,537.0
+loso,IADA Rompin,2020,kmm_ridge,4156.0,491.8963,303.4244,478.2009,1783.0
+loso,IADA Rompin,2021,kmm_ridge,4610.0,190.659,1.5489,249.0294,454.0
+loso,IADA Rompin,2022,kmm_ridge,4431.0,0.0569,697.6639,92.0708,179.0
+loso,IADA Rompin,2023,kmm_ridge,4466.0,12.614,403.3067,253.5486,35.0
+loso,IADA Rompin,2024,kmm_ridge,3533.0,555.4855,1014.8261,1398.0476,933.0
+loso,IADA Rompin,2018,two_stage_tradaboost_r2,2910.0,1279.8536,801.7743,67.3599,
+loso,IADA Rompin,2019,two_stage_tradaboost_r2,2373.0,1950.7533,1601.0405,2326.5545,537.0
+loso,IADA Rompin,2020,two_stage_tradaboost_r2,4156.0,36.8942,303.4244,478.2009,1783.0
+loso,IADA Rompin,2021,two_stage_tradaboost_r2,4610.0,399.2334,1.5489,249.0294,454.0
+loso,IADA Rompin,2022,two_stage_tradaboost_r2,4431.0,284.017,697.6639,92.0708,179.0
+loso,IADA Rompin,2023,two_stage_tradaboost_r2,4466.0,203.154,403.3067,253.5486,35.0
+loso,IADA Rompin,2024,two_stage_tradaboost_r2,3533.0,730.8961,1014.8261,1398.0476,933.0
+loso,IADA Rompin,2018,s_tradaboost_r2,2910.0,1213.3631,801.7743,67.3599,
+loso,IADA Rompin,2019,s_tradaboost_r2,2373.0,1944.6292,1601.0405,2326.5545,537.0
+loso,IADA Rompin,2020,s_tradaboost_r2,4156.0,36.6063,303.4244,478.2009,1783.0
+loso,IADA Rompin,2021,s_tradaboost_r2,4610.0,398.988,1.5489,249.0294,454.0
+loso,IADA Rompin,2022,s_tradaboost_r2,4431.0,302.4804,697.6639,92.0708,179.0
+loso,IADA Rompin,2023,s_tradaboost_r2,4466.0,219.4909,403.3067,253.5486,35.0
+loso,IADA Rompin,2024,s_tradaboost_r2,3533.0,672.0949,1014.8261,1398.0476,933.0
+loso,IADA Rompin,2018,z_anomaly_transfer,2910.0,580.4063,801.7743,67.3599,
+loso,IADA Rompin,2019,z_anomaly_transfer,2373.0,334.5963,1601.0405,2326.5545,537.0
+loso,IADA Rompin,2020,z_anomaly_transfer,4156.0,545.254,303.4244,478.2009,1783.0
+loso,IADA Rompin,2021,z_anomaly_transfer,4610.0,322.3456,1.5489,249.0294,454.0
+loso,IADA Rompin,2022,z_anomaly_transfer,4431.0,1001.8516,697.6639,92.0708,179.0
+loso,IADA Rompin,2023,z_anomaly_transfer,4466.0,444.5791,403.3067,253.5486,35.0
+loso,IADA Rompin,2024,z_anomaly_transfer,3533.0,67.361,1014.8261,1398.0476,933.0
+loso,IADA Rompin,2018,tradaboost_r2,2910.0,696.6849,801.7743,67.3599,
+loso,IADA Rompin,2019,tradaboost_r2,2373.0,1758.7553,1601.0405,2326.5545,537.0
+loso,IADA Rompin,2020,tradaboost_r2,4156.0,62.064,303.4244,478.2009,1783.0
+loso,IADA Rompin,2021,tradaboost_r2,4610.0,141.8041,1.5489,249.0294,454.0
+loso,IADA Rompin,2022,tradaboost_r2,4431.0,81.0103,697.6639,92.0708,179.0
+loso,IADA Rompin,2023,tradaboost_r2,4466.0,277.1843,403.3067,253.5486,35.0
+loso,IADA Rompin,2024,tradaboost_r2,3533.0,280.7666,1014.8261,1398.0476,933.0
+forward,IADA Rompin,2020,detrended_residual_transfer,4156.0,1751.8689,1626.1523,2119.6272,1783.0
+forward,IADA Rompin,2021,detrended_residual_transfer,4610.0,374.051,167.149,346.8091,454.0
+forward,IADA Rompin,2022,detrended_residual_transfer,4431.0,594.9413,745.2578,263.9862,179.0
+forward,IADA Rompin,2023,detrended_residual_transfer,4466.0,485.1597,328.618,334.2214,35.0
+forward,IADA Rompin,2024,detrended_residual_transfer,3533.0,1795.2164,1014.8261,1398.0476,933.0
+forward,IADA Rompin,2020,granary_intercept_ridge,4156.0,2669.2629,1626.1523,2119.6272,1783.0
+forward,IADA Rompin,2021,granary_intercept_ridge,4610.0,154.5038,167.149,346.8091,454.0
+forward,IADA Rompin,2022,granary_intercept_ridge,4431.0,108.763,745.2578,263.9862,179.0
+forward,IADA Rompin,2023,granary_intercept_ridge,4466.0,151.7283,328.618,334.2214,35.0
+forward,IADA Rompin,2024,granary_intercept_ridge,3533.0,486.3318,1014.8261,1398.0476,933.0
+forward,IADA Rompin,2020,kmm_ridge,4156.0,2885.7764,1626.1523,2119.6272,1783.0
+forward,IADA Rompin,2021,kmm_ridge,4610.0,370.301,167.149,346.8091,454.0
+forward,IADA Rompin,2022,kmm_ridge,4431.0,442.6474,745.2578,263.9862,179.0
+forward,IADA Rompin,2023,kmm_ridge,4466.0,498.304,328.618,334.2214,35.0
+forward,IADA Rompin,2024,kmm_ridge,3533.0,555.4855,1014.8261,1398.0476,933.0
+forward,IADA Rompin,2020,two_stage_tradaboost_r2,4156.0,2280.3254,1626.1523,2119.6272,1783.0
+forward,IADA Rompin,2021,two_stage_tradaboost_r2,4610.0,132.9828,167.149,346.8091,454.0
+forward,IADA Rompin,2022,two_stage_tradaboost_r2,4431.0,104.6139,745.2578,263.9862,179.0
+forward,IADA Rompin,2023,two_stage_tradaboost_r2,4466.0,242.1044,328.618,334.2214,35.0
+forward,IADA Rompin,2024,two_stage_tradaboost_r2,3533.0,730.8961,1014.8261,1398.0476,933.0
+forward,IADA Rompin,2020,s_tradaboost_r2,4156.0,2280.9261,1626.1523,2119.6272,1783.0
+forward,IADA Rompin,2021,s_tradaboost_r2,4610.0,133.8414,167.149,346.8091,454.0
+forward,IADA Rompin,2022,s_tradaboost_r2,4431.0,104.8966,745.2578,263.9862,179.0
+forward,IADA Rompin,2023,s_tradaboost_r2,4466.0,287.3511,328.618,334.2214,35.0
+forward,IADA Rompin,2024,s_tradaboost_r2,3533.0,672.0949,1014.8261,1398.0476,933.0
+forward,IADA Rompin,2020,z_anomaly_transfer,4156.0,1863.307,1626.1523,2119.6272,1783.0
+forward,IADA Rompin,2021,z_anomaly_transfer,4610.0,928.5735,167.149,346.8091,454.0
+forward,IADA Rompin,2022,z_anomaly_transfer,4431.0,6222.617,745.2578,263.9862,179.0
+forward,IADA Rompin,2023,z_anomaly_transfer,4466.0,67.3323,328.618,334.2214,35.0
+forward,IADA Rompin,2024,z_anomaly_transfer,3533.0,67.361,1014.8261,1398.0476,933.0
+forward,IADA Rompin,2020,tradaboost_r2,4156.0,1904.1751,1626.1523,2119.6272,1783.0
+forward,IADA Rompin,2021,tradaboost_r2,4610.0,600.6813,167.149,346.8091,454.0
+forward,IADA Rompin,2022,tradaboost_r2,4431.0,110.6978,745.2578,263.9862,179.0
+forward,IADA Rompin,2023,tradaboost_r2,4466.0,367.0396,328.618,334.2214,35.0
+forward,IADA Rompin,2024,tradaboost_r2,3533.0,280.7666,1014.8261,1398.0476,933.0
+loso,IADA Seberang Perak,2018,detrended_residual_transfer,3417.0,1038.989,656.4614,389.7722,
+loso,IADA Seberang Perak,2019,detrended_residual_transfer,2923.0,6.509,394.0568,240.2766,494.0
+loso,IADA Seberang Perak,2020,detrended_residual_transfer,2774.0,475.524,517.3408,1595.645,149.0
+loso,IADA Seberang Perak,2021,detrended_residual_transfer,2613.0,947.8365,1244.2331,1599.3794,161.0
+loso,IADA Seberang Perak,2022,detrended_residual_transfer,3918.0,356.0692,3157.1917,993.371,1305.0
+loso,IADA Seberang Perak,2023,detrended_residual_transfer,4479.0,1084.1964,1083.997,333.4564,561.0
+loso,IADA Seberang Perak,2024,detrended_residual_transfer,3716.0,408.9018,701.487,1099.6602,763.0
+loso,IADA Seberang Perak,2018,granary_intercept_ridge,3417.0,401.675,656.4614,389.7722,
+loso,IADA Seberang Perak,2019,granary_intercept_ridge,2923.0,264.9522,394.0568,240.2766,494.0
+loso,IADA Seberang Perak,2020,granary_intercept_ridge,2774.0,677.8215,517.3408,1595.645,149.0
+loso,IADA Seberang Perak,2021,granary_intercept_ridge,2613.0,1227.3472,1244.2331,1599.3794,161.0
+loso,IADA Seberang Perak,2022,granary_intercept_ridge,3918.0,2.8375,3157.1917,993.371,1305.0
+loso,IADA Seberang Perak,2023,granary_intercept_ridge,4479.0,1695.7032,1083.997,333.4564,561.0
+loso,IADA Seberang Perak,2024,granary_intercept_ridge,3716.0,510.3852,701.487,1099.6602,763.0
+loso,IADA Seberang Perak,2018,kmm_ridge,3417.0,26.4992,656.4614,389.7722,
+loso,IADA Seberang Perak,2019,kmm_ridge,2923.0,933.8941,394.0568,240.2766,494.0
+loso,IADA Seberang Perak,2020,kmm_ridge,2774.0,365.6315,517.3408,1595.645,149.0
+loso,IADA Seberang Perak,2021,kmm_ridge,2613.0,1360.9225,1244.2331,1599.3794,161.0
+loso,IADA Seberang Perak,2022,kmm_ridge,3918.0,758.3024,3157.1917,993.371,1305.0
+loso,IADA Seberang Perak,2023,kmm_ridge,4479.0,971.839,1083.997,333.4564,561.0
+loso,IADA Seberang Perak,2024,kmm_ridge,3716.0,519.3798,701.487,1099.6602,763.0
+loso,IADA Seberang Perak,2018,two_stage_tradaboost_r2,3417.0,884.3776,656.4614,389.7722,
+loso,IADA Seberang Perak,2019,two_stage_tradaboost_r2,2923.0,647.4627,394.0568,240.2766,494.0
+loso,IADA Seberang Perak,2020,two_stage_tradaboost_r2,2774.0,839.9226,517.3408,1595.645,149.0
+loso,IADA Seberang Perak,2021,two_stage_tradaboost_r2,2613.0,1350.0691,1244.2331,1599.3794,161.0
+loso,IADA Seberang Perak,2022,two_stage_tradaboost_r2,3918.0,232.7108,3157.1917,993.371,1305.0
+loso,IADA Seberang Perak,2023,two_stage_tradaboost_r2,4479.0,931.672,1083.997,333.4564,561.0
+loso,IADA Seberang Perak,2024,two_stage_tradaboost_r2,3716.0,253.4287,701.487,1099.6602,763.0
+loso,IADA Seberang Perak,2018,s_tradaboost_r2,3417.0,884.3923,656.4614,389.7722,
+loso,IADA Seberang Perak,2019,s_tradaboost_r2,2923.0,640.2468,394.0568,240.2766,494.0
+loso,IADA Seberang Perak,2020,s_tradaboost_r2,2774.0,831.1199,517.3408,1595.645,149.0
+loso,IADA Seberang Perak,2021,s_tradaboost_r2,2613.0,1350.9382,1244.2331,1599.3794,161.0
+loso,IADA Seberang Perak,2022,s_tradaboost_r2,3918.0,232.6076,3157.1917,993.371,1305.0
+loso,IADA Seberang Perak,2023,s_tradaboost_r2,4479.0,943.7292,1083.997,333.4564,561.0
+loso,IADA Seberang Perak,2024,s_tradaboost_r2,3716.0,253.4349,701.487,1099.6602,763.0
+loso,IADA Seberang Perak,2018,z_anomaly_transfer,3417.0,131.6655,656.4614,389.7722,
+loso,IADA Seberang Perak,2019,z_anomaly_transfer,2923.0,384.6616,394.0568,240.2766,494.0
+loso,IADA Seberang Perak,2020,z_anomaly_transfer,2774.0,716.9668,517.3408,1595.645,149.0
+loso,IADA Seberang Perak,2021,z_anomaly_transfer,2613.0,1029.3728,1244.2331,1599.3794,161.0
+loso,IADA Seberang Perak,2022,z_anomaly_transfer,3918.0,309.9968,3157.1917,993.371,1305.0
+loso,IADA Seberang Perak,2023,z_anomaly_transfer,4479.0,1924.5935,1083.997,333.4564,561.0
+loso,IADA Seberang Perak,2024,z_anomaly_transfer,3716.0,513.4718,701.487,1099.6602,763.0
+loso,IADA Seberang Perak,2018,tradaboost_r2,3417.0,2307.7397,656.4614,389.7722,
+loso,IADA Seberang Perak,2019,tradaboost_r2,2923.0,829.4901,394.0568,240.2766,494.0
+loso,IADA Seberang Perak,2020,tradaboost_r2,2774.0,807.1262,517.3408,1595.645,149.0
+loso,IADA Seberang Perak,2021,tradaboost_r2,2613.0,865.8871,1244.2331,1599.3794,161.0
+loso,IADA Seberang Perak,2022,tradaboost_r2,3918.0,758.6671,3157.1917,993.371,1305.0
+loso,IADA Seberang Perak,2023,tradaboost_r2,4479.0,1605.8537,1083.997,333.4564,561.0
+loso,IADA Seberang Perak,2024,tradaboost_r2,3716.0,384.1995,701.487,1099.6602,763.0
+forward,IADA Seberang Perak,2020,detrended_residual_transfer,2774.0,212.3197,329.2175,3004.571,149.0
+forward,IADA Seberang Perak,2021,detrended_residual_transfer,2613.0,28.1294,855.2134,2160.0655,161.0
+forward,IADA Seberang Perak,2022,detrended_residual_transfer,3918.0,1420.5431,964.3362,1146.8472,1305.0
+forward,IADA Seberang Perak,2023,detrended_residual_transfer,4479.0,1239.801,826.6252,155.0253,561.0
+forward,IADA Seberang Perak,2024,detrended_residual_transfer,3716.0,408.9018,701.487,1099.6602,763.0
+forward,IADA Seberang Perak,2020,granary_intercept_ridge,2774.0,42.3442,329.2175,3004.571,149.0
+forward,IADA Seberang Perak,2021,granary_intercept_ridge,2613.0,630.3839,855.2134,2160.0655,161.0
+forward,IADA Seberang Perak,2022,granary_intercept_ridge,3918.0,160.321,964.3362,1146.8472,1305.0
+forward,IADA Seberang Perak,2023,granary_intercept_ridge,4479.0,1361.6714,826.6252,155.0253,561.0
+forward,IADA Seberang Perak,2024,granary_intercept_ridge,3716.0,510.3852,701.487,1099.6602,763.0
+forward,IADA Seberang Perak,2020,kmm_ridge,2774.0,163.8542,329.2175,3004.571,149.0
+forward,IADA Seberang Perak,2021,kmm_ridge,2613.0,899.1943,855.2134,2160.0655,161.0
+forward,IADA Seberang Perak,2022,kmm_ridge,3918.0,592.8973,964.3362,1146.8472,1305.0
+forward,IADA Seberang Perak,2023,kmm_ridge,4479.0,2175.0625,826.6252,155.0253,561.0
+forward,IADA Seberang Perak,2024,kmm_ridge,3716.0,519.3798,701.487,1099.6602,763.0
+forward,IADA Seberang Perak,2020,two_stage_tradaboost_r2,2774.0,206.6151,329.2175,3004.571,149.0
+forward,IADA Seberang Perak,2021,two_stage_tradaboost_r2,2613.0,995.2188,855.2134,2160.0655,161.0
+forward,IADA Seberang Perak,2022,two_stage_tradaboost_r2,3918.0,51.0071,964.3362,1146.8472,1305.0
+forward,IADA Seberang Perak,2023,two_stage_tradaboost_r2,4479.0,1194.1222,826.6252,155.0253,561.0
+forward,IADA Seberang Perak,2024,two_stage_tradaboost_r2,3716.0,253.4287,701.487,1099.6602,763.0
+forward,IADA Seberang Perak,2020,s_tradaboost_r2,2774.0,206.9937,329.2175,3004.571,149.0
+forward,IADA Seberang Perak,2021,s_tradaboost_r2,2613.0,995.2141,855.2134,2160.0655,161.0
+forward,IADA Seberang Perak,2022,s_tradaboost_r2,3918.0,54.7914,964.3362,1146.8472,1305.0
+forward,IADA Seberang Perak,2023,s_tradaboost_r2,4479.0,1202.0454,826.6252,155.0253,561.0
+forward,IADA Seberang Perak,2024,s_tradaboost_r2,3716.0,253.4349,701.487,1099.6602,763.0
+forward,IADA Seberang Perak,2020,z_anomaly_transfer,2774.0,315.316,329.2175,3004.571,149.0
+forward,IADA Seberang Perak,2021,z_anomaly_transfer,2613.0,358.1021,855.2134,2160.0655,161.0
+forward,IADA Seberang Perak,2022,z_anomaly_transfer,3918.0,1044.7712,964.3362,1146.8472,1305.0
+forward,IADA Seberang Perak,2023,z_anomaly_transfer,4479.0,1452.3027,826.6252,155.0253,561.0
+forward,IADA Seberang Perak,2024,z_anomaly_transfer,3716.0,513.4718,701.487,1099.6602,763.0
+forward,IADA Seberang Perak,2020,tradaboost_r2,2774.0,168.9192,329.2175,3004.571,149.0
+forward,IADA Seberang Perak,2021,tradaboost_r2,2613.0,365.7806,855.2134,2160.0655,161.0
+forward,IADA Seberang Perak,2022,tradaboost_r2,3918.0,946.7863,964.3362,1146.8472,1305.0
+forward,IADA Seberang Perak,2023,tradaboost_r2,4479.0,1005.49,826.6252,155.0253,561.0
+forward,IADA Seberang Perak,2024,tradaboost_r2,3716.0,384.1995,701.487,1099.6602,763.0
+loso,KADA,2018,detrended_residual_transfer,4695.0,153.4824,417.7079,1215.7762,
+loso,KADA,2019,detrended_residual_transfer,4032.0,761.7531,464.4229,332.3465,663.0
+loso,KADA,2020,detrended_residual_transfer,4621.0,152.9812,419.4966,67.347,589.0
+loso,KADA,2021,detrended_residual_transfer,4874.0,588.8816,499.0832,139.5384,253.0
+loso,KADA,2022,detrended_residual_transfer,4096.0,147.7074,2957.1961,795.6894,778.0
+loso,KADA,2023,detrended_residual_transfer,4095.0,151.3585,821.7832,590.6537,1.0
+loso,KADA,2024,detrended_residual_transfer,3729.0,288.2166,740.6539,1303.7205,366.0
+loso,KADA,2018,granary_intercept_ridge,4695.0,913.9749,417.7079,1215.7762,
+loso,KADA,2019,granary_intercept_ridge,4032.0,38.049,464.4229,332.3465,663.0
+loso,KADA,2020,granary_intercept_ridge,4621.0,250.1054,419.4966,67.347,589.0
+loso,KADA,2021,granary_intercept_ridge,4874.0,403.2308,499.0832,139.5384,253.0
+loso,KADA,2022,granary_intercept_ridge,4096.0,26.4063,2957.1961,795.6894,778.0
+loso,KADA,2023,granary_intercept_ridge,4095.0,741.6019,821.7832,590.6537,1.0
+loso,KADA,2024,granary_intercept_ridge,3729.0,830.6125,740.6539,1303.7205,366.0
+loso,KADA,2018,kmm_ridge,4695.0,1237.0062,417.7079,1215.7762,
+loso,KADA,2019,kmm_ridge,4032.0,170.0727,464.4229,332.3465,663.0
+loso,KADA,2020,kmm_ridge,4621.0,297.9188,419.4966,67.347,589.0
+loso,KADA,2021,kmm_ridge,4874.0,367.5288,499.0832,139.5384,253.0
+loso,KADA,2022,kmm_ridge,4096.0,1818.3284,2957.1961,795.6894,778.0
+loso,KADA,2023,kmm_ridge,4095.0,936.6612,821.7832,590.6537,1.0
+loso,KADA,2024,kmm_ridge,3729.0,730.293,740.6539,1303.7205,366.0
+loso,KADA,2018,two_stage_tradaboost_r2,4695.0,604.3467,417.7079,1215.7762,
+loso,KADA,2019,two_stage_tradaboost_r2,4032.0,155.539,464.4229,332.3465,663.0
+loso,KADA,2020,two_stage_tradaboost_r2,4621.0,263.4804,419.4966,67.347,589.0
+loso,KADA,2021,two_stage_tradaboost_r2,4874.0,458.9711,499.0832,139.5384,253.0
+loso,KADA,2022,two_stage_tradaboost_r2,4096.0,536.9001,2957.1961,795.6894,778.0
+loso,KADA,2023,two_stage_tradaboost_r2,4095.0,521.429,821.7832,590.6537,1.0
+loso,KADA,2024,two_stage_tradaboost_r2,3729.0,860.0058,740.6539,1303.7205,366.0
+loso,KADA,2018,s_tradaboost_r2,4695.0,604.2021,417.7079,1215.7762,
+loso,KADA,2019,s_tradaboost_r2,4032.0,156.5086,464.4229,332.3465,663.0
+loso,KADA,2020,s_tradaboost_r2,4621.0,261.4926,419.4966,67.347,589.0
+loso,KADA,2021,s_tradaboost_r2,4874.0,457.7951,499.0832,139.5384,253.0
+loso,KADA,2022,s_tradaboost_r2,4096.0,535.0276,2957.1961,795.6894,778.0
+loso,KADA,2023,s_tradaboost_r2,4095.0,522.1262,821.7832,590.6537,1.0
+loso,KADA,2024,s_tradaboost_r2,3729.0,861.8448,740.6539,1303.7205,366.0
+loso,KADA,2018,z_anomaly_transfer,4695.0,958.433,417.7079,1215.7762,
+loso,KADA,2019,z_anomaly_transfer,4032.0,30.2379,464.4229,332.3465,663.0
+loso,KADA,2020,z_anomaly_transfer,4621.0,308.8531,419.4966,67.347,589.0
+loso,KADA,2021,z_anomaly_transfer,4874.0,477.0145,499.0832,139.5384,253.0
+loso,KADA,2022,z_anomaly_transfer,4096.0,3959.798,2957.1961,795.6894,778.0
+loso,KADA,2023,z_anomaly_transfer,4095.0,691.1765,821.7832,590.6537,1.0
+loso,KADA,2024,z_anomaly_transfer,3729.0,772.8036,740.6539,1303.7205,366.0
+loso,KADA,2018,tradaboost_r2,4695.0,1716.4354,417.7079,1215.7762,
+loso,KADA,2019,tradaboost_r2,4032.0,495.2526,464.4229,332.3465,663.0
+loso,KADA,2020,tradaboost_r2,4621.0,8.7287,419.4966,67.347,589.0
+loso,KADA,2021,tradaboost_r2,4874.0,510.2395,499.0832,139.5384,253.0
+loso,KADA,2022,tradaboost_r2,4096.0,915.5737,2957.1961,795.6894,778.0
+loso,KADA,2023,tradaboost_r2,4095.0,917.2478,821.7832,590.6537,1.0
+loso,KADA,2024,tradaboost_r2,3729.0,1010.9379,740.6539,1303.7205,366.0
+forward,KADA,2020,detrended_residual_transfer,4621.0,297.7455,494.176,290.3918,589.0
+forward,KADA,2021,detrended_residual_transfer,4874.0,431.7999,383.3673,119.5494,253.0
+forward,KADA,2022,detrended_residual_transfer,4096.0,942.7196,2263.2267,1080.2023,778.0
+forward,KADA,2023,detrended_residual_transfer,4095.0,356.4883,713.4464,284.3182,1.0
+forward,KADA,2024,detrended_residual_transfer,3729.0,288.2166,740.6539,1303.7205,366.0
+forward,KADA,2020,granary_intercept_ridge,4621.0,240.6623,494.176,290.3918,589.0
+forward,KADA,2021,granary_intercept_ridge,4874.0,383.5247,383.3673,119.5494,253.0
+forward,KADA,2022,granary_intercept_ridge,4096.0,841.4633,2263.2267,1080.2023,778.0
+forward,KADA,2023,granary_intercept_ridge,4095.0,521.0494,713.4464,284.3182,1.0
+forward,KADA,2024,granary_intercept_ridge,3729.0,830.6125,740.6539,1303.7205,366.0
+forward,KADA,2020,kmm_ridge,4621.0,269.8687,494.176,290.3918,589.0
+forward,KADA,2021,kmm_ridge,4874.0,365.9809,383.3673,119.5494,253.0
+forward,KADA,2022,kmm_ridge,4096.0,1385.3403,2263.2267,1080.2023,778.0
+forward,KADA,2023,kmm_ridge,4095.0,522.1928,713.4464,284.3182,1.0
+forward,KADA,2024,kmm_ridge,3729.0,730.293,740.6539,1303.7205,366.0
+forward,KADA,2020,two_stage_tradaboost_r2,4621.0,274.9271,494.176,290.3918,589.0
+forward,KADA,2021,two_stage_tradaboost_r2,4874.0,268.801,383.3673,119.5494,253.0
+forward,KADA,2022,two_stage_tradaboost_r2,4096.0,818.5714,2263.2267,1080.2023,778.0
+forward,KADA,2023,two_stage_tradaboost_r2,4095.0,545.0449,713.4464,284.3182,1.0
+forward,KADA,2024,two_stage_tradaboost_r2,3729.0,860.0058,740.6539,1303.7205,366.0
+forward,KADA,2020,s_tradaboost_r2,4621.0,274.238,494.176,290.3918,589.0
+forward,KADA,2021,s_tradaboost_r2,4874.0,268.5697,383.3673,119.5494,253.0
+forward,KADA,2022,s_tradaboost_r2,4096.0,819.513,2263.2267,1080.2023,778.0
+forward,KADA,2023,s_tradaboost_r2,4095.0,545.5264,713.4464,284.3182,1.0
+forward,KADA,2024,s_tradaboost_r2,3729.0,861.8448,740.6539,1303.7205,366.0
+forward,KADA,2020,z_anomaly_transfer,4621.0,331.3777,494.176,290.3918,589.0
+forward,KADA,2021,z_anomaly_transfer,4874.0,45.5937,383.3673,119.5494,253.0
+forward,KADA,2022,z_anomaly_transfer,4096.0,1778.851,2263.2267,1080.2023,778.0
+forward,KADA,2023,z_anomaly_transfer,4095.0,528.9548,713.4464,284.3182,1.0
+forward,KADA,2024,z_anomaly_transfer,3729.0,772.8036,740.6539,1303.7205,366.0
+forward,KADA,2020,tradaboost_r2,4621.0,179.9711,494.176,290.3918,589.0
+forward,KADA,2021,tradaboost_r2,4874.0,389.1047,383.3673,119.5494,253.0
+forward,KADA,2022,tradaboost_r2,4096.0,518.9605,2263.2267,1080.2023,778.0
+forward,KADA,2023,tradaboost_r2,4095.0,508.1506,713.4464,284.3182,1.0
+forward,KADA,2024,tradaboost_r2,3729.0,1010.9379,740.6539,1303.7205,366.0
+loso,KETARA,2018,detrended_residual_transfer,5349.0,216.2726,2823.3458,2046.2084,
+loso,KETARA,2019,detrended_residual_transfer,5162.0,346.6623,920.0823,1226.4437,187.0
+loso,KETARA,2020,detrended_residual_transfer,5407.0,345.3049,235.9695,674.9302,245.0
+loso,KETARA,2021,detrended_residual_transfer,5218.0,501.0162,1136.449,810.8891,189.0
+loso,KETARA,2022,detrended_residual_transfer,4410.0,135.1846,649.9046,564.9808,808.0
+loso,KETARA,2023,detrended_residual_transfer,3884.0,559.8966,723.8703,837.541,526.0
+loso,KETARA,2024,detrended_residual_transfer,4059.0,99.777,742.568,614.5066,175.0
+loso,KETARA,2018,granary_intercept_ridge,5349.0,1779.8024,2823.3458,2046.2084,
+loso,KETARA,2019,granary_intercept_ridge,5162.0,33.1265,920.0823,1226.4437,187.0
+loso,KETARA,2020,granary_intercept_ridge,5407.0,245.7404,235.9695,674.9302,245.0
+loso,KETARA,2021,granary_intercept_ridge,5218.0,918.3,1136.449,810.8891,189.0
+loso,KETARA,2022,granary_intercept_ridge,4410.0,401.1863,649.9046,564.9808,808.0
+loso,KETARA,2023,granary_intercept_ridge,3884.0,634.3915,723.8703,837.541,526.0
+loso,KETARA,2024,granary_intercept_ridge,4059.0,5.1759,742.568,614.5066,175.0
+loso,KETARA,2018,kmm_ridge,5349.0,2176.4152,2823.3458,2046.2084,
+loso,KETARA,2019,kmm_ridge,5162.0,147.6354,920.0823,1226.4437,187.0
+loso,KETARA,2020,kmm_ridge,5407.0,428.3667,235.9695,674.9302,245.0
+loso,KETARA,2021,kmm_ridge,5218.0,991.9048,1136.449,810.8891,189.0
+loso,KETARA,2022,kmm_ridge,4410.0,963.143,649.9046,564.9808,808.0
+loso,KETARA,2023,kmm_ridge,3884.0,616.5424,723.8703,837.541,526.0
+loso,KETARA,2024,kmm_ridge,4059.0,419.9124,742.568,614.5066,175.0
+loso,KETARA,2018,two_stage_tradaboost_r2,5349.0,1125.4699,2823.3458,2046.2084,
+loso,KETARA,2019,two_stage_tradaboost_r2,5162.0,328.2534,920.0823,1226.4437,187.0
+loso,KETARA,2020,two_stage_tradaboost_r2,5407.0,480.1898,235.9695,674.9302,245.0
+loso,KETARA,2021,two_stage_tradaboost_r2,5218.0,686.2588,1136.449,810.8891,189.0
+loso,KETARA,2022,two_stage_tradaboost_r2,4410.0,558.8115,649.9046,564.9808,808.0
+loso,KETARA,2023,two_stage_tradaboost_r2,3884.0,777.9752,723.8703,837.541,526.0
+loso,KETARA,2024,two_stage_tradaboost_r2,4059.0,464.1605,742.568,614.5066,175.0
+loso,KETARA,2018,s_tradaboost_r2,5349.0,1122.521,2823.3458,2046.2084,
+loso,KETARA,2019,s_tradaboost_r2,5162.0,327.7539,920.0823,1226.4437,187.0
+loso,KETARA,2020,s_tradaboost_r2,5407.0,480.1914,235.9695,674.9302,245.0
+loso,KETARA,2021,s_tradaboost_r2,5218.0,684.0869,1136.449,810.8891,189.0
+loso,KETARA,2022,s_tradaboost_r2,4410.0,565.5223,649.9046,564.9808,808.0
+loso,KETARA,2023,s_tradaboost_r2,3884.0,777.9763,723.8703,837.541,526.0
+loso,KETARA,2024,s_tradaboost_r2,4059.0,464.5314,742.568,614.5066,175.0
+loso,KETARA,2018,z_anomaly_transfer,5349.0,2358.1991,2823.3458,2046.2084,
+loso,KETARA,2019,z_anomaly_transfer,5162.0,78.0047,920.0823,1226.4437,187.0
+loso,KETARA,2020,z_anomaly_transfer,5407.0,43.3308,235.9695,674.9302,245.0
+loso,KETARA,2021,z_anomaly_transfer,5218.0,1058.7729,1136.449,810.8891,189.0
+loso,KETARA,2022,z_anomaly_transfer,4410.0,336.4588,649.9046,564.9808,808.0
+loso,KETARA,2023,z_anomaly_transfer,3884.0,665.3345,723.8703,837.541,526.0
+loso,KETARA,2024,z_anomaly_transfer,4059.0,405.8046,742.568,614.5066,175.0
+loso,KETARA,2018,tradaboost_r2,5349.0,3207.9217,2823.3458,2046.2084,
+loso,KETARA,2019,tradaboost_r2,5162.0,413.1386,920.0823,1226.4437,187.0
+loso,KETARA,2020,tradaboost_r2,5407.0,912.5536,235.9695,674.9302,245.0
+loso,KETARA,2021,tradaboost_r2,5218.0,1145.623,1136.449,810.8891,189.0
+loso,KETARA,2022,tradaboost_r2,4410.0,1026.3714,649.9046,564.9808,808.0
+loso,KETARA,2023,tradaboost_r2,3884.0,610.5179,723.8703,837.541,526.0
+loso,KETARA,2024,tradaboost_r2,4059.0,472.6972,742.568,614.5066,175.0
+forward,KETARA,2020,detrended_residual_transfer,5407.0,268.7885,399.1441,1481.0648,245.0
+forward,KETARA,2021,detrended_residual_transfer,5218.0,109.873,206.6049,262.3559,189.0
+forward,KETARA,2022,detrended_residual_transfer,4410.0,916.8657,965.287,718.6241,808.0
+forward,KETARA,2023,detrended_residual_transfer,3884.0,813.9604,1247.5224,769.3298,526.0
+forward,KETARA,2024,detrended_residual_transfer,4059.0,99.777,742.568,614.5066,175.0
+forward,KETARA,2020,granary_intercept_ridge,5407.0,151.7156,399.1441,1481.0648,245.0
+forward,KETARA,2021,granary_intercept_ridge,5218.0,147.1093,206.6049,262.3559,189.0
+forward,KETARA,2022,granary_intercept_ridge,4410.0,1005.1377,965.287,718.6241,808.0
+forward,KETARA,2023,granary_intercept_ridge,3884.0,1097.586,1247.5224,769.3298,526.0
+forward,KETARA,2024,granary_intercept_ridge,4059.0,5.1759,742.568,614.5066,175.0
+forward,KETARA,2020,kmm_ridge,5407.0,163.8393,399.1441,1481.0648,245.0
+forward,KETARA,2021,kmm_ridge,5218.0,137.6676,206.6049,262.3559,189.0
+forward,KETARA,2022,kmm_ridge,4410.0,917.2572,965.287,718.6241,808.0
+forward,KETARA,2023,kmm_ridge,3884.0,495.8657,1247.5224,769.3298,526.0
+forward,KETARA,2024,kmm_ridge,4059.0,419.9124,742.568,614.5066,175.0
+forward,KETARA,2020,two_stage_tradaboost_r2,5407.0,115.683,399.1441,1481.0648,245.0
+forward,KETARA,2021,two_stage_tradaboost_r2,5218.0,146.1005,206.6049,262.3559,189.0
+forward,KETARA,2022,two_stage_tradaboost_r2,4410.0,919.0576,965.287,718.6241,808.0
+forward,KETARA,2023,two_stage_tradaboost_r2,3884.0,940.8662,1247.5224,769.3298,526.0
+forward,KETARA,2024,two_stage_tradaboost_r2,4059.0,464.1605,742.568,614.5066,175.0
+forward,KETARA,2020,s_tradaboost_r2,5407.0,114.7967,399.1441,1481.0648,245.0
+forward,KETARA,2021,s_tradaboost_r2,5218.0,146.0984,206.6049,262.3559,189.0
+forward,KETARA,2022,s_tradaboost_r2,4410.0,919.2062,965.287,718.6241,808.0
+forward,KETARA,2023,s_tradaboost_r2,3884.0,938.4507,1247.5224,769.3298,526.0
+forward,KETARA,2024,s_tradaboost_r2,4059.0,464.5314,742.568,614.5066,175.0
+forward,KETARA,2020,z_anomaly_transfer,5407.0,292.844,399.1441,1481.0648,245.0
+forward,KETARA,2021,z_anomaly_transfer,5218.0,120.5294,206.6049,262.3559,189.0
+forward,KETARA,2022,z_anomaly_transfer,4410.0,1086.4241,965.287,718.6241,808.0
+forward,KETARA,2023,z_anomaly_transfer,3884.0,1054.678,1247.5224,769.3298,526.0
+forward,KETARA,2024,z_anomaly_transfer,4059.0,405.8046,742.568,614.5066,175.0
+forward,KETARA,2020,tradaboost_r2,5407.0,373.5486,399.1441,1481.0648,245.0
+forward,KETARA,2021,tradaboost_r2,5218.0,55.8097,206.6049,262.3559,189.0
+forward,KETARA,2022,tradaboost_r2,4410.0,934.59,965.287,718.6241,808.0
+forward,KETARA,2023,tradaboost_r2,3884.0,1221.5713,1247.5224,769.3298,526.0
+forward,KETARA,2024,tradaboost_r2,4059.0,472.6972,742.568,614.5066,175.0
