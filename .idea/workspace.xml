@@ -6,36 +6,58 @@
   <component name="ChangeListManager">
     <list default="true" id="cf06fda0-f34b-45f1-8347-f3fdc7b48134" name="Changes" comment="update latest training">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DEPLOY.md" beforeDir="false" afterPath="$PROJECT_DIR$/DEPLOY.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/acts_transfer/assessment.py" beforeDir="false" afterPath="$PROJECT_DIR$/acts_transfer/assessment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DailyGranary_by_granary.csv" beforeDir="false" afterPath="$PROJECT_DIR$/DailyGranary_by_granary.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.zip" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/acts_transfer/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/acts_transfer/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/acts_transfer/evaluation.py" beforeDir="false" afterPath="$PROJECT_DIR$/acts_transfer/evaluation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/acts_transfer/harmonise.py" beforeDir="false" afterPath="$PROJECT_DIR$/acts_transfer/harmonise.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/acts_transfer/methods.py" beforeDir="false" afterPath="$PROJECT_DIR$/acts_transfer/methods.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/acts_transfer/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/acts_transfer/report.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/acts_transfer/selection.py" beforeDir="false" afterPath="$PROJECT_DIR$/acts_transfer/selection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/acts_transfer/publish.py" beforeDir="false" afterPath="$PROJECT_DIR$/acts_transfer/publish.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/acts_transfer/sweep.py" beforeDir="false" afterPath="$PROJECT_DIR$/acts_transfer/sweep.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/acts_transfer/workflow.py" beforeDir="false" afterPath="$PROJECT_DIR$/acts_transfer/workflow.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/about_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/about_config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard/bridge.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/bridge.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/llm.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/llm.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard/tab_advisory.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/tab_advisory.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard/tab_map.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/tab_map.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard/tab_overview.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/tab_overview.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard/tab_transfer.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/tab_transfer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/tab_yield.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/tab_yield.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/ui.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/ui.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/advisory_rules.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/advisory_rules.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/alerts_final_year.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/alerts_final_year.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/chosen_predictions.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/chosen_predictions.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/condition_summary.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/condition_summary.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/districts.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/districts.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/granary_footprints.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/granary_footprints.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/latest_forecast.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/latest_forecast.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/model_skill.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/model_skill.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/ndvi_district_decade.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/ndvi_district_decade.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/ndvi_yield_relation.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/ndvi_yield_relation.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/phenology.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/phenology.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/phenology_greenup.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/phenology_greenup.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/resilience_indicators.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/resilience_indicators.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/transfer_decade_features.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/transfer_decade_features.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/transfer_stage_dataset.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/transfer_stage_dataset.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/transfer_yield_dataset.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/transfer_yield_dataset.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/example_run_BLS_to_KETARA.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/example_run_BLS_to_KETARA.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/example_run_BLS_to_MADA.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/example_run_BLS_to_MADA.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/transfer_workflow_guide.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/transfer_workflow_guide.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eda.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/geo/README.txt" beforeDir="false" afterPath="$PROJECT_DIR$/geo/README.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/yield_backtest.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/yield_backtest.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/yield_history.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/yield_history.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/yield_outlook.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/yield_outlook.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eda/cleaning_log.csv" beforeDir="false" afterPath="$PROJECT_DIR$/eda/cleaning_log.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eda/eda_coverage.png" beforeDir="false" afterPath="$PROJECT_DIR$/eda/eda_coverage.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eda/eda_missingness.csv" beforeDir="false" afterPath="$PROJECT_DIR$/eda/eda_missingness.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eda/eda_phenology.csv" beforeDir="false" afterPath="$PROJECT_DIR$/eda/eda_phenology.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eda/eda_phenology.png" beforeDir="false" afterPath="$PROJECT_DIR$/eda/eda_phenology.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eda/eda_range_checks.csv" beforeDir="false" afterPath="$PROJECT_DIR$/eda/eda_range_checks.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/final_model/alerts_final_year.csv" beforeDir="false" afterPath="$PROJECT_DIR$/final_model/alerts_final_year.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/final_model/chosen_config.csv" beforeDir="false" afterPath="$PROJECT_DIR$/final_model/chosen_config.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/final_model/chosen_predictions.csv" beforeDir="false" afterPath="$PROJECT_DIR$/final_model/chosen_predictions.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/final_model/fold_results.csv" beforeDir="false" afterPath="$PROJECT_DIR$/final_model/fold_results.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/final_model/latest_forecast.csv" beforeDir="false" afterPath="$PROJECT_DIR$/final_model/latest_forecast.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/malaysia_granary_annual_by_granary.csv" beforeDir="false" afterPath="$PROJECT_DIR$/malaysia_granary_annual_by_granary.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pipeline/build_stage_features.py" beforeDir="false" afterPath="$PROJECT_DIR$/pipeline/build_stage_features.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pipeline/build_transfer_dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/pipeline/build_transfer_dataset.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pipeline/eda_clean.py" beforeDir="false" afterPath="$PROJECT_DIR$/pipeline/eda_clean.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements-pipeline.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements-pipeline.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_transfer_gating.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_transfer_gating.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pipeline/final_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/pipeline/final_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pipeline/prepare_app_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/pipeline/prepare_app_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_pipeline_order.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_pipeline_order.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/test_ui_gating.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_ui_gating.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -82,6 +104,7 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="SOFT" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -107,43 +130,43 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;Flask server.Flask (app_engine_kedah.py).executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;Python.app.executor&quot;: &quot;Run&quot;,
-    &quot;Python.eda_clean.executor&quot;: &quot;Run&quot;,
-    &quot;Python.extraction.executor&quot;: &quot;Run&quot;,
-    &quot;Python.final_model.executor&quot;: &quot;Run&quot;,
-    &quot;Python.granary_direct.executor&quot;: &quot;Run&quot;,
-    &quot;Python.ndvi_transfer (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.ndvi_transfer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.ndvi_transfer_feature.executor&quot;: &quot;Run&quot;,
-    &quot;Python.ndvi_transfer_sweep.executor&quot;: &quot;Run&quot;,
-    &quot;Python.paddy_transfer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.prepare_app_data.executor&quot;: &quot;Run&quot;,
-    &quot;Python.run_extraction.executor&quot;: &quot;Run&quot;,
-    &quot;Python.run_performance_summary.executor&quot;: &quot;Run&quot;,
-    &quot;Python.transfer_pipeline.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;database.data.extractors.current.export.id&quot;: &quot;Comma-separated (CSV)_id&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/paddy_transfer/data&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Flask server.Flask (app_engine_kedah.py).executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.app.executor": "Run",
+    "Python.eda_clean.executor": "Run",
+    "Python.extraction.executor": "Run",
+    "Python.final_model.executor": "Run",
+    "Python.granary_direct.executor": "Run",
+    "Python.ndvi_transfer (1).executor": "Run",
+    "Python.ndvi_transfer.executor": "Run",
+    "Python.ndvi_transfer_feature.executor": "Run",
+    "Python.ndvi_transfer_sweep.executor": "Run",
+    "Python.paddy_transfer.executor": "Run",
+    "Python.prepare_app_data.executor": "Run",
+    "Python.run_extraction.executor": "Run",
+    "Python.run_performance_summary.executor": "Run",
+    "Python.transfer_pipeline.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "database.data.extractors.current.export.id": "Comma-separated (CSV)_id",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/paddy_transfer/data",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\paddy_transfer\data" />

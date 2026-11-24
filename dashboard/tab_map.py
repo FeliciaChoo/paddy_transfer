@@ -6,7 +6,6 @@ import folium
 from branca.element import MacroElement, Template
 from streamlit_folium import st_folium
 
-# 6-Tier Operational Screening Condition Palette (Matches PaddyTwinAI Sample)
 CONDITION_META = {
     "Inspect declining vegetation": {
         "color": "#DC2626",
@@ -60,7 +59,6 @@ GRANARY_META = {
 
 
 def _derive_condition(row) -> str:
-    """Derive operational screening condition from Optical_Valid_Fraction, Recent_status, or Yield_z."""
     ovf = row.get("Optical_Valid_Fraction", np.nan)
     if pd.notna(ovf) and ovf < 0.45:
         return "Limited satellite visibility"
@@ -118,11 +116,15 @@ def _build_tooltip(r, year: int) -> str:
     )
 
 
+def _clear_transfer_cache():
+    for k in ["tl_bundle", "tl_assessment", "tl_eval_results", "tl_choice", "tl_all_donor_ranking"]:
+        st.session_state.pop(k, None)
+
+
 def render_leaflet_map(D=None, role="kpkm", title="Paddy Field Conditions & Spatial Yield Map"):
     st.markdown(f"## {title}")
     st.caption("Review satellite conditions, annual yield benchmarks, and planting-calendar estimates before planning field visits.")
 
-    # Load dataset from D.DATA_DIR or fallback path
     data_dir = getattr(D, "DATA_DIR", None)
     stage_path = (data_dir / "transfer_stage_dataset.csv") if data_dir else pd.io.common.stringify_path("data/transfer_stage_dataset.csv")
     yield_path = (data_dir / "transfer_yield_dataset.csv") if data_dir else pd.io.common.stringify_path("data/transfer_yield_dataset.csv")
@@ -141,7 +143,6 @@ def render_leaflet_map(D=None, role="kpkm", title="Paddy Field Conditions & Spat
     df_yr = df[df["Year"] == selected_year].copy()
     df_yr["Yield_t_ha"] = df_yr["Yield_kg_ha"] / 1000.0
 
-    # Merge coordinates & metadata
     coords_map = {}
     if D is not None and hasattr(D, "districts"):
         for _, r in D.districts.iterrows():
@@ -178,7 +179,7 @@ def render_leaflet_map(D=None, role="kpkm", title="Paddy Field Conditions & Spat
         })
     reg_df = pd.DataFrame(rows)
 
-    # Top KPI Strip (Matches PaddyTwinAI Sample Page 1)
+    # Top KPI Strip
     usable_count = int((reg_df["Optical_Valid_Fraction"].fillna(0) >= 0.45).sum())
     priority_count = int(reg_df["Condition"].isin(["Inspect declining vegetation", "Limited satellite visibility"]).sum())
     k1, k2, k3 = st.columns(3)
@@ -186,29 +187,40 @@ def render_leaflet_map(D=None, role="kpkm", title="Paddy Field Conditions & Spat
     k2.metric("With usable satellite samples", f"{usable_count}")
     k3.metric("Priority work / visits", f"{priority_count}")
 
-    # Filter Row (State, Satellite Screening Status, Reference Year)
+    # Filter Row with Bidirectional State Sync (Section 1)
     f1, f2, f3 = st.columns(3)
-    state_filter = f1.multiselect("State", sorted(reg_df["State"].unique()), default=[], placeholder="Choose options")
+    state_options = ["All States"] + sorted(reg_df["State"].unique())
+    if st.session_state.get("map_state_filter") not in state_options:
+        st.session_state["map_state_filter"] = "All States"
+    state_choice = f1.selectbox("State", state_options, key="map_state_filter")
     cond_filter = f2.multiselect("Satellite screening status", list(CONDITION_META.keys()), default=[], placeholder="Choose options")
     selected_year = f3.selectbox("Reference Year", sorted(years, reverse=True), index=0, key="map_year")
 
     filtered = reg_df.copy()
-    if state_filter:
-        filtered = filtered[filtered["State"].isin(state_filter)]
+    if state_choice != "All States":
+        filtered = filtered[filtered["State"] == state_choice]
+        state_granaries = list(filtered["District"].unique())
+        cur_granary = st.session_state.get("granary")
+        if state_granaries and cur_granary not in state_granaries:
+            st.session_state["granary"] = state_granaries[0]
+            st.session_state["_last_synced_granary"] = state_granaries[0]
+            _clear_transfer_cache()
+            st.rerun()
     if cond_filter:
         filtered = filtered[filtered["Condition"].isin(cond_filter)]
 
-    # Colour Mode & Action Bar (Matches PaddyTwinAI Sample Page 1 & 2)
+    # Colour Mode & Action Bar
     b1, b2, b3 = st.columns([1.4, 2.2, 2.4])
     with b1:
         colour_mode = st.radio("Colour fields by", ["Condition", "NDVI", "Annual Yield"], horizontal=True, key="map_colour_mode")
     with b2:
         if st.button("Show all mapped fields", key="map_show_all_btn"):
+            st.session_state["map_state_filter"] = "All States"
             st.session_state["map_fit_all"] = True
+            st.rerun()
     with b3:
         st.caption("Hover for annual yield & condition. Click a field for details.")
 
-    # Build Full-Malaysia OpenStreetMap Leaflet Map (100% Free, Zero API Key)
     m = folium.Map(location=[4.2, 108.5], zoom_start=6, tiles="OpenStreetMap", control_scale=False, zoom_control=True)
 
     folium.TileLayer(
@@ -227,7 +239,6 @@ def render_leaflet_map(D=None, role="kpkm", title="Paddy Field Conditions & Spat
         control=True,
     ).add_to(m)
 
-    # Optional polygon overlay if D.fp GeoDataFrame is available
     if D is not None and hasattr(D, "fp") and D.fp is not None and len(D.fp):
         try:
             folium.GeoJson(
@@ -265,7 +276,6 @@ def render_leaflet_map(D=None, role="kpkm", title="Paddy Field Conditions & Spat
     if st.session_state.get("map_fit_all") and len(filtered):
         m.fit_bounds([[float(a), float(b)] for a, b in zip(filtered["Latitude"], filtered["Longitude"])], padding=(40, 40))
 
-    # Bottom-Left Floating Legend matching selected colour mode
     if colour_mode == "Condition":
         leg_title = "Operational screening condition"
         leg_items = [(meta["color"], label) for label, meta in CONDITION_META.items()]
@@ -307,24 +317,24 @@ def render_leaflet_map(D=None, role="kpkm", title="Paddy Field Conditions & Spat
         returned_objects=["last_object_clicked_tooltip"],
     )
 
-    # Sync clicked marker to Selected Granary
+    # Sync clicked marker to Selected Granary & clear transfer cache
     if map_state and map_state.get("last_object_clicked_tooltip"):
         tip_txt = str(map_state["last_object_clicked_tooltip"])
         for dist_name in sorted(filtered["District"].unique(), key=len, reverse=True):
             if dist_name in tip_txt and st.session_state.get("granary") != dist_name:
                 st.session_state["granary"] = dist_name
+                st.session_state["_last_synced_granary"] = dist_name
+                _clear_transfer_cache()
                 st.rerun()
 
-    # Register Table Directly Below Map (Matches PaddyTwinAI Sample Page 2)
     st.caption("Click a field to select its group in the register and details below. State and condition filters apply to both map and register.")
     display_cols = filtered[["District", "State", "Condition", "Expected_result", "Optical_Valid_Fraction", "Action_basis"]].copy()
     display_cols.columns = ["Paddy Field", "State", "Condition", "Expected result", "Satellite evidence", "Action basis"]
     display_cols["Satellite evidence"] = display_cols["Satellite evidence"].apply(
         lambda v: f"{v*100:.0f}% clear-sky valid coverage" if pd.notna(v) else "Insufficient / older data"
     )
-    st.dataframe(display_cols, hide_index=True, use_container_width=True)
+    st.dataframe(display_cols, hide_index=True, width="stretch")
 
-    # Selected Field Action Card (Matches PaddyTwinAI Sample Page 3)
     active_field = st.session_state.get("granary")
     if active_field and active_field in filtered["District"].values:
         frow = filtered[filtered["District"] == active_field].iloc[0]
@@ -344,6 +354,8 @@ def render_leaflet_map(D=None, role="kpkm", title="Paddy Field Conditions & Spat
             """,
             unsafe_allow_html=True,
         )
+
+
 @st.cache_data(show_spinner=False)
 def _map_table(path_stage, path_yield, mtime):
     """Return granary-year yield and Optical_Valid_Fraction for Overview and Map tabs."""

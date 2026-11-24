@@ -10,16 +10,12 @@
 Nothing here calls a model. It only translates results the pipeline already produced, so every line an administrator
 sees can be traced back to a number, a rule id, or a recorded decision.
 """
-from datetime import datetime
-
-import numpy as np
 import pandas as pd
 
 from . import adminmap
 from .ui import pct
 
 LEVELS = ["low", "medium", "high"]
-# Thresholds behind the weather / soil flags. 'z' = standard deviations from this granary's own normal for the same time of year.
 HEAT_C = 33.0          # mean daily maximum over the last 3 decades; the literature puts 33 C as where production starts to fall (T1)
 WARM_NIGHT_Z = 1.5     # unusually warm nights (T2, T3)
 LOW_SOLAR_Z = -1.0     # unusually little sunshine (L1, L2): only matters in the reproductive / ripening stages (see the rule)
@@ -28,8 +24,6 @@ ACID_PH = 5.8          # flooded-soil iron-toxicity watch level (P3); the map pH
 RULE_COLS = ["rule_id", "priority", "status", "trend", "stage_contains", "flag", "needs_confidence",
              "action", "owner", "timing", "why", "review_status", "sources"]
 
-# Draft rules for administrators. They only say what to CHECK, ASK or PREPARE. They never name a cause, dose or product,
-# because satellite greenness cannot diagnose one. Edit data/intervention_rules.csv to change them; an agronomist should review.
 DEFAULT_RULES = [
     ["R01", 1, "behind", "any", "any", "any", "any",
      "Send a field verification team to {granary} and record planting dates, water supply, flooding, pests and disease for the affected blocks.",
@@ -187,11 +181,26 @@ def build_case(D, g, today=None):
         admin = pts[1].set_index("District").Admin[g]
     case = dict(granary=g, admin=admin, has_sat=s is not None, today=today)
     if s is not None:
-        age = int((today - pd.Timestamp(s.As_of)).days)
-        case.update(status=s.Recent_status, trend=s.Trend, stage=s.Stage_30d, signal=s.Signal, as_of=str(s.As_of),
-                    stale_days=age, last_ndvi=float(s.Last_NDVI), f30=float(s.Forecast_30d), lo30=float(s.Lower_30d),
-                    hi30=float(s.Upper_30d), below=int(s.Recent_below), above=int(s.Recent_above),
-                    checked=int(s.Recent_checked), below_share=float(s.Below_share_10d), amplitude=float(s.NDVI_amplitude))
+        ts = pd.to_datetime(s.As_of, errors="coerce")
+        age = int((today - ts).days) if pd.notna(ts) else 999
+        as_of_str = str(ts.date()) if pd.notna(ts) else "unknown"
+        case.update(
+            status=str(s.Recent_status) if pd.notna(s.Recent_status) else "on track",
+            trend=str(s.Trend) if pd.notna(s.Trend) else "steady",
+            stage=str(s.Stage_30d) if pd.notna(s.Stage_30d) else "Unknown stage",
+            signal=str(s.Signal) if pd.notna(s.Signal) else "weak",
+            as_of=as_of_str,
+            stale_days=age,
+            last_ndvi=float(s.Last_NDVI) if pd.notna(s.Last_NDVI) else 0.0,
+            f30=float(s.Forecast_30d) if pd.notna(s.Forecast_30d) else 0.0,
+            lo30=float(s.Lower_30d) if pd.notna(s.Lower_30d) else 0.0,
+            hi30=float(s.Upper_30d) if pd.notna(s.Upper_30d) else 0.0,
+            below=int(s.Recent_below) if pd.notna(s.Recent_below) else 0,
+            above=int(s.Recent_above) if pd.notna(s.Recent_above) else 0,
+            checked=int(s.Recent_checked) if pd.notna(s.Recent_checked) else 0,
+            below_share=float(s.Below_share_10d) if pd.notna(s.Below_share_10d) else 0.0,
+            amplitude=float(s.NDVI_amplitude) if pd.notna(s.NDVI_amplitude) else 0.0,
+        )
     if len(gy):
         last = gy.iloc[-1]
         case.update(yield_year=int(last.Year), yield_last=float(last.Yield), yield_change=None if pd.isna(last.Change_pct)

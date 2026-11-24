@@ -14,19 +14,27 @@ can create (and only from a non-blocked assessment).
 """
 import dataclasses
 from datetime import datetime
+import json
+from pathlib import Path
 
 import pandas as pd
 
-from . import assessment, diagnostics, evaluation, harmonise, modelchoice, selection
+from . import assessment, causal_adapt, diagnostics, evaluation, harmonise, modelchoice, selection
 from . import predict as predmod
 from .errors import WorkflowError
 from .config import Config, Domain
 from .evaluation import BASELINES
 from .methods import REGISTRY
 
-STEPS = [("select", "1 · Select domains"), ("assess", "2 · Assess data"), ("harmonise", "3 · Harmonise data"),
-         ("suitability", "4 · Evaluate suitability"), ("strategy", "5 · Select strategy"), ("run", "6 · Run transfer"), ("compare", "7 · Compare results")]
-
+STEPS = [
+    ("select", "1 · Select domains"),
+    ("assess", "2 · Assess data"),
+    ("harmonise", "3 · Harmonise data"),
+    ("suitability", "4 · Evaluate suitability"),
+    ("strategy", "5 · Select strategy"),
+    ("run", "6 · Run transfer"),
+    ("compare", "7 · Compare results"),
+]
 
 class TransferWorkflow:
     def __init__(self, cfg: Config = None):
@@ -38,9 +46,12 @@ class TransferWorkflow:
         self._clear_from("report")
 
     # ------------------------------------------------------------------ state
-    ORDER = ["report", "bundle", "suit", "strategy", "result", "results", "choice", "prediction", "outlook", "override"]
-    NAMES = {"report": "data assessment", "bundle": "harmonised data", "suit": "suitability verdict", "strategy": "transfer strategy", "result": "model evaluation",
-             "choice": "selected model", "prediction": "yield prediction", "outlook": "future yield outlook"}
+    ORDER = ["report", "bundle", "suit", "strategy", "result", "results", "choice", "prediction", "outlook",
+             "prescriptions", "override"]
+    NAMES = {"report": "data assessment", "bundle": "harmonised data", "suit": "suitability verdict",
+             "strategy": "transfer strategy", "result": "model evaluation",
+             "choice": "selected model", "prediction": "yield prediction", "outlook": "future yield outlook",
+             "prescriptions": "causal counterfactual prescriptions"}
 
     def _clear_from(self, name):
         """drop this artifact and every later one, so nothing stale can survive a change upstream; remember what was affected"""
@@ -166,9 +177,52 @@ class TransferWorkflow:
 
     def outlook_for(self, inputs, scenario="custom"):
         self.require_choice()
-        tab = predmod.predict_table(self.bundle, self.results, self.choice, inputs, self.base, self.run_cfg, self._finals, self.result.methods)
+        tab = predmod.predict_table(self.bundle, self.results, self.choice, inputs, self.base, self.run_cfg,
+                                    self._finals, self.result.methods)
         self.outlook = dict(table=tab, inputs=inputs, scenario=scenario, upstream=self.choice["token"])
         return tab
+
+    def generate_prescriptions(
+            self,
+            schedule_csv: str = "external/granary_irrigation_schedules.csv",
+            rules_csv: str = "data/advisory_rules.csv",
+            registry_path: str = "results/governance_registry.json",
+    ):
+        """Step 7b: Compute schedule-bounded causal counterfactuals from the approved model and log to governance_registry.json."""
+        self.require_choice()
+        presc = causal_adapt.optimize_target_prescriptions(
+            bundle=self.bundle,
+            target=self.target,
+            choice=self.choice,
+            schedule_csv=schedule_csv,
+            rules_csv=rules_csv,
+        )
+        self.prescriptions = dict(
+            items=presc,
+            target=self.target.name,
+            upstream=self.choice["token"],
+        )
+        self._write_governance_registry(registry_path)
+        self._log(f"generated {len(presc)} counterfactual prescriptions for '{self.target.name}'")
+        return presc
+
+    def _write_governance_registry(self, registry_path: str):
+        p = Path(registry_path)
+        p.parent.mkdir(parents=True, exist_ok=True)
+        existing = json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}
+        existing[self.target.name] = {
+            "updated_at": datetime.now().isoformat(timespec="seconds"),
+            "source": self.source.name,
+            "target": self.target.name,
+            "assessment_token": self.report.token,
+            "bundle_token": self.bundle.token,
+            "choice_token": self.choice.get("token"),
+            "approved_method": self.choice.get("method"),
+            "delta_nt": self.choice.get("delta_nt"),
+            "override_reason": self.override,
+            "prescriptions": self.prescriptions["items"],
+        }
+        p.write_text(json.dumps(existing, indent=2, default=str), encoding="utf-8")
 
     def pop_notices(self):
         n, self.notices = self.notices, []

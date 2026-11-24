@@ -1,0 +1,109 @@
+﻿year,granary_id,granary_name,agency_type,state_or_region,avg_paddy_yield_kg_ha,paddy_production_mt
+2017,mada,MADA,MADA,Kedah; Perlis,4841,974387
+2018,mada,MADA,MADA,Kedah; Perlis,5111,1028867
+2019,mada,MADA,MADA,Kedah; Perlis,4933,993206
+2020,mada,MADA,MADA,Kedah; Perlis,4833,972915
+2021,mada,MADA,MADA,Kedah; Perlis,4192,843947
+2022,mada,MADA,MADA,Kedah; Perlis,4240,853360
+2023,mada,MADA,MADA,Kedah; Perlis,3878,775186
+2024,mada,MADA,MADA,Kedah; Perlis,3949,790658
+2025,mada,MADA,MADA,Kedah; Perlis,4014,802330
+2017,kada,KADA,KADA,Kelantan,4448,240490
+2018,kada,KADA,KADA,Kelantan,4695,252149
+2019,kada,KADA,KADA,Kelantan,4032,203011
+2020,kada,KADA,KADA,Kelantan,4621,241036
+2021,kada,KADA,KADA,Kelantan,4874,256321
+2022,kada,KADA,KADA,Kelantan,4096,212740
+2023,kada,KADA,KADA,Kelantan,4095,210237
+2024,kada,KADA,KADA,Kelantan,3729,148767
+2025,kada,KADA,KADA,Kelantan,3890,195302
+2017,iada_kerian,IADA Kerian,IADA,Perak,4087,171237
+2018,iada_kerian,IADA Kerian,IADA,Perak,3957,165790
+2019,iada_kerian,IADA Kerian,IADA,Perak,3584,150162
+2020,iada_kerian,IADA Kerian,IADA,Perak,3223,124333
+2021,iada_kerian,IADA Kerian,IADA,Perak,3830,141687
+2022,iada_kerian,IADA Kerian,IADA,Perak,3372,124762
+2023,iada_kerian,IADA Kerian,IADA,Perak,3400,125779
+2024,iada_kerian,IADA Kerian,IADA,Perak,3449,129186
+2025,iada_kerian,IADA Kerian,IADA,Perak,4405,160184
+2017,iada_barat_laut_selangor,IADA Barat Laut Selangor,IADA,Selangor,4510,165571
+2018,iada_barat_laut_selangor,IADA Barat Laut Selangor,IADA,Selangor,4731,174432
+2019,iada_barat_laut_selangor,IADA Barat Laut Selangor,IADA,Selangor,4756,174088
+2020,iada_barat_laut_selangor,IADA Barat Laut Selangor,IADA,Selangor,4431,159535
+2021,iada_barat_laut_selangor,IADA Barat Laut Selangor,IADA,Selangor,4337,155631
+2022,iada_barat_laut_selangor,IADA Barat Laut Selangor,IADA,Selangor,4319,153492
+2023,iada_barat_laut_selangor,IADA Barat Laut Selangor,IADA,Selangor,4577,161271
+2024,iada_barat_laut_selangor,IADA Barat Laut Selangor,IADA,Selangor,4185,145693
+2025,iada_barat_laut_selangor,IADA Barat Laut Selangor,IADA,Selangor,4292,148926
+2017,iada_pulau_pinang,IADA Pulau Pinang,IADA,Pulau Pinang,5737,146660
+2018,iada_pulau_pinang,IADA Pulau Pinang,IADA,Pulau Pinang,5228,133636
+2019,iada_pulau_pinang,IADA Pulau Pinang,IADA,Pulau Pinang,5012,128127
+2020,iada_pulau_pinang,IADA Pulau Pinang,IADA,Pulau Pinang,5022,121594
+2021,iada_pulau_pinang,IADA Pulau Pinang,IADA,Pulau Pinang,5655,136919
+2022,iada_pulau_pinang,IADA Pulau Pinang,IADA,Pulau Pinang,5052,122321
+2023,iada_pulau_pinang,IADA Pulau Pinang,IADA,Pulau Pinang,5054,122346
+2024,iada_pulau_pinang,IADA Pulau Pinang,IADA,Pulau Pinang,4808,116402
+2025,iada_pulau_pinang,IADA Pulau Pinang,IADA,Pulau Pinang,4708,110848
+2017,iada_seberang_perak,IADA Seberang Perak,IADA,Perak,3180,88198
+2018,iada_seberang_perak,IADA Seberang Perak,IADA,Perak,3417,94784
+2019,iada_seberang_perak,IADA Seberang Perak,IADA,Perak,2923,79884
+2020,iada_seberang_perak,IADA Seberang Perak,IADA,Perak,2774,72958
+2021,iada_seberang_perak,IADA Seberang Perak,IADA,Perak,2613,68724
+2022,iada_seberang_perak,IADA Seberang Perak,IADA,Perak,3918,103027
+2023,iada_seberang_perak,IADA Seberang Perak,IADA,Perak,4479,117373
+2024,iada_seberang_perak,IADA Seberang Perak,IADA,Perak,3716,98736
+2025,iada_seberang_perak,IADA Seberang Perak,IADA,Perak,4603,122320
+2017,iada_ketara,IADA KETARA,IADA,Terengganu,5172,50438
+2018,iada_ketara,IADA KETARA,IADA,Terengganu,5349,52164
+2019,iada_ketara,IADA KETARA,IADA,Terengganu,5162,50335
+2020,iada_ketara,IADA KETARA,IADA,Terengganu,5407,52729
+2021,iada_ketara,IADA KETARA,IADA,Terengganu,5218,50886
+2022,iada_ketara,IADA KETARA,IADA,Terengganu,4410,43011
+2023,iada_ketara,IADA KETARA,IADA,Terengganu,3884,35279
+2024,iada_ketara,IADA KETARA,IADA,Terengganu,4059,36868
+2025,iada_ketara,IADA KETARA,IADA,Terengganu,4157,37284
+2017,iada_kemasin_semarak,IADA Kemasin Semarak,IADA,Kelantan,3779,26938
+2018,iada_kemasin_semarak,IADA Kemasin Semarak,IADA,Kelantan,4079,28154
+2019,iada_kemasin_semarak,IADA Kemasin Semarak,IADA,Kelantan,3733,28233
+2020,iada_kemasin_semarak,IADA Kemasin Semarak,IADA,Kelantan,3666,29800
+2021,iada_kemasin_semarak,IADA Kemasin Semarak,IADA,Kelantan,3656,30716
+2022,iada_kemasin_semarak,IADA Kemasin Semarak,IADA,Kelantan,3673,32538
+2023,iada_kemasin_semarak,IADA Kemasin Semarak,IADA,Kelantan,3790,33514
+2024,iada_kemasin_semarak,IADA Kemasin Semarak,IADA,Kelantan,3896,30773
+2025,iada_kemasin_semarak,IADA Kemasin Semarak,IADA,Kelantan,3790,33617
+2017,iada_pekan,IADA Pekan,IADA,Pahang,1506,10286
+2018,iada_pekan,IADA Pekan,IADA,Pahang,2673,17183
+2019,iada_pekan,IADA Pekan,IADA,Pahang,2637,17496
+2020,iada_pekan,IADA Pekan,IADA,Pahang,2707,12897
+2021,iada_pekan,IADA Pekan,IADA,Pahang,3218,23959
+2022,iada_pekan,IADA Pekan,IADA,Pahang,3090,21791
+2023,iada_pekan,IADA Pekan,IADA,Pahang,2965,20988
+2024,iada_pekan,IADA Pekan,IADA,Pahang,2904,18963
+2025,iada_pekan,IADA Pekan,IADA,Pahang,4256,23050
+2017,iada_rompin,IADA Rompin,IADA,Pahang,3338,17028
+2018,iada_rompin,IADA Rompin,IADA,Pahang,2910,14756
+2019,iada_rompin,IADA Rompin,IADA,Pahang,2373,12120
+2020,iada_rompin,IADA Rompin,IADA,Pahang,4156,21438
+2021,iada_rompin,IADA Rompin,IADA,Pahang,4610,24306
+2022,iada_rompin,IADA Rompin,IADA,Pahang,4431,25011
+2023,iada_rompin,IADA Rompin,IADA,Pahang,4466,22927
+2024,iada_rompin,IADA Rompin,IADA,Pahang,3533,17851
+2025,iada_rompin,IADA Rompin,IADA,Pahang,4290,21853
+2017,iada_kota_belud,IADA Kota Belud,IADA,Sabah,2511,22805
+2018,iada_kota_belud,IADA Kota Belud,IADA,Sabah,3112,30096
+2019,iada_kota_belud,IADA Kota Belud,IADA,Sabah,2908,25597
+2020,iada_kota_belud,IADA Kota Belud,IADA,Sabah,2914,25822
+2021,iada_kota_belud,IADA Kota Belud,IADA,Sabah,3540,25105
+2022,iada_kota_belud,IADA Kota Belud,IADA,Sabah,3556,28834
+2023,iada_kota_belud,IADA Kota Belud,IADA,Sabah,4264,37182
+2024,iada_kota_belud,IADA Kota Belud,IADA,Sabah,5152,33313
+2025,iada_kota_belud,IADA Kota Belud,IADA,Sabah,4671,27993
+2017,iada_batang_lupar,IADA Batang Lupar,IADA,Sarawak,2009,2252
+2018,iada_batang_lupar,IADA Batang Lupar,IADA,Sarawak,2492,2794
+2019,iada_batang_lupar,IADA Batang Lupar,IADA,Sarawak,2754,3087
+2020,iada_batang_lupar,IADA Batang Lupar,IADA,Sarawak,2599,2913
+2021,iada_batang_lupar,IADA Batang Lupar,IADA,Sarawak,2847,3220
+2022,iada_batang_lupar,IADA Batang Lupar,IADA,Sarawak,3078,3620
+2023,iada_batang_lupar,IADA Batang Lupar,IADA,Sarawak,3013,3441
+2024,iada_batang_lupar,IADA Batang Lupar,IADA,Sarawak,3210,3743
+2025,iada_batang_lupar,IADA Batang Lupar,IADA,Sarawak,3211,3744

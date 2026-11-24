@@ -189,3 +189,31 @@ def test_the_fallback_is_always_a_local_baseline_even_when_source_only_is_best()
 def test_an_override_run_is_never_deployed_even_when_delta_nt_is_negative():
     c = _gate_nt({**BASE, "coral": 0.10}, {**BASE, "coral": 0.10}, override=True)
     assert not c["transfer_supported"]
+
+
+# ------------------------------------------------------------------------------------------------ causal counterfactual prescriptions & governance registry
+def test_generate_prescriptions_requires_evaluated_model_and_writes_registry(tmp_path):
+    wf = complete_through_suitability(ready_workflow())
+    reg = tmp_path / "governance_registry.json"
+    with pytest.raises(WorkflowError, match="evaluate"):
+        wf.generate_prescriptions(registry_path=str(reg))
+
+    wf.select_strategy(["kmm"])
+    wf.run()
+    wf.bundle.X_target = wf.bundle.target[FEATS].to_numpy()
+    wf.bundle.y_target = wf.bundle.target["y"].to_numpy()
+    wf.bundle.feature_names = ["Schedule_Slip_Decades", "LSWI_rep", "StemBorer_Weather_Risk", "f4"]
+    wf.bundle.X_target[:, 0] = np.linspace(3.0, 0.0, len(wf.bundle.target))
+
+    presc = wf.generate_prescriptions(
+        schedule_csv=str(tmp_path / "missing_sched.csv"),
+        rules_csv=str(tmp_path / "missing_rules.csv"),
+        registry_path=str(reg),
+    )
+    assert reg.exists() and wf.prescriptions is not None
+    saved = pd.read_json(reg)
+    assert "T" in saved.columns and isinstance(presc, list)
+
+    # Changing upstream strategy clears stale prescriptions
+    wf.select_strategy(["coral"])
+    assert wf.prescriptions is None

@@ -3,6 +3,7 @@
 The wording lives here; the names and credits live in about_config.py. Numbers on the page come from the loaded data, so they stay true
 when the data is refreshed.
 """
+from pathlib import Path
 import pandas as pd
 import streamlit as st
 
@@ -17,6 +18,101 @@ def _card(col, icon, title, body, where):
         st.caption(where)
 
 
+def render_freshness_closed_loop(D):
+    """Section 5 · Closed-loop freshness warning, KPKM meeting coordination drawer, and Data Steward ingestion & retraining drawer."""
+    from acts_transfer.freshness_loop import (
+        append_coordination_request,
+        check_data_freshness,
+        load_update_log,
+        merge_new_yield_csv,
+        run_retraining_pipeline,
+    )
+
+    y_df = getattr(D, "yh", pd.DataFrame())
+    status = check_data_freshness(y_df)
+    if not status["is_stale"]:
+        return
+
+    missing_str = ", ".join(map(str, status["missing_years"]))
+    log = load_update_log()
+    pending = [r for r in log.get("requests", []) if r.get("status") == "PENDING_STEWARD"]
+
+    st.markdown("### 🔄 Data Freshness & Closed-Loop Retraining")
+    c_val, c_kpkm = st.columns(2)
+
+    with c_val:
+        st.warning(
+            f"**Model Validator & Data Steward — Freshness & Drift Warning:** "
+            f"Latest dataset year is **{status['max_data_year']}** (system year **{status['current_year']}**, "
+            f"lag = **{status['lag_years']} year(s)**; missing: **{missing_str}**). "
+            f"Pending Programme Manager requests: **{len(pending)}**."
+        )
+        with st.expander("Data Steward Ingestion & Pipeline Retraining Drawer (Step 1–4 Reset)", expanded=bool(pending)):
+            if pending:
+                st.markdown("**Pending Programme Manager Requests (`results/data_update_log.json`):**")
+                for req in pending:
+                    st.info(
+                        f"**[{req['id']} · {req['granary']}]** Items: {', '.join(req.get('requested_items', []))} — "
+                        f"{req.get('meeting_notes', '')}"
+                    )
+            up_yield = st.file_uploader(
+                "1. New annual harvest yield CSV (merges/deduplicates on ['District', 'Year'])",
+                type=["csv"],
+                key="ov_loop_yield_up",
+            )
+            up_daily = st.file_uploader(
+                "2. Multi-file polygon_daily/granary_daily_*.csv uploader",
+                type=["csv"],
+                accept_multiple_files=True,
+                key="ov_loop_daily_up",
+            )
+            if st.button("Save Dataset, Run Pipeline & Restart Step 1–4 Loop", type="primary", width="stretch", key="ov_run_loop_btn"):
+                if up_yield is not None:
+                    merge_new_yield_csv(pd.read_csv(up_yield), data_dir=D.DATA_DIR)
+                if up_daily:
+                    pdir = Path("polygon_daily")
+                    pdir.mkdir(exist_ok=True)
+                    for f in up_daily:
+                        (pdir / f.name).write_bytes(f.getvalue())
+                ok, step_logs = run_retraining_pipeline(automl_note="AutoML default config applied")
+                if ok:
+                    st.cache_data.clear()
+                    st.session_state["validator_step"] = 1
+                    st.success("Dataset saved, pipeline executed, and Validator Step 1–4 loop reset.")
+                    st.rerun()
+                else:
+                    st.error("Pipeline execution encountered an error:\n" + "\n".join(step_logs))
+
+    with c_kpkm:
+        st.info(
+            f"**KPKM Programme Manager — Operational Notice:** "
+            f"Harvest records currently run through **{status['max_data_year']}** (missing **{missing_str}**). "
+            "Pair baseline recommendations with ground verification and log regional IADA updates below."
+        )
+        with st.expander("Programme Manager Meeting Coordination Drawer", expanded=False):
+            scope = st.radio(
+                "Request scope",
+                ["Selected Granary", "All 10 Granaries"],
+                horizontal=True,
+                key="ov_kpkm_req_scope",
+            )
+            items = st.multiselect(
+                "Available regional IADA items",
+                ["Official Yield kg/ha", "Planting/Canal Calendar", "Field Notes"],
+                default=["Official Yield kg/ha"],
+                key="ov_kpkm_req_items",
+            )
+            notes = st.text_area("Meeting notes & agreed field measures", key="ov_kpkm_req_notes")
+            if st.button("Save Meeting Notes & Request to Data Steward Log", key="ov_kpkm_req_save", width="stretch"):
+                entry = append_coordination_request(
+                    scope=scope,
+                    granary=st.session_state.get("granary", "MADA"),
+                    items=items,
+                    meeting_notes=notes,
+                )
+                st.success(f"Saved request **{entry['id']}** to `results/data_update_log.json` for the Data Steward.")
+
+
 def render(D):
     n_g = len(D.ALL)
     y0, y1 = int(D.yh.Year.min()), int(D.yh.Year.max())
@@ -29,12 +125,9 @@ def render(D):
 
     st.markdown("""
     <style>
-    /* Make all four columns equal in width */
     div[data-testid="stHorizontalBlock"] {
         align-items: stretch;
     }
-
-    /* Give every card the same height and layout */
     .info-card {
         height: 230px;
         box-sizing: border-box;
@@ -42,34 +135,25 @@ def render(D):
         border: 1px solid #e5e7eb;
         border-radius: 14px;
         background-color: white;
-
         display: flex;
         flex-direction: column;
     }
-
-    /* Icon */
     .info-card-icon {
         font-size: 26px;
         margin-bottom: 10px;
     }
-
-    /* Card title */
     .info-card h4 {
         font-size: 17px;
         line-height: 1.4;
         margin: 0 0 10px 0;
         min-height: 48px;
     }
-
-    /* Description */
     .info-card p {
         font-size: 14px;
         line-height: 1.5;
         margin: 0 0 12px 0;
         flex-grow: 1;
     }
-
-    /* Tab label stays at the bottom */
     .info-card-tab {
         font-size: 12px;
         font-weight: 600;
@@ -79,10 +163,10 @@ def render(D):
     </style>
     """, unsafe_allow_html=True)
     c = st.columns(4)
-    _card(c[0], "🕘", "What happened?", f"Explore the yield each granary reported, year by year ({y0} to {y1}).", "Tab 6 · Yield Prediction")
-    _card(c[1], "🔮", "What happen next?", "See an outlook for the next 1 to 4 years, with a range around it.", "Tab 7 · Future Yield Outlook")
-    _card(c[2], "🛰️", "What is happening?", "Examine crop condition, the vegetation forecast, resilience, weather and soil.", "Tab 2 · Dynamic maps")
-    _card(c[3], "💡", "What should do?", "Review draft interventions: who should act, by when and why.", "Tab 8 · Intervention Advisory")
+    _card(c[0], "🕘", "What happened?", f"Explore the yield each granary reported, year by year ({y0} to {y1}).", "Page 2 · Historical Yield & Model Accuracy")
+    _card(c[1], "🔮", "What happen next?", "See an outlook for the next 1 to 4 years, with a range around it.", "Page 3 · Yield Forecast & Weather What-If Simulator")
+    _card(c[2], "🛰️", "What is happening?", "Examine crop condition, the vegetation forecast, resilience, weather and soil.", "Page 1 · Granary Field Map")
+    _card(c[3], "💡", "What should do?", "Review draft interventions: who should act, by when and why.", "Page 4 · Prescriptive Action Plan")
 
     st.markdown("### Research problem and scope")
     st.write(RESEARCH_PROBLEM)
@@ -102,8 +186,7 @@ def render(D):
                     "Word report.")
         st.markdown("**✅ Record decisions and follow up**  \nAccept, modify, reject or defer each intervention, then track status and "
                     "overdue items.")
-        st.markdown("**🔬 Assess, then transfer**  \nTabs 3 to 5: compare a source and a target granary, harmonise the data, see which transfer method suits "
-                    "the evidence, run it, and compare it with baselines.")
+        st.markdown("**🔬 Assess, then transfer**  \nSteps 1 to 4: compare source and target granaries, harmonise the data, run AutoML transfer evaluation, and sign off.")
         st.markdown("**🧪 Check the models**  \nSee the results without and with transfer learning, and the measured errors.")
 
     st.markdown("### How it works")
@@ -160,9 +243,9 @@ def render(D):
                + f". Decisions you record are saved to: {store.describe(D.DATA_DIR)}.")
 
 
-# ------------------------------------------------------------------------------------------------ PACE V9 overview hub
+# ------------------------------------------------------------------------------------------------ PACE V10 overview hub
 def render_overview_hub(D):
-    """Executive overview and governance status: the entry page. KPIs, one summary card per workspace with a jump button, and the national snapshot with each granary's registry state."""
+    """Executive overview and governance status: the entry page."""
     import html
 
     from acts_transfer import governance as gov
@@ -190,6 +273,9 @@ def render_overview_hub(D):
     k4.metric("Mean Optical Coverage", f"{latest.Optical_Valid_Fraction.mean() * 100:.1f}%", help="Share of ten-day optical observations that were really observed, averaged over granaries.")
     k5.metric("Verified Transfer Models", f"{n_app} / {total}", help="Granaries whose Detrended Residual Transfer forecast a Model Validator has signed off.")
 
+    # Section 5 · Closed-loop freshness & retraining drawers
+    render_freshness_closed_loop(D)
+
     st.markdown("### Workspace Summaries")
     left, right = st.columns(2)
     top = latest.loc[latest.Yield_kg_ha.idxmax()]
@@ -198,7 +284,9 @@ def render_overview_hub(D):
             f"""<div class="pace-card"><h4 style="color:#0B2117;margin-top:0;">🌾 KPKM Programme Manager Summary</h4>
             <p style="color:#43544B;">Monitor spatial field conditions, heading-stage (70 days after sowing) nowcasts and 2025–2028 climate scenario pathways across the Peninsular Malaysia granaries.</p>
             <ul><li><b>Active Focus Granary:</b> {html.escape(str(st.session_state.get('granary', '')))}</li>
-            <li><b>Highest {latest_year} Yield:</b> {html.escape(str(top.District))} ({top.Yield_kg_ha:,.0f} kg/ha)</li></ul></div>""", unsafe_allow_html=True)
+            <li><b>Highest {latest_year} Yield:</b> {html.escape(str(top.District))} ({top.Yield_kg_ha:,.0f} kg/ha)</li></ul></div>""",
+            unsafe_allow_html=True,
+        )
         if st.button("Enter KPKM Programme Manager Workspace →", key="jump_kpkm"):
             st.session_state["nav_mode"] = "KPKM Programme Manager"
             st.session_state["scroll_top"] = True
@@ -209,7 +297,9 @@ def render_overview_hub(D):
             f"""<div class="pace-card"><h4 style="color:#0B2117;margin-top:0;">🛡️ Model Validator & Data Steward Summary</h4>
             <p style="color:#43544B;">Audit multi-sensor cloud coverage, screen East Coast monsoon outliers (KETARA), and approve Detrended Residual Transfer models.</p>
             <ul><li><b>Mean {latest_year} Optical Coverage:</b> {ovf:.1f}%</li>
-            <li><b>Safeguard Gate Status:</b> {n_app} Approved | {n_loc} Local Baseline ({n_pend} pending review)</li></ul></div>""", unsafe_allow_html=True)
+            <li><b>Safeguard Gate Status:</b> {n_app} Approved | {n_loc} Local Baseline ({n_pend} pending review)</li></ul></div>""",
+            unsafe_allow_html=True,
+        )
         if st.button("Enter Model Validator Workflow →", key="jump_validator"):
             st.session_state["nav_mode"] = "Model Validator & Data Steward"
             st.session_state["validator_step"] = 1

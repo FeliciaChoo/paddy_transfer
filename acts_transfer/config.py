@@ -17,11 +17,19 @@ import pandas as pd
 
 
 def _ranges():
-    return {"NDVI": (-1.0, 1.0), "NDVI_amplitude": (0.0, 2.0), "EVI": (-1.0, 3.0), "SAR_VV_dB": (-35.0, 5.0), "Mean_Temp_C": (10.0, 40.0),
-            "Annual_Rain_mm": (0.0, 8000.0), "Rain_decade_mm": (0.0, 1500.0), "Solar_Radiation_MJ": (0.0, 35.0),
-            "Optical_observed_pct": (0.0, 100.0), "LSWI": (-1.0, 1.0), "MNDWI": (-1.0, 1.0), "Tmax_C": (15.0, 45.0), "Rain_mm": (0.0, 4500.0), "Solar_MJ": (0.0, 35.0),
-            "Soil_pH": (3.0, 9.0), "Optical_Valid_Fraction": (0.0, 1.0), "Yield_t_ha": (0.0, 15.0), "Yield_kg_ha": (0.0, 15000.0)}
-
+    return {
+        "NDVI": (-1.0, 1.0), "NDVI_amplitude": (0.0, 2.0), "EVI": (-1.0, 3.0), "SAR_VV_dB": (-35.0, 5.0),
+        "Mean_Temp_C": (10.0, 40.0), "Annual_Rain_mm": (0.0, 8000.0), "Rain_decade_mm": (0.0, 1500.0),
+        "Solar_Radiation_MJ": (0.0, 35.0), "Optical_observed_pct": (0.0, 100.0), "LSWI": (-1.0, 1.0),
+        "MNDWI": (-1.0, 1.0), "Tmax_C": (15.0, 45.0), "Rain_mm": (0.0, 4500.0), "Solar_MJ": (0.0, 35.0),
+        "Soil_pH": (3.0, 9.0), "Optical_Valid_Fraction": (0.0, 1.0), "Yield_t_ha": (0.0, 15.0),
+        "Yield_kg_ha": (0.0, 15000.0),
+        # Farming-practice & irrigation schedule ranges
+        "Water_Start_Decade": (1.0, 36.0), "Water_End_Decade": (1.0, 36.0),
+        "Block_Stagger_Decades": (0.0, 12.0), "C1_Greenup_Decade": (1.0, 36.0),
+        "C2_Greenup_Decade": (1.0, 36.0), "Schedule_Slip_Decades": (-18.0, 18.0),
+        "StemBorer_Weather_Risk": (0.0, 1.0),
+    }
 
 @dataclass
 class Config:

@@ -97,7 +97,7 @@ def yield_backtest(Yr, years):
         for m in list(meth) + ["trend (last 5 years)"]:
             errs = []
             for d in Yr.index:
-                for o in range(2020, 2024):
+                for o in range(2020, max(years)):
                     t = o + h
                     if t > max(years):
                         continue

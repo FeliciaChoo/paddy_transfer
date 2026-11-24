@@ -125,7 +125,9 @@ def main():
     print("\n1) STRUCTURE")
     print("   duplicate (pixel, year, decade) keys:", int(raw.duplicated(["Pixel_ID", "Year", "Decade_N"]).sum()))
     per = raw.groupby("Pixel_ID").size()
-    print(f"   rows per pixel: min {per.min()}, max {per.max()} (expected 252 = 36 decades x 7 years)")
+    n_yrs = raw["Year"].nunique()
+    print(
+        f"   rows per polygon unit: min {per.min()}, max {per.max()} (expected {36 * n_yrs} = 36 decades x {n_yrs} years)")
     print("   rows / pixels by district:")
     print(raw.groupby("District").agg(rows=("Year", "size"), pixels=("Pixel_ID", "nunique")).to_string())
 

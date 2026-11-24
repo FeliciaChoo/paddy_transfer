@@ -40,12 +40,18 @@ def build_published(wf, Y, target, seasons=(2025, 2026, 2027, 2028)):
     keys = [k for k in (tkey, ref) if k]
 
     def table_for(inputs):
-        t = predmod.predict_table(b, wf.results, c, inputs, wf.base, wf.run_cfg, wf._finals, list(dict.fromkeys(list(wf.result.methods) + keys)))
+        clean_inp = inputs.copy()
+        for col in b.features:
+            if col in clean_inp.columns and clean_inp[col].isna().any():
+                med = float(b.target[col].median()) if col in b.target.columns and b.target[col].notna().any() else 0.0
+                clean_inp[col] = clean_inp[col].fillna(med)
+        t = predmod.predict_table(b, wf.results, c, clean_inp, wf.base, wf.run_cfg, wf._finals, list(dict.fromkeys(list(wf.result.methods) + keys)))
         rows = {}
         for k in keys:
             sub = t[t.model_key == k]
             rows[k] = [dict(season=int(r.season), predicted=_f(r.predicted * kg), low=_f(r.low * kg), high=_f(r.high * kg), band_source=r.band_source) for r in sub.itertuples()]
         return rows
+
     last_row = b.target.dropna(subset=["y"]).sort_values("group").iloc[-1]
     now = pd.DataFrame([dict(season=int(last_row.group), **{f: float(last_row[f]) for f in b.features})])
     nt = table_for(now)

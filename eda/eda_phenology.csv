@@ -1,11 +1,10 @@
 District,trough_A,trough_A_date,peak_A,peak_A_date,trough_B,trough_B_date,peak_B,peak_B_date,trough_to_peak_decades,NDVI_amplitude,confidence
-IADA Barat Laut Selangor,3,21 Jan,14,11 May,22,30 Jul,34,27 Nov,11.5,0.21,clear
-IADA Kemasin Semerak,18,20 Jun,27,18 Sep,34,27 Nov,8,12 Mar,9.5,0.2,clear
-IADA Kerian,8,12 Mar,19,30 Jun,27,18 Sep,35,07 Dec,9.5,0.3,clear
-IADA Pekan,6,20 Feb,16,31 May,23,09 Aug,31,28 Oct,9.0,0.21,clear
-IADA Pulau Pinang,11,11 Apr,20,10 Jul,30,18 Oct,1,01 Jan,8.0,0.52,clear
-IADA Rompin,15,21 May,25,29 Aug,33,17 Nov,2,11 Jan,7.5,0.33,clear
-IADA Seberang Perak,6,20 Feb,16,31 May,26,08 Sep,35,07 Dec,9.5,0.36,clear
-KADA,18,20 Jun,25,29 Aug,35,07 Dec,8,12 Mar,8.0,0.31,clear
-KETARA,1,01 Jan,9,22 Mar,20,10 Jul,29,08 Oct,8.5,0.45,clear
-MADA,15,21 May,22,30 Jul,31,28 Oct,2,11 Jan,7.0,0.55,clear
+IADA Barat Laut Selangor,4,31 Jan,14,11 May,22,30 Jul,34,27 Nov,11.0,0.25,clear
+IADA Kemasin Semerak,19,30 Jun,28,28 Sep,35,07 Dec,9,22 Mar,9.5,0.16,WEAK (mixed planting dates?)
+IADA Kerian,8,12 Mar,17,10 Jun,26,08 Sep,34,27 Nov,8.5,0.29,clear
+IADA Pulau Pinang,10,01 Apr,19,30 Jun,29,08 Oct,1,01 Jan,8.5,0.37,clear
+IADA Rompin,10,01 Apr,22,30 Jul,34,27 Nov,9,22 Mar,11.5,0.04,WEAK (mixed planting dates?)
+IADA Seberang Perak,3,21 Jan,11,11 Apr,22,30 Jul,30,18 Oct,8.0,0.3,clear
+KADA,2,11 Jan,9,22 Mar,19,30 Jun,28,28 Sep,8.0,0.2,clear
+KETARA,2,11 Jan,10,01 Apr,19,30 Jun,28,28 Sep,8.5,0.34,clear
+MADA,13,01 May,22,30 Jul,30,18 Oct,1,01 Jan,8.0,0.48,clear

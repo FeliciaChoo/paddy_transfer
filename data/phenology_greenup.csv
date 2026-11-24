@@ -1,71 +1,82 @@
 District,Year,n_cycles,C1_Greenup_Decade,C1_Peak_Decade,C2_Greenup_Decade,C2_Peak_Decade
-IADA Barat Laut Selangor,2018,1,12.0,36.0,,
-IADA Barat Laut Selangor,2019,2,6.0,15.0,23.0,34.0
-IADA Barat Laut Selangor,2020,1,5.0,17.0,,
-IADA Barat Laut Selangor,2021,2,6.0,15.0,23.0,34.0
-IADA Barat Laut Selangor,2022,2,6.0,15.0,23.0,24.0
-IADA Barat Laut Selangor,2023,1,13.0,15.0,,
-IADA Barat Laut Selangor,2024,1,5.0,16.0,,
-IADA Kemasin Semerak,2018,0,,,,
-IADA Kemasin Semerak,2019,2,3.0,9.0,16.0,27.0
-IADA Kemasin Semerak,2020,2,2.0,7.0,20.0,25.0
-IADA Kemasin Semerak,2021,2,2.0,8.0,20.0,25.0
-IADA Kemasin Semerak,2022,2,3.0,8.0,21.0,28.0
-IADA Kemasin Semerak,2023,2,6.0,11.0,20.0,26.0
-IADA Kemasin Semerak,2024,2,3.0,8.0,22.0,28.0
-IADA Kerian,2018,1,8.0,36.0,,
-IADA Kerian,2019,1,10.0,16.0,,
-IADA Kerian,2020,1,11.0,19.0,,
-IADA Kerian,2021,1,11.0,17.0,,
-IADA Kerian,2022,1,11.0,18.0,,
-IADA Kerian,2023,1,14.0,18.0,,
-IADA Kerian,2024,1,16.0,23.0,,
-IADA Pekan,2018,0,,,,
-IADA Pekan,2019,1,9.0,14.0,,
-IADA Pekan,2020,1,15.0,22.0,,
-IADA Pekan,2021,1,12.0,17.0,,
-IADA Pekan,2022,2,7.0,14.0,25.0,32.0
-IADA Pekan,2023,2,9.0,15.0,28.0,31.0
-IADA Pekan,2024,2,9.0,15.0,27.0,31.0
-IADA Pulau Pinang,2018,1,11.0,36.0,,
-IADA Pulau Pinang,2019,1,16.0,21.0,,
-IADA Pulau Pinang,2020,1,16.0,20.0,,
-IADA Pulau Pinang,2021,1,14.0,19.0,,
-IADA Pulau Pinang,2022,1,13.0,18.0,,
-IADA Pulau Pinang,2023,1,14.0,20.0,,
-IADA Pulau Pinang,2024,1,17.0,22.0,,
-IADA Rompin,2018,0,,,,
-IADA Rompin,2019,2,16.0,18.0,25.0,26.0
-IADA Rompin,2020,2,2.0,6.0,18.0,23.0
-IADA Rompin,2021,2,2.0,4.0,19.0,25.0
-IADA Rompin,2022,2,2.0,4.0,18.0,22.0
-IADA Rompin,2023,2,3.0,6.0,20.0,25.0
-IADA Rompin,2024,2,4.0,9.0,22.0,26.0
-IADA Seberang Perak,2018,0,,,,
-IADA Seberang Perak,2019,1,9.0,15.0,,
-IADA Seberang Perak,2020,1,10.0,16.0,,
-IADA Seberang Perak,2021,1,11.0,16.0,,
-IADA Seberang Perak,2022,1,12.0,16.0,,
-IADA Seberang Perak,2023,2,10.0,16.0,25.0,34.0
-IADA Seberang Perak,2024,1,10.0,16.0,,
-KADA,2018,1,5.0,7.0,,
-KADA,2019,2,5.0,9.0,22.0,27.0
-KADA,2020,2,2.0,7.0,21.0,25.0
-KADA,2021,2,2.0,6.0,20.0,25.0
-KADA,2022,2,2.0,7.0,21.0,27.0
-KADA,2023,2,4.0,8.0,23.0,28.0
-KADA,2024,2,3.0,8.0,22.0,28.0
-KETARA,2018,1,5.0,7.0,,
-KETARA,2019,2,4.0,9.0,22.0,27.0
-KETARA,2020,2,3.0,8.0,21.0,25.0
-KETARA,2021,2,3.0,8.0,21.0,25.0
-KETARA,2022,2,4.0,8.0,23.0,27.0
-KETARA,2023,2,6.0,10.0,22.0,28.0
-KETARA,2024,2,6.0,9.0,24.0,29.0
-MADA,2018,1,1.0,1.0,,
-MADA,2019,1,19.0,24.0,,
-MADA,2020,1,17.0,22.0,,
-MADA,2021,1,18.0,23.0,,
-MADA,2022,1,17.0,21.0,,
-MADA,2023,1,19.0,24.0,,
-MADA,2024,2,2.0,3.0,19.0,23.0
+IADA Barat Laut Selangor,2017,2,5,14,27.0,32.0
+IADA Barat Laut Selangor,2018,2,7,10,24.0,31.0
+IADA Barat Laut Selangor,2019,2,5,15,27.0,29.0
+IADA Barat Laut Selangor,2020,2,8,14,25.0,34.0
+IADA Barat Laut Selangor,2021,2,3,10,24.0,33.0
+IADA Barat Laut Selangor,2022,1,7,13,,
+IADA Barat Laut Selangor,2023,2,2,10,24.0,26.0
+IADA Barat Laut Selangor,2024,2,7,17,25.0,29.0
+IADA Barat Laut Selangor,2025,2,7,12,24.0,28.0
+IADA Kemasin Semerak,2017,2,4,17,22.0,28.0
+IADA Kemasin Semerak,2018,2,6,12,23.0,27.0
+IADA Kemasin Semerak,2019,2,5,9,21.0,27.0
+IADA Kemasin Semerak,2020,2,2,9,17.0,25.0
+IADA Kemasin Semerak,2021,1,2,4,,
+IADA Kemasin Semerak,2022,2,4,8,23.0,29.0
+IADA Kemasin Semerak,2023,2,4,8,20.0,29.0
+IADA Kemasin Semerak,2024,2,5,10,17.0,28.0
+IADA Kemasin Semerak,2025,2,6,9,22.0,27.0
+IADA Kerian,2017,1,11,18,,
+IADA Kerian,2018,2,10,13,21.0,22.0
+IADA Kerian,2019,2,10,14,28.0,32.0
+IADA Kerian,2020,2,11,15,27.0,34.0
+IADA Kerian,2021,1,11,17,,
+IADA Kerian,2022,2,11,16,29.0,34.0
+IADA Kerian,2023,1,11,17,,
+IADA Kerian,2024,1,15,21,,
+IADA Kerian,2025,2,4,5,12.0,17.0
+IADA Pulau Pinang,2017,1,12,18,,
+IADA Pulau Pinang,2018,1,13,19,,
+IADA Pulau Pinang,2019,1,13,22,,
+IADA Pulau Pinang,2020,2,2,3,12.0,20.0
+IADA Pulau Pinang,2021,1,13,17,,
+IADA Pulau Pinang,2022,1,12,19,,
+IADA Pulau Pinang,2023,1,15,24,,
+IADA Pulau Pinang,2024,1,15,23,,
+IADA Pulau Pinang,2025,1,8,9,,
+IADA Rompin,2017,2,2,5,11.0,26.0
+IADA Rompin,2018,1,26,28,,
+IADA Rompin,2019,2,20,22,29.0,30.0
+IADA Rompin,2020,2,2,4,16.0,21.0
+IADA Rompin,2021,2,6,9,13.0,26.0
+IADA Rompin,2022,2,2,10,17.0,27.0
+IADA Rompin,2023,2,5,7,14.0,16.0
+IADA Rompin,2024,2,7,13,27.0,32.0
+IADA Rompin,2025,2,5,10,27.0,31.0
+IADA Seberang Perak,2017,2,4,10,23.0,28.0
+IADA Seberang Perak,2018,2,4,8,23.0,26.0
+IADA Seberang Perak,2019,2,5,8,22.0,29.0
+IADA Seberang Perak,2020,2,5,13,24.0,28.0
+IADA Seberang Perak,2021,2,6,10,25.0,29.0
+IADA Seberang Perak,2022,2,7,12,25.0,30.0
+IADA Seberang Perak,2023,2,7,10,24.0,29.0
+IADA Seberang Perak,2024,2,6,12,27.0,32.0
+IADA Seberang Perak,2025,2,9,15,27.0,31.0
+KADA,2017,1,4,11,,
+KADA,2018,2,6,9,24.0,27.0
+KADA,2019,2,5,8,21.0,27.0
+KADA,2020,2,4,8,21.0,24.0
+KADA,2021,1,33,34,,
+KADA,2022,2,5,7,22.0,24.0
+KADA,2023,2,4,8,24.0,28.0
+KADA,2024,2,5,10,22.0,29.0
+KADA,2025,2,6,9,22.0,28.0
+KETARA,2017,2,5,11,24.0,29.0
+KETARA,2018,2,6,9,23.0,27.0
+KETARA,2019,2,5,10,21.0,27.0
+KETARA,2020,2,2,9,18.0,25.0
+KETARA,2021,2,4,8,21.0,25.0
+KETARA,2022,2,3,8,23.0,27.0
+KETARA,2023,2,2,10,23.0,28.0
+KETARA,2024,2,4,10,24.0,29.0
+KETARA,2025,2,7,9,23.0,29.0
+MADA,2017,1,14,19,,
+MADA,2018,1,15,21,,
+MADA,2019,1,15,22,,
+MADA,2020,1,16,20,,
+MADA,2021,1,16,21,,
+MADA,2022,1,14,21,,
+MADA,2023,2,2,3,17.0,23.0
+MADA,2024,1,18,23,,
+MADA,2025,1,18,24,,

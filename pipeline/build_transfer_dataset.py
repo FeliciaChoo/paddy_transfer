@@ -40,7 +40,25 @@ def main():
             Yield_kg_ha=c[(c.District == g) & (c.Year == y)].Target_Yield.mean()))
     yearly = pd.DataFrame(rows).round(4)
     os.makedirs(a.out, exist_ok=True)
-    yearly.to_csv(os.path.join(a.out, "transfer_yield_dataset.csv"), index=False)
+
+    stage_path = os.path.join(a.out, "transfer_stage_dataset.csv")
+    if os.path.exists(stage_path):
+        st = pd.read_csv(stage_path)
+        extra = [
+            c for c in [
+                "Water_Start_Decade", "Water_End_Decade", "Block_Stagger_Decades",
+                "Schedule_Slip_Decades", "StemBorer_Weather_Risk"
+            ]
+            if c in st.columns and c not in yearly.columns
+        ]
+        if extra:
+            yearly = yearly.merge(
+                st[["District", "Year"] + extra].drop_duplicates(["District", "Year"]),
+                on=["District", "Year"],
+                how="left",
+            )
+
+    yearly.round(4).to_csv(os.path.join(a.out, "transfer_yield_dataset.csv"), index=False)
     fine.round(4).to_csv(os.path.join(a.out, "transfer_decade_features.csv"), index=False)
     print(f"transfer_yield_dataset.csv: {len(yearly)} rows ({yearly.District.nunique()} granaries x {yearly.Year.nunique()} years); "
           f"transfer_decade_features.csv: {len(fine)} rows")

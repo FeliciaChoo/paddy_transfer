@@ -5,11 +5,13 @@ there and what to do about it. A Word report (summary, interventions, a decision
 conclusion, and the sources) can then be downloaded. The workings (evidence, rules, references) live in the bridge and in the report
 appendix, not on this page.
 """
+import json
+from pathlib import Path
 import pandas as pd
 import streamlit as st
 
 from . import bridge, report, tracker
-from .llm import memo
+from .llm import memo, narrate_counterfactual_cards
 from .ui import selected_granary
 
 BRIEF = {"behind": "Recent greenness is below the range expected for this stage. Verify on the ground before spending.",
@@ -53,6 +55,47 @@ def field_checklist(case, acts):
         items.append((f"Action: {a[0]}", f"Responsible: {a[1]}. By: {a[2]}."))
     items.append(("Record", "Write what you found in the decision log below, so the next review can compare it with this advice."))
     return pd.DataFrame(items, columns=["Check", "What to verify"]).assign(Done="☐")
+def _render_counterfactual_cards(granary: str, registry_path: str = "results/governance_registry.json"):
+    """Display schedule-bounded causal counterfactuals (Who / What / When / Why) from governance_registry.json."""
+    p = Path(registry_path)
+    if not p.exists():
+        return
+    try:
+        reg = json.loads(p.read_text(encoding="utf-8"))
+    except Exception:
+        return
+    entry = reg.get(granary)
+    if not entry or not entry.get("prescriptions"):
+        return
+
+    presc = entry["prescriptions"]
+    st.markdown("### Causal counterfactual prescriptions (Field Officer action cards)")
+    st.caption(
+        f"Approved transfer model: **{entry.get('approved_method', 'HGB + RULE')}** "
+        f"(ΔNT = `{entry.get('delta_nt')}`, updated `{entry.get('updated_at', 'N/A')}`). "
+        "Levers are bounded by published JPS/IADA irrigation schedules."
+    )
+    df_cf = pd.DataFrame([
+        {
+            "Lever": item.get("lever"),
+            "Target Window": item.get("window"),
+            "Expected Gain (kg/ha)": f"+{item.get('delta_y_kg_ha')}",
+            "80% CI (kg/ha)": f"[{item.get('ci_low')}, {item.get('ci_high')}]",
+            "SOP Rule": item.get("rule_id"),
+            "Schedule Bound": item.get("schedule_bound"),
+        }
+        for item in presc
+    ])
+    st.dataframe(df_cf, hide_index=True, width="stretch")
+
+    card_text, bad_nums, err = narrate_counterfactual_cards(granary, presc)
+    if card_text:
+        with st.container(border=True):
+            st.markdown(card_text)
+        if bad_nums:
+            st.caption("Verify these ungrounded numbers against the table above: " + ", ".join(bad_nums))
+
+
 
 
 def render(D):
@@ -107,6 +150,7 @@ def render(D):
             st.markdown(case["pred_line"])
             st.caption("The Normal-scenario forecast. Other scenarios and the in-season nowcast are in tab 4.")
     with t_plan:
+        _render_counterfactual_cards(g)
         # ---- what to do
         st.markdown("### Priority actions: Who · What · When · Why")
         if acts:

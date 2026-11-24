@@ -35,7 +35,7 @@ from scipy.signal import find_peaks, savgol_filter
 DRV = {"EVI_clean": "EVI", "LSWI_clean": "LSWI", "MNDWI_clean": "MNDWI", "SAR_clean": "SAR_VV_dB", "Mean_Max_Temp_C": "Tmax_C", "Mean_Temp_C": "Mean_Temp_C",
        "Daily_Rain_mm": "Rain_mm", "Solar_Radiation_MJ": "Solar_MJ"}
 STAGES = {"veg": (0, 4), "rep": (4, 7), "rip": (7, 10)}           # decades after green-up: 0-40 d, 40-70 d, 70-100 d
-STAGE_VARS = {"veg": ["EVI", "MNDWI", "SAR_VV_dB"], "rep": ["EVI", "LSWI", "SAR_VV_dB", "Rain_mm", "Tmax_C"], "rip": ["EVI", "Solar_MJ"]}
+STAGE_VARS = {"veg": ["EVI", "MNDWI", "SAR_VV_dB"], "rep": ["EVI", "LSWI", "SAR_VV_dB", "Rain_mm", "Tmax_C", "Mean_Temp_C"], "rip": ["EVI", "Solar_MJ"]}
 SG_WINDOW, SG_ORDER, RISE = 5, 2, 0.20
 
 
@@ -120,8 +120,23 @@ def main():
         ph.append(dict(District=g, Year=int(y), n_cycles=len(ups), **{k: v for k, v in f.items() if k.endswith(("Greenup_Decade", "Peak_Decade"))}))
     out = base.merge(disp, on=["District", "Year"]).merge(pd.DataFrame(rows), on=["District", "Year"])
     out["Optical_observed_pct"] = 100 * out.Optical_Valid_Fraction
-    out["Optical_complete_window"] = out.Year.between(2019, 2024)     # the 2019-2024 optical-complete subset (N = 60)
+    out["Optical_complete_window"] = out.Year.between(2019, int(out["Year"].max()))# the 2019-2024 optical-complete subset (N = 60)
     out["Yield_kg_ha"] = out.Yield_kg_ha.round(1)
+
+    sched_path = "external/granary_irrigation_schedules.csv"
+    if os.path.exists(sched_path):
+        sched = pd.read_csv(sched_path)
+        c1_sched = sched[sched["Cycle"] == "C1"][
+            ["District", "Water_Start_Decade", "Water_End_Decade", "Block_Stagger_Decades"]
+        ]
+        out = out.merge(c1_sched, on="District", how="left")
+        out["Schedule_Slip_Decades"] = out["C1_Greenup_Decade"] - out["Water_Start_Decade"]
+        # Approximate diurnal range from Tmax - Mean_Temp (half-range >= 4.1C corresponds to Tmax - Tmin >= 8.2C)
+        out["StemBorer_Weather_Risk"] = (
+                ((out["C1_Tmax_C_rep"] - out["C1_Mean_Temp_C_rep"]) >= 4.1)
+                & (out["C1_Rain_mm_rep"] < 50.0)
+        ).astype(int)
+
     os.makedirs(a.out, exist_ok=True)
     out.round(4).to_csv(os.path.join(a.out, "transfer_stage_dataset.csv"), index=False)
     pd.DataFrame(ph).to_csv(os.path.join(a.out, "phenology_greenup.csv"), index=False)

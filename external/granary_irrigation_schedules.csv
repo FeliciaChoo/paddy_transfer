@@ -1,0 +1,21 @@
+District,granary_id,Cycle,Water_Start_Decade,Water_End_Decade,Stagger_Phases,Block_Stagger_Decades,PreSaturation_Depth_mm,Maintenance_Water_Depth_mm,Irrigation_Regime
+MADA,mada,C1,7,12,3,1,100,100,Dam_Fed
+MADA,mada,C2,27,33,3,1,100,100,Dam_Fed
+KADA,kada,C1,10,15,3,1,100,100,Run_of_River
+KADA,kada,C2,28,34,3,1,100,100,Run_of_River
+IADA Barat Laut Selangor,iada_barat_laut_selangor,C1,1,12,4,3,100,100,Run_of_River
+IADA Barat Laut Selangor,iada_barat_laut_selangor,C2,19,30,4,3,100,100,Run_of_River
+IADA Kerian,iada_kerian,C1,7,12,3,1,100,100,Dam_Fed
+IADA Kerian,iada_kerian,C2,25,30,3,1,100,100,Dam_Fed
+KETARA,iada_ketara,C1,13,18,2,1,100,100,Dam_Fed
+KETARA,iada_ketara,C2,31,36,2,1,100,100,Dam_Fed
+IADA Pulau Pinang,iada_pulau_pinang,C1,7,12,3,1,100,100,Run_of_River
+IADA Pulau Pinang,iada_pulau_pinang,C2,25,30,3,1,100,100,Run_of_River
+IADA Seberang Perak,iada_seberang_perak,C1,7,12,3,1,100,100,Run_of_River
+IADA Seberang Perak,iada_seberang_perak,C2,25,30,3,1,100,100,Run_of_River
+IADA Kemasin Semerak,iada_kemasin_semarak,C1,10,15,3,1,100,100,Run_of_River
+IADA Kemasin Semerak,iada_kemasin_semarak,C2,28,34,3,1,100,100,Run_of_River
+IADA Pekan,iada_pekan,C1,10,15,2,1,100,100,Run_of_River
+IADA Pekan,iada_pekan,C2,28,34,2,1,100,100,Run_of_River
+IADA Rompin,iada_rompin,C1,10,15,2,1,100,100,Run_of_River
+IADA Rompin,iada_rompin,C2,28,34,2,1,100,100,Run_of_River
