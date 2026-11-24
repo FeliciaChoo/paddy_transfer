@@ -243,6 +243,70 @@ def render(D):
                + f". Decisions you record are saved to: {store.describe(D.DATA_DIR)}.")
 
 
+def _render_yield_charts(df):
+    """Two charts for the overview: (1) reported yield across the years for every granary, (2) a ranking of the granaries, so the best, the worst
+    and the granaries closest to the selected one can be read at a glance. Uses the same granary-year table as the rest of the hub."""
+    import plotly.graph_objects as go
+
+    d = df[["District", "Year", "Yield_kg_ha"]].dropna()
+    if d.empty:
+        return
+    sel = st.session_state.get("granary")
+    years = sorted((int(y) for y in d.Year.unique()), reverse=True)
+
+    st.markdown("### Yield Across the Years, by Granary")
+    st.caption("One line per granary (reported yield, kg/ha). The granary selected in the sidebar is drawn thick; click a name in the legend to hide or show a line.")
+    fig = go.Figure()
+    for g in sorted(d.District.unique()):
+        s = d[d.District == g].sort_values("Year")
+        on = g == sel
+        fig.add_scatter(x=s.Year, y=s.Yield_kg_ha, mode="lines+markers", name=g, opacity=1.0 if on else 0.55,
+                        line=dict(width=4 if on else 1.5), marker=dict(size=9 if on else 5),
+                        hovertemplate="%{x}: %{y:,.0f} kg/ha<extra>" + g + "</extra>")
+    fig.update_layout(height=420, margin=dict(l=10, r=10, t=10, b=10), yaxis_title="Yield (kg/ha)", xaxis=dict(dtick=1), legend=dict(orientation="h", y=-0.25))
+    st.plotly_chart(fig, width="stretch", key="ov_yield_lines")
+
+    st.markdown("### Granary Ranking by Yield")
+    rank_options = ["Average of all years"] + [f"Year {y}" for y in years]
+    basis = st.selectbox(
+        "Rank by",
+        rank_options,
+        index=0,
+        key="ov_rank_basis",
+        help="Choose 'Average of all years' or select any individual year (e.g., 2025, 2024, ..., 2017) to compare granary rankings.",
+    )
+    if basis == "Average of all years":
+        r = d.groupby("District").Yield_kg_ha.mean().dropna().sort_values(ascending=False)
+        period_label = "all-year average"
+    else:
+        chosen_year = int(basis.replace("Year ", ""))
+        r = d[d.Year == chosen_year].set_index("District").Yield_kg_ha.dropna().sort_values(ascending=False)
+        period_label = f"year {chosen_year}"
+
+    n = len(r)
+    best, worst = r.index[0], r.index[-1]
+    colour = ["#2e7d32" if g == best else "#c62828" if g == worst else "#1f6fb2" if g == sel else "#9aa5a0" for g in r.index]
+    bar = go.Figure(go.Bar(x=r.values, y=[f"#{i + 1}  {g}" for i, g in enumerate(r.index)], orientation="h", marker_color=colour,
+                           marker_line_color=["#000000" if g == sel else "rgba(0,0,0,0)" for g in r.index], marker_line_width=[3 if g == sel else 0 for g in r.index],
+                           text=[f"{v:,.0f}" for v in r.values], textposition="outside", hovertemplate="%{y}: %{x:,.0f} kg/ha<extra></extra>"))
+    bar.update_layout(height=max(320, 46 * n), margin=dict(l=10, r=40, t=10, b=10), xaxis_title=f"Yield (kg/ha) — {period_label}", yaxis=dict(autorange="reversed"), showlegend=False)
+    bar.update_xaxes(range=[0, float(r.max()) * 1.12])
+    st.plotly_chart(bar, width="stretch", key="ov_yield_rank")
+    st.caption(f"Ranking for **{period_label}**. Green = best, red = worst, blue = the selected granary (outlined). Best: **{best}** ({r.iloc[0]:,.0f} kg/ha). Worst: **{worst}** ({r.iloc[-1]:,.0f} kg/ha). "
+               f"Gap between them: {r.iloc[0] - r.iloc[-1]:,.0f} kg/ha.")
+    if sel in r.index:
+        i, v = list(r.index).index(sel), float(r[sel])
+        up = r.index[i - 1] if i > 0 else None
+        dn = r.index[i + 1] if i < n - 1 else None
+        msg = [f"**{sel}** ranks **{i + 1} of {n}** ({period_label}) at {v:,.0f} kg/ha."]
+        msg.append(f"Next above: **{up}** ({r[up] - v:+,.0f} kg/ha)." if up else "It is the top granary, so nothing is above it.")
+        msg.append(f"Next below: **{dn}** ({r[dn] - v:+,.0f} kg/ha)." if dn else "It is the lowest granary, so nothing is below it.")
+        near = [g for g in (up, dn) if g]
+        if near:
+            c = min(near, key=lambda g: abs(float(r[g]) - v))
+            msg.append(f"Closest overall: **{c}**, {abs(float(r[c]) - v):,.0f} kg/ha away.")
+        st.info(" ".join(msg))
+
 # ------------------------------------------------------------------------------------------------ PACE V10 overview hub
 def render_overview_hub(D):
     """Executive overview and governance status: the entry page."""
@@ -275,6 +339,8 @@ def render_overview_hub(D):
 
     # Section 5 · Closed-loop freshness & retraining drawers
     render_freshness_closed_loop(D)
+
+    _render_yield_charts(df)
 
     st.markdown("### Workspace Summaries")
     left, right = st.columns(2)

@@ -213,3 +213,29 @@ def test_the_map_page_shows_a_field_summary_card_for_the_selected_granary(tmp_pa
     assert "Review a paddy field · IADA Kerian" in t
     assert "Mapped paddy field groups" in [m.label for m in at.metric]
     assert "Pending review" not in t and any("Season 1" in m.value for m in at.markdown)
+
+def test_the_overview_has_the_yield_line_chart_and_the_ranking_with_neighbours(tmp_path):
+    at = _app("Overview · Summary & Model Status", tmp_path / "reg.json")
+    assert not at.exception
+    heads = [m.value for m in at.markdown]
+    assert "### Yield Across the Years, by Granary" in heads and "### Granary Ranking by Yield" in heads
+    t = " ".join(m.value for m in at.info)
+    assert "IADA Barat Laut Selangor" in t and "Next above" in t and "Next below" in t and "Closest overall" in t
+    at.radio[[r.key for r in at.radio].index("ov_rank_basis")].set_value([o for o in at.radio[[r.key for r in at.radio].index("ov_rank_basis")].options if o.startswith("Latest")][0]).run()
+    assert not at.exception
+
+
+def test_approving_in_step_4_publishes_real_forecast_tables_for_the_kpkm_pages(tmp_path):
+    reg = tmp_path / "reg.json"
+    at = _app(ROLE_VAL, reg, step=4)
+    at.text_input[[t.key for t in at.text_input].index("so_name")].set_value("Test Validator").run()
+    _btn(at, "so_approve").click().run()
+    assert not at.exception
+    from acts_transfer import governance
+    e = governance.load(reg)["granaries"]["IADA Barat Laut Selangor"]
+    pub = e["published"]
+    assert e["status"] == governance.APPROVED and e["evidence"]["model_label"] and "delta_nt_kg_ha" in e["evidence"]
+    assert pub["backtest"]["forward"] and pub["nowcast"]["transfer"] and set(pub["outlook"]) >= {"Normal", "El Niño drought", "Wet monsoon"}
+    assert all(r["predicted"] > 0 for r in pub["outlook"]["Normal"][pub["transfer_model"]])
+    at = _app(ROLE_KPKM, reg, page_idx=2)
+    assert not at.exception

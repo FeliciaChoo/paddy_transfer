@@ -182,19 +182,36 @@ def render_benchmark_audit(D):
 # ------------------------------------------------------------------------------------------------
 # STEP 4 · Model Approval & Recommendation Check (Execute)
 # ------------------------------------------------------------------------------------------------
-def _published_block(auto, choice, target, serve_transfer):
-    """the 'published' block stored with a sign-off: which models the KPKM views may serve for this granary (labels only; no forecast rows are invented here)"""
-    tkey = choice.get("selected") if serve_transfer else None
-    ref = choice["reference"]
-    return {
-        "target": target,
-        "transfer_model": tkey,
-        "transfer_label": LABELS.get(tkey, tkey) if tkey else None,
-        "baseline_model": ref,
-        "baseline_label": LABELS.get(ref, ref),
-        "unit": "kg/ha",
-        "features": list(getattr(auto["bundle"], "features", [])),
-    }
+def _evidence(auto, choice, gate_passed, method):
+    """the evidence stored with a sign-off (what the Registry contents table and the KPKM views quote), in kg/ha, taken from the Step 3 results"""
+    kg = float(getattr(auto["bundle"], "y_to_kg", 1.0))
+    t = choice["table"]
+    row = t[t["method"] == method]
+    donors = auto["donor_table"]
+    ev = dict(gate_passed=bool(gate_passed), model_key=method, model_label=LABELS.get(method, method) if method else "none",
+              source=", ".join(donors[donors["Status"] == "Included"]["Donor Granary"]), validation="forward validation (expanding window)",
+              token=choice.get("token"), automl_scores=auto["scores"])
+    if len(row):
+        r = row.iloc[0]
+        ev.update(delta_nt=float(r["Delta_NT (RMSE)"]), delta_nt_kg_ha=float(r["Delta_NT (RMSE)"]) * kg, baseline=r["Delta_NT baseline"],
+                  domain_ok=bool(r["Criterion 1 domain relevance"]), seasons_compared=int(r["seasons compared"]),
+                  statistically_supported=bool(r["statistically supported"]),
+                  rmse_common_kg_ha={k: float(v) * kg for k, v in r["RMSE vs all baselines (common seasons)"].items()})
+    return ev
+
+
+def _record_decision(D, auto, choice, target, decision, who, notes, gate_passed):
+    """record a sign-off together with the real forecast tables (backtest, nowcast, 2025-2028 outlook per scenario) the KPKM pages read; nothing is recorded if they cannot be built"""
+    from acts_transfer.publish import build_published_from_automl
+    ds, dy = D.DATA_DIR / "transfer_stage_dataset.csv", D.DATA_DIR / "transfer_yield_dataset.csv"
+    Y = pd.read_csv(str(ds if ds.exists() else dy))
+    method = choice["selected"] if decision == "APPROVE" else (choice.get("best_transfer") or choice["selected"])
+    try:
+        published = build_published_from_automl(auto, Y, target)
+        return gov.record_signoff(target, decision, who or "Validator", notes, _evidence(auto, choice, gate_passed, method), published)
+    except Exception as ex:      # a sign-off without forecast tables would show a verified badge over a baseline forecast, so nothing is saved
+        st.error(f"The sign-off was not recorded because the forecast tables could not be built: {ex}")
+        return None
 
 
 def render_validator_signoff(D):
@@ -232,15 +249,8 @@ def render_validator_signoff(D):
             disabled=not gate_passed,
             width="stretch",
         ):
-            payload = {
-                "gate_passed": True,
-                "transfer_model": choice["selected"],
-                "baseline_model": choice["reference"],
-                "delta_nt": d_nt,
-                "automl_scores": scores,
-                "outlook": {"Normal": 4.5, "El Niño drought": 4.1, "Wet monsoon": 4.3},
-            }
-            gov.record_signoff(target, "APPROVE", validator_name or "Validator", notes, payload, _published_block(auto, choice, target, True))
+            if _record_decision(D, auto, choice, target, "APPROVE", validator_name, notes, True) is None:
+                return
             st.success(f"Approved **{LABELS.get(choice['selected'], choice['selected'])}** for **{target}**.")
             st.rerun()
 
@@ -250,13 +260,7 @@ def render_validator_signoff(D):
             key="so_reject",
             width="stretch",
         ):
-            payload = {
-                "gate_passed": gate_passed,
-                "transfer_model": choice.get("best_transfer"),
-                "baseline_model": choice["reference"],
-                "delta_nt": d_nt,
-                "automl_scores": scores,
-            }
-            gov.record_signoff(target, "REJECT", validator_name or "Validator", notes, payload, _published_block(auto, choice, target, False))
+            if _record_decision(D, auto, choice, target, "REJECT", validator_name, notes, gate_passed) is None:
+                return
             st.warning(f"Recorded Local Baseline Fallback (**{LABELS.get(choice['reference'], choice['reference'])}**) for **{target}**.")
             st.rerun()

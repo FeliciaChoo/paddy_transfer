@@ -29,7 +29,7 @@ def run_full_automl_for_granary(
     data_dir = Path(data_dir_str)
     stage_p = data_dir / "transfer_stage_dataset.csv"
     yield_p = data_dir / "transfer_yield_dataset.csv"
-    series_p = data_dir / "ndvi_district_decade.csv"
+    series_p = data_dir / "transfer_decade_features.csv"
 
     Y = pd.read_csv(str(stage_p if stage_p.exists() else yield_p))
     F = pd.read_csv(str(series_p)) if series_p.exists() else pd.DataFrame()
@@ -97,7 +97,7 @@ def run_full_automl_for_granary(
     # assess() compares two Domains (source pool vs target); it does not take the harmonised bundle
     src_df = Y[Y["District"].isin(compatible_donors)].sort_values(["District", "Year"]).reset_index(drop=True)
     tgt_df = Y[Y["District"] == target].sort_values("Year").reset_index(drop=True)
-    qcol = "Optical_Valid_Fraction" if "Optical_Valid_Fraction" in Y.columns else None
+    qcol = "Optical_observed_pct" if "Optical_observed_pct" in Y.columns else None      # assess() reads this column as a PERCENT (0-100), not a 0-1 fraction
     src_dom = Domain("+".join(compatible_donors), src_df, list(used_feats), "Yield_kg_ha", "Year", {"Yield_kg_ha": "kg/ha"}, qcol, None, None, "District")
     tgt_dom = Domain(target, tgt_df, list(used_feats), "Yield_kg_ha", "Year", {"Yield_kg_ha": "kg/ha"}, qcol)
     asmt = assess(src_dom, tgt_dom, cfg)

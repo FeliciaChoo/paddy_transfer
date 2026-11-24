@@ -5,10 +5,13 @@
   outlook    2025-2028 per scenario (Normal, El Nino drought, Wet monsoon): the transfer forecast and the local baseline, each with a band that widens with the horizon
 The transfer rows are present only when the gate passed. Which of them the KPKM views show is decided at read time from the registry status, never here.
 """
+from types import SimpleNamespace
+
 import numpy as np
 import pandas as pd
 
 from . import predict as predmod
+from .config import Config
 from .methods import LABELS
 from .scenarios import SCENARIOS, scenario_inputs
 
@@ -62,3 +65,10 @@ def build_published(wf, Y, target, seasons=(2025, 2026, 2027, 2028)):
         out["outlook"][sc] = {k: v for k, v in table_for(inp).items()}
         out["scenario_shifts"][sc] = {k: float(v) for k, v in sh.items()}
     return out
+
+def build_published_from_automl(auto, Y, target, seasons=(2025, 2026, 2027, 2028), cfg=None):
+    """The same forecast tables as build_published(), for the AutoML step, which has no TransferWorkflow object.
+    build_published only reads a few attributes of the workflow; this supplies them from the AutoML result (bundle, both validation runs, model choice)."""
+    run = SimpleNamespace(choice=auto["choice"], bundle=auto["bundle"], results=auto["eval_results"], result=auto["eval_results"]["forward"], base="ridge",
+                          run_cfg=cfg or Config(), _finals={}, require_choice=lambda: None)
+    return build_published(run, Y, target, seasons)
