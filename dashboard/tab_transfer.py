@@ -182,6 +182,21 @@ def render_benchmark_audit(D):
 # ------------------------------------------------------------------------------------------------
 # STEP 4 · Model Approval & Recommendation Check (Execute)
 # ------------------------------------------------------------------------------------------------
+def _published_block(auto, choice, target, serve_transfer):
+    """the 'published' block stored with a sign-off: which models the KPKM views may serve for this granary (labels only; no forecast rows are invented here)"""
+    tkey = choice.get("selected") if serve_transfer else None
+    ref = choice["reference"]
+    return {
+        "target": target,
+        "transfer_model": tkey,
+        "transfer_label": LABELS.get(tkey, tkey) if tkey else None,
+        "baseline_model": ref,
+        "baseline_label": LABELS.get(ref, ref),
+        "unit": "kg/ha",
+        "features": list(getattr(auto["bundle"], "features", [])),
+    }
+
+
 def render_validator_signoff(D):
     target = st.session_state["granary"]
     auto = _get_automl_payload(D)
@@ -225,7 +240,7 @@ def render_validator_signoff(D):
                 "automl_scores": scores,
                 "outlook": {"Normal": 4.5, "El Niño drought": 4.1, "Wet monsoon": 4.3},
             }
-            gov.record_signoff(target, "APPROVE", validator_name or "Validator", notes, payload)
+            gov.record_signoff(target, "APPROVE", validator_name or "Validator", notes, payload, _published_block(auto, choice, target, True))
             st.success(f"Approved **{LABELS.get(choice['selected'], choice['selected'])}** for **{target}**.")
             st.rerun()
 
@@ -242,6 +257,6 @@ def render_validator_signoff(D):
                 "delta_nt": d_nt,
                 "automl_scores": scores,
             }
-            gov.record_signoff(target, "REJECT", validator_name or "Validator", notes, payload)
+            gov.record_signoff(target, "REJECT", validator_name or "Validator", notes, payload, _published_block(auto, choice, target, False))
             st.warning(f"Recorded Local Baseline Fallback (**{LABELS.get(choice['reference'], choice['reference'])}**) for **{target}**.")
             st.rerun()

@@ -7,7 +7,7 @@ import pandas as pd
 import streamlit as st
 
 from .assessment import assess
-from .config import Config
+from .config import Config, Domain
 from .evaluation import BASELINES, evaluate
 from .methods import LABELS
 from .modelchoice import choose
@@ -94,7 +94,13 @@ def run_full_automl_for_granary(
         target=target,
         feats=feats,
     )
-    asmt = assess(bundle, cfg)
+    # assess() compares two Domains (source pool vs target); it does not take the harmonised bundle
+    src_df = Y[Y["District"].isin(compatible_donors)].sort_values(["District", "Year"]).reset_index(drop=True)
+    tgt_df = Y[Y["District"] == target].sort_values("Year").reset_index(drop=True)
+    qcol = "Optical_Valid_Fraction" if "Optical_Valid_Fraction" in Y.columns else None
+    src_dom = Domain("+".join(compatible_donors), src_df, list(used_feats), "Yield_kg_ha", "Year", {"Yield_kg_ha": "kg/ha"}, qcol, None, None, "District")
+    tgt_dom = Domain(target, tgt_df, list(used_feats), "Yield_kg_ha", "Year", {"Yield_kg_ha": "kg/ha"}, qcol)
+    asmt = assess(src_dom, tgt_dom, cfg)
 
     candidate_methods = [
         m for m in (
