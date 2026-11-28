@@ -1,0 +1,3193 @@
+{
+  "meta": {
+    "created": "2026-11-27T23:36:25",
+    "seconds": 55.5,
+    "quick": false,
+    "bootstrap_draws": 2000,
+    "permutations": 500,
+    "seed": 0,
+    "tbase": "last",
+    "methods": [
+      "detrended_residual_transfer",
+      "granary_intercept_ridge",
+      "kmm_ridge",
+      "coral",
+      "two_stage_tradaboost_r2",
+      "delta_two_stage_tradaboost_r2",
+      "z_anomaly_transfer"
+    ],
+    "cv_strategy": "forward",
+    "source_time_safe": true,
+    "tolerances": {
+      "planting": 1.0,
+      "moisture": 0.04
+    },
+    "steps": {
+      "planting": -1.0,
+      "moisture": 0.05
+    },
+    "stress_definition": "most extreme 20% of seasons by |z| (within granary) in rainfall or temperature"
+  },
+  "data": {
+    "rows": 81,
+    "granaries": 9,
+    "years": [
+      2017,
+      2025
+    ],
+    "included": [
+      "IADA Barat Laut Selangor",
+      "IADA Kemasin Semerak",
+      "IADA Kerian",
+      "IADA Pulau Pinang",
+      "IADA Rompin",
+      "IADA Seberang Perak",
+      "KADA",
+      "KETARA",
+      "MADA"
+    ],
+    "excluded": [],
+    "held_out_seasons": 63,
+    "protocol_claimed": {
+      "panel_rows": 70,
+      "held_out_seasons": 59
+    },
+    "note": "the protocol's N = 70 / 59 do not match the project data; the real counts are above"
+  },
+  "domain_screen": [
+    {
+      "District": "IADA Barat Laut Selangor",
+      "median_auc": 0.6635210798816569,
+      "max_auc": 0.7836582840236688,
+      "donors_flagged": 0,
+      "n_donors": 8,
+      "compatible": true
+    },
+    {
+      "District": "IADA Kemasin Semerak",
+      "median_auc": 0.7749755917159764,
+      "max_auc": 0.8212440828402368,
+      "donors_flagged": 0,
+      "n_donors": 8,
+      "compatible": true
+    },
+    {
+      "District": "IADA Kerian",
+      "median_auc": 0.6699863165680473,
+      "max_auc": 0.7806116863905326,
+      "donors_flagged": 0,
+      "n_donors": 8,
+      "compatible": true
+    },
+    {
+      "District": "IADA Pulau Pinang",
+      "median_auc": 0.6707644230769232,
+      "max_auc": 0.8327566568047338,
+      "donors_flagged": 0,
+      "n_donors": 8,
+      "compatible": true
+    },
+    {
+      "District": "IADA Rompin",
+      "median_auc": 0.6477533284023669,
+      "max_auc": 0.8044615384615383,
+      "donors_flagged": 0,
+      "n_donors": 8,
+      "compatible": true
+    },
+    {
+      "District": "IADA Seberang Perak",
+      "median_auc": 0.788883875739645,
+      "max_auc": 0.8311664201183431,
+      "donors_flagged": 0,
+      "n_donors": 8,
+      "compatible": true
+    },
+    {
+      "District": "KADA",
+      "median_auc": 0.6351815828402367,
+      "max_auc": 0.7185747041420119,
+      "donors_flagged": 0,
+      "n_donors": 8,
+      "compatible": true
+    },
+    {
+      "District": "KETARA",
+      "median_auc": 0.7572311390532545,
+      "max_auc": 0.8118823964497042,
+      "donors_flagged": 0,
+      "n_donors": 8,
+      "compatible": true
+    },
+    {
+      "District": "MADA",
+      "median_auc": 0.6383354289940828,
+      "max_auc": 0.8079563609467456,
+      "donors_flagged": 0,
+      "n_donors": 8,
+      "compatible": true
+    }
+  ],
+  "leakage_audit": {
+    "n_folds": 63,
+    "source_time_safe": true,
+    "violations": []
+  },
+  "concordance": {
+    "n_seasons": 63,
+    "n_granaries": 9,
+    "both_levers": {
+      "n_concordant": 8,
+      "n_discordant": 55,
+      "share_concordant": 0.12698412698412698,
+      "raw_yield_kg_ha": {
+        "estimate": 145.125,
+        "ci_low": -85.91954365079407,
+        "ci_high": 366.05394704433456,
+        "n_valid_draws": 2000,
+        "n_group1": 8,
+        "n_group0": 55
+      },
+      "granary_adjusted_kg_ha": {
+        "estimate": 28.923520021644933,
+        "ci_low": -160.90181991436947,
+        "ci_high": 243.92499292338405,
+        "n_valid_draws": 2000,
+        "n_group1": 8,
+        "n_group0": 55
+      },
+      "weather_adjusted_kg_ha": {
+        "estimate": -44.780154522056705,
+        "ci_low": -220.42410587918653,
+        "ci_high": 202.43239841410397,
+        "n_valid_draws": 2000,
+        "n_group1": 8,
+        "n_group0": 55
+      },
+      "weather_adjusted_normal_years_kg_ha": {
+        "estimate": -161.7080740149923,
+        "ci_low": -628.4660454163761,
+        "ci_high": 477.0269482491992,
+        "n_valid_draws": 1988,
+        "n_group1": 5,
+        "n_group0": 33
+      },
+      "weather_adjusted_climate_stress_years_kg_ha": {
+        "estimate": 137.46855672977458,
+        "ci_low": -158.0166203856469,
+        "ci_high": 523.077085150261,
+        "n_valid_draws": 1958,
+        "n_group1": 3,
+        "n_group0": 22
+      }
+    },
+    "planting_only": {
+      "n_concordant": 27,
+      "n_discordant": 36,
+      "share_concordant": 0.42857142857142855,
+      "raw_yield_kg_ha": {
+        "estimate": 36.842592592593064,
+        "ci_low": -124.22181568271583,
+        "ci_high": 207.92284569597015,
+        "n_valid_draws": 2000,
+        "n_group1": 27,
+        "n_group0": 36
+      },
+      "granary_adjusted_kg_ha": {
+        "estimate": -172.7503417107584,
+        "ci_low": -362.213228501657,
+        "ci_high": 9.040995167557668,
+        "n_valid_draws": 2000,
+        "n_group1": 27,
+        "n_group0": 36
+      },
+      "weather_adjusted_kg_ha": {
+        "estimate": -205.9855333877288,
+        "ci_low": -395.11145510313486,
+        "ci_high": -19.12613291067837,
+        "n_valid_draws": 2000,
+        "n_group1": 27,
+        "n_group0": 36
+      },
+      "weather_adjusted_normal_years_kg_ha": {
+        "estimate": -140.39371094825887,
+        "ci_low": -596.719403193621,
+        "ci_high": 216.13104628093174,
+        "n_valid_draws": 2000,
+        "n_group1": 17,
+        "n_group0": 21
+      },
+      "weather_adjusted_climate_stress_years_kg_ha": {
+        "estimate": -327.9088665059219,
+        "ci_low": -568.4092187264565,
+        "ci_high": -54.15502822836445,
+        "n_valid_draws": 2000,
+        "n_group1": 10,
+        "n_group0": 15
+      }
+    },
+    "moisture_only": {
+      "n_concordant": 20,
+      "n_discordant": 43,
+      "share_concordant": 0.31746031746031744,
+      "raw_yield_kg_ha": {
+        "estimate": 39.73604651162805,
+        "ci_low": -176.03008983795172,
+        "ci_high": 227.9351453488372,
+        "n_valid_draws": 2000,
+        "n_group1": 20,
+        "n_group0": 43
+      },
+      "granary_adjusted_kg_ha": {
+        "estimate": 129.96794712070874,
+        "ci_low": -123.73467947037916,
+        "ci_high": 373.2195084227447,
+        "n_valid_draws": 2000,
+        "n_group1": 20,
+        "n_group0": 43
+      },
+      "weather_adjusted_kg_ha": {
+        "estimate": 109.32612694474274,
+        "ci_low": -127.28034461432904,
+        "ci_high": 336.4671959866899,
+        "n_valid_draws": 2000,
+        "n_group1": 20,
+        "n_group0": 43
+      },
+      "weather_adjusted_normal_years_kg_ha": {
+        "estimate": -144.02428232074675,
+        "ci_low": -348.817604136859,
+        "ci_high": 260.02106038742244,
+        "n_valid_draws": 2000,
+        "n_group1": 11,
+        "n_group0": 27
+      },
+      "weather_adjusted_climate_stress_years_kg_ha": {
+        "estimate": 482.53071697099347,
+        "ci_low": 84.85191325263042,
+        "ci_high": 836.1327546870311,
+        "n_valid_draws": 2000,
+        "n_group1": 9,
+        "n_group0": 16
+      }
+    },
+    "sensitivity_baseline_is_training_median": {
+      "n_concordant": 7,
+      "n_discordant": 56,
+      "weather_adjusted_kg_ha": {
+        "estimate": -219.1842605130668,
+        "ci_low": -484.78401241381806,
+        "ci_high": 280.82250689621634,
+        "n_valid_draws": 2000,
+        "n_group1": 7,
+        "n_group0": 56
+      }
+    },
+    "recommendation_applied_share": {
+      "planting": 0.8095238095238095,
+      "moisture": 0.9047619047619048
+    },
+    "interpretation": "Association in observational data, not a causal effect: management was not randomised. The recommendation is a small step from the last observed value, so 'concordant' mostly means 'management stayed near its recent level'."
+  },
+  "r_loss": {
+    "planting": {
+      "n_seasons": 63,
+      "mean_rloss_transfer_weighted": {
+        "estimate": 378235.0583775468,
+        "ci_low": 206647.95536083367,
+        "ci_high": 552434.7131335454,
+        "n_valid_draws": 2000
+      },
+      "median_rloss_transfer_weighted": 188735.59417396138,
+      "mean_rloss_target_only": {
+        "estimate": 1800648.1548539198,
+        "ci_low": 216705.5379704174,
+        "ci_high": 4737453.161482464,
+        "n_valid_draws": 2000
+      },
+      "median_rloss_target_only": 126900.55534126112,
+      "mean_rloss_source_only": {
+        "estimate": 477743.57815661194,
+        "ci_low": 212361.04246790087,
+        "ci_high": 787766.056597825,
+        "n_valid_draws": 2000
+      },
+      "median_rloss_source_only": 150758.23364012394,
+      "mean_rloss_no_effect (tau=0)": {
+        "estimate": 374334.705850647,
+        "ci_low": 190778.07390022097,
+        "ci_high": 571521.8695067185,
+        "n_valid_draws": 2000
+      },
+      "median_rloss_no_effect (tau=0)": 156732.00744656325,
+      "transfer_minus_target_only": {
+        "estimate": -1422413.0964763728,
+        "ci_low": -4334755.62168491,
+        "ci_high": 84161.7105956488,
+        "n_valid_draws": 2000
+      },
+      "median_paired_difference_vs_target_only": 707.1920054408838,
+      "seasons_where_transfer_has_lower_loss_than_target_only_pct": {
+        "estimate": 47.61904761904762,
+        "ci_low": 39.682539682539684,
+        "ci_high": 55.59523809523788,
+        "n_valid_draws": 2000,
+        "n": 63
+      },
+      "transfer_minus_source_only": {
+        "estimate": -99508.51977906513,
+        "ci_low": -261364.00182446957,
+        "ci_high": 5752.641779034316,
+        "n_valid_draws": 2000
+      },
+      "median_paired_difference_vs_source_only": 756.8838749263796,
+      "seasons_where_transfer_has_lower_loss_than_source_only_pct": {
+        "estimate": 42.857142857142854,
+        "ci_low": 28.571428571428573,
+        "ci_high": 55.55555555555556,
+        "n_valid_draws": 2000,
+        "n": 63
+      },
+      "transfer_minus_no_effect (tau=0)": {
+        "estimate": 3900.3525268997378,
+        "ci_low": -59871.528361595316,
+        "ci_high": 54549.42222158789,
+        "n_valid_draws": 2000
+      },
+      "median_paired_difference_vs_no_effect (tau=0)": 1239.4960186147655,
+      "seasons_where_transfer_has_lower_loss_than_no_effect (tau=0)_pct": {
+        "estimate": 46.03174603174603,
+        "ci_low": 36.507936507936506,
+        "ci_high": 57.142857142857146,
+        "n_valid_draws": 2000,
+        "n": 63
+      },
+      "share_target_only_fitted": 0.42857142857142855
+    },
+    "moisture": {
+      "n_seasons": 63,
+      "mean_rloss_transfer_weighted": {
+        "estimate": 433006.97632881644,
+        "ci_low": 233387.53913857305,
+        "ci_high": 657297.9752871542,
+        "n_valid_draws": 2000
+      },
+      "median_rloss_transfer_weighted": 136855.45981948765,
+      "mean_rloss_target_only": {
+        "estimate": 477592.25875709567,
+        "ci_low": 236000.28533231484,
+        "ci_high": 754494.8505031102,
+        "n_valid_draws": 2000
+      },
+      "median_rloss_target_only": 131005.97448192316,
+      "mean_rloss_source_only": {
+        "estimate": 380278.32069962064,
+        "ci_low": 209051.16696111238,
+        "ci_high": 574024.2495259098,
+        "n_valid_draws": 2000
+      },
+      "median_rloss_source_only": 143985.1477673547,
+      "mean_rloss_no_effect (tau=0)": {
+        "estimate": 389684.5946100071,
+        "ci_low": 187910.94482784937,
+        "ci_high": 613193.7269282225,
+        "n_valid_draws": 2000
+      },
+      "median_rloss_no_effect (tau=0)": 144483.0064287521,
+      "transfer_minus_target_only": {
+        "estimate": -44585.28242827926,
+        "ci_low": -153001.89108386575,
+        "ci_high": 72168.96357551575,
+        "n_valid_draws": 2000
+      },
+      "median_paired_difference_vs_target_only": -609.8385673521116,
+      "seasons_where_transfer_has_lower_loss_than_target_only_pct": {
+        "estimate": 53.96825396825397,
+        "ci_low": 47.61904761904762,
+        "ci_high": 61.904761904761905,
+        "n_valid_draws": 2000,
+        "n": 63
+      },
+      "transfer_minus_source_only": {
+        "estimate": 52728.65562919579,
+        "ci_low": 6091.362527569214,
+        "ci_high": 104157.21170872725,
+        "n_valid_draws": 2000
+      },
+      "median_paired_difference_vs_source_only": 10085.310376052468,
+      "seasons_where_transfer_has_lower_loss_than_source_only_pct": {
+        "estimate": 36.507936507936506,
+        "ci_low": 26.984126984126984,
+        "ci_high": 47.61904761904762,
+        "n_valid_draws": 2000,
+        "n": 63
+      },
+      "transfer_minus_no_effect (tau=0)": {
+        "estimate": 43322.3817188093,
+        "ci_low": -36928.962011855896,
+        "ci_high": 131974.60457129957,
+        "n_valid_draws": 2000
+      },
+      "median_paired_difference_vs_no_effect (tau=0)": 1008.0539079066438,
+      "seasons_where_transfer_has_lower_loss_than_no_effect (tau=0)_pct": {
+        "estimate": 49.20634920634921,
+        "ci_low": 41.26984126984127,
+        "ci_high": 57.142857142857146,
+        "n_valid_draws": 2000,
+        "n": 63
+      },
+      "share_target_only_fitted": 0.3968253968253968
+    },
+    "note": "The three effect estimators are scored with the same nuisance models, so only the effect estimate differs. The target-only estimator is fitted on 2-7 seasons and is often unfittable (then it equals the no-effect benchmark) or extrapolates wildly, so mean differences against it are driven by a few seasons: read the medians and win rates, and treat the no-effect benchmark as the meaningful comparison. Negative difference = transfer is better."
+  },
+  "refutation": {
+    "planting": {
+      "lever": "planting",
+      "treatment": "Schedule_Slip_Decades",
+      "n": 81,
+      "tau_per_unit": -27.269585670803384,
+      "placebo": {
+        "n_perm": 500,
+        "mean": -1.7375370536725077,
+        "sd": 20.789945502885335,
+        "ci95_low": -41.70291647378409,
+        "ci95_high": 37.619785734237354,
+        "interval_contains_zero": true,
+        "p_value_two_sided": 0.20359281437125748,
+        "note": "the placebo is centred on zero by construction; the informative number is whether the real estimate stands out from it (p_value)"
+      },
+      "random_common_cause": {
+        "mean": -27.492008917584364,
+        "sd": 3.079737935395901,
+        "max_abs_shift": 12.662072551172056,
+        "stable": false
+      },
+      "subset_80pct_granaries": {
+        "mean": -21.227219100269878,
+        "min": -56.01729826625437,
+        "max": 51.03543736651521,
+        "same_sign": false
+      }
+    },
+    "moisture": {
+      "lever": "moisture",
+      "treatment": "C1_LSWI_rep",
+      "n": 79,
+      "tau_per_unit": 215.96353720954318,
+      "placebo": {
+        "n_perm": 500,
+        "mean": 35.61353165113626,
+        "sd": 599.8961822865791,
+        "ci95_low": -1173.20008401203,
+        "ci95_high": 1165.4851297803416,
+        "interval_contains_zero": true,
+        "p_value_two_sided": 0.7045908183632734,
+        "note": "the placebo is centred on zero by construction; the informative number is whether the real estimate stands out from it (p_value)"
+      },
+      "random_common_cause": {
+        "mean": 220.3948592129901,
+        "sd": 154.29226283797615,
+        "max_abs_shift": 600.4378895257191,
+        "stable": false
+      },
+      "subset_80pct_granaries": {
+        "mean": 855.715467567163,
+        "min": -852.4491801682244,
+        "max": 2079.118949835059,
+        "same_sign": false
+      }
+    }
+  },
+  "legacy_dml": [
+    {
+      "lever": "planting",
+      "tau": -4.208096995528325,
+      "se": 19.915382189170327,
+      "n_overlap": 10,
+      "confounders": [
+        "Soil_pH",
+        "C1_Tmax_C_rep"
+      ],
+      "flags": {
+        "Random Common Cause": true,
+        "Placebo Treatment": true,
+        "Data Subset (80%)": false,
+        "Unobserved Confounder": true
+      },
+      "note": "confounders exclude rainfall; the placebo flag passes if |placebo effect| < max(|tau|, 150 kg/ha)"
+    },
+    {
+      "lever": "moisture",
+      "tau": -506.0204075734434,
+      "se": 962.999572481603,
+      "n_overlap": 61,
+      "confounders": [
+        "Soil_pH",
+        "C1_Tmax_C_rep"
+      ],
+      "flags": {
+        "Random Common Cause": false,
+        "Placebo Treatment": false,
+        "Data Subset (80%)": true,
+        "Unobserved Confounder": true
+      },
+      "note": "confounders exclude rainfall; the placebo flag passes if |placebo effect| < max(|tau|, 150 kg/ha)"
+    }
+  ],
+  "gazetted_window": {
+    "IADA Barat Laut Selangor": {
+      "window": [
+        1,
+        12
+      ],
+      "median_greenup_decade": 7.0,
+      "share_of_seasons_inside_window": 1.0
+    },
+    "IADA Kemasin Semerak": {
+      "window": [
+        10,
+        15
+      ],
+      "median_greenup_decade": 5.0,
+      "share_of_seasons_inside_window": 0.0
+    },
+    "IADA Kerian": {
+      "window": [
+        7,
+        12
+      ],
+      "median_greenup_decade": 11.0,
+      "share_of_seasons_inside_window": 0.7777777777777778
+    },
+    "IADA Pulau Pinang": {
+      "window": [
+        7,
+        12
+      ],
+      "median_greenup_decade": 13.0,
+      "share_of_seasons_inside_window": 0.3333333333333333
+    },
+    "IADA Rompin": {
+      "window": [
+        10,
+        15
+      ],
+      "median_greenup_decade": 5.0,
+      "share_of_seasons_inside_window": 0.0
+    },
+    "IADA Seberang Perak": {
+      "window": [
+        7,
+        12
+      ],
+      "median_greenup_decade": 6.0,
+      "share_of_seasons_inside_window": 0.3333333333333333
+    },
+    "KADA": {
+      "window": [
+        10,
+        15
+      ],
+      "median_greenup_decade": 5.0,
+      "share_of_seasons_inside_window": 0.0
+    },
+    "KETARA": {
+      "window": [
+        13,
+        18
+      ],
+      "median_greenup_decade": 4.0,
+      "share_of_seasons_inside_window": 0.0
+    },
+    "MADA": {
+      "window": [
+        7,
+        12
+      ],
+      "median_greenup_decade": 15.0,
+      "share_of_seasons_inside_window": 0.0
+    }
+  },
+  "pooled_forecast_gains": {
+    "detrended_residual_transfer": {
+      "persistence": {
+        "all": {
+          "rmse_gain_kg_ha": {
+            "estimate": -82.8355906213331,
+            "ci_low": -124.2394088052622,
+            "ci_high": -40.368081259276266,
+            "n_valid_draws": 2000,
+            "n": 63
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -57.09770474654215,
+            "ci_low": -101.71689249153701,
+            "ci_high": -21.16355220715707,
+            "n_valid_draws": 2000,
+            "n": 63
+          },
+          "season_win_rate_pct": {
+            "estimate": 36.507936507936506,
+            "ci_low": 25.396825396825395,
+            "ci_high": 46.03174603174603,
+            "n_valid_draws": 2000,
+            "n": 63
+          }
+        },
+        "normal_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": -86.02079997681767,
+            "ci_low": -159.5851213818779,
+            "ci_high": -33.83775382318174,
+            "n_valid_draws": 2000,
+            "n": 38
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -52.29182870908187,
+            "ci_low": -115.63685921624175,
+            "ci_high": -4.813116127268378,
+            "n_valid_draws": 2000,
+            "n": 38
+          },
+          "season_win_rate_pct": {
+            "estimate": 44.73684210526316,
+            "ci_low": 30.76923076923077,
+            "ci_high": 58.333333333333336,
+            "n_valid_draws": 2000,
+            "n": 38
+          }
+        },
+        "climate_stress_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": -81.15322838298528,
+            "ci_low": -122.22987244973251,
+            "ci_high": -13.296482101386923,
+            "n_valid_draws": 2000,
+            "n": 25
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -64.40263632348177,
+            "ci_low": -105.21539260984511,
+            "ci_high": -13.84874614745547,
+            "n_valid_draws": 2000,
+            "n": 25
+          },
+          "season_win_rate_pct": {
+            "estimate": 24.0,
+            "ci_low": 12.5,
+            "ci_high": 36.8421052631579,
+            "n_valid_draws": 2000,
+            "n": 25
+          }
+        }
+      },
+      "target_only": {
+        "all": {
+          "rmse_gain_kg_ha": {
+            "estimate": 283.4074859055296,
+            "ci_low": 130.0338033247105,
+            "ci_high": 444.9790227405386,
+            "n_valid_draws": 2000,
+            "n": 63
+          },
+          "mae_gain_kg_ha": {
+            "estimate": 206.77128396387047,
+            "ci_low": 112.68574561244577,
+            "ci_high": 299.9209868332698,
+            "n_valid_draws": 2000,
+            "n": 63
+          },
+          "season_win_rate_pct": {
+            "estimate": 65.07936507936508,
+            "ci_low": 60.317460317460316,
+            "ci_high": 69.84126984126983,
+            "n_valid_draws": 2000,
+            "n": 63
+          }
+        },
+        "normal_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": 201.46064699889553,
+            "ci_low": 17.804892450931447,
+            "ci_high": 399.3212784779402,
+            "n_valid_draws": 2000,
+            "n": 38
+          },
+          "mae_gain_kg_ha": {
+            "estimate": 143.3156777358796,
+            "ci_low": 61.82273491012671,
+            "ci_high": 223.86206392034063,
+            "n_valid_draws": 2000,
+            "n": 38
+          },
+          "season_win_rate_pct": {
+            "estimate": 65.78947368421052,
+            "ci_low": 56.75675675675676,
+            "ci_high": 76.47058823529412,
+            "n_valid_draws": 2000,
+            "n": 38
+          }
+        },
+        "climate_stress_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": 380.8568528902822,
+            "ci_low": 132.21432629087147,
+            "ci_high": 740.8798350950511,
+            "n_valid_draws": 2000,
+            "n": 25
+          },
+          "mae_gain_kg_ha": {
+            "estimate": 303.223805430417,
+            "ci_low": 110.86823054761504,
+            "ci_high": 569.0854630050318,
+            "n_valid_draws": 2000,
+            "n": 25
+          },
+          "season_win_rate_pct": {
+            "estimate": 64.0,
+            "ci_low": 52.38095238095238,
+            "ci_high": 76.19047619047619,
+            "n_valid_draws": 2000,
+            "n": 25
+          }
+        }
+      },
+      "season_trend": {
+        "all": {
+          "rmse_gain_kg_ha": {
+            "estimate": 21.101265322493873,
+            "ci_low": -11.093637491526636,
+            "ci_high": 49.64767406122048,
+            "n_valid_draws": 2000,
+            "n": 54
+          },
+          "mae_gain_kg_ha": {
+            "estimate": 8.150774379533289,
+            "ci_low": -7.636471687328808,
+            "ci_high": 22.730648244353354,
+            "n_valid_draws": 2000,
+            "n": 54
+          },
+          "season_win_rate_pct": {
+            "estimate": 50.0,
+            "ci_low": 42.592592592592595,
+            "ci_high": 57.407407407407405,
+            "n_valid_draws": 2000,
+            "n": 54
+          }
+        },
+        "normal_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": -7.202467505928553,
+            "ci_low": -36.49316276772834,
+            "ci_high": 23.632250928710057,
+            "n_valid_draws": 2000,
+            "n": 34
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -1.262773524307704,
+            "ci_low": -15.02913154564341,
+            "ci_high": 13.64798516449901,
+            "n_valid_draws": 2000,
+            "n": 34
+          },
+          "season_win_rate_pct": {
+            "estimate": 50.0,
+            "ci_low": 40.0,
+            "ci_high": 61.111111111111114,
+            "n_valid_draws": 2000,
+            "n": 34
+          }
+        },
+        "climate_stress_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": 56.179827529678505,
+            "ci_low": -10.623604615403318,
+            "ci_high": 100.24677309249223,
+            "n_valid_draws": 2000,
+            "n": 20
+          },
+          "mae_gain_kg_ha": {
+            "estimate": 24.15380581606297,
+            "ci_low": -12.487133806117098,
+            "ci_high": 60.888959105993074,
+            "n_valid_draws": 2000,
+            "n": 20
+          },
+          "season_win_rate_pct": {
+            "estimate": 50.0,
+            "ci_low": 31.57894736842105,
+            "ci_high": 70.0,
+            "n_valid_draws": 2000,
+            "n": 20
+          }
+        }
+      },
+      "best_simple_per_granary": {
+        "all": {
+          "rmse_gain_kg_ha": {
+            "estimate": -84.8607077114741,
+            "ci_low": -123.45501098682269,
+            "ci_high": -42.76939342216993,
+            "n_valid_draws": 2000,
+            "n": 54
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -55.978354597836756,
+            "ci_low": -97.28456531717539,
+            "ci_high": -24.28342689182149,
+            "n_valid_draws": 2000,
+            "n": 54
+          },
+          "season_win_rate_pct": {
+            "estimate": 40.74074074074074,
+            "ci_low": 27.77777777777778,
+            "ci_high": 53.7037037037037,
+            "n_valid_draws": 2000,
+            "n": 54
+          }
+        },
+        "normal_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": -88.40410969398249,
+            "ci_low": -164.07226203222638,
+            "ci_high": -35.063044929496165,
+            "n_valid_draws": 2000,
+            "n": 34
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -44.492769905932846,
+            "ci_low": -118.21514769399363,
+            "ci_high": 12.586814839556375,
+            "n_valid_draws": 2000,
+            "n": 34
+          },
+          "season_win_rate_pct": {
+            "estimate": 47.05882352941177,
+            "ci_low": 26.470588235294116,
+            "ci_high": 67.56756756756756,
+            "n_valid_draws": 2000,
+            "n": 34
+          }
+        },
+        "climate_stress_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": -82.83686629616022,
+            "ci_low": -142.00568997263565,
+            "ci_high": -12.367657327252058,
+            "n_valid_draws": 2000,
+            "n": 20
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -75.50384857407352,
+            "ci_low": -151.2477621072083,
+            "ci_high": -11.312293647033751,
+            "n_valid_draws": 2000,
+            "n": 20
+          },
+          "season_win_rate_pct": {
+            "estimate": 30.0,
+            "ci_low": 17.3731884057971,
+            "ci_high": 42.10526315789474,
+            "n_valid_draws": 2000,
+            "n": 20
+          }
+        }
+      }
+    },
+    "granary_intercept_ridge": {
+      "persistence": {
+        "all": {
+          "rmse_gain_kg_ha": {
+            "estimate": -295.25468656573395,
+            "ci_low": -372.83541081755294,
+            "ci_high": -210.65005583005834,
+            "n_valid_draws": 2000,
+            "n": 63
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -292.0777052440071,
+            "ci_low": -370.2882242343336,
+            "ci_high": -212.16105450506745,
+            "n_valid_draws": 2000,
+            "n": 63
+          },
+          "season_win_rate_pct": {
+            "estimate": 25.396825396825395,
+            "ci_low": 15.873015873015873,
+            "ci_high": 34.92063492063492,
+            "n_valid_draws": 2000,
+            "n": 63
+          }
+        },
+        "normal_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": -230.7453779130725,
+            "ci_low": -345.7205598343022,
+            "ci_high": -119.69309400502836,
+            "n_valid_draws": 2000,
+            "n": 38
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -237.76702968444886,
+            "ci_low": -349.38874228999794,
+            "ci_high": -126.06552501845597,
+            "n_valid_draws": 2000,
+            "n": 38
+          },
+          "season_win_rate_pct": {
+            "estimate": 21.05263157894737,
+            "ci_low": 8.108108108108109,
+            "ci_high": 35.0,
+            "n_valid_draws": 2000,
+            "n": 38
+          }
+        },
+        "climate_stress_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": -373.5981382355484,
+            "ci_low": -585.9371102066136,
+            "ci_high": -196.30344499117507,
+            "n_valid_draws": 2000,
+            "n": 25
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -374.62993209453583,
+            "ci_low": -520.3011230318122,
+            "ci_high": -249.99116209995145,
+            "n_valid_draws": 2000,
+            "n": 25
+          },
+          "season_win_rate_pct": {
+            "estimate": 32.0,
+            "ci_low": 13.636363636363637,
+            "ci_high": 48.38709677419355,
+            "n_valid_draws": 2000,
+            "n": 25
+          }
+        }
+      },
+      "target_only": {
+        "all": {
+          "rmse_gain_kg_ha": {
+            "estimate": 70.98838996112875,
+            "ci_low": -75.02255069331348,
+            "ci_high": 231.6063901810984,
+            "n_valid_draws": 2000,
+            "n": 63
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -28.208716533594497,
+            "ci_low": -77.49008626325835,
+            "ci_high": 25.83352629082541,
+            "n_valid_draws": 2000,
+            "n": 63
+          },
+          "season_win_rate_pct": {
+            "estimate": 41.26984126984127,
+            "ci_low": 33.333333333333336,
+            "ci_high": 49.20634920634921,
+            "n_valid_draws": 2000,
+            "n": 63
+          }
+        },
+        "normal_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": 56.736069062640695,
+            "ci_low": -146.96505859460584,
+            "ci_high": 307.60789424047283,
+            "n_valid_draws": 2000,
+            "n": 38
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -42.159523239487385,
+            "ci_low": -143.46289526349133,
+            "ci_high": 69.4758314348888,
+            "n_valid_draws": 2000,
+            "n": 38
+          },
+          "season_win_rate_pct": {
+            "estimate": 42.10526315789474,
+            "ci_low": 28.571428571428573,
+            "ci_high": 56.76640926640921,
+            "n_valid_draws": 2000,
+            "n": 38
+          }
+        },
+        "climate_stress_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": 88.41194303771908,
+            "ci_low": -186.05783927338808,
+            "ci_high": 385.02504677457677,
+            "n_valid_draws": 2000,
+            "n": 25
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -7.003490340637086,
+            "ci_low": -192.9209882155542,
+            "ci_high": 217.07175432886172,
+            "n_valid_draws": 2000,
+            "n": 25
+          },
+          "season_win_rate_pct": {
+            "estimate": 40.0,
+            "ci_low": 22.22222222222222,
+            "ci_high": 62.5,
+            "n_valid_draws": 2000,
+            "n": 25
+          }
+        }
+      },
+      "season_trend": {
+        "all": {
+          "rmse_gain_kg_ha": {
+            "estimate": -35.0077313417554,
+            "ci_low": -170.2422574033835,
+            "ci_high": 79.84149917504193,
+            "n_valid_draws": 2000,
+            "n": 54
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -127.76690709512263,
+            "ci_low": -216.32721031691395,
+            "ci_high": -41.026297380945074,
+            "n_valid_draws": 2000,
+            "n": 54
+          },
+          "season_win_rate_pct": {
+            "estimate": 33.333333333333336,
+            "ci_low": 18.51851851851852,
+            "ci_high": 46.2962962962963,
+            "n_valid_draws": 2000,
+            "n": 54
+          }
+        },
+        "normal_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": -111.8702572691833,
+            "ci_low": -210.71491024235684,
+            "ci_high": -10.164449847175081,
+            "n_valid_draws": 2000,
+            "n": 34
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -155.96717401009943,
+            "ci_low": -248.18460024865632,
+            "ci_high": -66.56848995177295,
+            "n_valid_draws": 2000,
+            "n": 34
+          },
+          "season_win_rate_pct": {
+            "estimate": 35.294117647058826,
+            "ci_low": 16.214036617262426,
+            "ci_high": 55.181992337164694,
+            "n_valid_draws": 2000,
+            "n": 34
+          }
+        },
+        "climate_stress_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": 68.0011160802585,
+            "ci_low": -292.2864494886508,
+            "ci_high": 274.32018865621876,
+            "n_valid_draws": 2000,
+            "n": 20
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -79.82645333966212,
+            "ci_low": -251.61568357564258,
+            "ci_high": 78.79876259563912,
+            "n_valid_draws": 2000,
+            "n": 20
+          },
+          "season_win_rate_pct": {
+            "estimate": 30.0,
+            "ci_low": 10.526315789473685,
+            "ci_high": 50.0,
+            "n_valid_draws": 2000,
+            "n": 20
+          }
+        }
+      },
+      "best_simple_per_granary": {
+        "all": {
+          "rmse_gain_kg_ha": {
+            "estimate": -140.96970437572338,
+            "ci_low": -245.500534414941,
+            "ci_high": -60.40474032246448,
+            "n_valid_draws": 2000,
+            "n": 54
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -191.89603607249268,
+            "ci_low": -278.1227936437724,
+            "ci_high": -98.31625069831799,
+            "n_valid_draws": 2000,
+            "n": 54
+          },
+          "season_win_rate_pct": {
+            "estimate": 29.62962962962963,
+            "ci_low": 18.51851851851852,
+            "ci_high": 40.74074074074074,
+            "n_valid_draws": 2000,
+            "n": 54
+          }
+        },
+        "normal_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": -193.07189945723724,
+            "ci_low": -315.9273574292254,
+            "ci_high": -78.53436019888889,
+            "n_valid_draws": 2000,
+            "n": 34
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -199.19717039172457,
+            "ci_low": -328.6961356772698,
+            "ci_high": -73.73844303095922,
+            "n_valid_draws": 2000,
+            "n": 34
+          },
+          "season_win_rate_pct": {
+            "estimate": 26.470588235294116,
+            "ci_low": 11.428571428571429,
+            "ci_high": 41.935483870967744,
+            "n_valid_draws": 2000,
+            "n": 34
+          }
+        },
+        "climate_stress_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": -71.01557774558023,
+            "ci_low": -358.78193498706,
+            "ci_high": 82.04227528428916,
+            "n_valid_draws": 2000,
+            "n": 20
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -179.4841077297986,
+            "ci_low": -335.11056601062563,
+            "ci_high": -48.779152555366295,
+            "n_valid_draws": 2000,
+            "n": 20
+          },
+          "season_win_rate_pct": {
+            "estimate": 35.0,
+            "ci_low": 13.312500000000002,
+            "ci_high": 52.38095238095238,
+            "n_valid_draws": 2000,
+            "n": 20
+          }
+        }
+      }
+    },
+    "kmm_ridge": {
+      "persistence": {
+        "all": {
+          "rmse_gain_kg_ha": {
+            "estimate": -815.2391615168922,
+            "ci_low": -1020.0615760220577,
+            "ci_high": -578.0156161273824,
+            "n_valid_draws": 2000,
+            "n": 63
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -602.8749772671439,
+            "ci_low": -830.2822255732557,
+            "ci_high": -358.360450063116,
+            "n_valid_draws": 2000,
+            "n": 63
+          },
+          "season_win_rate_pct": {
+            "estimate": 28.571428571428573,
+            "ci_low": 15.873015873015873,
+            "ci_high": 42.857142857142854,
+            "n_valid_draws": 2000,
+            "n": 63
+          }
+        },
+        "normal_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": -607.7107981284048,
+            "ci_low": -871.0580481938541,
+            "ci_high": -240.06768879592505,
+            "n_valid_draws": 2000,
+            "n": 38
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -418.7026082193024,
+            "ci_low": -671.2736483251966,
+            "ci_high": -114.8184854827561,
+            "n_valid_draws": 2000,
+            "n": 38
+          },
+          "season_win_rate_pct": {
+            "estimate": 28.94736842105263,
+            "ci_low": 13.513513513513514,
+            "ci_high": 47.22222222222222,
+            "n_valid_draws": 2000,
+            "n": 38
+          }
+        },
+        "climate_stress_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": -1058.9912775818166,
+            "ci_low": -1372.41700549654,
+            "ci_high": -780.0761929818732,
+            "n_valid_draws": 2000,
+            "n": 25
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -882.8169782198629,
+            "ci_low": -1173.9075407093987,
+            "ci_high": -624.9968186052038,
+            "n_valid_draws": 2000,
+            "n": 25
+          },
+          "season_win_rate_pct": {
+            "estimate": 28.0,
+            "ci_low": 12.0,
+            "ci_high": 44.44444444444444,
+            "n_valid_draws": 2000,
+            "n": 25
+          }
+        }
+      },
+      "target_only": {
+        "all": {
+          "rmse_gain_kg_ha": {
+            "estimate": -448.99608499002954,
+            "ci_low": -681.0698585987707,
+            "ci_high": -193.183867553072,
+            "n_valid_draws": 2000,
+            "n": 63
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -339.00598855673127,
+            "ci_low": -579.0829737815981,
+            "ci_high": -97.70426841427529,
+            "n_valid_draws": 2000,
+            "n": 63
+          },
+          "season_win_rate_pct": {
+            "estimate": 39.682539682539684,
+            "ci_low": 26.984126984126984,
+            "ci_high": 53.96825396825397,
+            "n_valid_draws": 2000,
+            "n": 63
+          }
+        },
+        "normal_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": -320.2293511526916,
+            "ci_low": -592.0535380634428,
+            "ci_high": -47.21016835910739,
+            "n_valid_draws": 2000,
+            "n": 38
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -223.09510177434095,
+            "ci_low": -439.1327824184095,
+            "ci_high": 45.6155945127419,
+            "n_valid_draws": 2000,
+            "n": 38
+          },
+          "season_win_rate_pct": {
+            "estimate": 47.36842105263158,
+            "ci_low": 31.70731707317073,
+            "ci_high": 66.66666666666667,
+            "n_valid_draws": 2000,
+            "n": 38
+          }
+        },
+        "climate_stress_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": -596.981196308549,
+            "ci_low": -959.6511680754369,
+            "ci_high": -183.06183386113827,
+            "n_valid_draws": 2000,
+            "n": 25
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -515.1905364659642,
+            "ci_low": -865.7070254264767,
+            "ci_high": -140.97071777115582,
+            "n_valid_draws": 2000,
+            "n": 25
+          },
+          "season_win_rate_pct": {
+            "estimate": 28.0,
+            "ci_low": 10.714285714285714,
+            "ci_high": 47.61904761904762,
+            "n_valid_draws": 2000,
+            "n": 25
+          }
+        }
+      },
+      "season_trend": {
+        "all": {
+          "rmse_gain_kg_ha": {
+            "estimate": -468.878249108869,
+            "ci_low": -750.8049346801656,
+            "ci_high": -159.7800876012876,
+            "n_valid_draws": 2000,
+            "n": 54
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -377.6672000105351,
+            "ci_low": -630.7391729898242,
+            "ci_high": -98.26423745666362,
+            "n_valid_draws": 2000,
+            "n": 54
+          },
+          "season_win_rate_pct": {
+            "estimate": 33.333333333333336,
+            "ci_low": 20.324074074074076,
+            "ci_high": 48.148148148148145,
+            "n_valid_draws": 2000,
+            "n": 54
+          }
+        },
+        "normal_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": -505.0149934515433,
+            "ci_low": -786.3915812452072,
+            "ci_high": -90.74160415286197,
+            "n_valid_draws": 2000,
+            "n": 34
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -342.8093793567862,
+            "ci_low": -589.4736653661448,
+            "ci_high": -25.73259394804523,
+            "n_valid_draws": 2000,
+            "n": 34
+          },
+          "season_win_rate_pct": {
+            "estimate": 38.23529411764706,
+            "ci_low": 21.05263157894737,
+            "ci_high": 61.29032258064516,
+            "n_valid_draws": 2000,
+            "n": 34
+          }
+        },
+        "climate_stress_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": -429.10349777552165,
+            "ci_low": -830.5302285622324,
+            "ci_high": -124.80299249688298,
+            "n_valid_draws": 2000,
+            "n": 20
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -436.9254951219081,
+            "ci_low": -777.4972394596203,
+            "ci_high": -115.23374102636308,
+            "n_valid_draws": 2000,
+            "n": 20
+          },
+          "season_win_rate_pct": {
+            "estimate": 25.0,
+            "ci_low": 6.656250000000001,
+            "ci_high": 39.13431677018632,
+            "n_valid_draws": 2000,
+            "n": 20
+          }
+        }
+      },
+      "best_simple_per_granary": {
+        "all": {
+          "rmse_gain_kg_ha": {
+            "estimate": -574.840222142837,
+            "ci_low": -824.2138303463552,
+            "ci_high": -297.94017134821183,
+            "n_valid_draws": 2000,
+            "n": 54
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -441.79632898790516,
+            "ci_low": -683.0855463240055,
+            "ci_high": -181.64109619140822,
+            "n_valid_draws": 2000,
+            "n": 54
+          },
+          "season_win_rate_pct": {
+            "estimate": 29.62962962962963,
+            "ci_low": 16.666666666666668,
+            "ci_high": 44.44444444444444,
+            "n_valid_draws": 2000,
+            "n": 54
+          }
+        },
+        "normal_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": -586.2166356395973,
+            "ci_low": -848.7752279350979,
+            "ci_high": -211.32796600951036,
+            "n_valid_draws": 2000,
+            "n": 34
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -386.03937573841137,
+            "ci_low": -618.0847991326629,
+            "ci_high": -92.8629591778481,
+            "n_valid_draws": 2000,
+            "n": 34
+          },
+          "season_win_rate_pct": {
+            "estimate": 29.41176470588235,
+            "ci_low": 13.88888888888889,
+            "ci_high": 46.875,
+            "n_valid_draws": 2000,
+            "n": 34
+          }
+        },
+        "climate_stress_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": -568.1201916013604,
+            "ci_low": -914.8229168588457,
+            "ci_high": -311.6529909129449,
+            "n_valid_draws": 2000,
+            "n": 20
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -536.5831495120447,
+            "ci_low": -866.214672037501,
+            "ci_high": -224.7721474724193,
+            "n_valid_draws": 2000,
+            "n": 20
+          },
+          "season_win_rate_pct": {
+            "estimate": 30.0,
+            "ci_low": 6.25,
+            "ci_high": 50.0,
+            "n_valid_draws": 2000,
+            "n": 20
+          }
+        }
+      }
+    },
+    "coral": {
+      "persistence": {
+        "all": {
+          "rmse_gain_kg_ha": {
+            "estimate": -570.648023422136,
+            "ci_low": -748.1232267346256,
+            "ci_high": -400.4507904335611,
+            "n_valid_draws": 2000,
+            "n": 63
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -425.5883145939498,
+            "ci_low": -590.7878497963038,
+            "ci_high": -257.3466698439528,
+            "n_valid_draws": 2000,
+            "n": 63
+          },
+          "season_win_rate_pct": {
+            "estimate": 31.746031746031747,
+            "ci_low": 22.22222222222222,
+            "ci_high": 44.44444444444444,
+            "n_valid_draws": 2000,
+            "n": 63
+          }
+        },
+        "normal_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": -424.1870900069962,
+            "ci_low": -607.4865458847798,
+            "ci_high": -179.04119190128714,
+            "n_valid_draws": 2000,
+            "n": 38
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -281.98376472526377,
+            "ci_low": -471.3807929652356,
+            "ci_high": -80.86624103805967,
+            "n_valid_draws": 2000,
+            "n": 38
+          },
+          "season_win_rate_pct": {
+            "estimate": 34.21052631578947,
+            "ci_low": 24.390243902439025,
+            "ci_high": 48.484848484848484,
+            "n_valid_draws": 2000,
+            "n": 38
+          }
+        },
+        "climate_stress_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": -743.0625163431142,
+            "ci_low": -1033.1588061431853,
+            "ci_high": -547.4697644396525,
+            "n_valid_draws": 2000,
+            "n": 25
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -643.8672303943526,
+            "ci_low": -885.0947613210533,
+            "ci_high": -441.53811637354767,
+            "n_valid_draws": 2000,
+            "n": 25
+          },
+          "season_win_rate_pct": {
+            "estimate": 28.0,
+            "ci_low": 9.523809523809524,
+            "ci_high": 44.44444444444444,
+            "n_valid_draws": 2000,
+            "n": 25
+          }
+        }
+      },
+      "target_only": {
+        "all": {
+          "rmse_gain_kg_ha": {
+            "estimate": -204.40494689527338,
+            "ci_low": -336.1463322481909,
+            "ci_high": -66.41324600494323,
+            "n_valid_draws": 2000,
+            "n": 63
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -161.71932588353718,
+            "ci_low": -313.74145689400973,
+            "ci_high": 0.9978424473323964,
+            "n_valid_draws": 2000,
+            "n": 63
+          },
+          "season_win_rate_pct": {
+            "estimate": 49.20634920634921,
+            "ci_low": 36.507936507936506,
+            "ci_high": 61.904761904761905,
+            "n_valid_draws": 2000,
+            "n": 63
+          }
+        },
+        "normal_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": -136.705643031283,
+            "ci_low": -360.6357506516827,
+            "ci_high": 82.75287427436005,
+            "n_valid_draws": 2000,
+            "n": 38
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -86.3762582803023,
+            "ci_low": -247.99906631927738,
+            "ci_high": 111.97048042521305,
+            "n_valid_draws": 2000,
+            "n": 38
+          },
+          "season_win_rate_pct": {
+            "estimate": 60.526315789473685,
+            "ci_low": 45.23809523809524,
+            "ci_high": 77.77777777777777,
+            "n_valid_draws": 2000,
+            "n": 38
+          }
+        },
+        "climate_stress_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": -281.05243506984675,
+            "ci_low": -505.16787161902477,
+            "ci_high": -76.37048045573977,
+            "n_valid_draws": 2000,
+            "n": 25
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -276.24078864045396,
+            "ci_low": -525.7446839716764,
+            "ci_high": -41.97687324192566,
+            "n_valid_draws": 2000,
+            "n": 25
+          },
+          "season_win_rate_pct": {
+            "estimate": 32.0,
+            "ci_low": 16.666666666666668,
+            "ci_high": 46.15384615384615,
+            "n_valid_draws": 2000,
+            "n": 25
+          }
+        }
+      },
+      "season_trend": {
+        "all": {
+          "rmse_gain_kg_ha": {
+            "estimate": -273.1676843104992,
+            "ci_low": -580.8207765049433,
+            "ci_high": 64.06330971752443,
+            "n_valid_draws": 2000,
+            "n": 54
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -219.4828337123647,
+            "ci_low": -456.2351880971562,
+            "ci_high": 20.463574898460767,
+            "n_valid_draws": 2000,
+            "n": 54
+          },
+          "season_win_rate_pct": {
+            "estimate": 46.2962962962963,
+            "ci_low": 35.18518518518518,
+            "ci_high": 57.407407407407405,
+            "n_valid_draws": 2000,
+            "n": 54
+          }
+        },
+        "normal_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": -299.5996009124599,
+            "ci_low": -509.66446812078436,
+            "ci_high": 9.79592695338576,
+            "n_valid_draws": 2000,
+            "n": 34
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -186.68978490285934,
+            "ci_low": -404.92983129115987,
+            "ci_high": 49.8223054694059,
+            "n_valid_draws": 2000,
+            "n": 34
+          },
+          "season_win_rate_pct": {
+            "estimate": 50.0,
+            "ci_low": 42.10526315789474,
+            "ci_high": 60.0,
+            "n_valid_draws": 2000,
+            "n": 34
+          }
+        },
+        "climate_stress_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": -245.51114797207936,
+            "ci_low": -842.329201926859,
+            "ci_high": 213.27202723386728,
+            "n_valid_draws": 2000,
+            "n": 20
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -275.2310166885242,
+            "ci_low": -694.8806775022825,
+            "ci_high": 81.10921934413953,
+            "n_valid_draws": 2000,
+            "n": 20
+          },
+          "season_win_rate_pct": {
+            "estimate": 40.0,
+            "ci_low": 19.976190476190478,
+            "ci_high": 58.333333333333336,
+            "n_valid_draws": 2000,
+            "n": 20
+          }
+        }
+      },
+      "best_simple_per_granary": {
+        "all": {
+          "rmse_gain_kg_ha": {
+            "estimate": -379.1296573444672,
+            "ci_low": -660.6950262009565,
+            "ci_high": -71.10760593154022,
+            "n_valid_draws": 2000,
+            "n": 54
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -283.61196268973475,
+            "ci_low": -506.77787309794115,
+            "ci_high": -64.53893590847986,
+            "n_valid_draws": 2000,
+            "n": 54
+          },
+          "season_win_rate_pct": {
+            "estimate": 40.74074074074074,
+            "ci_low": 25.925925925925927,
+            "ci_high": 57.45370370370345,
+            "n_valid_draws": 2000,
+            "n": 54
+          }
+        },
+        "normal_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": -380.80124310051383,
+            "ci_low": -604.4483801223762,
+            "ci_high": -60.10792676718571,
+            "n_valid_draws": 2000,
+            "n": 34
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -229.9197812844845,
+            "ci_low": -448.6137225245182,
+            "ci_high": 11.484081067040304,
+            "n_valid_draws": 2000,
+            "n": 34
+          },
+          "season_win_rate_pct": {
+            "estimate": 44.11764705882353,
+            "ci_low": 28.571428571428573,
+            "ci_high": 66.66666666666667,
+            "n_valid_draws": 2000,
+            "n": 34
+          }
+        },
+        "climate_stress_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": -384.5278417979181,
+            "ci_low": -860.7252049408143,
+            "ci_high": 12.829674915292417,
+            "n_valid_draws": 2000,
+            "n": 20
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -374.8886710786607,
+            "ci_low": -740.5260640802621,
+            "ci_high": -50.520843956995876,
+            "n_valid_draws": 2000,
+            "n": 20
+          },
+          "season_win_rate_pct": {
+            "estimate": 35.0,
+            "ci_low": 11.764705882352942,
+            "ci_high": 55.55555555555556,
+            "n_valid_draws": 2000,
+            "n": 20
+          }
+        }
+      }
+    },
+    "two_stage_tradaboost_r2": {
+      "persistence": {
+        "all": {
+          "rmse_gain_kg_ha": {
+            "estimate": -309.74054378022623,
+            "ci_low": -388.6958767747217,
+            "ci_high": -234.5360244502432,
+            "n_valid_draws": 2000,
+            "n": 63
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -250.721279903996,
+            "ci_low": -342.1119092504258,
+            "ci_high": -166.36271192822522,
+            "n_valid_draws": 2000,
+            "n": 63
+          },
+          "season_win_rate_pct": {
+            "estimate": 31.746031746031747,
+            "ci_low": 20.634920634920636,
+            "ci_high": 42.857142857142854,
+            "n_valid_draws": 2000,
+            "n": 63
+          }
+        },
+        "normal_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": -218.15224601088335,
+            "ci_low": -291.01572744345793,
+            "ci_high": -114.81748079773203,
+            "n_valid_draws": 2000,
+            "n": 38
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -182.37028385800357,
+            "ci_low": -265.5066031005175,
+            "ci_high": -93.73123722059375,
+            "n_valid_draws": 2000,
+            "n": 38
+          },
+          "season_win_rate_pct": {
+            "estimate": 31.57894736842105,
+            "ci_low": 17.647058823529413,
+            "ci_high": 45.945945945945944,
+            "n_valid_draws": 2000,
+            "n": 38
+          }
+        },
+        "climate_stress_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": -415.912040317215,
+            "ci_low": -617.4409773033664,
+            "ci_high": -263.3214300364768,
+            "n_valid_draws": 2000,
+            "n": 25
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -354.6147938939045,
+            "ci_low": -533.6978262728234,
+            "ci_high": -200.52850572838267,
+            "n_valid_draws": 2000,
+            "n": 25
+          },
+          "season_win_rate_pct": {
+            "estimate": 32.0,
+            "ci_low": 13.043478260869565,
+            "ci_high": 50.0,
+            "n_valid_draws": 2000,
+            "n": 25
+          }
+        }
+      },
+      "target_only": {
+        "all": {
+          "rmse_gain_kg_ha": {
+            "estimate": 56.50253274663646,
+            "ci_low": -115.41105279507553,
+            "ci_high": 220.0788247871377,
+            "n_valid_draws": 2000,
+            "n": 63
+          },
+          "mae_gain_kg_ha": {
+            "estimate": 13.147708806416631,
+            "ci_low": -125.17434073492007,
+            "ci_high": 144.48581376175852,
+            "n_valid_draws": 2000,
+            "n": 63
+          },
+          "season_win_rate_pct": {
+            "estimate": 53.96825396825397,
+            "ci_low": 41.26984126984127,
+            "ci_high": 65.07936507936508,
+            "n_valid_draws": 2000,
+            "n": 63
+          }
+        },
+        "normal_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": 69.32920096482985,
+            "ci_low": -117.98746424893963,
+            "ci_high": 235.5377826277048,
+            "n_valid_draws": 2000,
+            "n": 38
+          },
+          "mae_gain_kg_ha": {
+            "estimate": 13.237222586957898,
+            "ci_low": -61.63507204953397,
+            "ci_high": 91.09868246946436,
+            "n_valid_draws": 2000,
+            "n": 38
+          },
+          "season_win_rate_pct": {
+            "estimate": 60.526315789473685,
+            "ci_low": 47.05882352941177,
+            "ci_high": 75.0,
+            "n_valid_draws": 2000,
+            "n": 38
+          }
+        },
+        "climate_stress_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": 46.0980409560525,
+            "ci_low": -279.24665606013207,
+            "ci_high": 446.7648197669854,
+            "n_valid_draws": 2000,
+            "n": 25
+          },
+          "mae_gain_kg_ha": {
+            "estimate": 13.011647859994241,
+            "ci_low": -278.48840018054847,
+            "ci_high": 353.7796267477974,
+            "n_valid_draws": 2000,
+            "n": 25
+          },
+          "season_win_rate_pct": {
+            "estimate": 44.0,
+            "ci_low": 25.925925925925927,
+            "ci_high": 65.0,
+            "n_valid_draws": 2000,
+            "n": 25
+          }
+        }
+      },
+      "season_trend": {
+        "all": {
+          "rmse_gain_kg_ha": {
+            "estimate": -2.0085695334549882,
+            "ci_low": -181.8958764415048,
+            "ci_high": 187.61469315392733,
+            "n_valid_draws": 2000,
+            "n": 54
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -77.65242404689337,
+            "ci_low": -209.3341250796248,
+            "ci_high": 55.719288881070995,
+            "n_valid_draws": 2000,
+            "n": 54
+          },
+          "season_win_rate_pct": {
+            "estimate": 44.44444444444444,
+            "ci_low": 31.48148148148148,
+            "ci_high": 55.55555555555556,
+            "n_valid_draws": 2000,
+            "n": 54
+          }
+        },
+        "normal_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": -48.18418261810143,
+            "ci_low": -134.91425360415994,
+            "ci_high": 78.2909714022267,
+            "n_valid_draws": 2000,
+            "n": 34
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -81.73136119576162,
+            "ci_low": -169.07206064683328,
+            "ci_high": 25.466743200391637,
+            "n_valid_draws": 2000,
+            "n": 34
+          },
+          "season_win_rate_pct": {
+            "estimate": 44.11764705882353,
+            "ci_low": 28.571428571428573,
+            "ci_high": 59.375,
+            "n_valid_draws": 2000,
+            "n": 34
+          }
+        },
+        "climate_stress_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": 56.312871306811644,
+            "ci_low": -367.92922303105655,
+            "ci_high": 368.88929223213245,
+            "n_valid_draws": 2000,
+            "n": 20
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -70.71823089381706,
+            "ci_low": -355.391893590611,
+            "ci_high": 177.31396376103277,
+            "n_valid_draws": 2000,
+            "n": 20
+          },
+          "season_win_rate_pct": {
+            "estimate": 45.0,
+            "ci_low": 27.77777777777778,
+            "ci_high": 64.70588235294117,
+            "n_valid_draws": 2000,
+            "n": 20
+          }
+        }
+      },
+      "best_simple_per_granary": {
+        "all": {
+          "rmse_gain_kg_ha": {
+            "estimate": -107.97054256742297,
+            "ci_low": -256.06813499134716,
+            "ci_high": 33.27174643012196,
+            "n_valid_draws": 2000,
+            "n": 54
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -141.78155302426342,
+            "ci_low": -254.42061979075453,
+            "ci_high": -27.727203913452975,
+            "n_valid_draws": 2000,
+            "n": 54
+          },
+          "season_win_rate_pct": {
+            "estimate": 38.888888888888886,
+            "ci_low": 24.074074074074073,
+            "ci_high": 55.55555555555556,
+            "n_valid_draws": 2000,
+            "n": 54
+          }
+        },
+        "normal_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": -129.38582480615537,
+            "ci_low": -252.93714908593572,
+            "ci_high": 15.372154883483427,
+            "n_valid_draws": 2000,
+            "n": 34
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -124.96135757738676,
+            "ci_low": -246.35975133695132,
+            "ci_high": 6.362909850631392,
+            "n_valid_draws": 2000,
+            "n": 34
+          },
+          "season_win_rate_pct": {
+            "estimate": 41.1764705882353,
+            "ci_low": 20.68711967545639,
+            "ci_high": 65.62723214285712,
+            "n_valid_draws": 2000,
+            "n": 34
+          }
+        },
+        "climate_stress_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": -82.70382251902709,
+            "ci_low": -411.8741469515936,
+            "ci_high": 165.36860377430688,
+            "n_valid_draws": 2000,
+            "n": 20
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -170.37588528395355,
+            "ci_low": -415.11424357843083,
+            "ci_high": 43.6497539886579,
+            "n_valid_draws": 2000,
+            "n": 20
+          },
+          "season_win_rate_pct": {
+            "estimate": 35.0,
+            "ci_low": 15.789473684210526,
+            "ci_high": 53.85416666666662,
+            "n_valid_draws": 2000,
+            "n": 20
+          }
+        }
+      }
+    },
+    "delta_two_stage_tradaboost_r2": {
+      "persistence": {
+        "all": {
+          "rmse_gain_kg_ha": {
+            "estimate": -19.830455202832013,
+            "ci_low": -53.78719259587664,
+            "ci_high": 9.151539239721792,
+            "n_valid_draws": 2000,
+            "n": 54
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -47.31007027296397,
+            "ci_low": -76.96876851008358,
+            "ci_high": -18.114908901614758,
+            "n_valid_draws": 2000,
+            "n": 54
+          },
+          "season_win_rate_pct": {
+            "estimate": 29.62962962962963,
+            "ci_low": 16.666666666666668,
+            "ci_high": 40.74074074074074,
+            "n_valid_draws": 2000,
+            "n": 54
+          }
+        },
+        "normal_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": -46.8678123814982,
+            "ci_low": -63.560008776808296,
+            "ci_high": -30.143689957988567,
+            "n_valid_draws": 2000,
+            "n": 34
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -52.57701200855371,
+            "ci_low": -68.70229069708714,
+            "ci_high": -36.190145837863504,
+            "n_valid_draws": 2000,
+            "n": 34
+          },
+          "season_win_rate_pct": {
+            "estimate": 26.470588235294116,
+            "ci_low": 11.756302521008404,
+            "ci_high": 41.1764705882353,
+            "n_valid_draws": 2000,
+            "n": 34
+          }
+        },
+        "climate_stress_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": 13.833687562459886,
+            "ci_low": -82.49733078633507,
+            "ci_high": 57.31064602290301,
+            "n_valid_draws": 2000,
+            "n": 20
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -38.35626932246146,
+            "ci_low": -116.08813800979652,
+            "ci_high": 21.65253123426141,
+            "n_valid_draws": 2000,
+            "n": 20
+          },
+          "season_win_rate_pct": {
+            "estimate": 35.0,
+            "ci_low": 15.0,
+            "ci_high": 52.94117647058823,
+            "n_valid_draws": 2000,
+            "n": 20
+          }
+        }
+      },
+      "target_only": {
+        "all": {
+          "rmse_gain_kg_ha": {
+            "estimate": 364.34899208757645,
+            "ci_low": 195.399272479971,
+            "ci_high": 511.6372355151013,
+            "n_valid_draws": 2000,
+            "n": 54
+          },
+          "mae_gain_kg_ha": {
+            "estimate": 228.03770663626676,
+            "ci_low": 100.33118846276412,
+            "ci_high": 339.29920588272546,
+            "n_valid_draws": 2000,
+            "n": 54
+          },
+          "season_win_rate_pct": {
+            "estimate": 59.25925925925926,
+            "ci_low": 48.148148148148145,
+            "ci_high": 68.51851851851852,
+            "n_valid_draws": 2000,
+            "n": 54
+          }
+        },
+        "normal_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": 267.2096686636045,
+            "ci_low": 86.53539492531883,
+            "ci_high": 480.11201345434336,
+            "n_valid_draws": 2000,
+            "n": 34
+          },
+          "mae_gain_kg_ha": {
+            "estimate": 173.4620463958936,
+            "ci_low": 77.97388394532982,
+            "ci_high": 283.0700716196088,
+            "n_valid_draws": 2000,
+            "n": 34
+          },
+          "season_win_rate_pct": {
+            "estimate": 61.76470588235294,
+            "ci_low": 50.0,
+            "ci_high": 73.33333333333333,
+            "n_valid_draws": 2000,
+            "n": 34
+          }
+        },
+        "climate_stress_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": 494.502838594316,
+            "ci_low": 205.24326478778363,
+            "ci_high": 854.4266661764256,
+            "n_valid_draws": 2000,
+            "n": 20
+          },
+          "mae_gain_kg_ha": {
+            "estimate": 320.81632904490095,
+            "ci_low": 88.31236071647099,
+            "ci_high": 597.9202575071897,
+            "n_valid_draws": 2000,
+            "n": 20
+          },
+          "season_win_rate_pct": {
+            "estimate": 55.0,
+            "ci_low": 38.888888888888886,
+            "ci_high": 71.42857142857143,
+            "n_valid_draws": 2000,
+            "n": 20
+          }
+        }
+      },
+      "season_trend": {
+        "all": {
+          "rmse_gain_kg_ha": {
+            "estimate": 84.25736801247695,
+            "ci_low": 8.433180539805633,
+            "ci_high": 171.80337726210468,
+            "n_valid_draws": 2000,
+            "n": 54
+          },
+          "mae_gain_kg_ha": {
+            "estimate": 15.850599921055732,
+            "ci_low": -38.31220071663032,
+            "ci_high": 78.48096446960267,
+            "n_valid_draws": 2000,
+            "n": 54
+          },
+          "season_win_rate_pct": {
+            "estimate": 50.0,
+            "ci_low": 37.03703703703704,
+            "ci_high": 62.96296296296296,
+            "n_valid_draws": 2000,
+            "n": 54
+          }
+        },
+        "normal_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": 35.768548395300286,
+            "ci_low": -18.31057875060839,
+            "ci_high": 106.86266927535583,
+            "n_valid_draws": 2000,
+            "n": 34
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -0.517278114992962,
+            "ci_low": -54.05055758170806,
+            "ci_high": 71.11834029500889,
+            "n_valid_draws": 2000,
+            "n": 34
+          },
+          "season_win_rate_pct": {
+            "estimate": 47.05882352941177,
+            "ci_low": 30.303030303030305,
+            "ci_high": 64.28571428571429,
+            "n_valid_draws": 2000,
+            "n": 34
+          }
+        },
+        "climate_stress_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": 146.96465495365078,
+            "ci_low": -45.635376014795426,
+            "ci_high": 257.0889401539947,
+            "n_valid_draws": 2000,
+            "n": 20
+          },
+          "mae_gain_kg_ha": {
+            "estimate": 43.67599258233855,
+            "ci_low": -60.66662253416197,
+            "ci_high": 140.10722225171597,
+            "n_valid_draws": 2000,
+            "n": 20
+          },
+          "season_win_rate_pct": {
+            "estimate": 55.0,
+            "ci_low": 38.095238095238095,
+            "ci_high": 76.19047619047619,
+            "n_valid_draws": 2000,
+            "n": 20
+          }
+        }
+      },
+      "best_simple_per_granary": {
+        "all": {
+          "rmse_gain_kg_ha": {
+            "estimate": -21.704605021491034,
+            "ci_low": -58.737832149977734,
+            "ci_high": 8.49431210449312,
+            "n_valid_draws": 2000,
+            "n": 54
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -48.27852905631431,
+            "ci_low": -79.16793582455425,
+            "ci_high": -18.165339489978575,
+            "n_valid_draws": 2000,
+            "n": 54
+          },
+          "season_win_rate_pct": {
+            "estimate": 33.333333333333336,
+            "ci_low": 22.22222222222222,
+            "ci_high": 42.592592592592595,
+            "n_valid_draws": 2000,
+            "n": 54
+          }
+        },
+        "normal_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": -45.43309379275365,
+            "ci_low": -62.70753298174707,
+            "ci_high": -27.7095130862231,
+            "n_valid_draws": 2000,
+            "n": 34
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -43.747274496618104,
+            "ci_low": -62.65362946389698,
+            "ci_high": -24.076149221302323,
+            "n_valid_draws": 2000,
+            "n": 34
+          },
+          "season_win_rate_pct": {
+            "estimate": 32.35294117647059,
+            "ci_low": 18.75,
+            "ci_high": 45.714285714285715,
+            "n_valid_draws": 2000,
+            "n": 34
+          }
+        },
+        "climate_stress_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": 7.94796112781205,
+            "ci_low": -104.75716747968647,
+            "ci_high": 55.91245867522564,
+            "n_valid_draws": 2000,
+            "n": 20
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -55.981661807797934,
+            "ci_low": -158.45630673998355,
+            "ci_high": 20.431850829659652,
+            "n_valid_draws": 2000,
+            "n": 20
+          },
+          "season_win_rate_pct": {
+            "estimate": 35.0,
+            "ci_low": 15.0,
+            "ci_high": 52.94117647058823,
+            "n_valid_draws": 2000,
+            "n": 20
+          }
+        }
+      }
+    },
+    "z_anomaly_transfer": {
+      "persistence": {
+        "all": {
+          "rmse_gain_kg_ha": {
+            "estimate": -492.49508286010945,
+            "ci_low": -667.6447785439416,
+            "ci_high": -389.48452604204533,
+            "n_valid_draws": 2000,
+            "n": 63
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -378.08165910248454,
+            "ci_low": -416.41630573248284,
+            "ci_high": -341.77434988767976,
+            "n_valid_draws": 2000,
+            "n": 63
+          },
+          "season_win_rate_pct": {
+            "estimate": 28.571428571428573,
+            "ci_low": 19.047619047619047,
+            "ci_high": 38.095238095238095,
+            "n_valid_draws": 2000,
+            "n": 63
+          }
+        },
+        "normal_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": -354.61009625999407,
+            "ci_low": -550.1864781849368,
+            "ci_high": -155.40917374604072,
+            "n_valid_draws": 2000,
+            "n": 38
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -283.22205819635644,
+            "ci_low": -453.3765099604102,
+            "ci_high": -141.7914737554603,
+            "n_valid_draws": 2000,
+            "n": 38
+          },
+          "season_win_rate_pct": {
+            "estimate": 28.94736842105263,
+            "ci_low": 15.384615384615385,
+            "ci_high": 43.24324324324324,
+            "n_valid_draws": 2000,
+            "n": 38
+          }
+        },
+        "climate_stress_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": -652.635597877298,
+            "ci_low": -1114.7987622431385,
+            "ci_high": -294.02953296588885,
+            "n_valid_draws": 2000,
+            "n": 25
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -522.2682524797988,
+            "ci_low": -766.2452456082603,
+            "ci_high": -297.76134339384566,
+            "n_valid_draws": 2000,
+            "n": 25
+          },
+          "season_win_rate_pct": {
+            "estimate": 28.0,
+            "ci_low": 12.4875,
+            "ci_high": 42.30769230769231,
+            "n_valid_draws": 2000,
+            "n": 25
+          }
+        }
+      },
+      "target_only": {
+        "all": {
+          "rmse_gain_kg_ha": {
+            "estimate": -126.25200633324675,
+            "ci_low": -385.0810163800962,
+            "ci_high": 95.64766381613693,
+            "n_valid_draws": 2000,
+            "n": 63
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -114.21267039207191,
+            "ci_low": -212.031337186828,
+            "ci_high": -13.042311981467694,
+            "n_valid_draws": 2000,
+            "n": 63
+          },
+          "season_win_rate_pct": {
+            "estimate": 44.44444444444444,
+            "ci_low": 36.507936507936506,
+            "ci_high": 52.420634920634704,
+            "n_valid_draws": 2000,
+            "n": 63
+          }
+        },
+        "normal_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": -67.12864928428087,
+            "ci_low": -338.49017775547327,
+            "ci_high": 168.31241858870695,
+            "n_valid_draws": 2000,
+            "n": 38
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -87.61455175139497,
+            "ci_low": -247.65522428306988,
+            "ci_high": 27.262340830201808,
+            "n_valid_draws": 2000,
+            "n": 38
+          },
+          "season_win_rate_pct": {
+            "estimate": 39.473684210526315,
+            "ci_low": 26.666666666666668,
+            "ci_high": 52.50328947368419,
+            "n_valid_draws": 2000,
+            "n": 38
+          }
+        },
+        "climate_stress_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": -190.6255166040305,
+            "ci_low": -657.8808098110673,
+            "ci_high": 209.1003411924323,
+            "n_valid_draws": 2000,
+            "n": 25
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -154.64181072589997,
+            "ci_low": -443.0272324352771,
+            "ci_high": 124.74585787908241,
+            "n_valid_draws": 2000,
+            "n": 25
+          },
+          "season_win_rate_pct": {
+            "estimate": 52.0,
+            "ci_low": 40.0,
+            "ci_high": 68.18779904306217,
+            "n_valid_draws": 2000,
+            "n": 25
+          }
+        }
+      },
+      "season_trend": {
+        "all": {
+          "rmse_gain_kg_ha": {
+            "estimate": -155.58056865470996,
+            "ci_low": -236.15933575724506,
+            "ci_high": -88.36668627770773,
+            "n_valid_draws": 2000,
+            "n": 54
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -170.03465886408208,
+            "ci_low": -246.38278552645545,
+            "ci_high": -87.20360359778424,
+            "n_valid_draws": 2000,
+            "n": 54
+          },
+          "season_win_rate_pct": {
+            "estimate": 37.03703703703704,
+            "ci_low": 27.77777777777778,
+            "ci_high": 44.44444444444444,
+            "n_valid_draws": 2000,
+            "n": 54
+          }
+        },
+        "normal_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": -191.23350783241267,
+            "ci_low": -360.00354226879415,
+            "ci_high": -44.05615467142795,
+            "n_valid_draws": 2000,
+            "n": 34
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -171.48070254921157,
+            "ci_low": -297.7666059555901,
+            "ci_high": -77.18103310330831,
+            "n_valid_draws": 2000,
+            "n": 34
+          },
+          "season_win_rate_pct": {
+            "estimate": 38.23529411764706,
+            "ci_low": 21.21212121212121,
+            "ci_high": 52.77777777777778,
+            "n_valid_draws": 2000,
+            "n": 34
+          }
+        },
+        "climate_stress_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": -113.71828125563025,
+            "ci_low": -511.7554894499421,
+            "ci_high": 96.76377830879983,
+            "n_valid_draws": 2000,
+            "n": 20
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -167.57638459936203,
+            "ci_low": -380.9087251487468,
+            "ci_high": 3.2226565798619444,
+            "n_valid_draws": 2000,
+            "n": 20
+          },
+          "season_win_rate_pct": {
+            "estimate": 35.0,
+            "ci_low": 15.769736842105264,
+            "ci_high": 55.0,
+            "n_valid_draws": 2000,
+            "n": 20
+          }
+        }
+      },
+      "best_simple_per_granary": {
+        "all": {
+          "rmse_gain_kg_ha": {
+            "estimate": -261.54254168867794,
+            "ci_low": -338.88151226364187,
+            "ci_high": -175.33992414752333,
+            "n_valid_draws": 2000,
+            "n": 54
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -234.16378784145212,
+            "ci_low": -325.66232570247706,
+            "ci_high": -139.96685008112408,
+            "n_valid_draws": 2000,
+            "n": 54
+          },
+          "season_win_rate_pct": {
+            "estimate": 35.18518518518518,
+            "ci_low": 22.22222222222222,
+            "ci_high": 46.2962962962963,
+            "n_valid_draws": 2000,
+            "n": 54
+          }
+        },
+        "normal_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": -272.4351500204666,
+            "ci_low": -491.13225250138066,
+            "ci_high": -101.69105578962612,
+            "n_valid_draws": 2000,
+            "n": 34
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -214.7106989308367,
+            "ci_low": -403.56210984320563,
+            "ci_high": -85.89217441857433,
+            "n_valid_draws": 2000,
+            "n": 34
+          },
+          "season_win_rate_pct": {
+            "estimate": 35.294117647058826,
+            "ci_low": 20.68711967545639,
+            "ci_high": 48.57142857142857,
+            "n_valid_draws": 2000,
+            "n": 34
+          }
+        },
+        "climate_stress_years": {
+          "rmse_gain_kg_ha": {
+            "estimate": -252.73497508146897,
+            "ci_low": -572.0664858609265,
+            "ci_high": -82.13615346505604,
+            "n_valid_draws": 2000,
+            "n": 20
+          },
+          "mae_gain_kg_ha": {
+            "estimate": -267.2340389894985,
+            "ci_low": -459.8207451115422,
+            "ci_high": -125.12897805351504,
+            "n_valid_draws": 2000,
+            "n": 20
+          },
+          "season_win_rate_pct": {
+            "estimate": 35.0,
+            "ci_low": 15.789473684210526,
+            "ci_high": 50.0,
+            "n_valid_draws": 2000,
+            "n": 20
+          }
+        }
+      }
+    }
+  },
+  "per_granary_rmse_kg_ha": {
+    "IADA Barat Laut Selangor": {
+      "coral": 594.0174020371671,
+      "delta_two_stage_tradaboost_r2": 322.96231639871513,
+      "detrended_residual_transfer": 232.5161720196051,
+      "granary_intercept_ridge": 441.08884838694655,
+      "kmm_ridge": 1374.8203976504415,
+      "persistence": 222.67432977974184,
+      "season_trend": 262.5482679806626,
+      "target_only": 219.574914792498,
+      "two_stage_tradaboost_r2": 356.0403605553696,
+      "z_anomaly_transfer": 776.0761249378414
+    },
+    "IADA Kemasin Semerak": {
+      "coral": 928.5050883534865,
+      "delta_two_stage_tradaboost_r2": 179.19525050444366,
+      "detrended_residual_transfer": 209.09633958276873,
+      "granary_intercept_ridge": 635.8567910386915,
+      "kmm_ridge": 1197.0884956117266,
+      "persistence": 151.5420733657817,
+      "season_trend": 153.35415141385195,
+      "target_only": 312.29448026336064,
+      "two_stage_tradaboost_r2": 807.021133343874,
+      "z_anomaly_transfer": 1323.247534517324
+    },
+    "IADA Kerian": {
+      "coral": 1222.2271776509601,
+      "delta_two_stage_tradaboost_r2": 571.8893413624763,
+      "detrended_residual_transfer": 536.1211532191872,
+      "granary_intercept_ridge": 626.328878232775,
+      "kmm_ridge": 1565.664203438694,
+      "persistence": 502.10755819844036,
+      "season_trend": 610.8733427862765,
+      "target_only": 1120.112748064315,
+      "two_stage_tradaboost_r2": 938.7980732908111,
+      "z_anomaly_transfer": 889.5491823409764
+    },
+    "IADA Pulau Pinang": {
+      "coral": 1412.8794867212982,
+      "delta_two_stage_tradaboost_r2": 454.26386008607193,
+      "detrended_residual_transfer": 461.0686540041117,
+      "granary_intercept_ridge": 744.6828645506481,
+      "kmm_ridge": 384.39807847141634,
+      "persistence": 354.8790538439019,
+      "season_trend": 456.7536770559973,
+      "target_only": 958.5749892056647,
+      "two_stage_tradaboost_r2": 676.578290888249,
+      "z_anomaly_transfer": 844.7188757120559
+    },
+    "IADA Rompin": {
+      "coral": 1279.5963139473554,
+      "delta_two_stage_tradaboost_r2": 846.9157465223396,
+      "detrended_residual_transfer": 1054.178064627861,
+      "granary_intercept_ridge": 1234.28959932024,
+      "kmm_ridge": 1704.0783426614312,
+      "persistence": 857.7693662717769,
+      "season_trend": 1178.6167127925312,
+      "target_only": 1199.9834328015404,
+      "two_stage_tradaboost_r2": 1221.1274418257242,
+      "z_anomaly_transfer": 1271.1849197553795
+    },
+    "IADA Seberang Perak": {
+      "coral": 1039.9694873401845,
+      "delta_two_stage_tradaboost_r2": 762.6376306963692,
+      "detrended_residual_transfer": 801.3087977690035,
+      "granary_intercept_ridge": 842.388602651091,
+      "kmm_ridge": 944.8112681360299,
+      "persistence": 724.9474857828372,
+      "season_trend": 827.6095101379565,
+      "target_only": 776.1616466832874,
+      "two_stage_tradaboost_r2": 984.797543300293,
+      "z_anomaly_transfer": 1146.129626410628
+    },
+    "KADA": {
+      "coral": 902.8726571449394,
+      "delta_two_stage_tradaboost_r2": 466.8458153860176,
+      "detrended_residual_transfer": 504.4770536162036,
+      "granary_intercept_ridge": 861.1543426286735,
+      "kmm_ridge": 1516.3487133680937,
+      "persistence": 480.4255554044916,
+      "season_trend": 483.0696745810349,
+      "target_only": 649.1028753004088,
+      "two_stage_tradaboost_r2": 824.0160211185317,
+      "z_anomaly_transfer": 963.3330182053519
+    },
+    "KETARA": {
+      "coral": 1304.3176819164432,
+      "delta_two_stage_tradaboost_r2": 473.6952598614872,
+      "detrended_residual_transfer": 531.293548872104,
+      "granary_intercept_ridge": 867.7974627692821,
+      "kmm_ridge": 1621.4728450559367,
+      "persistence": 396.49968474136267,
+      "season_trend": 525.1086986777532,
+      "target_only": 1063.6858058881458,
+      "two_stage_tradaboost_r2": 632.0484605151861,
+      "z_anomaly_transfer": 801.9402804537083
+    },
+    "MADA": {
+      "coral": 486.21485130203706,
+      "delta_two_stage_tradaboost_r2": 314.51331424398177,
+      "detrended_residual_transfer": 305.6686262621688,
+      "granary_intercept_ridge": 560.9679040767206,
+      "kmm_ridge": 865.779652204995,
+      "persistence": 291.5914460826508,
+      "season_trend": 342.596993857669,
+      "target_only": 852.0332109406621,
+      "two_stage_tradaboost_r2": 372.6699183758278,
+      "z_anomaly_transfer": 614.0707322707834
+    }
+  },
+  "sensitivity": {
+    "effect_estimate_shrunk_lam0_5": {
+      "concordance_weather_adjusted_kg_ha": {
+        "estimate": -44.780154522056705,
+        "ci_low": -220.42410587918653,
+        "ci_high": 202.43239841410397,
+        "n_valid_draws": 2000,
+        "n_group1": 8,
+        "n_group0": 55
+      },
+      "r_loss": {
+        "planting": {
+          "n_seasons": 63,
+          "mean_rloss_transfer_weighted": {
+            "estimate": 375289.02036536235,
+            "ci_low": 196103.21028494532,
+            "ci_high": 554691.8133925534,
+            "n_valid_draws": 2000
+          },
+          "median_rloss_transfer_weighted": 176493.2703745597,
+          "mean_rloss_target_only": {
+            "estimate": 1635266.8002794299,
+            "ci_low": 222695.41869007048,
+            "ci_high": 4235013.467035268,
+            "n_valid_draws": 2000
+          },
+          "median_rloss_target_only": 154280.63846957212,
+          "mean_rloss_source_only": {
+            "estimate": 452754.7612923714,
+            "ci_low": 209503.9858067767,
+            "ci_high": 723916.056961509,
+            "n_valid_draws": 2000
+          },
+          "median_rloss_source_only": 131008.09809526615,
+          "mean_rloss_no_effect (tau=0)": {
+            "estimate": 374334.705850647,
+            "ci_low": 190778.07390022097,
+            "ci_high": 571521.8695067185,
+            "n_valid_draws": 2000
+          },
+          "median_rloss_no_effect (tau=0)": 156732.00744656325,
+          "transfer_minus_target_only": {
+            "estimate": -1259977.7799140678,
+            "ci_low": -3837984.7476722966,
+            "ci_high": 68778.14441093816,
+            "n_valid_draws": 2000
+          },
+          "median_paired_difference_vs_target_only": 560.9071554934926,
+          "seasons_where_transfer_has_lower_loss_than_target_only_pct": {
+            "estimate": 47.61904761904762,
+            "ci_low": 39.682539682539684,
+            "ci_high": 57.142857142857146,
+            "n_valid_draws": 2000,
+            "n": 63
+          },
+          "transfer_minus_source_only": {
+            "estimate": -77465.74092700897,
+            "ci_low": -187232.41087980598,
+            "ci_high": 1118.1508937688723,
+            "n_valid_draws": 2000
+          },
+          "median_paired_difference_vs_source_only": 350.80060122470553,
+          "seasons_where_transfer_has_lower_loss_than_source_only_pct": {
+            "estimate": 46.03174603174603,
+            "ci_low": 36.507936507936506,
+            "ci_high": 53.96825396825397,
+            "n_valid_draws": 2000,
+            "n": 63
+          },
+          "transfer_minus_no_effect (tau=0)": {
+            "estimate": 954.3145147152896,
+            "ci_low": -51342.28123436382,
+            "ci_high": 41491.80120156564,
+            "n_valid_draws": 2000
+          },
+          "median_paired_difference_vs_no_effect (tau=0)": 1227.4184072446078,
+          "seasons_where_transfer_has_lower_loss_than_no_effect (tau=0)_pct": {
+            "estimate": 44.44444444444444,
+            "ci_low": 34.92063492063492,
+            "ci_high": 53.96825396825397,
+            "n_valid_draws": 2000,
+            "n": 63
+          },
+          "share_target_only_fitted": 0.42857142857142855
+        },
+        "moisture": {
+          "n_seasons": 63,
+          "mean_rloss_transfer_weighted": {
+            "estimate": 410929.9244066228,
+            "ci_low": 218484.38435007527,
+            "ci_high": 624987.1235846077,
+            "n_valid_draws": 2000
+          },
+          "median_rloss_transfer_weighted": 130400.5914106755,
+          "mean_rloss_target_only": {
+            "estimate": 440835.8343041108,
+            "ci_low": 219068.9492549569,
+            "ci_high": 688699.5413388109,
+            "n_valid_draws": 2000
+          },
+          "median_rloss_target_only": 142430.08439689997,
+          "mean_rloss_source_only": {
+            "estimate": 374919.7017861398,
+            "ci_low": 198623.5887188582,
+            "ci_high": 574437.6898480447,
+            "n_valid_draws": 2000
+          },
+          "median_rloss_source_only": 159430.97153263915,
+          "mean_rloss_no_effect (tau=0)": {
+            "estimate": 389684.5946100071,
+            "ci_low": 187910.94482784937,
+            "ci_high": 613193.7269282225,
+            "n_valid_draws": 2000
+          },
+          "median_rloss_no_effect (tau=0)": 144483.0064287521,
+          "transfer_minus_target_only": {
+            "estimate": -29905.909897488025,
+            "ci_low": -124174.16797454606,
+            "ci_high": 69405.27875987579,
+            "n_valid_draws": 2000
+          },
+          "median_paired_difference_vs_target_only": -1044.4046087468669,
+          "seasons_where_transfer_has_lower_loss_than_target_only_pct": {
+            "estimate": 53.96825396825397,
+            "ci_low": 44.44444444444444,
+            "ci_high": 63.492063492063494,
+            "n_valid_draws": 2000,
+            "n": 63
+          },
+          "transfer_minus_source_only": {
+            "estimate": 36010.222620482986,
+            "ci_low": 1651.3675299244017,
+            "ci_high": 69408.05893876638,
+            "n_valid_draws": 2000
+          },
+          "median_paired_difference_vs_source_only": 9027.567270954401,
+          "seasons_where_transfer_has_lower_loss_than_source_only_pct": {
+            "estimate": 36.507936507936506,
+            "ci_low": 25.396825396825395,
+            "ci_high": 47.61904761904762,
+            "n_valid_draws": 2000,
+            "n": 63
+          },
+          "transfer_minus_no_effect (tau=0)": {
+            "estimate": 21245.329796615708,
+            "ci_low": -43462.423808050975,
+            "ci_high": 91290.0531019128,
+            "n_valid_draws": 2000
+          },
+          "median_paired_difference_vs_no_effect (tau=0)": 713.4994329014783,
+          "seasons_where_transfer_has_lower_loss_than_no_effect (tau=0)_pct": {
+            "estimate": 49.20634920634921,
+            "ci_low": 41.26984126984127,
+            "ci_high": 57.142857142857146,
+            "n_valid_draws": 2000,
+            "n": 63
+          },
+          "share_target_only_fitted": 0.3968253968253968
+        },
+        "note": "The three effect estimators are scored with the same nuisance models, so only the effect estimate differs. The target-only estimator is fitted on 2-7 seasons and is often unfittable (then it equals the no-effect benchmark) or extrapolates wildly, so mean differences against it are driven by a few seasons: read the medians and win rates, and treat the no-effect benchmark as the meaningful comparison. Negative difference = transfer is better."
+      },
+      "note": "same analysis with a ridge penalty on the average treatment effect; a shrinkage change did not remove the target-only outliers (they come from held-out treatment values far outside the few training seasons), so the means below stay outlier-driven: read the medians and win rates"
+    },
+    "excluding_KETARA": {
+      "held_out_seasons": 56,
+      "concordance": {
+        "n_concordant": 7,
+        "n_discordant": 49,
+        "share_concordant": 0.125,
+        "raw_yield_kg_ha": {
+          "estimate": 189.55102040816337,
+          "ci_low": -87.39196428571442,
+          "ci_high": 406.6078235294121,
+          "n_valid_draws": 2000,
+          "n_group1": 7,
+          "n_group0": 49
+        },
+        "granary_adjusted_kg_ha": {
+          "estimate": 96.03343051506312,
+          "ci_low": -68.16392063492071,
+          "ci_high": 318.9210773247972,
+          "n_valid_draws": 2000,
+          "n_group1": 7,
+          "n_group0": 49
+        },
+        "weather_adjusted_kg_ha": {
+          "estimate": -29.523127842559276,
+          "ci_low": -236.1439252974019,
+          "ci_high": 264.6649820107071,
+          "n_valid_draws": 2000,
+          "n_group1": 7,
+          "n_group0": 49
+        },
+        "weather_adjusted_normal_years_kg_ha": {
+          "estimate": -111.74154476842831,
+          "ci_low": -579.6966007990261,
+          "ci_high": 776.0824388220476,
+          "n_valid_draws": 1958,
+          "n_group1": 4,
+          "n_group0": 30
+        },
+        "weather_adjusted_climate_stress_years_kg_ha": {
+          "estimate": 105.19944413871417,
+          "ci_low": -159.50835149010177,
+          "ci_high": 471.1147919819031,
+          "n_valid_draws": 1957,
+          "n_group1": 3,
+          "n_group0": 19
+        }
+      },
+      "r_loss": {
+        "planting": {
+          "n_seasons": 56,
+          "mean_rloss_transfer_weighted": {
+            "estimate": 342606.8236775272,
+            "ci_low": 161423.03904123808,
+            "ci_high": 557505.5214177895,
+            "n_valid_draws": 2000
+          },
+          "median_rloss_transfer_weighted": 151295.9708198858,
+          "mean_rloss_target_only": {
+            "estimate": 2002083.2244076189,
+            "ci_low": 168009.13644356618,
+            "ci_high": 5360287.998891501,
+            "n_valid_draws": 2000
+          },
+          "median_rloss_target_only": 116177.4154762636,
+          "mean_rloss_source_only": {
+            "estimate": 478642.14206197753,
+            "ci_low": 159064.19431535533,
+            "ci_high": 922553.8650391528,
+            "n_valid_draws": 2000
+          },
+          "median_rloss_source_only": 120740.2095715073,
+          "mean_rloss_no_effect (tau=0)": {
+            "estimate": 329418.4679511801,
+            "ci_low": 151525.3393923178,
+            "ci_high": 559096.4946886556,
+            "n_valid_draws": 2000
+          },
+          "median_rloss_no_effect (tau=0)": 140496.80407794935,
+          "transfer_minus_target_only": {
+            "estimate": -1659476.4007300916,
+            "ci_low": -5019239.527279989,
+            "ci_high": 57556.22068467057,
+            "n_valid_draws": 2000
+          },
+          "median_paired_difference_vs_target_only": 331.7095555200876,
+          "seasons_where_transfer_has_lower_loss_than_target_only_pct": {
+            "estimate": 46.42857142857143,
+            "ci_low": 37.5,
+            "ci_high": 53.57142857142857,
+            "n_valid_draws": 2000,
+            "n": 56
+          },
+          "transfer_minus_source_only": {
+            "estimate": -136035.31838445025,
+            "ci_low": -375060.4065415383,
+            "ci_high": 12886.57083063228,
+            "n_valid_draws": 2000
+          },
+          "median_paired_difference_vs_source_only": 571.1661487785316,
+          "seasons_where_transfer_has_lower_loss_than_source_only_pct": {
+            "estimate": 48.214285714285715,
+            "ci_low": 39.285714285714285,
+            "ci_high": 58.92857142857143,
+            "n_valid_draws": 2000,
+            "n": 56
+          },
+          "transfer_minus_no_effect (tau=0)": {
+            "estimate": 13188.355726347012,
+            "ci_low": -34264.057302384594,
+            "ci_high": 63452.33091469524,
+            "n_valid_draws": 2000
+          },
+          "median_paired_difference_vs_no_effect (tau=0)": 198.80600611620622,
+          "seasons_where_transfer_has_lower_loss_than_no_effect (tau=0)_pct": {
+            "estimate": 48.214285714285715,
+            "ci_low": 41.07142857142857,
+            "ci_high": 57.142857142857146,
+            "n_valid_draws": 2000,
+            "n": 56
+          },
+          "share_target_only_fitted": 0.42857142857142855
+        },
+        "moisture": {
+          "n_seasons": 56,
+          "mean_rloss_transfer_weighted": {
+            "estimate": 419990.518359498,
+            "ci_low": 219194.03180472634,
+            "ci_high": 701644.7984831322,
+            "n_valid_draws": 2000
+          },
+          "median_rloss_transfer_weighted": 152711.47807784865,
+          "mean_rloss_target_only": {
+            "estimate": 454145.77568877843,
+            "ci_low": 196083.42264511174,
+            "ci_high": 810695.9676841417,
+            "n_valid_draws": 2000
+          },
+          "median_rloss_target_only": 125727.12432422202,
+          "mean_rloss_source_only": {
+            "estimate": 379712.79756153346,
+            "ci_low": 186458.07874382264,
+            "ci_high": 623538.2957158773,
+            "n_valid_draws": 2000
+          },
+          "median_rloss_source_only": 141575.60828513198,
+          "mean_rloss_no_effect (tau=0)": {
+            "estimate": 345084.5696144165,
+            "ci_low": 148540.35353791324,
+            "ci_high": 610531.5359832195,
+            "n_valid_draws": 2000
+          },
+          "median_rloss_no_effect (tau=0)": 128699.30672328052,
+          "transfer_minus_target_only": {
+            "estimate": -34155.257329280495,
+            "ci_low": -162790.4149917969,
+            "ci_high": 89469.13230238167,
+            "n_valid_draws": 2000
+          },
+          "median_paired_difference_vs_target_only": -729.6118741211067,
+          "seasons_where_transfer_has_lower_loss_than_target_only_pct": {
+            "estimate": 53.57142857142857,
+            "ci_low": 41.07142857142857,
+            "ci_high": 66.07142857142857,
+            "n_valid_draws": 2000,
+            "n": 56
+          },
+          "transfer_minus_source_only": {
+            "estimate": 40277.72079796443,
+            "ci_low": -45189.105787500346,
+            "ci_high": 122569.23496187804,
+            "n_valid_draws": 2000
+          },
+          "median_paired_difference_vs_source_only": 5331.1502684539855,
+          "seasons_where_transfer_has_lower_loss_than_source_only_pct": {
+            "estimate": 41.07142857142857,
+            "ci_low": 26.785714285714285,
+            "ci_high": 57.142857142857146,
+            "n_valid_draws": 2000,
+            "n": 56
+          },
+          "transfer_minus_no_effect (tau=0)": {
+            "estimate": 74905.9487450814,
+            "ci_low": 90.81350058242796,
+            "ci_high": 147688.2379288334,
+            "n_valid_draws": 2000
+          },
+          "median_paired_difference_vs_no_effect (tau=0)": 4256.419148582114,
+          "seasons_where_transfer_has_lower_loss_than_no_effect (tau=0)_pct": {
+            "estimate": 48.214285714285715,
+            "ci_low": 35.714285714285715,
+            "ci_high": 58.92857142857143,
+            "n_valid_draws": 2000,
+            "n": 56
+          },
+          "share_target_only_fitted": 0.39285714285714285
+        },
+        "note": "The three effect estimators are scored with the same nuisance models, so only the effect estimate differs. The target-only estimator is fitted on 2-7 seasons and is often unfittable (then it equals the no-effect benchmark) or extrapolates wildly, so mean differences against it are driven by a few seasons: read the medians and win rates, and treat the no-effect benchmark as the meaningful comparison. Negative difference = transfer is better."
+      },
+      "note": "the protocol excludes this granary as domain-incompatible; the screen does not flag it, so the main analysis keeps it"
+    }
+  },
+  "acceptance": {
+    "a1_no_future_or_same_year_source_rows": {
+      "holds": true,
+      "n_folds": 63
+    },
+    "a2_concordant_seasons_have_higher_weather_adjusted_yield": {
+      "estimate_kg_ha": -44.780154522056705,
+      "ci95": [
+        -220.42410587918653,
+        202.43239841410397
+      ],
+      "n_concordant": 8,
+      "n_discordant": 55,
+      "holds": false,
+      "statistically_supported": false
+    },
+    "a3_transfer_cate_has_lower_rloss_than_target_only_and_source_only": {
+      "planting": {
+        "vs_target_only": {
+          "estimate": -1422413.0964763728,
+          "ci_low": -4334755.62168491,
+          "ci_high": 84161.7105956488,
+          "n_valid_draws": 2000
+        },
+        "vs_source_only": {
+          "estimate": -99508.51977906513,
+          "ci_low": -261364.00182446957,
+          "ci_high": 5752.641779034316,
+          "n_valid_draws": 2000
+        },
+        "vs_no_effect": {
+          "estimate": 3900.3525268997378,
+          "ci_low": -59871.528361595316,
+          "ci_high": 54549.42222158789,
+          "n_valid_draws": 2000
+        },
+        "holds_vs_target_and_source": true,
+        "statistically_supported": false,
+        "beats_no_effect_benchmark": false
+      },
+      "moisture": {
+        "vs_target_only": {
+          "estimate": -44585.28242827926,
+          "ci_low": -153001.89108386575,
+          "ci_high": 72168.96357551575,
+          "n_valid_draws": 2000
+        },
+        "vs_source_only": {
+          "estimate": 52728.65562919579,
+          "ci_low": 6091.362527569214,
+          "ci_high": 104157.21170872725,
+          "n_valid_draws": 2000
+        },
+        "vs_no_effect": {
+          "estimate": 43322.3817188093,
+          "ci_low": -36928.962011855896,
+          "ci_high": 131974.60457129957,
+          "n_valid_draws": 2000
+        },
+        "holds_vs_target_and_source": false,
+        "statistically_supported": false,
+        "beats_no_effect_benchmark": false
+      }
+    },
+    "a4_placebo_effect_indistinguishable_from_zero": {
+      "planting": {
+        "interval_contains_zero": true,
+        "placebo_mean": -1.7375370536725077,
+        "real_effect_p_value": 0.20359281437125748
+      },
+      "moisture": {
+        "interval_contains_zero": true,
+        "placebo_mean": 35.61353165113626,
+        "real_effect_p_value": 0.7045908183632734
+      }
+    },
+    "status": "a1 (integrity) is enforced by the tests; a2-a4 are reported as findings and are not enforced by the script or by the tests"
+  },
+  "deviations": [
+    "optimize_target_prescriptions not called: returns [] for a real HarmonisedBundle and does not apply its schedule bounds (reads start_decade; the file has Water_Start_Decade)",
+    "gazetted water window not used as a hard bound: see gazetted_window (satellite green-up falls outside it for most granaries); steps bounded by the granary's own training range",
+    "compatibility decided by the domain screen, not by name",
+    "permutation placebo added because the legacy placebo flag is lenient",
+    "weather adjustment includes rainfall; the legacy confounder list has none",
+    "pooled gains use a pre-specified pool (all other compatible granaries) and feature set, not the AutoML selection"
+  ],
+  "limitations": [
+    "observational association, not a causal effect",
+    "about 7 held-out seasons per granary: wide intervals",
+    "the recommendation is a fixed small step from the last observed value",
+    "the target-only effect estimator is starved of data",
+    "stress strata use all seasons of the panel (descriptive)"
+  ],
+  "references": [
+    "Nie, X., & Wager, S. (2021). Quasi-oracle estimation of heterogeneous treatment effects. Biometrika, 108(2), 299-319.",
+    "Roberts, D. R., et al. (2017). Cross-validation strategies for data with temporal, spatial, hierarchical, or phylogenetic structure. Ecography, 40(8), 913-929.",
+    "Pardoe, D., & Stone, P. (2010). Boosting for regression transfer. ICML, 863-870.",
+    "Kakimoto, S., Mieno, T., Tanaka, T. S. T., & Bullock, D. S. (2022). Causal forest approach for site-specific input management via on-farm precision experimentation. Computers and Electronics in Agriculture, 199, 107164. (nitrogen-rate field experiments: relevant as method background, not as evidence for this panel)",
+    "Ma, Y., Chen, S., Ermon, S., & Lobell, D. B. (2024). Transfer learning in environmental remote sensing. Remote Sensing of Environment, 301, 113924.",
+    "Ben-David, S., et al. (2010). A theory of learning from different domains. Machine Learning, 79(1-2), 151-175. (not re-checked in this run)"
+  ],
+  "references_dropped": [
+    "Thorburn, P. J., et al. (2024). 'Causal machine learning for actionable agronomic recommendations', Agricultural Systems: no such publication could be found, not cited."
+  ]
+}

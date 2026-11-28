@@ -3,6 +3,7 @@
 Run:  python -m pytest tests -q
 Synthetic data only, so the tests do not depend on any project file.
 """
+import copy
 import dataclasses
 import sys
 from pathlib import Path
@@ -320,3 +321,328 @@ def test_scarcity_setting_limits_target_training_seasons():
     bundle, c = _bundle()
     r = evaluation.evaluate(bundle, ["target_only"], "ridge", dataclasses.replace(c, max_target_train_groups=3))
     assert max(r.n_target_train) == 3
+
+
+# ---- regression: four impossible EVI readings (1e9) once turned single forecast folds into nonsense for KADA, Kemasin Semerak and Pulau Pinang
+def test_the_shipped_tables_hold_no_impossible_vegetation_index_values():
+    import pandas as pd
+    from acts_transfer.sweep import clean_physical_ranges
+    for f in ("transfer_stage_dataset.csv", "transfer_decade_features.csv", "transfer_yield_dataset.csv"):
+        _, n = clean_physical_ranges(pd.read_csv(f"data/{f}"))
+        assert n == 0, (f, n)
+    c = pd.read_csv("eda/DailyGranary_clean.csv", usecols=["EVI_clean", "LSWI_clean", "MNDWI_clean", "NDVI_clean"])
+    assert (c.abs().max() <= 1.0).all()
+
+
+def test_the_range_guard_turns_an_impossible_index_into_a_gap_and_leaves_the_rest_alone():
+    import pandas as pd
+    from acts_transfer.sweep import clean_physical_ranges
+    Y = pd.DataFrame({"District": ["A", "B", "C"], "C1_EVI_veg": [0.5, 3.3e8, -0.2], "C1_Rain_mm_rep": [900.0, 120.0, 5000.0], "EVI_pix_mean": [0.4, 0.5, 6.8e7]})
+    out, n = clean_physical_ranges(Y)
+    assert n == 2 and out["C1_EVI_veg"].isna().tolist() == [False, True, False] and out["EVI_pix_mean"].isna().tolist() == [False, False, True]
+    assert out["C1_Rain_mm_rep"].tolist() == [900.0, 120.0, 5000.0] and Y["C1_EVI_veg"].iloc[1] == 3.3e8      # rain is not an index; the input is untouched
+
+
+def test_no_granary_gets_an_absurd_forecast_error_in_the_automl_step():
+    import os
+    import pandas as pd
+    from acts_transfer.automl_runner import run_full_automl_for_granary
+    Y = pd.read_csv("data/transfer_stage_dataset.csv")
+    mt = os.path.getmtime("data/transfer_stage_dataset.csv")
+    for g in sorted(Y.District.unique()):
+        a = run_full_automl_for_granary(g, "data", mt)
+        assert a["model_table"]["Forward RMSE (t/ha)"].max() < 5.0, (g, a["model_table"][["Method ID", "Forward RMSE (t/ha)"]].to_dict("records"))
+        for r in a["eval_results"].values():
+            assert (r.predictions.y_pred.abs() < 50).all(), g          # yields are in t/ha: a prediction of tens of t/ha is a numerical blow-up
+
+
+# ================================================================================================================================================
+# Step 5/6 regression: donor-pool competition, pre-approval diagnostics (weather ablation, few-shot scarcity, driver attribution), safeguard + registry
+# ================================================================================================================================================
+ROOT = Path(__file__).resolve().parent.parent
+# Which granary passes the gate depends on the sweep, so these are pinned to the current data and sweep (Meteo-Only vs Meteo + Optical, 5 Two-Stage rounds):
+VOLATILE, STABLE = "IADA Rompin", "IADA Barat Laut Selangor"            # both pass the gate (Delta_NT < 0): Rompin -387 kg/ha, Barat Laut Selangor -22 kg/ha
+POOL_COLS = ["Donor Pool Candidate", "Num Donors", "Best Method", "Best Forward RMSE (kg/ha)", "Delta_NT vs Local (kg/ha)", "Safeguard Gate"]
+DRIVER = "C1_LSWI_rep"
+FEATS_DIAG = [DRIVER, "C1_Rain_mm_rep", "C1_Tmax_C_rep", "C1_EVI_rep", "Optical_Valid_Fraction"]
+
+
+@pytest.fixture(scope="module")
+def automl():
+    """the AutoML payload of the volatile and of the stable granary, computed once for the whole module"""
+    from acts_transfer.automl_runner import run_full_automl_for_granary
+    mt = (ROOT / "data" / "transfer_stage_dataset.csv").stat().st_mtime
+    return {g: run_full_automl_for_granary(g, str(ROOT / "data"), mt) for g in (VOLATILE, STABLE)}
+
+
+def diag_bundle(slope=600.0, n_target=7, n_donor_seasons=12, seed=0, noise=40.0):
+    """a harmonised bundle (yield in t/ha, y_to_kg = 1000): the target granary and two donors, yield = granary level + slope * (standardised LSWI) + small noise.
+    Only C1_LSWI_rep drives yield; the other weather features are pure noise."""
+    from acts_transfer.sweep import build_bundle
+    r = np.random.RandomState(seed)
+    rows = []
+    for name, years, level in (("TGT", range(2014, 2014 + n_target), 4200.0), ("D1", range(2010, 2010 + n_donor_seasons), 5200.0), ("D2", range(2010, 2010 + n_donor_seasons), 4800.0)):
+        for yr in years:
+            f = {DRIVER: r.normal(0.30, 0.08), "C1_Rain_mm_rep": r.normal(200, 60), "C1_Tmax_C_rep": r.normal(30, 1.2), "C1_EVI_rep": r.normal(0.5, 0.07)}
+            rows.append(dict(District=name, Year=yr, Yield_kg_ha=level + slope * (f[DRIVER] - 0.30) / 0.08 + r.normal(0, noise), Optical_Valid_Fraction=0.9, **f))
+    bundle, kept = build_bundle(pd.DataFrame(rows), ["D1", "D2"], "TGT", FEATS_DIAG)
+    assert DRIVER in kept
+    return bundle
+
+
+# ---------------------------------------------------------------------------------------------------- donor-pool competition
+@pytest.mark.parametrize("granary", [VOLATILE, STABLE])
+def test_donor_pool_competition_schema_and_selection(automl, granary):
+    a = automl[granary]
+    assert "donor_pool_table" in a
+    t = a["donor_pool_table"]
+    assert len(t) >= 1 and set(POOL_COLS) <= set(t.columns), t.columns.tolist()
+    rmse = t["Best Forward RMSE (kg/ha)"].astype(float)
+    assert np.isfinite(rmse).all() and (rmse >= 0).all()
+    assert rmse.is_monotonic_increasing, rmse.tolist()                                       # sorted ascending by forward RMSE
+    assert a["scores"]["donor_winner"][0] == t.iloc[0]["Donor Pool Candidate"]               # the winner is the first row
+    assert set(t["Safeguard Gate"]) <= {"PASS", "FALLBACK"}
+    delta = t["Delta_NT vs Local (kg/ha)"].astype(float)
+    away_from_zero = delta.abs() >= 0.05                                                      # the table rounds to 0.1 kg/ha: a delta that rounds to 0.0 has no visible sign
+    assert ((t["Safeguard Gate"] == "PASS") == (delta < 0))[away_from_zero].all(), t[POOL_COLS].to_dict("records")
+    assert (t["Num Donors"].astype(int) >= 1).all() and not t.duplicated(["Donor Pool Candidate", "Feature Regime"]).any()     # one row per donor pool and feature regime
+    assert set(t["Feature Regime"]) <= {"Meteo-Only (Climate)", "Meteo + Optical Fusion"}
+    # the delivered payload belongs to the winning pool: its best transfer method has the RMSE shown in row 0
+    ch = a["choice"]
+    row = ch["table"][ch["table"]["method"] == ch["best_transfer"]].iloc[0]
+    assert float(row["RMSE"]) * float(a["bundle"].y_to_kg) == pytest.approx(float(t.iloc[0]["Best Forward RMSE (kg/ha)"]), abs=0.1)
+
+
+# ---------------------------------------------------------------------------------------------------- weather ablation and attribution
+def test_weather_ablation_and_attribution_diagnostics():
+    from acts_transfer.diagnostics import compute_weather_ablation, compute_weather_driver_attribution
+    bundle = diag_bundle()
+    ab = compute_weather_ablation(bundle, kg=1000.0)
+    for k in ("err_real", "err_ablated", "weather_gain"):
+        assert isinstance(ab[k], float) and np.isfinite(ab[k]), (k, ab[k])
+    assert ab["weather_gain"] > 0 and ab["err_real"] < ab["err_ablated"]                      # real weather lowers the error
+    assert ab["weather_gain"] == pytest.approx(ab["err_ablated"] - ab["err_real"]) and ab["n_folds"] >= 3
+    assert "Optical_Valid_Fraction" not in ab["weather_features"] and DRIVER in ab["weather_features"]
+    # control: when yield does NOT respond to any weather feature the real weather must not earn a comparable gain
+    flat = compute_weather_ablation(diag_bundle(slope=0.0), kg=1000.0)
+    assert flat["weather_gain"] < ab["weather_gain"] / 5
+
+    dr = compute_weather_driver_attribution(bundle, kg=1000.0, top_k=6)
+    assert dr["Abs Impact"].is_monotonic_decreasing and len(dr) <= 6 and len(dr) >= 1
+    assert dr.iloc[0]["Driver"] == DRIVER and dr.iloc[0]["Impact (kg/ha per +1 SD)"] > 0       # the true driver gets the highest positive sensitivity
+    assert dr.iloc[0]["Impact (kg/ha per +1 SD)"] == pytest.approx(600.0, rel=0.25)             # about 600 kg/ha per SD was built in
+    assert dr["Impact (kg/ha per +1 SD)"].iloc[1:].abs().max() < 0.2 * dr.iloc[0]["Abs Impact"]  # the noise features are small by comparison
+    assert len(compute_weather_driver_attribution(bundle, kg=1000.0, top_k=2)) == 2
+    assert "Optical_Valid_Fraction" not in set(dr["Driver"])                                    # a static covariate is not a weather driver
+
+
+# ---------------------------------------------------------------------------------------------------- few-shot scarcity
+def _record_fits(monkeypatch):
+    from acts_transfer import diagnostics as dg
+    fits = []
+
+    class SpyTransfer(dg.AnomalyRidge):
+        def fit(self, *a, **k):
+            r = super().fit(*a, **k)
+            fits.append(("transfer", self))
+            return r
+
+    class SpyLocal(dg.LocalRidge):
+        def fit(self, *a, **k):
+            r = super().fit(*a, **k)
+            fits.append(("local", self))
+            return r
+    monkeypatch.setattr(dg, "AnomalyRidge", SpyTransfer)
+    monkeypatch.setattr(dg, "LocalRidge", SpyLocal)
+    return fits
+
+
+def test_few_shot_scarcity_benchmark_outputs(monkeypatch):
+    import dataclasses as dc
+    from acts_transfer.diagnostics import compute_few_shot_scarcity
+    bundle = diag_bundle(n_target=6, n_donor_seasons=12)
+    T = bundle.target.dropna(subset=["y"]).sort_values("group")
+    assert len(T) >= 5 and bundle.source.group.nunique() >= 10
+    fits = _record_fits(monkeypatch)
+    out = compute_few_shot_scarcity(bundle, kg=1000.0, shots=(2, 3, 4))
+    assert list(out.columns[:4]) == ["Target History", "Local-Only Error (kg/ha)", "Transfer Error (kg/ha)", "Transfer Advantage"]
+    assert out["Target History"].tolist() == ["n = 2 seasons", "n = 3 seasons", "n = 4 seasons"]
+    errs = out[["Local-Only Error (kg/ha)", "Transfer Error (kg/ha)"]].to_numpy(float)
+    assert np.isfinite(errs).all() and (errs >= 0).all()
+    assert np.allclose(out["Transfer Advantage"], out["Local-Only Error (kg/ha)"] - out["Transfer Error (kg/ha)"])
+    assert out["Test Seasons"].nunique() == 1                                                  # every n is scored on the same held-out seasons
+    assert (out["Transfer Advantage"] > 0).all()                                               # donors carry the weather slope the 2-4 local rows cannot learn
+
+    feats, last_g = bundle.features, T.group.iloc[-1]
+    assert fits and any(m.meta_["test_season"] == last_g for _, m in fits)                     # the final season is held out in at least one fold
+    for kind, m in fits:
+        g, n = m.meta_["test_season"], m.meta_["n"]
+        x_test = T.loc[T.group == g, feats].values[0]
+        y_test = float(T.loc[T.group == g, "y"].iloc[0])
+        assert len(m.train_yt_) == n and m.meta_["max_target_group"] < g                      # the n seasons directly before the test season, nothing later
+        assert not any(np.allclose(x_test, r) for r in m.train_Xt_) and not np.isclose(m.train_yt_, y_test).any()      # the held-out row is not a training row
+        if kind == "local":                                                                    # scaler statistics come from the training slice alone
+            np.testing.assert_allclose(m.mean_, m.train_Xt_.mean(axis=0))
+            np.testing.assert_allclose(m.scale_, m.train_Xt_.std(axis=0))
+        else:
+            np.testing.assert_allclose(m.mu_x_, np.nanmean(m.train_Xt_, axis=0))
+            assert m.mu_y_ == pytest.approx(m.train_yt_.mean())
+            assert m.meta_["max_source_group"] is None or m.meta_["max_source_group"] < g     # donor seasons strictly before the test season
+
+    # sentinel: replace the LAST season (features and yield) with absurd values. No training slice, scaler statistic or fitted slope may change.
+    before = [(k, m.coef_.copy() if k == "transfer" else m.m_.coef_.copy(), (m.mu_x_ if k == "transfer" else m.mean_).copy()) for k, m in fits]
+    fits.clear()
+    tgt = bundle.target.copy()
+    last = tgt.group == last_g
+    tgt.loc[last, feats] = 1e6
+    tgt.loc[last, "y"] = 99.0
+    compute_few_shot_scarcity(dc.replace(bundle, target=tgt), kg=1000.0, shots=(2, 3, 4))
+    after = [(k, m.coef_.copy() if k == "transfer" else m.m_.coef_.copy(), (m.mu_x_ if k == "transfer" else m.mean_).copy()) for k, m in fits]
+    assert len(before) == len(after)
+    for (k1, c1, mu1), (k2, c2, mu2) in zip(before, after):
+        assert k1 == k2
+        np.testing.assert_array_equal(c1, c2)
+        np.testing.assert_array_equal(mu1, mu2)
+
+
+def test_few_shot_scarcity_skips_shots_the_history_cannot_support():
+    from acts_transfer.diagnostics import compute_few_shot_scarcity
+    out = compute_few_shot_scarcity(diag_bundle(n_target=3, n_donor_seasons=10), kg=1000.0, shots=(2, 3, 4))
+    assert out["Target History"].tolist() == ["n = 2 seasons"]                                  # n = 3 and 4 leave no season to hold out
+
+
+# ---------------------------------------------------------------------------------------------------- safeguard gate and governance registry
+def test_safeguard_gate_and_governance_registry_integrity(automl, tmp_path):
+    from acts_transfer import governance as gov
+    from acts_transfer.modelchoice import LOCAL_BASELINES
+    from acts_transfer.publish import build_published_from_automl
+    from acts_transfer.sweep import clean_physical_ranges
+    from dashboard.tab_transfer import _evidence
+    reg = tmp_path / "governance_registry.json"                                                # never the real registry
+
+    # ---- Delta_NT >= 0: the gate triggers, only a local baseline can be served, and approval cannot be recorded.
+    # The triggered case is built from a real payload instead of naming a granary that happens to fail today: whether a given granary sits on the right side of
+    # the gate moves with the candidates it searches (Kemasin Semerak went from +25 to -2 kg/ha when the "Meteo Anomalies" regime was added: one more candidate was
+    # enough for the best of them to dip 2 kg/ha under the line), and a test must not need a granary to fail.
+    a_fb = copy.deepcopy(automl[STABLE])
+    ch = a_fb["choice"]
+    ch["safeguard"]["delta_nt"] = 0.05
+    ch["safeguard"]["gate_passed"] = False
+    ch["transfer_supported"] = False
+    ch["selected"] = "persistence"
+    sg = ch["safeguard"]
+    assert sg["delta_nt"] >= 0 and sg["gate_passed"] is False
+    assert ch["transfer_supported"] is False and ch["selected"] in LOCAL_BASELINES            # no donor-trained model is the model of record
+    assert gov.gate_status(ch) == gov.REJECTED
+    ev = _evidence(a_fb, ch, sg["gate_passed"], ch["best_transfer"])
+    assert ev["gate_passed"] is False
+    with pytest.raises(ValueError, match="cannot approve"):
+        gov.record_signoff(STABLE, "APPROVE", "Validator", "try", ev, path=reg)
+    assert not reg.exists()                                                                    # the refusal wrote nothing
+    entry = gov.record_signoff(STABLE, "REJECT", "Validator", "gate triggered", ev, path=reg)
+    assert entry["status"] == gov.REJECTED
+    eff = gov.effective(STABLE, path=reg)
+    assert eff["serves_transfer"] is False and "Local Baseline" in eff["badge"]
+
+    # ---- Delta_NT < 0: the gate passes and the evidence stored with the sign-off is complete
+    a = automl[VOLATILE]
+    ch = a["choice"]
+    sg = ch["safeguard"]
+    assert sg["delta_nt"] < 0 and sg["gate_passed"] is True
+    assert ch["transfer_supported"] is True and ch["selected"] not in LOCAL_BASELINES
+    assert gov.gate_status(ch) == gov.PENDING
+    ev = _evidence(a, ch, sg["gate_passed"], ch["selected"])
+    kg = float(a["bundle"].y_to_kg)
+    assert ev["gate_passed"] is True and ev["model_key"] == ch["selected"]
+    assert ev["delta_nt_kg_ha"] < 0 and ev["delta_nt_kg_ha"] == pytest.approx(ev["delta_nt"] * kg)
+    assert {"step1_data", "step2_domain", "step3_automl", "step4_gate", "donor_winner"} <= set(ev["automl_scores"])
+    assert ev["seasons_compared"] >= 3 and ev["domain_ok"] is True and all(np.isfinite(v) for v in ev["rmse_common_kg_ha"].values())
+    Y, _ = clean_physical_ranges(pd.read_csv(ROOT / "data" / "transfer_stage_dataset.csv"))
+    pub = build_published_from_automl(a, Y, VOLATILE)
+    bt = pd.DataFrame(pub["backtest"]["forward"])
+    assert len(bt) >= 3 and np.isfinite(bt[["actual", "baseline"]].to_numpy(float)).all() and bt["transfer"].notna().any()
+    assert pub["outlook"] and all(len(v.get(ch["selected"], [])) >= 1 for v in pub["outlook"].values())
+    assert pub["nowcast"]["transfer"] is not None and pub["transfer_model"] == ch["selected"]
+    entry = gov.record_signoff(VOLATILE, "APPROVE", "Validator", "gate passed", ev, pub, path=reg)
+    assert entry["status"] == gov.APPROVED and entry["evidence"]["delta_nt_kg_ha"] == ev["delta_nt_kg_ha"]
+    assert gov.effective(VOLATILE, path=reg)["serves_transfer"] is True
+    assert gov.effective(STABLE, path=reg)["serves_transfer"] is False                         # the other granary is unaffected
+
+
+
+# ---------------------------------------------------------------------------------------------------- a stale precomputed cache must not be served
+def test_a_precomputed_payload_is_served_only_for_the_same_data_and_the_same_code(tmp_path, monkeypatch):
+    import pickle
+    from acts_transfer import automl_runner as R
+    p = tmp_path / "automl_precomputed.pkl"
+    monkeypatch.setattr(R, "PRECOMPUTED_PATH", p)
+    assert R._load_precomputed("G", 1.0) is None                                               # no file
+    blob = {"mtime_token": 1.0, "code_token": R.code_token(), "granaries": {"G": {"marker": "ok"}}}
+    p.write_bytes(pickle.dumps(blob))
+    assert R._load_precomputed("G", 1.0) == {"marker": "ok"}                                   # same data, same code
+    assert R._load_precomputed("G", 2.0) is None                                               # other data
+    assert R._load_precomputed("H", 1.0) is None                                               # granary not in the file
+    p.write_bytes(pickle.dumps({**blob, "code_token": "built-by-older-code"}))
+    assert R._load_precomputed("G", 1.0) is None                                               # built by other code: recompute instead
+    p.write_bytes(pickle.dumps({"mtime_token": 1.0, "granaries": {"G": {"marker": "ok"}}}))
+    assert R._load_precomputed("G", 1.0) is None                                               # an old file with no code stamp is never trusted
+
+
+# ---------------------------------------------------------------------------------------------------- speed: the dashboard must not wait for a recomputation
+def test_the_dashboard_may_show_a_payload_from_older_code_but_flagged_and_the_tests_may_not(tmp_path, monkeypatch):
+    import pickle
+    from acts_transfer import automl_runner as R
+    p = tmp_path / "automl_precomputed.pkl"
+    monkeypatch.setattr(R, "PRECOMPUTED_PATH", p)
+    now = R.code_token()
+    p.write_bytes(pickle.dumps({"mtime_token": 1.0, "code_token": now, "built_with": {"NEW": now, "OLD": "older-code"},
+                                "granaries": {"NEW": {"marker": "new"}, "OLD": {"marker": "old"}}}))
+    assert R._load_precomputed("NEW", 1.0) == {"marker": "new"}                                # each granary carries its own stamp
+    assert R._load_precomputed("OLD", 1.0) is None                                             # strict (tests, recompute): older code is refused
+    assert R._load_precomputed("OLD", 1.0, allow_stale=True) == {"marker": "old", "stale_code": True}      # dashboard: instant, flagged
+    assert "stale_code" not in R._load_precomputed("NEW", 1.0, allow_stale=True)
+    assert R._load_precomputed("OLD", 2.0, allow_stale=True) is None                           # other data is never served, however lenient
+
+
+def test_the_precomputed_file_is_read_once_until_it_changes(tmp_path, monkeypatch):
+    import pickle
+    from acts_transfer import automl_runner as R
+    p = tmp_path / "automl_precomputed.pkl"
+    monkeypatch.setattr(R, "PRECOMPUTED_PATH", p)
+    R._BLOB_MEMO.clear()
+    p.write_bytes(pickle.dumps({"mtime_token": 1.0, "code_token": R.code_token(), "granaries": {"G": {"v": 1}}}))
+    first = R._read_blob()
+    assert R._read_blob() is first                                                             # the same object: not unpickled again
+    p.write_bytes(pickle.dumps({"mtime_token": 1.0, "code_token": R.code_token(), "granaries": {"G": {"v": 2}, "H": {}}}))
+    assert R._read_blob() is not first and R._load_precomputed("G", 1.0) == {"v": 2}           # a changed file is re-read
+
+
+def _precompute_module():
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("precompute_automl_under_test", ROOT / "pipeline" / "precompute_automl.py")
+    m = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(m)
+    return m
+
+
+def test_the_precompute_plan_reuses_what_is_current_and_only_computes_what_is_asked_for():
+    pc = _precompute_module()
+    names = ["A", "B", "C"]
+    blob = {"mtime_token": 5.0, "code_token": "v2", "built_with": {"A": "v2", "B": "v1"}, "granaries": {"A": {"a": 1}, "B": {"b": 1}}}
+    kept, stamps, todo = pc.plan_work(blob, 5.0, "v2", names)
+    assert todo == ["B", "C"] and set(kept) == {"A", "B"}                                      # A is current; B was built by older code; C is missing
+    assert pc.plan_work(blob, 5.0, "v2", names, only=["A"])[2] == []                           # nothing to do for a current granary
+    assert pc.plan_work(blob, 5.0, "v2", names, only=["C"])[2] == ["C"] and set(pc.plan_work(blob, 5.0, "v2", names, only=["C"])[0]) == {"A", "B"}      # --only keeps the rest
+    assert pc.plan_work(blob, 5.0, "v2", names, only=["A"], force=True)[2] == ["A"]
+    assert pc.plan_work(blob, 6.0, "v2", names)[0] == {} and pc.plan_work(blob, 6.0, "v2", names)[2] == names      # other data: everything is recomputed
+    assert pc.plan_work(None, 5.0, "v2", names)[2] == names
+    with pytest.raises(ValueError, match="unknown granary"):
+        pc.plan_work(blob, 5.0, "v2", names, only=["Z"])
+
+
+def test_importing_the_evaluation_module_does_not_load_tensorflow():
+    import subprocess
+    code = "import sys; import acts_transfer.evaluation, acts_transfer.automl_runner; print('tensorflow' in sys.modules)"
+    r = subprocess.run([sys.executable, "-c", code], cwd=str(ROOT), capture_output=True, text=True, timeout=120)
+    assert r.returncode == 0, r.stderr[-800:]
+    assert r.stdout.strip().splitlines()[-1] == "False"                                        # TensorFlow (about 14 s to import) is only loaded by the one method that needs it

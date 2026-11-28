@@ -13,3 +13,12 @@ scikit-learn        # the transfer-learning workflow (tabs 6 and 7)
 scipy                # statistical tests and weights in the transfer-learning workflow
 sqlalchemy>=2.0      # the decision database (SQLite by default; any database via DATABASE_URL)
 # if you point DATABASE_URL at PostgreSQL or MySQL, add the driver here: psycopg2-binary (PostgreSQL) or pymysql (MySQL)
+
+adapt
+
+# Everything needed to RUN THE PIPELINE on your own computer (extraction, EDA, models, transfer-learning tests).
+# The dashboard itself only needs requirements.txt.
+-r requirements.txt
+matplotlib
+earthengine-api      # only for pipeline/granary_direct.py and pipeline/granary_pipeline.py (Google Earth Engine)
+shapely              # only for pipeline/paddy_mask.py (paddy polygons)

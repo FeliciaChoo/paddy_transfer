@@ -5,25 +5,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf06fda0-f34b-45f1-8347-f3fdc7b48134" name="Changes" comment="update latest training">
+      <change afterPath="$PROJECT_DIR$/pipeline/precompute_automl.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/D1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/D2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DailyGranary.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DailyGranary_besut.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DailyGranary_kerian.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DailyGranary_kota_bharu.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DailyGranary_kota_setar.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DailyGranary_kuala_selangor.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DailyGranary_pasir_puteh.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DailyGranary_pekan.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DailyGranary_perak_tengah.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DailyGranary_rompin.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DailyGranary_sabak_bernam.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DailyGranary_seberang_perai_utara.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/DEPLOY.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UPDATE_NOTES.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/acts_transfer/automl_runner.py" beforeDir="false" afterPath="$PROJECT_DIR$/acts_transfer/automl_runner.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/acts_transfer/publish.py" beforeDir="false" afterPath="$PROJECT_DIR$/acts_transfer/publish.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/acts_transfer/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/acts_transfer/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/acts_transfer/diagnostics.py" beforeDir="false" afterPath="$PROJECT_DIR$/acts_transfer/diagnostics.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/acts_transfer/evaluation.py" beforeDir="false" afterPath="$PROJECT_DIR$/acts_transfer/evaluation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/acts_transfer/methods.py" beforeDir="false" afterPath="$PROJECT_DIR$/acts_transfer/methods.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/acts_transfer/modelchoice.py" beforeDir="false" afterPath="$PROJECT_DIR$/acts_transfer/modelchoice.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/acts_transfer/sweep.py" beforeDir="false" afterPath="$PROJECT_DIR$/acts_transfer/sweep.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/llm.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/llm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/tab_advisory.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/tab_advisory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/tab_map.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/tab_map.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard/tab_overview.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/tab_overview.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dashboard/tab_transfer.py" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/tab_transfer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/benchmark_sweep_granary.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/benchmark_sweep_granary.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/benchmark_sweep_pairs.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/benchmark_sweep_pairs.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/benchmark_sweep_pooled.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/benchmark_sweep_pooled.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/benchmark_sweep_suitability.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/benchmark_sweep_suitability.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/phenology_greenup.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/phenology_greenup.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/transfer_assessment_validation.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/transfer_assessment_validation.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/transfer_decade_features.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/transfer_decade_features.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/transfer_stage_dataset.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/transfer_stage_dataset.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/transfer_yield_dataset.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/transfer_yield_dataset.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pipeline/build_stage_features.py" beforeDir="false" afterPath="$PROJECT_DIR$/pipeline/build_stage_features.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pipeline/eda_clean.py" beforeDir="false" afterPath="$PROJECT_DIR$/pipeline/eda_clean.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements-pipeline.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_methodology_v2.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_methodology_v2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_transfer_gating.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_transfer_gating.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/test_ui_gating.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_ui_gating.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -96,43 +109,45 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Flask server.Flask (app_engine_kedah.py).executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.app.executor": "Run",
-    "Python.eda_clean.executor": "Run",
-    "Python.extraction.executor": "Run",
-    "Python.final_model.executor": "Run",
-    "Python.granary_direct.executor": "Run",
-    "Python.ndvi_transfer (1).executor": "Run",
-    "Python.ndvi_transfer.executor": "Run",
-    "Python.ndvi_transfer_feature.executor": "Run",
-    "Python.ndvi_transfer_sweep.executor": "Run",
-    "Python.paddy_transfer.executor": "Run",
-    "Python.prepare_app_data.executor": "Run",
-    "Python.run_extraction.executor": "Run",
-    "Python.run_performance_summary.executor": "Run",
-    "Python.transfer_pipeline.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "database.data.extractors.current.export.id": "Comma-separated (CSV)_id",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/paddy_transfer/data",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Flask server.Flask (app_engine_kedah.py).executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.app (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.app.executor&quot;: &quot;Run&quot;,
+    &quot;Python.eda_clean.executor&quot;: &quot;Run&quot;,
+    &quot;Python.extraction.executor&quot;: &quot;Run&quot;,
+    &quot;Python.final_model.executor&quot;: &quot;Run&quot;,
+    &quot;Python.granary_direct.executor&quot;: &quot;Run&quot;,
+    &quot;Python.ndvi_transfer (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.ndvi_transfer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.ndvi_transfer_feature.executor&quot;: &quot;Run&quot;,
+    &quot;Python.ndvi_transfer_sweep.executor&quot;: &quot;Run&quot;,
+    &quot;Python.paddy_transfer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.precompute_automl.executor&quot;: &quot;Run&quot;,
+    &quot;Python.prepare_app_data.executor&quot;: &quot;Run&quot;,
+    &quot;Python.run_extraction.executor&quot;: &quot;Run&quot;,
+    &quot;Python.run_performance_summary.executor&quot;: &quot;Run&quot;,
+    &quot;Python.transfer_pipeline.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;database.data.extractors.current.export.id&quot;: &quot;Comma-separated (CSV)_id&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/paddy_transfer/data&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\paddy_transfer\data" />
@@ -147,7 +162,32 @@
       <recent name="C:\Users\felic\OneDrive\Documents\FYP\paddy_transfer\templates" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.prepare_app_data">
+  <component name="RunManager" selected="Python.app (1)">
+    <configuration name="app (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="paddy_transfer" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="false" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="paddy_transfer" />
       <option name="ENV_FILES" value="" />
@@ -198,56 +238,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="ndvi_transfer_features" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="paddy_transfer" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/extraction" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="DEBUG_JUST_MY_CODE" value="false" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="C:\Users\felic\OneDrive\Documents\FYP\paddy_transfer\extraction\ndvi_transfer_features.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="ndvi_transfer_sweep" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="paddy_transfer" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/extraction" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="DEBUG_JUST_MY_CODE" value="false" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/extraction/ndvi_transfer_sweep.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="paddy_transfer" type="PythonConfigurationType" factoryName="Python">
       <module name="paddy_transfer" />
       <option name="ENV_FILES" value="" />
@@ -265,6 +255,31 @@
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="RUN_TOOL" value="" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app_engine_kedah.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="precompute_automl" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="paddy_transfer" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pipeline" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="DEBUG_JUST_MY_CODE" value="false" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pipeline/precompute_automl.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -300,11 +315,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.app (1)" />
+        <item itemvalue="Python.precompute_automl" />
         <item itemvalue="Python.prepare_app_data" />
         <item itemvalue="Python.app" />
         <item itemvalue="Python.final_model" />
-        <item itemvalue="Python.ndvi_transfer_features" />
-        <item itemvalue="Python.ndvi_transfer_sweep" />
       </list>
     </recent_temporary>
   </component>
@@ -369,6 +384,9 @@
       <workItem from="1795244261252" duration="667000" />
       <workItem from="1795257311539" duration="3115000" />
       <workItem from="1795316493703" duration="23000" />
+      <workItem from="1795566829820" duration="22562000" />
+      <workItem from="1795671964054" duration="4785000" />
+      <workItem from="1795826146861" duration="6098000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -522,7 +540,15 @@
       <option name="project" value="LOCAL" />
       <updated>1795515187657</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="update latest training">
+      <option name="closed" value="true" />
+      <created>1795535777043</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1795535777043</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -579,6 +605,7 @@
     <SUITE FILE_PATH="coverage/paddy_transfer$paddy_transfer.coverage" NAME="paddy_transfer Coverage Results" MODIFIED="1781935183416" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
     <SUITE FILE_PATH="coverage/paddy_transfer$transfer_pipeline.coverage" NAME="transfer_pipeline Coverage Results" MODIFIED="1791278005325" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/paddy_transfer$ndvi_transfer_sweep.coverage" NAME="ndvi_transfer_sweep Coverage Results" MODIFIED="1791297492385" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/extraction" />
+    <SUITE FILE_PATH="coverage/paddy_transfer$precompute_automl.coverage" NAME="precompute_automl Coverage Results" MODIFIED="1795625566841" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/pipeline" />
     <SUITE FILE_PATH="coverage/paddy_transfer$granary_direct.coverage" NAME="granary_direct Coverage Results" MODIFIED="1791248617990" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/extraction" />
     <SUITE FILE_PATH="coverage/paddy_transfer$prepare_app_data.coverage" NAME="prepare_app_data Coverage Results" MODIFIED="1791856631449" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/extraction" />
     <SUITE FILE_PATH="coverage/paddy_transfer$ndvi_transfer.coverage" NAME="ndvi_transfer Coverage Results" MODIFIED="1791282044319" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/eda" />
@@ -587,6 +614,7 @@
     <SUITE FILE_PATH="coverage/paddy_transfer$extraction.coverage" NAME="extraction Coverage Results" MODIFIED="1781935200149" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/paddy_transfer$ndvi_transfer_feature.coverage" NAME="ndvi_transfer_feature Coverage Results" MODIFIED="1791352833151" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/extraction" />
     <SUITE FILE_PATH="coverage/paddy_transfer$final_model.coverage" NAME="final_model Coverage Results" MODIFIED="1791512068494" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/extraction" />
+    <SUITE FILE_PATH="coverage/paddy_transfer$app__1_.coverage" NAME="app (1) Coverage Results" MODIFIED="1795676950103" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/paddy_transfer$Flask__app_engine_kedah_py_.coverage" NAME="Flask (app_engine_kedah.py) Coverage Results" MODIFIED="1783092985702" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/paddy_transfer$run_performance_summary.coverage" NAME="run_performance_summary Coverage Results" MODIFIED="1784850718557" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/paddy_transfer$run_extraction.coverage" NAME="run_extraction Coverage Results" MODIFIED="1784850740498" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />

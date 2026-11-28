@@ -1,0 +1,86 @@
+{
+  "dataset_mtime": 1795565670.6963768,
+  "summary": [
+    {
+      "Granary": "IADA Rompin",
+      "Verdict": "PASS",
+      "Delta_NT (kg/ha)": -376.5,
+      "Feature Regime": "Meteo Anomalies (Z-Score)",
+      "Winning Pool": "Top-1 Donor (IADA Pulau Pinang)",
+      "Winning Model": "Delta Two-Stage TrAdaBoost.R2 (\u0394Y)",
+      "Fwd RMSE (kg/ha)": 582.7
+    },
+    {
+      "Granary": "IADA Kerian",
+      "Verdict": "PASS",
+      "Delta_NT (kg/ha)": -144.8,
+      "Feature Regime": "Meteo-Only (Climate)",
+      "Winning Pool": "Top-1 Donor (IADA Rompin)",
+      "Winning Model": "CORAL feature alignment",
+      "Fwd RMSE (kg/ha)": 342.8
+    },
+    {
+      "Granary": "IADA Seberang Perak",
+      "Verdict": "PASS",
+      "Delta_NT (kg/ha)": -127.5,
+      "Feature Regime": "Meteo + Optical Fusion",
+      "Winning Pool": "Top-2 Donors (IADA Kerian + KADA)",
+      "Winning Model": "CORAL feature alignment",
+      "Fwd RMSE (kg/ha)": 582.5
+    },
+    {
+      "Granary": "MADA",
+      "Verdict": "PASS",
+      "Delta_NT (kg/ha)": -87.0,
+      "Feature Regime": "Meteo Anomalies (Z-Score)",
+      "Winning Pool": "IADA Barat Laut Selangor + 7 compatible",
+      "Winning Model": "Delta Two-Stage TrAdaBoost.R2 (\u0394Y)",
+      "Fwd RMSE (kg/ha)": 219.5
+    },
+    {
+      "Granary": "KADA",
+      "Verdict": "PASS",
+      "Delta_NT (kg/ha)": -84.6,
+      "Feature Regime": "Meteo Anomalies (Z-Score)",
+      "Winning Pool": "IADA Barat Laut Selangor + 7 compatible",
+      "Winning Model": "CORAL feature alignment",
+      "Fwd RMSE (kg/ha)": 343.4
+    },
+    {
+      "Granary": "IADA Pulau Pinang",
+      "Verdict": "PASS",
+      "Delta_NT (kg/ha)": -64.3,
+      "Feature Regime": "Meteo Anomalies (Z-Score)",
+      "Winning Pool": "IADA Rompin + 7 compatible",
+      "Winning Model": "Granary-Intercept Ridge (hierarchical)",
+      "Fwd RMSE (kg/ha)": 288.1
+    },
+    {
+      "Granary": "IADA Barat Laut Selangor",
+      "Verdict": "PASS",
+      "Delta_NT (kg/ha)": -21.7,
+      "Feature Regime": "Meteo-Only (Climate)",
+      "Winning Pool": "Top-1 Donor (KADA)",
+      "Winning Model": "CORAL feature alignment",
+      "Fwd RMSE (kg/ha)": 168.7
+    },
+    {
+      "Granary": "IADA Kemasin Semerak",
+      "Verdict": "PASS",
+      "Delta_NT (kg/ha)": -2.0,
+      "Feature Regime": "Meteo Anomalies (Z-Score)",
+      "Winning Pool": "Top-2 Donors (KETARA + KADA)",
+      "Winning Model": "Delta Two-Stage TrAdaBoost.R2 (\u0394Y)",
+      "Fwd RMSE (kg/ha)": 80.7
+    },
+    {
+      "Granary": "KETARA",
+      "Verdict": "FALLBACK",
+      "Delta_NT (kg/ha)": 26.7,
+      "Feature Regime": "Cloud-Masked Meteo + Optical",
+      "Winning Pool": "IADA Kemasin Semerak + 7 compatible",
+      "Winning Model": "Delta Two-Stage TrAdaBoost.R2 (\u0394Y)",
+      "Fwd RMSE (kg/ha)": 448.1
+    }
+  ]
+}

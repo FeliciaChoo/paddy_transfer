@@ -403,7 +403,7 @@ class TwoStageTrAdaBoost(_Base):
         Xsl, ysl = _labelled(Xs, ys)
         Xtl, ytl = _labelled(Xt, yt)
         self.p = self.prep(np.vstack([Xsl, Xtl]), np.r_[ysl, ytl])
-        n = self.cfg.boost_rounds if self.cfg else 30
+        n = self.cfg.two_stage_rounds if self.cfg else 5
         self.m = TwoStageTrAdaBoostR2(_weak(self.base, self.seed), n_estimators=n, random_state=self.seed).fit(
             self.p.transform(Xsl), ysl, self.p.transform(Xtl), ytl)
         w = self.m.source_weights_
@@ -413,6 +413,78 @@ class TwoStageTrAdaBoost(_Base):
     def predict(self, X):
         return self.m.predict(self.p.transform(X))
 
+class DeltaTwoStageTrAdaBoost(_Base):
+    """First-differenced Two-Stage TrAdaBoost.R2: learns year-over-year yield changes
+    (Δy = y_t - y_{t-1}) from feature changes (ΔX = X_t - X_{t-1}) using strictly
+    past training years inside each fold, then adds last observed yield back."""
+    key, family = "delta_two_stage_tradaboost_r2", "instance-based"
+
+    @staticmethod
+    def _build_lagged_pairs(X, y, units, groups):
+        order = np.lexsort((groups, units))
+        X_ord, y_ord, u_ord, g_ord = X[order], y[order], units[order], groups[order]
+        dX, dy, prev_y, out_g, out_u = [], [], [], [], []
+        for i in range(1, len(y_ord)):
+            if u_ord[i] == u_ord[i - 1] and not np.isnan(y_ord[i]) and not np.isnan(y_ord[i - 1]):
+                dX.append(X_ord[i] - X_ord[i - 1])
+                dy.append(y_ord[i] - y_ord[i - 1])
+                prev_y.append(y_ord[i - 1])
+                out_g.append(g_ord[i])
+                out_u.append(u_ord[i])
+        if not dy:
+            return np.empty((0, X.shape[1])), np.empty(0), np.empty(0), np.empty(0)
+        return np.asarray(dX, float), np.asarray(dy, float), np.asarray(prev_y, float), np.asarray(out_g)
+
+    def fit(self, Xs, ys, Xt, yt):
+        gs = self.ctx.get("group_s")
+        gt = self.ctx.get("group_t")
+        if gs is None or gt is None:
+            raise MethodUnavailable("delta_two_stage_tradaboost_r2 requires group_s and group_t in ctx")
+
+        us = self.source_units(np.ones(len(ys), dtype=bool))
+        dXs, dys, _, _ = self._build_lagged_pairs(Xs, ys, us, np.asarray(gs))
+        dXt, dyt, _, _ = self._build_lagged_pairs(Xt, yt, np.array(["__target__"] * len(yt)), np.asarray(gt))
+
+        if len(dys) < 3 or len(dyt) < 2:
+            raise MethodUnavailable(f"insufficient lagged pairs (source={len(dys)}, target={len(dyt)})")
+
+        # Save training target history so predict() can look up strictly earlier t-1 rows
+        valid_t = ~np.isnan(yt)
+        self._hist_g = np.asarray(gt)[valid_t]
+        self._hist_X = Xt[valid_t]
+        self._hist_y = yt[valid_t]
+
+        self.p = self.prep(np.vstack([dXs, dXt]), np.r_[dys, dyt])
+        n = self.cfg.two_stage_rounds if self.cfg else 5
+        self.m = TwoStageTrAdaBoostR2(_weak(self.base, self.seed), n_estimators=n, random_state=self.seed).fit(
+            self.p.transform(dXs), dys, self.p.transform(dXt), dyt
+        )
+        w = self.m.source_weights_
+        self.info = dict(
+            stage1_step=self.m.stage1_step_,
+            source_weight_ess_ratio=float(w.sum() ** 2 / (w ** 2).sum() / len(w)),
+            n_source_deltas=len(dys),
+            n_target_deltas=len(dyt),
+        )
+        return self
+
+    def predict(self, X):
+        pred_groups = self.ctx.get("group_pred")
+        if pred_groups is None:
+            raise MethodUnavailable("delta_two_stage_tradaboost_r2 requires group_pred in ctx")
+
+        preds = np.empty(len(X), dtype=float)
+        for i, (xi, gi) in enumerate(zip(X, pred_groups)):
+            earlier = np.where(self._hist_g < gi)[0]
+            if len(earlier) == 0:
+                # Earliest season has no prior year: fall back to target training mean
+                preds[i] = float(np.mean(self._hist_y))
+                continue
+            prev_idx = earlier[np.argmax(self._hist_g[earlier])]
+            dxi = (xi - self._hist_X[prev_idx]).reshape(1, -1)
+            pred_delta = float(self.m.predict(self.p.transform(dxi))[0])
+            preds[i] = np.clip(self._hist_y[prev_idx] + pred_delta, 0.0, 12.0)
+        return preds
 
 class STrAdaBoost(_Base):
     key, family = "s_tradaboost_r2", "instance-based"
@@ -539,16 +611,16 @@ class DetrendedResidualTransfer(_Base):
 
 
 REGISTRY = {c.key: c for c in (SourceOnly, TargetOnly, TargetMean, Pooled, TrAdaBoost, KMM, CORAL, TCA, RidgePrior,
-                                GranaryInterceptRidge, KMMRidge, TwoStageTrAdaBoost, STrAdaBoost, ZAnomalyTransfer, DetrendedResidualTransfer)}
+                                GranaryInterceptRidge, KMMRidge, TwoStageTrAdaBoost, DeltaTwoStageTrAdaBoost,STrAdaBoost, ZAnomalyTransfer, DetrendedResidualTransfer)}
 LABELS = {"source_only": "B2 Source-Only (pretrain and test, no adaptation)", "target_only": "B1 Target-Only (normal training, no transfer)", "target_mean": "B4 Target mean floor (no features)", "season_trend": "Season trend (no features)", "pooled": "B3 Naive pooled training", "tradaboost_r2": "Standard TrAdaBoost.R2 (diagnostic reference)",
           "kmm": "Kernel Mean Matching + weighted model", "coral": "CORAL feature alignment", "tca": "Transfer Component Analysis",
           "ridge_prior": "Parameter transfer (source Ridge + regularised target correction)", "persistence": "B4 Persistence floor (last observed yield)",
           "granary_intercept_ridge": "Granary-Intercept Ridge (hierarchical)", "kmm_ridge": "KMM + Weighted Ridge",
-          "two_stage_tradaboost_r2": "Two-Stage TrAdaBoost.R2", "s_tradaboost_r2": "S-TrAdaBoost.R2", "z_anomaly_transfer": "Z-Score Anomaly Transfer",
+          "two_stage_tradaboost_r2": "Two-Stage TrAdaBoost.R2", "delta_two_stage_tradaboost_r2": "Delta Two-Stage TrAdaBoost.R2 (ΔY)","s_tradaboost_r2": "S-TrAdaBoost.R2", "z_anomaly_transfer": "Z-Score Anomaly Transfer",
           "detrended_residual_transfer": "Detrended Residual Transfer (Hybrid Trend + S-TrAdaBoost.R2)"}
 # The methodology file names the methods Granary_Intercept_Ridge, KMM_Ridge, Two_Stage_TrAdaBoost_R2, S_TrAdaBoost_R2 (and Z-Score Anomaly Transfer).
 # Those names resolve to the registry keys, and each is also registered in LABELS so a lookup by either name gives the display label.
-ALIASES = {"Granary_Intercept_Ridge": "granary_intercept_ridge", "KMM_Ridge": "kmm_ridge", "Two_Stage_TrAdaBoost_R2": "two_stage_tradaboost_r2",
+ALIASES = {"Granary_Intercept_Ridge": "granary_intercept_ridge", "KMM_Ridge": "kmm_ridge", "Two_Stage_TrAdaBoost_R2": "two_stage_tradaboost_r2","Delta_Two_Stage_TrAdaBoost_R2": "delta_two_stage_tradaboost_r2",
            "S_TrAdaBoost_R2": "s_tradaboost_r2", "Detrended_Residual_Transfer": "detrended_residual_transfer", "Z_Score_Anomaly_Transfer": "z_anomaly_transfer", "Persistence": "persistence"}
 for _alias, _key in ALIASES.items():
     LABELS[_alias] = LABELS[_key]
@@ -604,6 +676,10 @@ def eligibility(key, n_s, n_t, n_feat, base, cfg):
     if key in ("two_stage_tradaboost_r2", "s_tradaboost_r2"):
         ok = n_t >= cfg.min_target_tradaboost
         return ok, (f"{n_t} labelled target rows" if ok else f"needs at least {cfg.min_target_tradaboost} labelled target rows; has {n_t}")
+    if key == "delta_two_stage_tradaboost_r2":
+        ok = n_t >= max(3, cfg.min_target_tradaboost)
+        return ok, (
+            f"{n_t} labelled target seasons ({n_t - 1} ΔY pairs)" if ok else f"needs at least {max(3, cfg.min_target_tradaboost)} labelled target seasons; has {n_t}")
     if key == "detrended_residual_transfer":
         ok = n_t >= max(3, cfg.min_target_tradaboost)
         return ok, ("trend per granary + residual transfer; needs the season of every row" if ok else f"needs at least {max(3, cfg.min_target_tradaboost)} labelled target years for a trend and a residual model; has {n_t}")

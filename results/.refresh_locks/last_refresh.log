@@ -1,0 +1,21 @@
+2026-11-28 21:06:30.852 WARNING streamlit.runtime.caching.cache_data_api: No runtime found, using MemoryCacheStorageManager
+9 granaries; 1 to compute, 8 reused: ['IADA Barat Laut Selangor']
+computing with 1 worker process(es), one BLAS thread each...
+2026-11-28 21:06:47.235 WARNING streamlit.runtime.caching.cache_data_api: No runtime found, using MemoryCacheStorageManager
+  [DONE] IADA Barat Laut Selangor   -> PASS     | Delta_NT:  -21.7 kg/ha | Meteo-Only (Climate)   (elapsed 130s)
+
+Done in 130.4s.
+Dashboard cache saved : C:\paddy_transfer\results\automl_precomputed.pkl
+JSON summary saved    : C:\paddy_transfer\results\automl_granary_summary.json
+
+Traceback (most recent call last):
+  File "C:\paddy_transfer\pipeline\precompute_automl.py", line 135, in <module>
+    main()
+    ~~~~^^
+  File "C:\paddy_transfer\pipeline\precompute_automl.py", line 131, in main
+    print(pd.DataFrame([_summary_row(g, a) for g, a in payloads.items()]).to_string(index=False))
+    ~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\felic\AppData\Local\Programs\Python\Python314\Lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+           ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeEncodeError: 'charmap' codec can't encode character '\u0394' in position 693: character maps to <undefined>

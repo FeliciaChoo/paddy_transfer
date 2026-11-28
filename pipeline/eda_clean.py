@@ -59,7 +59,8 @@ def add_flags(d):
     d["NDVI_clean"] = obs_clean.groupby(d["Pixel_ID"]).transform(
         lambda s: s.interpolate(limit=MAX_GAP_DECADES, limit_area="inside"))
     for c in ["EVI", "LSWI", "MNDWI"]:
-        d[f"{c}_clean"] = d[c].where(~d["flag_ndvi_spike"])
+        bad = d["flag_ndvi_spike"] | (d["flag_evi_clamped"] if c == "EVI" else False)    # |EVI| >= 1 is a division blow-up (values of 1e9 were found), not a measurement
+        d[f"{c}_clean"] = d[c].where(~bad)
     d["SAR_clean"] = d["SAR_VV_dB"].where(~d["flag_sar_positive"])
     return d
 

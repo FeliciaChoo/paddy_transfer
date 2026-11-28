@@ -17,6 +17,8 @@ Step 2  VERIFY    For the granary of interest the out-of-fold Delta_NT (5-7 held
                   MADA is therefore qualified empirically, never assumed.
 Nothing here sees the held-out year when fitting: every fit goes through evaluation.evaluate().
 """
+import re
+
 import numpy as np
 import pandas as pd
 from scipy.stats import spearmanr, wilcoxon
@@ -25,7 +27,7 @@ from .config import Config
 from .evaluation import evaluate
 from .harmonise import HarmonisedBundle
 
-SWEEP_METHODS = ["detrended_residual_transfer", "granary_intercept_ridge", "kmm_ridge", "two_stage_tradaboost_r2", "s_tradaboost_r2", "z_anomaly_transfer", "tradaboost_r2"]
+SWEEP_METHODS = ["detrended_residual_transfer", "granary_intercept_ridge", "kmm_ridge", "two_stage_tradaboost_r2", "s_tradaboost_r2", "delta_two_stage_tradaboost_r2", "z_anomaly_transfer", "tradaboost_r2"]
 SWEEP_BASELINES = ["target_only", "source_only", "pooled", "target_mean", "season_trend"]
 MAX_MISSING = 0.40
 KG = 1000.0
@@ -33,7 +35,7 @@ KG = 1000.0
 
 def stage_features(Y):
     """C1_* (main season) growth-stage features plus the static covariates Soil_pH and Optical_Valid_Fraction (Cycle 2 is too often absent to sweep)"""
-    f = [c for c in Y.columns if c.startswith("C1_") and not c.endswith(("Greenup_Decade", "Peak_Decade", "_rip"))]      # heading-stage features only: ripening is after the 70-day nowcast
+    f = [c for c in Y.columns if c.startswith("C1_") and not c.endswith(("Greenup_Decade", "Peak_Decade", "_rip"))]
     return f + [c for c in ("Soil_pH", "Optical_Valid_Fraction") if c in Y.columns]
 
 
@@ -189,6 +191,7 @@ def qualification(sweep: dict, target: str, method: str, strategy="loso"):
             out["position"] = (int(row.index[0]) + 1, len(g))
     return out
 
+
 def compute_automl_winner_scores(sweep: dict, target: str) -> dict:
     """Compute normalized 0-100% AutoML winner scores across Donor Pool, Model, Feature Set, and Scaling/Alignment."""
     if not sweep or sweep.get("granary") is None or sweep["granary"].empty:
@@ -203,18 +206,15 @@ def compute_automl_winner_scores(sweep: dict, target: str) -> dict:
     if sub.empty:
         sub = g.copy()
 
-    # Model score from Delta_NT_gate improvement
     best_m_row = sub.sort_values("Delta_NT_gate").iloc[0]
     best_method = str(best_m_row["method"])
     m_gain = max(0.0, -float(best_m_row["Delta_NT_gate"]))
     model_score = float(np.clip(72.0 + min(27.0, m_gain / 15.0), 50.0, 99.0))
 
-    # Donor score from AUC & MMD2 similarity
     auc_val = float(best_m_row.get("AUC", 0.72)) if pd.notna(best_m_row.get("AUC", np.nan)) else 0.72
     donor_score = float(np.clip(100.0 * (1.0 - max(0.0, auc_val - 0.5) * 0.6), 55.0, 98.0))
     donor_label = f"{sweep.get('meta', {}).get('source', 'MADA')} (Climate-Compatible Pool)"
 
-    # Feature & Scaling scores derived from optical coverage & relative error reduction
     feat_score = float(np.clip(78.0 + min(20.0, m_gain / 20.0), 60.0, 98.0))
     scale_score = float(np.clip(76.0 + min(21.0, m_gain / 18.0), 60.0, 97.0))
 
@@ -224,3 +224,75 @@ def compute_automl_winner_scores(sweep: dict, target: str) -> dict:
         "feature_set": ("C1 Heading-Stage + Soil pH + Optical Quality", round(feat_score, 1)),
         "scaling_alignment": ("Fold-safe RobustScaler + CORAL Alignment", round(scale_score, 1)),
     }
+
+
+_INDEX_COL = re.compile(r"(?:^|_)(?:EVI|NDVI|LSWI|MNDWI)(?:_|$)", re.I)
+
+
+def clean_physical_ranges(Y):
+    """Vegetation and water indices are ratios that cannot lie outside [-1, 1] (eda_clean flags |EVI| >= 1 as clamped). A value outside is a division blow-up
+    in the satellite data (1e9 was found), and one such value turns a whole forecast fold into nonsense. It is set to missing here so the in-fold imputation
+    handles it like any other gap. Returns (cleaned copy, number of values set to missing); the input is not changed."""
+    Y = Y.copy()
+    n = 0
+    for c in Y.columns:
+        if _INDEX_COL.search(str(c)) and pd.api.types.is_numeric_dtype(Y[c]):
+            bad = Y[c].abs() > 1.0
+            n += int(bad.sum())
+            Y.loc[bad, c] = np.nan
+    return Y, n
+
+
+def add_granary_weather_anomalies(
+    df: pd.DataFrame,
+    meteo_cols: list[str],
+) -> tuple[pd.DataFrame, list[str]]:
+    """Compute leak-free expanding per-granary Z-score weather anomalies so wet/dry shocks align across climate zones."""
+    out = df.sort_values(["District", "Year"]).copy()
+    anom_cols: list[str] = []
+    for col in meteo_cols:
+        if col not in out.columns or col == "Soil_pH":
+            continue
+        s = pd.to_numeric(out[col], errors="coerce")
+        grp = s.groupby(out["District"])
+        exp_mean = grp.transform(lambda x: x.expanding(min_periods=1).mean().shift(1)).fillna(s)
+        exp_std = (
+            grp.transform(lambda x: x.expanding(min_periods=2).std().shift(1))
+            .replace(0.0, np.nan)
+            .fillna(1.0)
+        )
+        anom_col = f"{col}_Zanom"
+        out[anom_col] = ((s - exp_mean) / exp_std).clip(-4.0, 4.0).fillna(0.0)
+        anom_cols.append(anom_col)
+    return out, anom_cols
+
+
+def apply_optical_cloud_masking(
+    df: pd.DataFrame,
+    all_stage_cols: list[str],
+    meteo_cols: list[str],
+    min_valid_frac: float = 0.60,
+) -> pd.DataFrame:
+    """Replace cloud-corrupted optical features with expanding granary median."""
+    out = df.sort_values(["District", "Year"]).copy()
+    if "Optical_Valid_Fraction" in out.columns:
+        ovf = pd.to_numeric(out["Optical_Valid_Fraction"], errors="coerce").fillna(1.0)
+    elif "Optical_observed_pct" in out.columns:
+        ovf = pd.to_numeric(out["Optical_observed_pct"], errors="coerce").fillna(100.0) / 100.0
+    else:
+        return out
+
+    cloudy = ovf < min_valid_frac
+    if not cloudy.any():
+        return out
+
+    optical_cols = [c for c in all_stage_cols if c not in meteo_cols and c in out.columns]
+    for col in optical_cols:
+        s = pd.to_numeric(out[col], errors="coerce")
+        exp_med = (
+            s.groupby(out["District"])
+            .transform(lambda x: x.expanding(min_periods=1).median().shift(1))
+            .fillna(s.groupby(out["District"]).transform("median"))
+        )
+        out.loc[cloudy, col] = exp_med.loc[cloudy]
+    return out

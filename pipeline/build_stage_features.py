@@ -79,7 +79,7 @@ def stage_features(dec, evi_s, ups):
         for st, (a, b) in STAGES.items():
             for v in STAGE_VARS[st]:
                 name = f"C{c}_{v}_{st}"
-                if g is None or g + a >= len(dec):
+                if g is None or g + a >= len(dec) or (v != "EVI" and v not in dec.columns):     # no cycle, window past the year, or the variable was not extracted: missing, never invented
                     row[name] = np.nan
                     continue
                 lo, hi = g + a, min(g + b, len(dec))

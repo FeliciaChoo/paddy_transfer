@@ -14,15 +14,106 @@ Baselines: persistence (the last observed yield of the target, a naive forecast)
 Metrics: MAE, RMSE, rRMSE (%), MAPE (%), R2, the win rate against persistence, and a bootstrap 95% interval for RMSE and MAE over held-out seasons.
 """
 from dataclasses import dataclass, field
-
-import numpy as np
-import pandas as pd
-
 from .config import Config
 from .harmonise import HarmonisedBundle
 from .methods import REGISTRY, MethodUnavailable
+import numpy as np
+import pandas as pd
+from sklearn.linear_model import Ridge
+from sklearn.impute import SimpleImputer
+from sklearn.preprocessing import RobustScaler
+
+
+def fit_predict_delta_tradaboost(
+    S_train: pd.DataFrame,
+    T_train: pd.DataFrame,
+    T_test: pd.DataFrame,
+    feats: list[str],
+    alpha: float = 10.0,
+    random_state: int = 42,
+) -> np.ndarray:
+    """
+    Fits TwoStageTrAdaBoostR2 on first-differenced yield (Δy = y_t - y_{t-1})
+    and feature deltas (ΔX = X_t - X_{t-1}), returning predicted yield in t/ha.
+    """
+    def _make_deltas(df: pd.DataFrame) -> pd.DataFrame:
+        d = df.sort_values(["unit", "group"]).copy()
+        d["prev_y"] = d.groupby("unit")["y"].shift(1)
+        d["delta_y"] = d["y"] - d["prev_y"]
+        for f in feats:
+            d[f"{f}_delta"] = d[f] - d.groupby("unit")[f].shift(1)
+        return d
+
+    # Combine T_train and T_test briefly just to get strictly backward-looking lag (t-1)
+    # without ever touching future labels (y in T_test is masked out)
+    T_all = pd.concat([T_train.assign(_is_test=False), T_test.assign(_is_test=True)], ignore_index=True)
+    T_all = T_all.sort_values("group").reset_index(drop=True)
+    T_all["prev_y"] = T_all["y"].shift(1)
+    T_all["delta_y"] = T_all["y"] - T_all["prev_y"]
+    for f in feats:
+        T_all[f"{f}_delta"] = T_all[f] - T_all[f].shift(1)
+
+    T_tr_d = T_all[~T_all["_is_test"]].dropna(subset=["prev_y", "delta_y"])
+    T_te_d = T_all[T_all["_is_test"]].copy()
+
+    # Fallback to persistence (prev_y) if target has < 2 delta seasons in this fold
+    fallback_pred = T_te_d["prev_y"].fillna(T_train["y"].mean()).values
+    if len(T_tr_d) < 2 or T_te_d["prev_y"].isna().any():
+        return np.clip(fallback_pred, 0.0, 12.0)
+
+    S_tr_d = _make_deltas(S_train).dropna(subset=["prev_y", "delta_y"])
+    if len(S_tr_d) < 5:
+        return np.clip(fallback_pred, 0.0, 12.0)
+
+    delta_cols = [f"{f}_delta" for f in feats]
+
+    # Fold-safe imputation and scaling fit ONLY on source + target training deltas
+    imp = SimpleImputer(strategy="median")
+    scaler = RobustScaler()
+
+    Xs_raw = imp.fit_transform(S_tr_d[delta_cols])
+    Xt_raw = imp.transform(T_tr_d[delta_cols])
+    Xte_raw = imp.transform(T_te_d[delta_cols])
+
+    Xs = scaler.fit_transform(Xs_raw)
+    Xt = scaler.transform(Xt_raw)
+    Xte = scaler.transform(Xte_raw)
+
+    ys = S_tr_d["delta_y"].values
+    yt = T_tr_d["delta_y"].values
+
+    cv_folds = min(5, max(2, len(Xt)))
+    from adapt.instance_based import TwoStageTrAdaBoostR2        # imported here, not at the top: it pulls in TensorFlow (about 14 s), which only this method needs
+    model = TwoStageTrAdaBoostR2(
+        estimator=Ridge(alpha=alpha),
+        Xt=Xt,
+        yt=yt,
+        n_estimators=10,
+        n_estimators_fs=10,
+        cv=cv_folds,
+        random_state=random_state,
+        verbose=0,
+    )
+    model.fit(Xs, ys)
+
+    pred_delta = model.predict(Xte)
+    pred_y_tha = T_te_d["prev_y"].values + pred_delta
+    return np.clip(pred_y_tha, 0.0, 12.0)
 
 BASELINES = ("source_only", "target_only", "target_mean", "season_trend", "persistence", "pooled")
+
+YIELD_MAX_KG_HA = 12000.0        # biological upper bound of a paddy yield (the same bound the Delta learner uses); the lower bound is 0
+
+
+def plausible_label_bounds(bundle):
+    """(low, high) in the units of the harmonised label, or None when the label does not look like a yield.
+    A yield cannot be negative or above 12,000 kg/ha. The bound is applied only when every observed label (source and target) already lies inside it, so a
+    bundle whose label is something else (a dB value, an index) is never clipped. It is a constant, so it cannot leak anything from a held-out season."""
+    kg = float(getattr(bundle, "y_to_kg", 1.0)) or 1.0
+    lab = np.concatenate([np.asarray(bundle.source["y"], float), np.asarray(bundle.target["y"], float)])
+    lab = lab[np.isfinite(lab)]
+    lo, hi = 0.0, YIELD_MAX_KG_HA / kg
+    return (lo, hi) if len(lab) and lab.min() >= lo and lab.max() <= hi else None
 
 
 @dataclass
@@ -92,6 +183,8 @@ def evaluate(bundle: HarmonisedBundle, methods, base, cfg: Config):
     T = bundle.target.dropna(subset=["y"])
     groups = sorted(T.group.unique().tolist())
     rows, info, fails, ntr = [], [], [], []
+    bounds = plausible_label_bounds(bundle)
+    n_clipped = 0
     for g, train_groups in _folds(groups, cfg):
         tr, te = T[T.group.isin(train_groups)], T[T.group == g]
         Xt, yt = tr[feats].values, tr.y.values
@@ -111,6 +204,9 @@ def evaluate(bundle: HarmonisedBundle, methods, base, cfg: Config):
                 p = np.asarray(m.predict(te[feats].values), float)
                 m.ctx["group_pred"] = tr.group.values
                 p_tr = np.asarray(m.predict(Xt), float)
+                if bounds is not None:       # a ridge fitted on 2-3 target rows can extrapolate to 13-18 t/ha: bound every prediction to the biological range
+                    n_clipped += int(((p < bounds[0]) | (p > bounds[1])).sum())
+                    p, p_tr = np.clip(p, *bounds), np.clip(p_tr, *bounds)
             except MethodUnavailable as e:
                 fails.append(dict(method=key, group=g, reason=str(e)))
                 continue
@@ -138,6 +234,8 @@ def evaluate(bundle: HarmonisedBundle, methods, base, cfg: Config):
                 rows.append(dict(method="persistence", group=g, y_true=yi, y_pred=pv, abs_err=abs(yi - pv)))
     pred = pd.DataFrame(rows)
     notes = []
+    if n_clipped:
+        notes.append(f"{n_clipped} prediction(s) fell outside the biological yield range (0 to {YIELD_MAX_KG_HA:,.0f} kg/ha) and were bounded to it; this happens when a model is fitted on very few target seasons.")
     if numeric_groups and len(T) >= 4:
         from scipy.stats import spearmanr
         rho = float(spearmanr(T.group, T.y)[0])

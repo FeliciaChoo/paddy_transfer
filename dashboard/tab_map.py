@@ -121,6 +121,14 @@ def _clear_transfer_cache():
         st.session_state.pop(k, None)
 
 
+def _view_points(filtered, state_choice: str, fit_all: bool):
+    """[[lat, lon], ...] the map should zoom to, or None to keep the default view: the fields of the chosen state, or all shown fields after 'Show all mapped fields'"""
+    if filtered is None or not len(filtered) or not (fit_all or state_choice != "All States"):
+        return None
+    pts = [[float(a), float(b)] for a, b in zip(filtered["Latitude"], filtered["Longitude"]) if pd.notna(a) and pd.notna(b)]
+    return pts or None
+
+
 def render_leaflet_map(D=None, role="kpkm", title="Paddy Field Conditions & Spatial Yield Map"):
     st.markdown(f"## {title}")
     st.caption("Review satellite conditions, annual yield benchmarks, and planting-calendar estimates before planning field visits.")
@@ -273,8 +281,9 @@ def render_leaflet_map(D=None, role="kpkm", title="Paddy Field Conditions & Spat
             tooltip=folium.Tooltip(_build_tooltip(r, selected_year), sticky=True),
         ).add_to(m)
 
-    if st.session_state.get("map_fit_all") and len(filtered):
-        m.fit_bounds([[float(a), float(b)] for a, b in zip(filtered["Latitude"], filtered["Longitude"])], padding=(40, 40))
+    view = _view_points(filtered, state_choice, bool(st.session_state.get("map_fit_all")))
+    if view:
+        m.fit_bounds(view, padding=(40, 40), max_zoom=9)             # a state filter zooms to its fields; max_zoom stops a single field from filling the screen
 
     if colour_mode == "Condition":
         leg_title = "Operational screening condition"

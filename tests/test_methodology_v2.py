@@ -221,8 +221,11 @@ def test_savitzky_golay_finds_two_cycles_and_the_green_up_precedes_each_peak():
 def test_stage_windows_are_counted_from_green_up_and_a_missing_cycle_stays_missing():
     m = _stage_module()
     n = 36
-    dec = pd.DataFrame({k: np.arange(n, dtype=float) for k in ("EVI", "LSWI", "MNDWI", "SAR_VV_dB", "Rain_mm", "Tmax_C", "Solar_MJ")})
+    dec = pd.DataFrame({k: np.arange(n, dtype=float) for k in ("EVI", "LSWI", "MNDWI", "SAR_VV_dB", "Rain_mm", "Tmax_C", "Mean_Temp_C", "Solar_MJ")})
     f = m.stage_features(dec, dec["EVI"].values, [(4, 10)])
+    assert f["C1_Mean_Temp_C_rep"] == pytest.approx(np.mean([8, 9, 10]))            # the heading-stage mean temperature is a mean, like Tmax
+    no_temp = m.stage_features(dec.drop(columns="Mean_Temp_C"), dec["EVI"].values, [(4, 10)])
+    assert np.isnan(no_temp["C1_Mean_Temp_C_rep"]) and no_temp["C1_Tmax_C_rep"] == pytest.approx(np.mean([8, 9, 10]))     # a variable that was not extracted is missing, not a crash
     assert f["C1_EVI_veg"] == pytest.approx(np.mean([4, 5, 6, 7]))                  # 0-40 d = the 4 decades from green-up
     assert f["C1_EVI_rep"] == pytest.approx(np.mean([8, 9, 10]))                    # 40-70 d
     assert f["C1_EVI_rip"] == pytest.approx(np.mean([11, 12, 13]))                  # 70-100 d

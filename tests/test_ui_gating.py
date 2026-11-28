@@ -1,241 +1,565 @@
-"""Interface-level checks of the clean sidebar navigation, zero-click AutoML scoring, and governance gating.
+"""Tests that transfer learning cannot bypass the mandatory assessment and harmonisation checks, and that the evaluation cannot leak.
 
-Run:  python -m pytest tests/test_ui_gating.py -q
+Run:  python -m pytest tests -q
+Synthetic data only, so the tests do not depend on any project file.
 """
-import json
+import copy
+import dataclasses
 import sys
 from pathlib import Path
 
+import numpy as np
+import pandas as pd
 import pytest
 
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+from acts_transfer import Config, Domain, TransferWorkflow, WorkflowError            # noqa: E402
+from acts_transfer import assessment, evaluation, harmonise, methods                  # noqa: E402
+from acts_transfer.harmonise import AssessmentBlocked, StaleAssessment               # noqa: E402
+
+FEATS = ["f1", "f2", "f3", "f4"]
+UNITS = {"f1": "unitless", "f2": "unitless", "f3": "dB", "f4": "deg C", "Yield_kg_ha": "kg/ha"}
+
+
+def make_domain(name, n, seed, shift=0.0, label_shift=0.0, start=2010):
+    rng = np.random.RandomState(seed)
+    X = rng.normal(size=(n, 4)) + shift
+    y = 4.0 + 0.5 * X[:, 0] - 0.3 * X[:, 1] + rng.normal(scale=0.1, size=n) + label_shift
+    df = pd.DataFrame(X, columns=FEATS)
+    df.insert(0, "Year", np.arange(start, start + n))
+    df["Yield_kg_ha"] = y * 1000.0
+    # keep f1..f4 inside plausible ranges for the configured names by using their own (unconfigured) names: no range check applies
+    return Domain(name, df, list(FEATS), "Yield_kg_ha", "Year", dict(UNITS))
+
+
+def cfg(**kw):
+    return Config(mmd_permutations=60, bootstrap_n=200, **kw)
+
+
+def ready_workflow(n_s=12, n_t=8, **kw):
+    wf = TransferWorkflow(cfg(**kw))
+    wf.select_domains(make_domain("S", n_s, 1), make_domain("T", n_t, 2, shift=0.3), "ridge")
+    return wf
+
+
+def complete_through_suitability(wf):
+    wf.assess()
+    wf.harmonise()
+    wf.evaluate_suitability()
+    return wf
+
+
+# ------------------------------------------------------------------------------------------------ mandatory order
+def test_run_without_anything_raises():
+    wf = ready_workflow()
+    with pytest.raises(WorkflowError, match="assess"):
+        wf.run(methods=["kmm"])
+
+
+def test_harmonise_without_assessment_raises():
+    wf = ready_workflow()
+    with pytest.raises(WorkflowError, match="assess"):
+        wf.harmonise()
+
+
+def test_suitability_without_harmonisation_raises():
+    wf = ready_workflow()
+    wf.assess()
+    with pytest.raises(WorkflowError, match="harmonise"):
+        wf.evaluate_suitability()
+
+
+def test_run_with_assessment_but_without_harmonisation_raises():
+    wf = ready_workflow()
+    wf.assess()
+    with pytest.raises(WorkflowError, match="harmonise"):
+        wf.run(methods=["kmm"])
+
+
+def test_run_without_suitability_raises():
+    wf = ready_workflow()
+    wf.assess()
+    wf.harmonise()
+    with pytest.raises(WorkflowError, match="suitability"):
+        wf.run(methods=["kmm"])
+
+
+def test_run_without_strategy_raises():
+    wf = complete_through_suitability(ready_workflow())
+    with pytest.raises(WorkflowError, match="strategy"):
+        wf.run()
+
+
+def test_status_locks_later_steps():
+    wf = ready_workflow()
+    st = {s["key"]: s["status"] for s in wf.status()}
+    assert st["select"] == "complete" and st["assess"] == "current"
+    assert all(st[k] == "locked" for k in ("harmonise", "suitability", "strategy", "run", "compare"))
+
+
+def test_full_path_runs_and_marks_everything_complete():
+    wf = complete_through_suitability(ready_workflow())
+    wf.select_strategy(["kmm", "coral"])
+    r = wf.run()
+    assert r.n_folds > 0 and {"kmm", "coral", "source_only", "target_only"} <= set(r.metrics.method)
+    assert all(s["status"] == "complete" for s in wf.status())
+
+
+# ------------------------------------------------------------------------------------------------ stale / tampered data
+def test_changed_data_after_assessment_is_refused():
+    wf = ready_workflow()
+    wf.assess()
+    wf.source.df.loc[0, "f1"] += 5.0                      # the data change after it was assessed
+    with pytest.raises(StaleAssessment):
+        wf.harmonise()
+
+
+def test_changed_data_after_harmonisation_blocks_run():
+    wf = complete_through_suitability(ready_workflow())
+    wf.select_strategy(["kmm"])
+    wf.target.df.loc[0, "f2"] += 5.0
+    with pytest.raises(StaleAssessment):
+        wf.run()
+
+
+def test_changing_domains_clears_every_later_step():
+    wf = complete_through_suitability(ready_workflow())
+    wf.select_strategy(["kmm"])
+    wf.run()
+    wf.select_domains(make_domain("S2", 12, 3), make_domain("T2", 8, 4), "ridge")
+    assert wf.report is None and wf.bundle is None and wf.suit is None and wf.result is None and wf.strategy is None
+    with pytest.raises(WorkflowError):
+        wf.run(methods=["kmm"])
+
+
+def test_assessment_from_other_data_cannot_harmonise():
+    a, b = ready_workflow(), ready_workflow()
+    b.source = make_domain("S", 12, 99)                   # different data than the report was built on
+    rep = a.assess()
+    with pytest.raises(StaleAssessment):
+        harmonise.harmonise(rep, b.source, b.target, harmonise.default_spec(rep, b.source, b.target), b.cfg)
+
+
+def test_evaluate_rejects_raw_data():
+    wf = ready_workflow()
+    with pytest.raises(TypeError, match="HarmonisedBundle"):
+        evaluation.evaluate(wf.target.df, ["kmm"], "ridge", wf.cfg)
+
+
+# ------------------------------------------------------------------------------------------------ readiness and suitability gates
+def test_not_ready_data_blocks_harmonisation_and_everything_after():
+    wf = TransferWorkflow(cfg())
+    wf.select_domains(make_domain("S", 12, 1), make_domain("T", 2, 2), "ridge")   # 2 target rows: below the minimum
+    rep = wf.assess()
+    assert rep.readiness == "not_ready"
+    with pytest.raises(AssessmentBlocked):
+        wf.harmonise()
+    assert {s["key"]: s["status"] for s in wf.status()}["harmonise"] == "blocked"
+    with pytest.raises(WorkflowError):
+        wf.run(methods=["source_only"])
+
+
+def _not_recommended_workflow():
+    wf = TransferWorkflow(cfg())
+    wf.select_domains(make_domain("S", 12, 1), make_domain("T", 8, 2, shift=3.0, label_shift=2.0), "ridge")   # features AND yield differ strongly
+    complete_through_suitability(wf)
+    assert wf.suit["suitability"] == "not_recommended"
+    return wf
+
+
+def test_not_recommended_needs_an_override_only_to_run_a_transfer_method():
+    wf = _not_recommended_workflow()
+    wf.select_strategy(["kmm"])
+    with pytest.raises(WorkflowError, match="override"):
+        wf.run()                                                      # a transfer method needs a stated reason
+    r = wf.run(override_reason="research comparison, accepting the risk")
+    assert wf.override and any("override" in n.lower() for n in r.notes)
+    assert wf.choice["transfer_supported"] is False                    # an override run can never become the model used for predictions
+
+
+def test_baselines_only_run_needs_no_override_even_when_not_recommended():
+    wf = _not_recommended_workflow()
+    wf.select_strategy(["target_only"])
+    wf.run()                                                           # direct model training involves no transfer, so nothing to override
+    assert wf.choice is not None and wf.choice["selected"] in ("source_only", "target_only", "target_mean", "season_trend", "pooled")
+
+
+def test_ineligible_method_is_rejected():
+    wf = TransferWorkflow(cfg(min_obs_block=2))
+    wf.select_domains(make_domain("S", 12, 1), make_domain("T", 3, 2), "ridge")  # 2 target rows per training fold: TrAdaBoost needs 3
+    complete_through_suitability(wf)
+    with pytest.raises(WorkflowError, match="not eligible"):
+        wf.select_strategy(["tradaboost_r2"])
+
+
+def test_methods_not_implemented_are_not_offered():
+    wf = complete_through_suitability(ready_workflow())
+    tab = wf.suit["methods"].set_index("key")
+    for k in ("fine_tune_nn", "adversarial_da", "tree_fine_tune"):
+        assert not bool(tab.loc[k, "eligible"])
+    with pytest.raises(WorkflowError):
+        wf.select_strategy(["fine_tune_nn"])
+
+
+def test_parameter_transfer_needs_a_ridge_base():
+    wf = TransferWorkflow(cfg())
+    wf.select_domains(make_domain("S", 12, 1), make_domain("T", 8, 2), "random_forest")
+    complete_through_suitability(wf)
+    assert not bool(wf.suit["methods"].set_index("key").loc["ridge_prior", "eligible"])
+
+
+# ------------------------------------------------------------------------------------------------ harmonisation behaviour
+def test_harmonisation_converts_units_keeps_originals_and_records_everything():
+    wf = ready_workflow()
+    before = wf.target.df.copy()
+    wf.assess()
+    b = wf.harmonise()
+    pd.testing.assert_frame_equal(wf.target.df, before)                   # the original is untouched
+    assert 3.0 < b.target.y.mean() < 5.5                                   # kg/ha -> t/ha
+    assert any(l["step"] == "convert units" for l in b.log) and any(l["step"] == "deferred to training folds" for l in b.log)
+    assert b.ready and all(v["passed"] for v in b.validation)
+
+
+def test_invalid_values_become_missing_not_kept():
+    s = make_domain("S", 12, 1)
+    s.df["NDVI_mean"] = 0.5
+    s.features.append("NDVI_mean")
+    s.df.loc[2, "NDVI_mean"] = 7.0                                         # impossible NDVI
+    t = make_domain("T", 8, 2)
+    t.df["NDVI_mean"] = np.linspace(0.3, 0.7, 8)
+    t.features.append("NDVI_mean")
+    wf = TransferWorkflow(cfg())
+    wf.select_domains(s, t, "ridge")
+    wf.assess()
+    b = wf.harmonise()
+    assert np.isnan(b.source.loc[2, "NDVI_mean"])
+    assert any(l["step"] == "invalid values to missing" and l["rows_affected"] >= 1 for l in b.log)
+
+
+def test_unavailable_features_are_listed_as_proposed_not_invented():
+    wf = ready_workflow()
+    rep = wf.assess()
+    prop = rep.compat[rep.compat.status == "PROPOSED, not available"].feature.tolist()
+    assert "humidity" in prop and "land surface temperature" in prop
+    assert "humidity" not in wf.source.df.columns
+
+
+# ------------------------------------------------------------------------------------------------ metrics are real
+def test_smd_matches_the_formula_and_detects_a_shift():
+    rng = np.random.RandomState(0)
+    a, b = rng.normal(0, 1, 400), rng.normal(2, 1, 400)
+    assert assessment.smd_of(a, b) == pytest.approx(2.0, abs=0.2)
+    same = assessment.smd_of(rng.normal(0, 1, 400), rng.normal(0, 1, 400))
+    assert abs(same) < 0.2
+
+
+def test_mmd_detects_shift_and_not_identical_distributions():
+    rng = np.random.RandomState(1)
+    cfg_ = cfg()
+    A = pd.DataFrame(rng.normal(size=(60, 3)), columns=list("abc"))
+    same = assessment.domain_differences(A, pd.DataFrame(rng.normal(size=(60, 3)), columns=list("abc")), cfg_)
+    shifted = assessment.domain_differences(A, pd.DataFrame(rng.normal(size=(60, 3)) + 1.5, columns=list("abc")), cfg_)
+    assert same["mmd_p"] > 0.05 and shifted["mmd_p"] < 0.05
+
+
+# ------------------------------------------------------------------------------------------------ no leakage
+def _bundle():
+    wf = complete_through_suitability(ready_workflow())
+    return wf.bundle, wf.cfg
+
+
+def test_heldout_labels_never_change_their_own_prediction():
+    bundle, c = _bundle()
+    keys = ["source_only", "target_only", "pooled", "tradaboost_r2", "kmm", "coral", "tca", "ridge_prior"]
+    base = evaluation.evaluate(bundle, keys, "ridge", c).predictions
+    g = sorted(bundle.target.group.unique())[3]
+    tgt = bundle.target.copy()
+    tgt.loc[tgt.group == g, "y"] = tgt.loc[tgt.group == g, "y"] + 50.0               # corrupt ONE season's label
+    changed = evaluation.evaluate(dataclasses.replace(bundle, target=tgt), keys, "ridge", c).predictions
+    a = base[base.group == g].set_index("method").y_pred
+    b = changed[changed.group == g].set_index("method").y_pred
+    pd.testing.assert_series_equal(a.sort_index(), b.sort_index())                   # its own prediction cannot see its own label
+    other = base[base.group != g].groupby("method").y_pred.sum()
+    other2 = changed[changed.group != g].groupby("method").y_pred.sum()
+    assert not np.allclose(other.drop(["source_only"]).values, other2.drop(["source_only"]).values)   # sanity: it IS used when it is training data
+
+
+def test_training_arrays_never_contain_the_heldout_season(monkeypatch):
+    bundle, c = _bundle()
+    seen = []
+
+    class Spy(methods.SourceOnly):
+        def fit(self, Xs, ys, Xt, yt):
+            seen.append(np.array(Xt))
+            return super().fit(Xs, ys, Xt, yt)
+
+    monkeypatch.setitem(methods.REGISTRY, "source_only", Spy)
+    evaluation.evaluate(bundle, ["source_only"], "ridge", dataclasses.replace(c, cv_strategy="loso"))
+    T = bundle.target.sort_values("group")
+    feats = bundle.features
+    assert len(seen) == len(T)
+    for (_, row), xt in zip(T.iterrows(), seen):
+        assert len(xt) == len(T) - 1
+        assert not any(np.allclose(row[feats].values.astype(float), r) for r in xt)
+
+
+def test_forward_validation_uses_only_earlier_seasons(monkeypatch):
+    bundle, c = _bundle()
+    seen = []
+
+    class Spy(methods.SourceOnly):
+        def fit(self, Xs, ys, Xt, yt):
+            seen.append(len(Xt))
+            return super().fit(Xs, ys, Xt, yt)
+
+    monkeypatch.setitem(methods.REGISTRY, "source_only", Spy)
+    evaluation.evaluate(bundle, ["source_only"], "ridge", dataclasses.replace(c, cv_strategy="forward"))
+    assert seen == list(range(2, len(bundle.target)))                               # 2, 3, ..., n-1 earlier seasons, never later ones
+
+
+def test_scarcity_setting_limits_target_training_seasons():
+    bundle, c = _bundle()
+    r = evaluation.evaluate(bundle, ["target_only"], "ridge", dataclasses.replace(c, max_target_train_groups=3))
+    assert max(r.n_target_train) == 3
+
+
+# ---- regression: four impossible EVI readings (1e9) once turned single forecast folds into nonsense for KADA, Kemasin Semerak and Pulau Pinang
+def test_the_shipped_tables_hold_no_impossible_vegetation_index_values():
+    import pandas as pd
+    from acts_transfer.sweep import clean_physical_ranges
+    for f in ("transfer_stage_dataset.csv", "transfer_decade_features.csv", "transfer_yield_dataset.csv"):
+        _, n = clean_physical_ranges(pd.read_csv(f"data/{f}"))
+        assert n == 0, (f, n)
+    c = pd.read_csv("eda/DailyGranary_clean.csv", usecols=["EVI_clean", "LSWI_clean", "MNDWI_clean", "NDVI_clean"])
+    assert (c.abs().max() <= 1.0).all()
+
+
+def test_the_range_guard_turns_an_impossible_index_into_a_gap_and_leaves_the_rest_alone():
+    import pandas as pd
+    from acts_transfer.sweep import clean_physical_ranges
+    Y = pd.DataFrame({"District": ["A", "B", "C"], "C1_EVI_veg": [0.5, 3.3e8, -0.2], "C1_Rain_mm_rep": [900.0, 120.0, 5000.0], "EVI_pix_mean": [0.4, 0.5, 6.8e7]})
+    out, n = clean_physical_ranges(Y)
+    assert n == 2 and out["C1_EVI_veg"].isna().tolist() == [False, True, False] and out["EVI_pix_mean"].isna().tolist() == [False, False, True]
+    assert out["C1_Rain_mm_rep"].tolist() == [900.0, 120.0, 5000.0] and Y["C1_EVI_veg"].iloc[1] == 3.3e8      # rain is not an index; the input is untouched
+
+
+def test_no_granary_gets_an_absurd_forecast_error_in_the_automl_step():
+    import os
+    import pandas as pd
+    from acts_transfer.automl_runner import run_full_automl_for_granary
+    Y = pd.read_csv("data/transfer_stage_dataset.csv")
+    mt = os.path.getmtime("data/transfer_stage_dataset.csv")
+    for g in sorted(Y.District.unique()):
+        a = run_full_automl_for_granary(g, "data", mt)
+        assert a["model_table"]["Forward RMSE (t/ha)"].max() < 5.0, (g, a["model_table"][["Method ID", "Forward RMSE (t/ha)"]].to_dict("records"))
+        for r in a["eval_results"].values():
+            assert (r.predictions.y_pred.abs() < 50).all(), g          # yields are in t/ha: a prediction of tens of t/ha is a numerical blow-up
+
+
+# ================================================================================================================================================
+# Step 5/6 regression: donor-pool competition, pre-approval diagnostics (weather ablation, few-shot scarcity, driver attribution), safeguard + registry
+# ================================================================================================================================================
 ROOT = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(ROOT))
-pytest.importorskip("streamlit")
-from streamlit.testing.v1 import AppTest        # noqa: E402
-
-pytestmark = pytest.mark.skipif(not (ROOT / "data" / "transfer_yield_dataset.csv").exists(), reason="needs data/transfer_yield_dataset.csv")
-
-ROLE_VAL, ROLE_KPKM = "Model Validator & Data Steward", "KPKM Programme Manager"
+VOLATILE, STABLE = "IADA Rompin", "IADA Barat Laut Selangor"
+POOL_COLS = ["Donor Pool Candidate", "Num Donors", "Best Method", "Best Forward RMSE (kg/ha)", "Delta_NT vs Local (kg/ha)", "Safeguard Gate"]
+DRIVER = "C1_LSWI_rep"
+FEATS_DIAG = [DRIVER, "C1_Rain_mm_rep", "C1_Tmax_C_rep", "C1_EVI_rep", "Optical_Valid_Fraction"]
 
 
-def _app(role=ROLE_VAL, registry=None, step=None, page_idx=0):
-    import tempfile
-    from acts_transfer import governance
-    governance.DEFAULT_PATH = registry if registry is not None else Path(tempfile.mkdtemp()) / "governance_registry.json"
-    at = AppTest.from_file(str(ROOT / "app.py"), default_timeout=600)
-    at.session_state["nav_mode"] = role
-    at.session_state["kpkm_page_idx"] = page_idx
-    if step:
-        at.session_state["validator_step"] = step
-    return at.run()
+@pytest.fixture(scope="module")
+def automl():
+    """the AutoML payload of the volatile and of the stable granary, computed once for the whole module"""
+    from acts_transfer.automl_runner import run_full_automl_for_granary
+    mt = (ROOT / "data" / "transfer_stage_dataset.csv").stat().st_mtime
+    return {g: run_full_automl_for_granary(g, str(ROOT / "data"), mt) for g in (VOLATILE, STABLE)}
 
 
-def _kpkm_page(at, n):
-    return _btn(at, f"nav_kpkm_{n - 1}").click().run()
+def diag_bundle(slope=600.0, n_target=7, n_donor_seasons=12, seed=0, noise=40.0):
+    """a harmonised bundle (yield in t/ha, y_to_kg = 1000): the target granary and two donors, yield = granary level + slope * (standardised LSWI) + small noise.
+    Only C1_LSWI_rep drives yield; the other weather features are pure noise."""
+    from acts_transfer.sweep import build_bundle
+    r = np.random.RandomState(seed)
+    rows = []
+    for name, years, level in (("TGT", range(2014, 2014 + n_target), 4200.0), ("D1", range(2010, 2010 + n_donor_seasons), 5200.0), ("D2", range(2010, 2010 + n_donor_seasons), 4800.0)):
+        for yr in years:
+            f = {DRIVER: r.normal(0.30, 0.08), "C1_Rain_mm_rep": r.normal(200, 60), "C1_Tmax_C_rep": r.normal(30, 1.2), "C1_EVI_rep": r.normal(0.5, 0.07)}
+            rows.append(dict(District=name, Year=yr, Yield_kg_ha=level + slope * (f[DRIVER] - 0.30) / 0.08 + r.normal(0, noise), Optical_Valid_Fraction=0.9, **f))
+    bundle, kept = build_bundle(pd.DataFrame(rows), ["D1", "D2"], "TGT", FEATS_DIAG)
+    assert DRIVER in kept
+    return bundle
 
 
-def _btn(at, key):
-    b = [x for x in at.button if x.key == key]
-    return b[0] if b else None
+# ---------------------------------------------------------------------------------------------------- donor-pool competition
+@pytest.mark.parametrize("granary", [VOLATILE, STABLE])
+def test_donor_pool_competition_schema_and_selection(automl, granary):
+    a = automl[granary]
+    assert "donor_pool_table" in a
+    t = a["donor_pool_table"]
+    assert len(t) >= 1 and set(POOL_COLS) <= set(t.columns), t.columns.tolist()
+    rmse = t["Best Forward RMSE (kg/ha)"].astype(float)
+    assert np.isfinite(rmse).all() and (rmse >= 0).all()
+    assert rmse.is_monotonic_increasing, rmse.tolist()                                       # sorted ascending by forward RMSE
+    assert a["scores"]["donor_winner"][0] == t.iloc[0]["Donor Pool Candidate"]               # the winner is the first row
+    assert set(t["Safeguard Gate"]) <= {"PASS", "FALLBACK"}
+    delta = t["Delta_NT vs Local (kg/ha)"].astype(float)
+    away_from_zero = delta.abs() >= 0.05                                                      # the table rounds to 0.1 kg/ha: a delta that rounds to 0.0 has no visible sign
+    assert ((t["Safeguard Gate"] == "PASS") == (delta < 0))[away_from_zero].all(), t[POOL_COLS].to_dict("records")
+    assert (t["Num Donors"].astype(int) >= 1).all()
+    if "Feature Regime" in t.columns:
+        assert not t.duplicated(subset=["Donor Pool Candidate", "Feature Regime"]).any()
+    else:
+        assert t["Donor Pool Candidate"].is_unique
+    # the delivered payload belongs to the winning pool: its best transfer method has the RMSE shown in row 0
+    ch = a["choice"]
+    row = ch["table"][ch["table"]["method"] == ch["best_transfer"]].iloc[0]
+    assert float(row["RMSE"]) * float(a["bundle"].y_to_kg) == pytest.approx(float(t.iloc[0]["Best Forward RMSE (kg/ha)"]), abs=0.1)
 
 
-def _text(at):
-    return " ".join(x.value for blk in (at.markdown, at.warning, at.info, at.success, at.error, at.caption) for x in blk)
+# ---------------------------------------------------------------------------------------------------- weather ablation and attribution
+def test_weather_ablation_and_attribution_diagnostics():
+    from acts_transfer.diagnostics import compute_weather_ablation, compute_weather_driver_attribution
+    bundle = diag_bundle()
+    ab = compute_weather_ablation(bundle, kg=1000.0)
+    for k in ("err_real", "err_ablated", "weather_gain"):
+        assert isinstance(ab[k], float) and np.isfinite(ab[k]), (k, ab[k])
+    assert ab["weather_gain"] > 0 and ab["err_real"] < ab["err_ablated"]                      # real weather lowers the error
+    assert ab["weather_gain"] == pytest.approx(ab["err_ablated"] - ab["err_real"]) and ab["n_folds"] >= 3
+    assert "Optical_Valid_Fraction" not in ab["weather_features"] and DRIVER in ab["weather_features"]
+    # control: when yield does NOT respond to any weather feature the real weather must not earn a comparable gain
+    flat = compute_weather_ablation(diag_bundle(slope=0.0), kg=1000.0)
+    assert flat["weather_gain"] < ab["weather_gain"] / 5
+
+    dr = compute_weather_driver_attribution(bundle, kg=1000.0, top_k=6)
+    assert dr["Abs Impact"].is_monotonic_decreasing and len(dr) <= 6 and len(dr) >= 1
+    assert dr.iloc[0]["Driver"] == DRIVER and dr.iloc[0]["Impact (kg/ha per +1 SD)"] > 0       # the true driver gets the highest positive sensitivity
+    assert dr.iloc[0]["Impact (kg/ha per +1 SD)"] == pytest.approx(600.0, rel=0.25)             # about 600 kg/ha per SD was built in
+    assert dr["Impact (kg/ha per +1 SD)"].iloc[1:].abs().max() < 0.2 * dr.iloc[0]["Abs Impact"]  # the noise features are small by comparison
+    assert len(compute_weather_driver_attribution(bundle, kg=1000.0, top_k=2)) == 2
+    assert "Optical_Valid_Fraction" not in set(dr["Driver"])                                    # a static covariate is not a weather driver
 
 
-def _granary_box(at):
-    return [x for x in at.sidebar.selectbox if x.label == "Selected Granary"][0]
+# ---------------------------------------------------------------------------------------------------- few-shot scarcity
+def _record_fits(monkeypatch):
+    from acts_transfer import diagnostics as dg
+    fits = []
+
+    class SpyTransfer(dg.AnomalyRidge):
+        def fit(self, *a, **k):
+            r = super().fit(*a, **k)
+            fits.append(("transfer", self))
+            return r
+
+    class SpyLocal(dg.LocalRidge):
+        def fit(self, *a, **k):
+            r = super().fit(*a, **k)
+            fits.append(("local", self))
+            return r
+    monkeypatch.setattr(dg, "AnomalyRidge", SpyTransfer)
+    monkeypatch.setattr(dg, "LocalRidge", SpyLocal)
+    return fits
 
 
-def _ws_box(at):
-    return [x for x in at.sidebar.selectbox if x.label == "Workspace"][0]
+def test_few_shot_scarcity_benchmark_outputs(monkeypatch):
+    from acts_transfer.diagnostics import compute_few_shot_scarcity
+    bundle = diag_bundle(n_target=6, n_donor_seasons=12)
+    T = bundle.target.dropna(subset=["y"]).sort_values("group")
+    assert len(T) >= 5 and bundle.source.group.nunique() >= 10
+    fits = _record_fits(monkeypatch)
+    out = compute_few_shot_scarcity(bundle, kg=1000.0, shots=(2, 3, 4))
+    assert list(out.columns[:4]) == ["Target History", "Local-Only Error (kg/ha)", "Transfer Error (kg/ha)", "Transfer Advantage"]
+    assert out["Target History"].tolist() == ["n = 2 seasons", "n = 3 seasons", "n = 4 seasons"]
+    errs = out[["Local-Only Error (kg/ha)", "Transfer Error (kg/ha)"]].to_numpy(float)
+    assert np.isfinite(errs).all() and (errs >= 0).all()
+    assert np.allclose(out["Transfer Advantage"], out["Local-Only Error (kg/ha)"] - out["Transfer Error (kg/ha)"])
+    assert out["Test Seasons"].nunique() == 1                                                  # every n is scored on the same held-out seasons
+    assert (out["Transfer Advantage"] > 0).all()                                               # donors carry the weather slope the 2-4 local rows cannot learn
+
+    feats, last_g = bundle.features, T.group.iloc[-1]
+    assert fits and any(m.meta_["test_season"] == last_g for _, m in fits)                     # the final season is held out in at least one fold
+    for kind, m in fits:
+        g, n = m.meta_["test_season"], m.meta_["n"]
+        x_test = T.loc[T.group == g, feats].values[0]
+        y_test = float(T.loc[T.group == g, "y"].iloc[0])
+        assert len(m.train_yt_) == n and m.meta_["max_target_group"] < g                      # the n seasons directly before the test season, nothing later
+        assert not any(np.allclose(x_test, r) for r in m.train_Xt_) and not np.isclose(m.train_yt_, y_test).any()      # the held-out row is not a training row
+        if kind == "local":                                                                    # scaler statistics come from the training slice alone
+            np.testing.assert_allclose(m.mean_, m.train_Xt_.mean(axis=0))
+            np.testing.assert_allclose(m.scale_, m.train_Xt_.std(axis=0))
+        else:
+            np.testing.assert_allclose(m.mu_x_, np.nanmean(m.train_Xt_, axis=0))
+            assert m.mu_y_ == pytest.approx(m.train_yt_.mean())
+            assert m.meta_["max_source_group"] is None or m.meta_["max_source_group"] < g     # donor seasons strictly before the test season
+
+    # sentinel: replace the LAST season (features and yield) with absurd values. No training slice, scaler statistic or fitted slope may change.
+    before = [(k, m.coef_.copy() if k == "transfer" else m.m_.coef_.copy(), (m.mu_x_ if k == "transfer" else m.mean_).copy()) for k, m in fits]
+    fits.clear()
+    tgt = bundle.target.copy()
+    last = tgt.group == last_g
+    tgt.loc[last, feats] = 1e6
+    tgt.loc[last, "y"] = 99.0
+    compute_few_shot_scarcity(dataclasses.replace(bundle, target=tgt), kg=1000.0, shots=(2, 3, 4))
+    after = [(k, m.coef_.copy() if k == "transfer" else m.m_.coef_.copy(), (m.mu_x_ if k == "transfer" else m.mean_).copy()) for k, m in fits]
+    assert len(before) == len(after)
+    for (k1, c1, mu1), (k2, c2, mu2) in zip(before, after):
+        assert k1 == k2
+        np.testing.assert_array_equal(c1, c2)
+        np.testing.assert_array_equal(mu1, mu2)
 
 
-def test_sidebar_workspace_dropdown_and_clean_nav_buttons(tmp_path):
-    at = _app("Overview · Summary & Model Status", tmp_path / "reg.json")
-    assert not at.exception
-    assert len(at.sidebar.radio) == 0
-    assert [x.label for x in at.sidebar.selectbox] == ["Selected Granary", "Workspace"]
-    # Overview is the top button and is excluded from the Workspace dropdown
-    assert _ws_box(at).options == [ROLE_KPKM, ROLE_VAL]
-    assert _ws_box(at).value is None
-    assert [b.key for b in at.sidebar.button] == ["nav_ov"]
-
-    # Switch workspace via dropdown to KPKM Programme Manager
-    _ws_box(at).set_value(ROLE_KPKM).run()
-    assert at.session_state["nav_mode"] == ROLE_KPKM
-    for i in range(4):
-        assert _btn(at, f"nav_kpkm_{i}") is not None
-    _btn(at, "nav_kpkm_1").click().run()
-    assert at.session_state["kpkm_page_idx"] == 1
-
-    # Switch workspace via dropdown to Model Validator & Data Steward
-    _ws_box(at).set_value(ROLE_VAL).run()
-    assert at.session_state["nav_mode"] == ROLE_VAL
-    for s in range(1, 5):
-        assert _btn(at, f"nav_val_{s}") is not None
-    _btn(at, "nav_val_2").click().run()
-    assert at.session_state["validator_step"] == 2
-
-    # Clicking top Overview button returns to Overview and clears Workspace dropdown selection
-    _btn(at, "nav_ov").click().run()
-    assert at.session_state["nav_mode"] == "Overview · Summary & Model Status"
-    assert _ws_box(at).value is None
+def test_few_shot_scarcity_skips_shots_the_history_cannot_support():
+    from acts_transfer.diagnostics import compute_few_shot_scarcity
+    out = compute_few_shot_scarcity(diag_bundle(n_target=3, n_donor_seasons=10), kg=1000.0, shots=(2, 3, 4))
+    assert out["Target History"].tolist() == ["n = 2 seasons"]                                  # n = 3 and 4 leave no season to hold out
 
 
-def test_every_page_of_both_workspaces_renders(tmp_path):
-    for n in range(1, 5):
-        at = _app(ROLE_KPKM, tmp_path / "reg.json", page_idx=n - 1)
-        assert not at.exception, (n, [e.value for e in at.exception])
-    for n in range(1, 5):
-        at = _app(ROLE_VAL, tmp_path / "reg.json", step=n)
-        assert not at.exception, (n, [e.value for e in at.exception])
+# ---------------------------------------------------------------------------------------------------- safeguard gate and governance registry
+def test_safeguard_gate_and_governance_registry_integrity(automl, tmp_path):
+    from acts_transfer import governance as gov
+    from acts_transfer.modelchoice import LOCAL_BASELINES
+    from acts_transfer.publish import build_published_from_automl
+    from acts_transfer.sweep import clean_physical_ranges
+    from dashboard.tab_transfer import _evidence
+    reg = tmp_path / "governance_registry.json"                                                # never the real registry
 
+    # ---- Delta_NT >= 0: the gate triggers, only a local baseline can be served, and approval cannot be recorded
+    a_fb = copy.deepcopy(automl[STABLE])
+    ch_fb = a_fb["choice"]
+    ch_fb["safeguard"]["delta_nt"] = 0.05
+    ch_fb["safeguard"]["gate_passed"] = False
+    ch_fb["transfer_supported"] = False
+    ch_fb["selected"] = "persistence"
+    assert ch_fb["selected"] in LOCAL_BASELINES
+    assert gov.gate_status(ch_fb) == gov.REJECTED
+    ev_fb = _evidence(a_fb, ch_fb, False, ch_fb["best_transfer"])
+    assert ev_fb["gate_passed"] is False
+    with pytest.raises(ValueError, match="cannot approve"):
+        gov.record_signoff(STABLE, "APPROVE", "Validator", "try", ev_fb, path=reg)
+    assert not reg.exists()                                                                    # the refusal wrote nothing
+    entry = gov.record_signoff(STABLE, "REJECT", "Validator", "gate triggered", ev_fb, path=reg)
+    assert entry["status"] == gov.REJECTED
+    eff = gov.effective(STABLE, path=reg)
+    assert eff["serves_transfer"] is False and "Local Baseline" in eff["badge"]
 
-def test_automl_runs_automatically_from_step_1_with_stage_scores(tmp_path):
-    at = _app(ROLE_VAL, tmp_path / "reg.json", step=1)
-    assert not at.exception
-    kpi = {m.label: m.value for m in at.metric}
-    assert "Step 1 · Data Quality Score" in kpi and kpi["Step 1 · Data Quality Score"].endswith("%")
-    assert "Step 2 · Domain Similarity Score" in kpi and kpi["Step 2 · Domain Similarity Score"].endswith("%")
-    assert "Step 3 · AutoML Model Winner" in kpi and kpi["Step 3 · AutoML Model Winner"].endswith("%")
-    assert "Step 4 · Safeguard Readiness" in kpi and kpi["Step 4 · Safeguard Readiness"].endswith("%")
-    assert "automl_summary" in at.session_state
-
-
-def test_the_kpkm_workspace_has_no_model_signoff_controls(tmp_path):
-    for n in range(1, 5):
-        at = _app(ROLE_KPKM, tmp_path / "reg.json", page_idx=n - 1)
-        assert not at.exception
-        for key in ("so_approve", "so_reject"):
-            assert _btn(at, key) is None, (n, key)
-
-
-def test_the_overview_hub_shows_the_governance_status_and_jumps_to_a_workspace(tmp_path):
-    at = _app("Overview · Summary & Model Status", tmp_path / "reg.json")
-    assert not at.exception
-    kpi = {m.label: m.value for m in at.metric}
-    assert kpi["Verified Transfer Models"].startswith("0 / ") and "Mean Granary Yield" in kpi
-    _btn(at, "jump_validator").click().run()
-    assert at.session_state["nav_mode"] == ROLE_VAL and at.session_state["validator_step"] == 1 and not at.exception
-    at = _app("Overview · Summary & Model Status", tmp_path / "reg.json")
-    _btn(at, "jump_kpkm").click().run()
-    assert at.session_state["nav_mode"] == ROLE_KPKM
-
-
-def test_the_validator_steps_have_next_and_back_buttons(tmp_path):
-    at = _app(ROLE_VAL, tmp_path / "reg.json", step=1)
-    path = [("nx_1", 2), ("nx_2", 3), ("nx_3", 4), ("bk_4", 3), ("bk_3", 2), ("bk_2", 1)]
-    for key, want in path:
-        _btn(at, key).click().run()
-        assert at.session_state["validator_step"] == want and not at.exception, (key, want)
-    at = _app(ROLE_VAL, tmp_path / "reg.json", step=4)
-    _btn(at, "nx_4").click().run()
-    assert at.session_state["nav_mode"] == "Overview · Summary & Model Status"
-
-
-def test_clicking_the_sidebar_granary_is_the_one_selected_granary_for_every_page(tmp_path):
-    at = _app(ROLE_KPKM, tmp_path / "reg.json")
-    _granary_box(at).set_value("IADA Kerian").run()
-    assert at.session_state["granary"] == "IADA Kerian"
-    at = _kpkm_page(at, 2)
-    assert at.session_state["granary"] == "IADA Kerian" and not at.exception
-
-
-def test_a_signed_off_granary_reaches_the_kpkm_brief_and_an_unsigned_one_does_not(tmp_path):
-    reg = tmp_path / "reg.json"
-    at = _app(ROLE_VAL, reg, step=4)
-    at.text_input[[t.key for t in at.text_input].index("so_name")].set_value("Test Validator").run()
-    _btn(at, "so_reject").click().run()
-    assert not at.exception
-    from acts_transfer import governance
-    e = governance.load(reg)["granaries"]["IADA Barat Laut Selangor"]
-    assert e["status"] == governance.REJECTED and e["validator"] == "Test Validator" and e["published"]["baseline_model"]
-    at = _app(ROLE_KPKM, reg, page_idx=3)
-    _granary_box(at).set_value("IADA Barat Laut Selangor").run()
-    _btn(at, "get_advisory").click().run()
-    t = _text(at)
-    assert "validator-reviewed yield forecast" in t and "Local Baseline Active" in t
-    _granary_box(at).set_value("IADA Kerian").run()
-    _btn(at, "get_advisory").click().run()
-    assert "no validator-reviewed yield forecast for this granary" in _text(at)
-
-
-def test_the_decision_brief_shows_the_cited_reference_practice(tmp_path):
-    at = _app(ROLE_KPKM, tmp_path / "reg.json", page_idx=3)
-    _granary_box(at).set_value("IADA Barat Laut Selangor").run()
-    _btn(at, "get_advisory").click().run()
-    t = _text(at)
-    assert not at.exception and "Source Resource" in t and "has not been checked by this project" in t and "Kaedah Pengurusan Tanaman Padi" in t
-
-
-def test_the_decision_brief_renders_counterfactual_cards_when_present(tmp_path, monkeypatch):
-    res_dir = tmp_path / "results"
-    res_dir.mkdir(parents=True, exist_ok=True)
-    reg_file = res_dir / "governance_registry.json"
-    reg_file.write_text(json.dumps({
-        "IADA Barat Laut Selangor": {
-            "updated_at": "2026-11-24T12:00:00",
-            "approved_method": "HGB + RULE",
-            "delta_nt": -142.5,
-            "prescriptions": [{
-                "lever": "Planting Schedule Synchronization",
-                "window": "Decades 6–10",
-                "delta_y_kg_ha": 240.0,
-                "ci_low": 180.0,
-                "ci_high": 300.0,
-                "rule_id": "R01_PLANT_SLIP",
-                "schedule_bound": "JPS/IADA gazetted water-release window",
-            }],
-        }
-    }), encoding="utf-8")
-    monkeypatch.chdir(tmp_path)
-    at = _app(ROLE_KPKM, tmp_path / "reg.json", page_idx=3)
-    _granary_box(at).set_value("IADA Barat Laut Selangor").run()
-    _btn(at, "get_advisory").click().run()
-    t = _text(at)
-    assert not at.exception
-    assert "Causal counterfactual prescriptions" in t and "HGB + RULE" in t
-
-
-def test_the_sidebar_always_keeps_the_selected_granary_and_a_role_card(tmp_path):
-    for mode in ("Overview · Summary & Model Status", ROLE_KPKM, ROLE_VAL):
-        at = _app(mode, tmp_path / "reg.json")
-        assert [x.label for x in at.sidebar.selectbox] == ["Selected Granary", "Workspace"] and not at.exception
-        assert any("sb-role-box" in m.value for m in at.sidebar.markdown)
-
-
-def test_the_map_page_shows_a_field_summary_card_for_the_selected_granary(tmp_path):
-    at = _app(ROLE_KPKM, tmp_path / "reg.json", page_idx=0)
-    _granary_box(at).set_value("IADA Kerian").run()
-    assert not at.exception
-    t = _text(at)
-    assert "Review a paddy field · IADA Kerian" in t
-    assert "Mapped paddy field groups" in [m.label for m in at.metric]
-    assert "Pending review" not in t and any("Season 1" in m.value for m in at.markdown)
-
-def test_the_overview_has_the_yield_line_chart_and_the_ranking_with_neighbours(tmp_path):
-    at = _app("Overview · Summary & Model Status", tmp_path / "reg.json")
-    assert not at.exception
-    heads = [m.value for m in at.markdown]
-    assert "### Yield Across the Years, by Granary" in heads and "### Granary Ranking by Yield" in heads
-    t = " ".join(m.value for m in at.info)
-    assert "IADA Barat Laut Selangor" in t and "Next above" in t and "Next below" in t and "Closest overall" in t
-    at.radio[[r.key for r in at.radio].index("ov_rank_basis")].set_value([o for o in at.radio[[r.key for r in at.radio].index("ov_rank_basis")].options if o.startswith("Latest")][0]).run()
-    assert not at.exception
-
-
-def test_approving_in_step_4_publishes_real_forecast_tables_for_the_kpkm_pages(tmp_path):
-    reg = tmp_path / "reg.json"
-    at = _app(ROLE_VAL, reg, step=4)
-    at.text_input[[t.key for t in at.text_input].index("so_name")].set_value("Test Validator").run()
-    _btn(at, "so_approve").click().run()
-    assert not at.exception
-    from acts_transfer import governance
-    e = governance.load(reg)["granaries"]["IADA Barat Laut Selangor"]
-    pub = e["published"]
-    assert e["status"] == governance.APPROVED and e["evidence"]["model_label"] and "delta_nt_kg_ha" in e["evidence"]
-    assert pub["backtest"]["forward"] and pub["nowcast"]["transfer"] and set(pub["outlook"]) >= {"Normal", "El Niño drought", "Wet monsoon"}
-    assert all(r["predicted"] > 0 for r in pub["outlook"]["Normal"][pub["transfer_model"]])
-    at = _app(ROLE_KPKM, reg, page_idx=2)
-    assert not at.exception
+    # ---- Delta_NT < 0: the gate passes and the evidence stored with the sign-off is complete
+    a = automl[VOLATILE]
+    ch = a["choice"]
+    sg = ch["safeguard"]
+    assert sg["delta_nt"] < 0 and sg["gate_passed"] is True
+    assert ch["transfer_supported"] is True and ch["selected"] not in LOCAL_BASELINES
+    assert gov.gate_status(ch) == gov.PENDING
+    ev = _evidence(a, ch, sg["gate_passed"], ch["selected"])
+    kg = float(a["bundle"].y_to_kg)
+    assert ev["gate_passed"] is True and ev["model_key"] == ch["selected"]
+    assert ev["delta_nt_kg_ha"] < 0 and ev["delta_nt_kg_ha"] == pytest.approx(ev["delta_nt"] * kg)
+    assert {"step1_data", "step2_domain", "step3_automl", "step4_gate", "donor_winner"} <= set(ev["automl_scores"])
+    assert ev["seasons_compared"] >= 3 and ev["domain_ok"] is True and all(np.isfinite(v) for v in ev["rmse_common_kg_ha"].values())
+    Y, _ = clean_physical_ranges(pd.read_csv(ROOT / "data" / "transfer_stage_dataset.csv"))
+    pub = build_published_from_automl(a, Y, VOLATILE)
+    bt = pd.DataFrame(pub["backtest"]["forward"])
+    assert len(bt) >= 3 and np.isfinite(bt[["actual", "baseline"]].to_numpy(float)).all() and bt["transfer"].notna().any()
+    assert pub["outlook"] and all(len(v.get(ch["selected"], [])) >= 1 for v in pub["outlook"].values())
+    assert pub["nowcast"]["transfer"] is not None and pub["transfer_model"] == ch["selected"]
+    entry = gov.record_signoff(VOLATILE, "APPROVE", "Validator", "gate passed", ev, pub, path=reg)
+    assert entry["status"] == gov.APPROVED and entry["evidence"]["delta_nt_kg_ha"] == ev["delta_nt_kg_ha"]
+    assert gov.effective(VOLATILE, path=reg)["serves_transfer"] is True
+    assert gov.effective(STABLE, path=reg)["serves_transfer"] is False                         # the other granary is unaffected

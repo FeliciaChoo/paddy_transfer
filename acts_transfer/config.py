@@ -68,6 +68,7 @@ class Config:
     deployable: tuple = None                    # E2: the transfer methods that may be APPROVED (V8: only the Detrended Residual Transfer hybrid). None = every method. The others are benchmarks
     min_test_seasons: int = 3                   # E2: a transfer method needs at least this many held-out seasons common to it and all local/trend baselines to be approved
     boost_rounds: int = 30                      # C4: boosting rounds for Two-Stage / S-TrAdaBoost.R2
+    two_stage_rounds: int = 5                   # boosting rounds for the Two-Stage and Delta Two-Stage TrAdaBoost.R2 (optimisation_config: n_estimators = 5); S-TrAdaBoost keeps boost_rounds
     kmm_max_source: int = 600
     tca_max_rows: int = 800
     coral_eps: float = 1.0

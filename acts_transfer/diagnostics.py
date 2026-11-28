@@ -10,6 +10,7 @@ Every row separates three things:
 Distribution differences found in the assessment are NOT prediction errors, and a decline in performance is never attributed to domain shift
 automatically: the shift is one hypothesis among several.
 """
+import re
 import numpy as np
 import pandas as pd
 from sklearn.linear_model import Ridge
@@ -17,7 +18,7 @@ from sklearn.preprocessing import StandardScaler
 
 from .assessment import AssessmentReport
 from .config import Config
-from .evaluation import EvaluationResult
+from .evaluation import EvaluationResult, plausible_label_bounds
 from .harmonise import HarmonisedBundle
 
 VERIFIED, POSSIBLE, NOT_SUPPORTED, NA = "Verified finding", "Possible explanation", "Not supported", "Not applicable"
@@ -146,3 +147,260 @@ def diagnose(bundle: HarmonisedBundle, report: AssessmentReport, res: Evaluation
     summary = (f"{method} was {head} {baseline} on average ({d.mean():+.3f}, {int((d < 0).sum())} of {n_f} seasons better). "
                f"Verified findings: {', '.join(verified) or 'none'}. Possible explanations (not proven): {', '.join(possible) or 'none'}.")
     return out, summary
+
+
+# ================================================================================================================================================
+# PRE-APPROVAL DIAGNOSTICS (shown above the Approve / Reject buttons in the Validator sign-off)
+#
+# Three pure functions, no Streamlit and no files, so the dashboard and pytest call exactly the same code:
+#   compute_weather_ablation          how many kg/ha does the real weather / satellite signal save against zeroed anomalies?
+#   compute_few_shot_scarcity         local-only vs transfer error when the target granary has only n = 2, 3, 4 seasons of history
+#   compute_weather_driver_attribution  which weather / satellite feature moves yield most (kg/ha per +1 SD)
+# All three use one transparent learner, AnomalyRidge: within-granary anomalies (each granary's own mean removed), one Ridge slope shared by the
+# donors and the target, and the TARGET's own level added back. A feature anomaly of zero therefore means "a normal season for this granary".
+# Fold safety: means and standard deviations are computed from the training rows of each fold only; the donor rows are limited to seasons strictly
+# BEFORE the season being predicted; the held-out season's label is never read. The attribution is descriptive (it uses every labelled row) and is
+# not a forecast.
+# ================================================================================================================================================
+METEO_KEYWORDS = ("Rain", "Tmax", "Tmin", "Temp", "Solar")      # name fragments of the meteorological stage features (C1_Rain_mm_rep, C1_Tmax_C_rep, C1_Mean_Temp_C_rep, ...); optical and SAR features are not in it
+STATIC_COVARIATES = ("Soil_pH", "Optical_Valid_Fraction")      # season-invariant descriptors, not weather or satellite drivers
+
+
+def weather_columns(bundle, weather_cols=None):
+    """the weather / satellite drivers of a bundle: every retained feature except the static covariates (or the explicit list given, restricted to the bundle)"""
+    if weather_cols is not None:
+        return [c for c in weather_cols if c in bundle.features]
+    return [c for c in bundle.features if c not in STATIC_COVARIATES]
+
+
+def _nanmean0(a):
+    """column means that ignore gaps; a column with no value at all gets 0 (its anomaly is then 0)"""
+    a = np.asarray(a, float)
+    with np.errstate(all="ignore"):
+        m = np.nanmean(a, axis=0) if a.ndim > 1 else np.nanmean(a)
+    return np.nan_to_num(m, nan=0.0)
+
+
+class AnomalyRidge:
+    """Within-granary-anomaly Ridge. fit(Xs, ys, us, Xt, yt): raw training arrays only (donor rows Xs/ys with their granary ids us, labelled target rows Xt/yt).
+    Every granary is centred on its own mean (a missing feature value becomes an anomaly of 0), the pooled anomalies are scaled by their standard deviation,
+    and one Ridge slope vector is fitted on all of them. predict() adds the target's own mean yield to the slope times the target's anomaly of the new row."""
+
+    def __init__(self, alpha=1.0):
+        self.alpha = alpha
+
+    def fit(self, Xs, ys, us, Xt, yt, meta=None):
+        Xt, yt = np.asarray(Xt, float), np.asarray(yt, float)
+        if len(yt) < 1:
+            raise ValueError("AnomalyRidge needs at least one labelled target row")
+        blocks_x, blocks_y, n_src = [], [], 0
+        Xs, ys, us = np.asarray(Xs, float).reshape(-1, Xt.shape[1]), np.asarray(ys, float), np.asarray(us)
+        for g in dict.fromkeys(us.tolist()):                      # donor granaries: centre each on its own training mean
+            k = (us == g) & ~np.isnan(ys)
+            if k.sum() >= 2:
+                blocks_x.append(np.nan_to_num(Xs[k] - _nanmean0(Xs[k]), nan=0.0))
+                blocks_y.append(ys[k] - ys[k].mean())
+                n_src += int(k.sum())
+        self.mu_x_, self.mu_y_ = _nanmean0(Xt), float(np.mean(yt))     # the target's level comes from ITS training rows only
+        if len(yt) >= 2:
+            blocks_x.append(np.nan_to_num(Xt - self.mu_x_, nan=0.0))
+            blocks_y.append(yt - self.mu_y_)
+        if blocks_x:
+            A, B = np.vstack(blocks_x), np.concatenate(blocks_y)
+            sd = A.std(axis=0)
+            self.sd_ = np.where(sd > 1e-9, sd, 1.0)
+            self.coef_ = Ridge(alpha=self.alpha, fit_intercept=False).fit(A / self.sd_, B).coef_
+        else:                                                     # a single target row and no usable donor: no slope can be learned
+            self.sd_, self.coef_ = np.ones(Xt.shape[1]), np.zeros(Xt.shape[1])
+        self.n_train_target_, self.n_train_source_ = len(yt), n_src
+        self.train_Xt_, self.train_yt_, self.meta_ = Xt.copy(), yt.copy(), dict(meta or {})
+        return self
+
+    def z(self, X):
+        return np.nan_to_num((np.asarray(X, float) - self.mu_x_) / self.sd_, nan=0.0)
+
+    def predict(self, X, zero_cols=()):
+        """zero_cols: indices of features whose anomaly is set to 0 (ablation = the weather of an average season)"""
+        z = self.z(X)
+        if len(zero_cols):
+            z[:, list(zero_cols)] = 0.0
+        return self.mu_y_ + z @ self.coef_
+
+
+class LocalRidge:
+    """Local-only baseline for the few-shot table: standardised Ridge (median imputation, mean/SD) fitted on the target's own n training rows."""
+
+    def __init__(self, alpha=1.0):
+        self.alpha = alpha
+
+    def fit(self, Xt, yt, meta=None):
+        Xt, yt = np.asarray(Xt, float), np.asarray(yt, float)
+        self.med_ = np.nan_to_num(np.nanmedian(Xt, axis=0) if len(Xt) else np.zeros(Xt.shape[1]), nan=0.0) if Xt.size else np.zeros(Xt.shape[1])
+        Xi = np.where(np.isnan(Xt), self.med_, Xt)
+        self.sc_ = StandardScaler().fit(Xi)                                   # mean and SD from the n training rows only
+        self.m_ = Ridge(alpha=self.alpha).fit(self.sc_.transform(Xi), yt)
+        self.mean_, self.scale_ = self.sc_.mean_.copy(), self.sc_.scale_.copy()
+        self.train_Xt_, self.train_yt_, self.meta_ = Xt.copy(), yt.copy(), dict(meta or {})
+        return self
+
+    def predict(self, X):
+        X = np.asarray(X, float)
+        return self.m_.predict(self.sc_.transform(np.where(np.isnan(X), self.med_, X)))
+
+
+def _label_tables(bundle):
+    """target (sorted by season, labelled rows only) and source tables of a bundle"""
+    T = bundle.target.dropna(subset=["y"]).sort_values("group").reset_index(drop=True)
+    S = bundle.source.dropna(subset=["y"]).reset_index(drop=True)
+    return T, S
+
+
+def _units(S):
+    return S["unit"].astype(str).values if "unit" in S else np.array(["source"] * len(S))
+
+
+def _bounded(pred, bundle):
+    b = plausible_label_bounds(bundle)
+    return np.clip(pred, *b) if b is not None else pred
+
+
+def compute_weather_ablation(bundle, kg, weather_cols=None, min_train=2, alpha=1.0):
+    """How much of the forecast accuracy comes from the real weather / satellite signal?
+    Expanding-window forward validation on the target granary: for every season g with at least `min_train` earlier target seasons, AnomalyRidge is fitted on
+    the earlier seasons only (donor rows strictly before g) and g is predicted twice: with its real weather / satellite features, and with the anomalies of
+    those features zeroed (an average season for this granary). Returns kg/ha: err_real and err_ablated (RMSE over the held-out seasons) and
+    weather_gain = err_ablated - err_real (positive = the real weather lowers the error). The learner is the same in both runs; only the held-out season's
+    weather inputs differ, so no label and no future row is involved."""
+    feats = list(bundle.features)
+    wc = weather_columns(bundle, weather_cols)
+    zero_idx = [feats.index(c) for c in wc]
+    T, S = _label_tables(bundle)
+    out = dict(err_real=float("nan"), err_ablated=float("nan"), weather_gain=float("nan"), n_folds=0, weather_features=wc, per_season=pd.DataFrame())
+    if not wc or len(T) <= min_train:
+        return out
+    Xs_all, ys_all, us_all, gs_all = S[feats].values, S["y"].values, _units(S), S["group"].values
+    rows = []
+    for i in range(min_train, len(T)):
+        g = T.group.iloc[i]
+        tr, te = T.iloc[:i], T.iloc[[i]]
+        k = gs_all < g                                                # donor seasons strictly before the season being predicted
+        m = AnomalyRidge(alpha).fit(Xs_all[k], ys_all[k], us_all[k], tr[feats].values, tr["y"].values,
+                                    meta=dict(test_season=g, max_source_group=(gs_all[k].max() if k.any() else None), max_target_group=tr.group.max()))
+        y = float(te["y"].iloc[0])
+        p_real = float(_bounded(m.predict(te[feats].values), bundle)[0])
+        p_abl = float(_bounded(m.predict(te[feats].values, zero_cols=zero_idx), bundle)[0])
+        rows.append(dict(season=int(g), actual=y * kg, real=p_real * kg, ablated=p_abl * kg, err_real=abs(y - p_real) * kg, err_ablated=abs(y - p_abl) * kg))
+    per = pd.DataFrame(rows)
+    out.update(err_real=float(np.sqrt((per.err_real ** 2).mean())), err_ablated=float(np.sqrt((per.err_ablated ** 2).mean())), n_folds=len(per), per_season=per)
+    out["weather_gain"] = out["err_ablated"] - out["err_real"]
+    return out
+
+
+def compute_few_shot_scarcity(bundle, kg, shots=(2, 3, 4), alpha=1.0):
+    """Does transfer help when the target granary is young? For every n in `shots`, forecast each held-out season using only the n MOST RECENT earlier target
+    seasons (and, for transfer, the donor seasons strictly before it). All n are scored on the SAME held-out seasons (those with at least max(shots) earlier
+    seasons), so the rows are comparable. Local-Only = standardised Ridge on the n target rows; Transfer = AnomalyRidge (donor slopes, target level).
+    Errors are RMSE in kg/ha; Transfer Advantage = Local-Only - Transfer (positive = transfer is better, negative = it hurts)."""
+    cols = ["Target History", "Local-Only Error (kg/ha)", "Transfer Error (kg/ha)", "Transfer Advantage", "Test Seasons"]
+    feats = list(bundle.features)
+    T, S = _label_tables(bundle)
+    ok = [int(n) for n in shots if 1 <= int(n) < len(T)]
+    if not ok:
+        return pd.DataFrame(columns=cols)
+    Xs_all, ys_all, us_all, gs_all = S[feats].values, S["y"].values, _units(S), S["group"].values
+    first = max(ok)                                                   # the first season that has `first` earlier seasons
+    res = []
+    for n in ok:
+        e_loc, e_tr = [], []
+        for i in range(first, len(T)):
+            g = T.group.iloc[i]
+            tr, te = T.iloc[i - n:i], T.iloc[[i]]                    # the n most recent seasons before g; g itself is never in the training slice
+            meta = dict(test_season=g, n=n, max_target_group=tr.group.max())
+            loc = LocalRidge(alpha).fit(tr[feats].values, tr["y"].values, meta=meta)
+            k = gs_all < g
+            tra = AnomalyRidge(alpha).fit(Xs_all[k], ys_all[k], us_all[k], tr[feats].values, tr["y"].values,
+                                          meta=dict(meta, max_source_group=(gs_all[k].max() if k.any() else None)))
+            y = float(te["y"].iloc[0])
+            e_loc.append(abs(y - float(_bounded(loc.predict(te[feats].values), bundle)[0])) * kg)
+            e_tr.append(abs(y - float(_bounded(tra.predict(te[feats].values), bundle)[0])) * kg)
+        rl, rt = float(np.sqrt(np.mean(np.square(e_loc)))), float(np.sqrt(np.mean(np.square(e_tr))))
+        res.append({"Target History": f"n = {n} seasons", "Local-Only Error (kg/ha)": rl, "Transfer Error (kg/ha)": rt, "Transfer Advantage": rl - rt, "Test Seasons": len(e_loc)})
+    return pd.DataFrame(res, columns=cols)
+
+
+def compute_weather_driver_attribution(bundle, kg, top_k=6, weather_cols=None, alpha=1.0):
+    """Which weather / satellite drivers move yield most? One AnomalyRidge is fitted on every labelled row (donors and target) and each driver's standardised
+    slope is reported as the yield change for a +1 SD shift of that driver, in kg/ha (positive = more yield). Sorted by the absolute impact, at most top_k rows.
+    Descriptive, not causal: correlated drivers share their effect and the slope comes from a handful of seasons."""
+    cols = ["Driver", "Impact (kg/ha per +1 SD)", "Abs Impact", "Direction"]
+    feats = list(bundle.features)
+    wc = weather_columns(bundle, weather_cols)
+    T, S = _label_tables(bundle)
+    if not wc or len(T) < 2:
+        return pd.DataFrame(columns=cols)
+    m = AnomalyRidge(alpha).fit(S[feats].values, S["y"].values, _units(S), T[feats].values, T["y"].values)
+    imp = {c: float(m.coef_[feats.index(c)] * kg) for c in wc}
+    df = pd.DataFrame({"Driver": list(imp), "Impact (kg/ha per +1 SD)": list(imp.values())})
+    df["Abs Impact"] = df["Impact (kg/ha per +1 SD)"].abs()
+    df["Direction"] = np.where(df["Impact (kg/ha per +1 SD)"] >= 0, "raises yield", "lowers yield")
+    return df.sort_values("Abs Impact", ascending=False, kind="mergesort").head(int(top_k)).reset_index(drop=True)[cols]
+
+
+# ================================================================================================================================================
+# GATE EVIDENCE (shown on the Step 4 sign-off card and read by pipeline/gate_evidence_audit.py)
+# The default gate is criterion 0: Delta_NT < 0 (a point estimate on the common held-out seasons). Criteria 1 to 4 are computed for every method but only
+# decide deployment when cfg.nt_gate = "delta_nt+stats". This function reads them from the finished AutoML payload and says, in words, how strong the evidence is.
+# It changes no decision and writes nothing.
+# ================================================================================================================================================
+def _col(table, prefix):
+    return next((c for c in table.columns if str(c).startswith(prefix)), None)
+
+
+def gate_evidence(auto: dict, method: str | None = None) -> dict:
+    """Evidence behind the safeguard gate for `method` (default: the selected transfer method, else the best transfer candidate), in kg/ha.
+    Criterion 1 is judged against the best of ALL baselines (source-only and pooled included, not only the local ones); criterion 2 needs at least
+    `min_seasons` paired held-out seasons, otherwise it is not testable; criterion 3 is the leave-one-season-out comparison. strength is one of
+    'supported', 'not_testable', 'not_distinguishable', 'worse' or 'mixed'; reason explains it."""
+    ch = auto["choice"]
+    t = ch["table"]
+    kg = float(getattr(auto["bundle"], "y_to_kg", 1.0)) or 1.0
+    if method is None:
+        sel = ch.get("selected")
+        method = sel if ch.get("transfer_supported") and sel in set(t["method"]) else ch.get("best_transfer")
+    row = t[t["method"] == method]
+    if not len(row):
+        return {"available": False}
+    r = row.iloc[0]
+    ref_col = next((c for c in t.columns if str(c).startswith("best baseline (")), None)
+    ref = re.search(r"\((.+)\)", ref_col).group(1) if ref_col else None
+    c4col = _col(t, "4 at least")
+    min_seasons = int(re.search(r"at least (\d+)", c4col).group(1)) if c4col else 5
+    imp = getattr(auto.get("eval_results", {}).get("forward"), "improvement", None)
+    pair = imp[(imp["method"] == method) & (imp["baseline"] == ref)] if imp is not None and len(imp) else None
+    n_pairs = int(pair["n_seasons"].iloc[0]) if pair is not None and len(pair) else 0
+    verdict = str(pair["verdict"].iloc[0]) if pair is not None and len(pair) else "n/a"
+    chg = lo = hi = float("nan")
+    if pair is not None and len(pair):
+        chg, lo, hi = (float(pair[c].iloc[0]) * kg for c in ("mean_abs_err_change", "ci95_low", "ci95_high"))
+    ev = dict(available=True, method=method, best_baseline=ref, delta_nt_kg_ha=float(r["Delta_NT (RMSE)"]) * kg, delta_nt_baseline=str(r["Delta_NT baseline"]),
+              c0_delta_nt_negative=bool(r["0 Delta_NT < 0"]), gate_passed=bool(r["gate passed"]), domain_ok=bool(r["Criterion 1 domain relevance"]),
+              c1_lower_mae=bool(r[_col(t, "1 lower MAE")]), c2_interval_excludes_zero=bool(r[_col(t, "2 interval")]), c3_loso_win=bool(r[_col(t, "3 also")]),
+              c4_enough_seasons=bool(r[c4col]) if c4col else False, held_out_seasons=n_pairs, common_seasons=int(r["seasons compared"]), min_seasons=min_seasons,
+              mae_change_kg_ha=chg, ci95_low_kg_ha=lo, ci95_high_kg_ha=hi, verdict=verdict, stats_ok=bool(r["statistically supported"]))
+    sg = ch.get("safeguard", {})                                           # the nested selection check (method chosen on earlier seasons, judged on later ones)
+    nd = sg.get("nested_delta_nt")
+    ev.update(nested_available=nd is not None, nested_delta_nt_kg_ha=float(nd) * kg if nd is not None else float("nan"), nested_method=sg.get("nested_method"),
+              nested_ok=bool(sg.get("nested_ok", False)), nested_select_seasons=int(sg.get("nested_select_seasons", 0)), nested_hold_seasons=int(sg.get("nested_hold_seasons", 0)),
+              nested_gate=bool(sg.get("nested_gate", False)))
+    failing = [n for n, ok in (("lower MAE than the best baseline", ev["c1_lower_mae"]), ("leave-one-season-out win", ev["c3_loso_win"])) if not ok]
+    if ev["stats_ok"]:
+        ev["strength"], ev["reason"] = "supported", "the improvement holds on MAE and leave-one-season-out, and its 95% interval excludes zero."
+    elif n_pairs < min_seasons:
+        ev["strength"], ev["reason"] = "not_testable", f"only {n_pairs} paired held-out seasons; at least {min_seasons} are needed before the interval can be tested."
+    elif verdict == "worse":
+        ev["strength"], ev["reason"] = "worse", "the interval shows it is worse than the best baseline."
+    elif not ev["c2_interval_excludes_zero"]:
+        ev["strength"], ev["reason"] = "not_distinguishable", f"the 95% interval ({lo:+,.0f} to {hi:+,.0f} kg/ha) includes zero, so it cannot be told apart from chance."
+    else:
+        ev["strength"], ev["reason"] = "mixed", "it fails: " + ", ".join(failing) + "."
+    return ev

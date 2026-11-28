@@ -101,7 +101,10 @@ def choose(results: dict, cfg: Config, override_used: bool = False, sweep: dict 
     transfer_supported = len(supported) > 0
     selected = supported.method.iloc[0] if transfer_supported else ref
     pool_t = table[table["deployable"]] if len(table) and table["deployable"].any() else table
-    best_t = pool_t.sort_values("MAE").method.iloc[0] if len(pool_t) else None
+    # the candidate transfer winner is the lowest-MAE method among those that PASS the gate when any does, otherwise the lowest-MAE method overall. Without this the
+    # displayed "best method" (lowest MAE) and the pool-level gate ("some method passes") could describe two different models, so a row could read PASS next to a positive Delta_NT.
+    cand_t = pool_t[pool_t["gate passed"]] if len(pool_t) and pool_t["gate passed"].any() else pool_t
+    best_t = cand_t.sort_values("MAE").method.iloc[0] if len(cand_t) else None
     if transfer_supported:
         r0 = table[table.method == selected].iloc[0]
         extra = ("The improvement is also statistically supported (bootstrap interval excludes zero, and it holds under leave-one-year-out)."
